@@ -1,0 +1,9 @@
+@value font-xl from './size.css';
+
+.control
+{
+  composes: control from './link.css';
+
+  font-size: font-xl;
+  line-height: 15px;
+}

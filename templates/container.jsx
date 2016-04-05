@@ -18,6 +18,15 @@ import Input from '../components/input.jsx';
 
 import input from '../theme/islands/input.css';
 
+
+import Link from '../components/link.jsx';
+
+import linkS from '../theme/islands/link-s.css';
+import linkM from '../theme/islands/link-m.css';
+import linkL from '../theme/islands/link-l.css';
+import linkXL from '../theme/islands/link-xl.css';
+
+
 export default () => (
   <div>
     <h1 className={ container.header }>Кнопки</h1>
@@ -46,6 +55,18 @@ export default () => (
     </p>
     <p>
       <Button styles={ buttonActionXL }>button</Button> <Button disabled={ true } styles={ buttonActionXL }>button</Button>
+    </p>
+
+
+    <h1 className={ container.header }>Ссылки</h1>
+    <p>
+      <Link href='#' styles={ buttonNormalS }>link</Link> <Link href='#' styles={ buttonNormalM }>link</Link> <Link href='#' styles={ buttonNormalL }>link</Link> <Link href='#' styles={ buttonNormalXL }>link</Link>
+    </p>
+    <p>
+      <Link href='#' styles={ buttonActionS }>link</Link> <Link href='#' styles={ buttonActionM }>link</Link> <Link href='#' styles={ buttonActionL }>link</Link> <Link href='#' styles={ buttonActionXL }>link</Link>
+    </p>
+    <p>
+      <Link href='#' styles={ linkS }>link</Link> <Link href='#' styles={ linkM }>link</Link> <Link href='#' styles={ linkL }>link</Link> <Link href='#' styles={ linkXL }>link</Link>
     </p>
 
 
