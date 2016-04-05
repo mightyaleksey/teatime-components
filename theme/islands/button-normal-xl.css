@@ -1,0 +1,11 @@
+@value font-xl, gap-xl, height-xl from './size.css';
+
+.control
+{
+  composes: control from './button-normal.css';
+
+  padding: 0 gap-xl;
+
+  font-size: font-xl;
+  line-height: height-xl;
+}

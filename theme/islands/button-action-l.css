@@ -1,0 +1,11 @@
+@value font-l, gap-l, height-l from './size.css';
+
+.control
+{
+  composes: control from './button-action.css';
+
+  padding: 0 gap-l;
+
+  font-size: font-l;
+  line-height: height-l;
+}

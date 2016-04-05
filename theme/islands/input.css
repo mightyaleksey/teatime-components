@@ -1,0 +1,37 @@
+.control,
+.control:hover
+{
+  padding: 0 7px;
+
+  border: 1px solid rgba(0,0,0,.2);
+  outline: none;
+
+  font-family: arial,helvetica,sans-serif;
+  font-size: 13px;
+  line-height: 26px;
+}
+
+.control::-webkit-input-placeholder,
+.control:-moz-placeholder,
+.control::-moz-placeholder,
+.control:-ms-input-placeholder
+{
+  text-indent: 0;
+
+  color: #999;
+}
+
+.control:focus
+{
+  border: 1px solid #fc0;
+  box-shadow: 0 0 0 1px #fc0;
+}
+
+.control:disabled
+{
+  cursor: default;
+
+  color: rgba(0,0,0,.4);
+  border: 1px solid transparent;
+  background: rgba(0,0,0,.08);
+}
