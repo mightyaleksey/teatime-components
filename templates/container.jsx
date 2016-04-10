@@ -29,66 +29,84 @@ import linkXL from '../theme/islands/link-xl.css';
 
 import Select from '../components/select.jsx';
 
-import select from '../theme/islands/select.css';
+import selectS from '../theme/islands/select-S.css';
+import selectM from '../theme/islands/select-m.css';
+import selectL from '../theme/islands/select-L.css';
+import selectXL from '../theme/islands/select-XL.css';
 
 
 import Textarea from '../components/textarea.jsx';
 
+const options = [
+  {value: 'ava', label: 'ava'},
+  {value: 'mocha', label: 'mocha'},
+  {value: 'tape', label: 'tape'},
+];
+
 export default () => (
   <div>
-    <h1 className={ container.header }>Кнопки</h1>
+    <h1 className={ container.header }>Buttons</h1>
 
-    <p>
+    <div className={ container.row }>
       <Button styles={ buttonNormalS }>button</Button> <Button disabled={ true } styles={ buttonNormalS }>button</Button>
-    </p>
-    <p>
+    </div>
+    <div className={ container.row }>
       <Button styles={ buttonNormalM }>button</Button> <Button disabled={ true } styles={ buttonNormalM }>button</Button>
-    </p>
-    <p>
+    </div>
+    <div className={ container.row }>
       <Button styles={ buttonNormalL }>button</Button> <Button disabled={ true } styles={ buttonNormalL }>button</Button>
-    </p>
-    <p>
+    </div>
+    <div className={ container.row }>
       <Button styles={ buttonNormalXL }>button</Button> <Button disabled={ true } styles={ buttonNormalXL }>button</Button>
-    </p>
+    </div>
 
-    <p>
+    <div className={ container.row }>
       <Button styles={ buttonActionS }>button</Button> <Button disabled={ true } styles={ buttonActionS }>button</Button>
-    </p>
-    <p>
+    </div>
+    <div className={ container.row }>
       <Button styles={ buttonActionM }>button</Button> <Button disabled={ true } styles={ buttonActionM }>button</Button>
-    </p>
-    <p>
+    </div>
+    <div className={ container.row }>
       <Button styles={ buttonActionL }>button</Button> <Button disabled={ true } styles={ buttonActionL }>button</Button>
-    </p>
-    <p>
+    </div>
+    <div className={ container.row }>
       <Button styles={ buttonActionXL }>button</Button> <Button disabled={ true } styles={ buttonActionXL }>button</Button>
-    </p>
+    </div>
 
 
-    <h1 className={ container.header }>Ссылки</h1>
-    <p>
+    <h1 className={ container.header }>Links</h1>
+    <div className={ container.row }>
       <Link href='#' styles={ buttonNormalS }>link</Link> <Link href='#' styles={ buttonNormalM }>link</Link> <Link href='#' styles={ buttonNormalL }>link</Link> <Link href='#' styles={ buttonNormalXL }>link</Link>
-    </p>
-    <p>
+    </div>
+    <div className={ container.row }>
       <Link href='#' styles={ buttonActionS }>link</Link> <Link href='#' styles={ buttonActionM }>link</Link> <Link href='#' styles={ buttonActionL }>link</Link> <Link href='#' styles={ buttonActionXL }>link</Link>
-    </p>
-    <p>
+    </div>
+    <div className={ container.row }>
       <Link href='#' styles={ linkS }>link</Link> <Link href='#' styles={ linkM }>link</Link> <Link href='#' styles={ linkL }>link</Link> <Link href='#' styles={ linkXL }>link</Link>
-    </p>
+    </div>
 
 
-    <h1 className={ container.header }>Текстовые поля</h1>
-    <p>
+    <h1 className={ container.header }>Text fields</h1>
+    <div className={ container.row }>
       <Input placeholder='Введите текст' styles={ input }/> <Input disabled={ true } placeholder='Введите текст' styles={ input }/>
-    </p>
-    <p>
+    </div>
+    <div className={ container.row }>
       <Textarea placeholder='Введите текст' styles={ input }/> <Textarea disabled={ true } placeholder='Введите текст' styles={ input }/>
-    </p>
+    </div>
 
 
-    <h1 className={ container.header }>Текстовые поля</h1>
-    <p>
-      <Select styles={ select }/>
-    </p>
+    <h1 className={ container.header }>Select</h1>
+    <div className={ container.row }>
+      <Select options={ options } placeholder='test frameworks' styles={ selectS }/>
+    </div>
+    <div className={ container.row }>
+      <Select options={ options } placeholder='test frameworks' styles={ selectM }/>
+    </div>
+    <div className={ container.row }>
+      <Select options={ options } placeholder='test frameworks' styles={ selectL }/>
+    </div>
+    <div className={ container.row }>
+      <Select options={ options } placeholder='test frameworks' styles={ selectXL }/>
+    </div>
   </div>
 );

@@ -27,6 +27,11 @@ React components + CSS Modules
 - [autoprefixer](https://github.com/postcss/autoprefixer)
 
 
+## Links
+
+- React event system: http://facebook.github.io/react/docs/events.html
+
+
 ## License
 
 > The MIT License

@@ -1,0 +1,45 @@
+@value font-s from './size.css';
+
+.container
+{
+  composes: container from './select.css';
+}
+
+.control
+{
+  composes: control from './button-normal-s.css';
+}
+
+.controlWithEmptyValue
+{
+  composes: control;
+
+  color: #999;
+}
+
+.menu
+{
+  composes: menu from './select.css';
+
+  font-size: font-s;
+  line-height: 24px;
+}
+
+.menuIsClosed
+{
+  composes: menu;
+  composes: menuIsClosed from './select.css';
+}
+
+.menuIsOpen
+{
+  composes: menu;
+  composes: menuIsOpen from './select.css';
+}
+
+.menuItem
+{
+  composes: menuItem from './select.css';
+
+  padding: 0 30px;
+}

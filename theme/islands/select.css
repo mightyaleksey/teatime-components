@@ -1,5 +1,3 @@
-@value font-m, gap-m, height-m from './size.css';
-
 .container
 {
   position: relative;
@@ -7,39 +5,45 @@
   display: inline-block;
 }
 
-.control
-{
-  composes: control from './button-normal.css';
-
-  padding: 0 gap-m;
-
-  font-size: font-m;
-  line-height: height-m;
-}
-
-.nativeControl
-{
-  display: none;
-}
-
-.popup
+.menu
 {
   position: absolute;
-  top: calc(100% + 5px);
+  z-index: 1;
+  top: calc(100% + 8px);
   left: 0;
-  width: calc(100% - 2px);
 
-  box-shadow: 0 0 0 1px rgba(0,0,0,.1),0 10px 20px -5px rgba(0,0,0,.4);
+  min-width: 100%;
+  padding: 4px 0;
+
   background: #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1),0 10px 20px -5px rgba(0,0,0,.4);
 }
 
-.hidden
+.menuIsClosed
 {
-  composes: popup;
-  display: none;
+  composes: menu;
+
+  visibility: hidden;
+
+  opacity: 0;
 }
 
-.shown
+.menuIsOpen
 {
-  composes: popup;
+  composes: menu;
+
+  visibility: visible;
+
+  opacity: 1;
+}
+
+.menuItem
+{
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.menuItem:hover
+{
+  background-color: #ffeba0;
 }
