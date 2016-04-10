@@ -1,0 +1,45 @@
+@value font-m, gap-m, height-m from './size.css';
+
+.container
+{
+  position: relative;
+
+  display: inline-block;
+}
+
+.control
+{
+  composes: control from './button-normal.css';
+
+  padding: 0 gap-m;
+
+  font-size: font-m;
+  line-height: height-m;
+}
+
+.nativeControl
+{
+  display: none;
+}
+
+.popup
+{
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: calc(100% - 2px);
+
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1),0 10px 20px -5px rgba(0,0,0,.4);
+  background: #fff;
+}
+
+.hidden
+{
+  composes: popup;
+  display: none;
+}
+
+.shown
+{
+  composes: popup;
+}

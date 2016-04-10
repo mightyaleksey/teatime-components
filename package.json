@@ -1,7 +1,7 @@
 {
   "name": "teatime-components",
   "version": "0.0.1",
-  "description": "",
+  "description": "React components + CSS Modules",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,9 @@
   ],
   "author": "Alexey Litvinov",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "react-outside-event": "^1.2.4"
+  },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-loader": "6.2.4",

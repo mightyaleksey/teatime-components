@@ -27,6 +27,11 @@ import linkL from '../theme/islands/link-l.css';
 import linkXL from '../theme/islands/link-xl.css';
 
 
+import Select from '../components/select.jsx';
+
+import select from '../theme/islands/select.css';
+
+
 import Textarea from '../components/textarea.jsx';
 
 export default () => (
@@ -78,6 +83,12 @@ export default () => (
     </p>
     <p>
       <Textarea placeholder='Введите текст' styles={ input }/> <Textarea disabled={ true } placeholder='Введите текст' styles={ input }/>
+    </p>
+
+
+    <h1 className={ container.header }>Текстовые поля</h1>
+    <p>
+      <Select styles={ select }/>
     </p>
   </div>
 );
