@@ -29,10 +29,10 @@ import linkXL from '../theme/islands/link-xl.css';
 
 import Select from '../components/select.jsx';
 
-import selectS from '../theme/islands/select-S.css';
+import selectS from '../theme/islands/select-s.css';
 import selectM from '../theme/islands/select-m.css';
-import selectL from '../theme/islands/select-L.css';
-import selectXL from '../theme/islands/select-XL.css';
+import selectL from '../theme/islands/select-l.css';
+import selectXL from '../theme/islands/select-xl.css';
 
 
 import Textarea from '../components/textarea.jsx';
