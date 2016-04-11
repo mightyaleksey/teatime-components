@@ -1,7 +1,7 @@
 {
   "name": "teatime-components",
   "version": "0.0.1",
-  "description": "",
+  "description": "React components + CSS Modules",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,9 @@
   ],
   "author": "Alexey Litvinov",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "react-outside-event": "^1.2.4"
+  },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-loader": "6.2.4",
@@ -25,8 +27,8 @@
     "jade-loader": "0.8.0",
     "npm-install-webpack-plugin": "^3.0.0",
     "postcss-loader": "0.8.2",
-    "react": "0.14.8",
-    "react-dom": "0.14.8",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
     "style-loader": "0.13.1",
     "webpack": "^1.12.14"
   }

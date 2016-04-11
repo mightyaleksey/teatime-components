@@ -6,3 +6,8 @@
   font-size: 36px;
   line-height: 1.2;
 }
+
+.row
+{
+  margin: 0 0 10px;
+}
