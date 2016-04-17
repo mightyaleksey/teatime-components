@@ -1,15 +1,15 @@
 @value font-s: 13px;
-@value gap-s: 9px;
-@value height-s: 20px;
+@value gap-s: 10px;
+@value height-s: 22px;
 
 @value font-m: 13px;
-@value gap-m: 12px;
-@value height-m: 26px;
+@value gap-m: 13px;
+@value height-m: 28px;
 
 @value font-l: 15px;
-@value gap-l: 14px;
-@value height-l: 30px;
+@value gap-l: 15px;
+@value height-l: 32px;
 
 @value font-xl: 18px;
-@value gap-xl: 16px;
-@value height-xl: 36px;
+@value gap-xl: 18px;
+@value height-xl: 38px;
