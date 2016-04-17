@@ -3,3 +3,4 @@
 .gitignore
 demo/*
 templates/*
+deploy.sh
