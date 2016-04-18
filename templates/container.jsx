@@ -88,10 +88,10 @@ export default () => (
 
     <h1 className={ container.header }>Text fields</h1>
     <div className={ container.row }>
-      <Input placeholder='Введите текст' styles={ input }/> <Input disabled={ true } placeholder='Введите текст' styles={ input }/>
+      <Input name="input" placeholder='Введите текст' styles={ input }/> <Input disabled={ true } name="disabledInput" placeholder='Введите текст' styles={ input }/>
     </div>
     <div className={ container.row }>
-      <Textarea placeholder='Введите текст' styles={ input }/> <Textarea disabled={ true } placeholder='Введите текст' styles={ input }/>
+      <Textarea name="textarea" placeholder='Введите текст' styles={ input }/> <Textarea disabled={ true } name="disabledTextarea" placeholder='Введите текст' styles={ input }/>
     </div>
 
 
