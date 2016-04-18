@@ -6,6 +6,7 @@ const Textarea = ({ styles = {}, ...o }) => (
 
 Textarea.propTypes = {
   name: React.PropTypes.string.isRequired,
+  styles: React.PropTypes.object,
 };
 
 export default Textarea;

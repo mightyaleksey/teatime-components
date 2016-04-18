@@ -6,6 +6,7 @@ const Input = ({ styles = {}, ...o }) => (
 
 Input.propTypes = {
   name: React.PropTypes.string.isRequired,
+  styles: React.PropTypes.object,
 };
 
 export default Input;
