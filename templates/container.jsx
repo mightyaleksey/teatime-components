@@ -37,6 +37,10 @@ import selectXL from '../theme/islands/select-xl.css';
 
 import Textarea from '../components/textarea.jsx';
 
+
+import Select2 from '../components/select2.jsx';
+import select2 from '../theme/islands/select2.css';
+
 const options = [
   {value: 'ava', label: 'ava'},
   {value: 'mocha', label: 'mocha'},
@@ -96,6 +100,9 @@ export default () => (
 
 
     <h1 className={ container.header }>Select</h1>
+    <div className={ container.row }>
+      <Select2 options={ options } styles={ select2 }></Select2>
+    </div>
     <div className={ container.row }>
       <Select options={ options } placeholder='test frameworks' styles={ selectS }/>
     </div>

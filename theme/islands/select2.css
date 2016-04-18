@@ -1,0 +1,79 @@
+.container
+{
+  position: relative;
+
+  display: inline-block;
+}
+
+.control
+{
+  composes: control from './button-normal-m.css';
+}
+
+.control:after
+{
+  display: block;
+  float: right;
+
+  width: 8px;
+  height: 8px;
+  margin: 7px 0 0 5px;
+
+  content: '';
+  transition: transform .1s ease-out 0s;
+  transform: rotate(45deg);
+  transform-origin: 75% 75%;
+
+  border: 1px solid #000;
+  border-width: 0 1px 1px 0;
+}
+
+.controlIsClosed
+{
+  composes: control;
+}
+
+.controlIsClosed:after
+{
+  transform: rotate(45deg);
+}
+
+.controlIsOpened
+{
+  composes: control;
+}
+
+.controlIsOpened:after
+{
+  transform: rotate(-135deg);
+}
+
+.menu
+{
+  composes: container from './underlay.css';
+
+  position: absolute;
+  z-index: 1;
+  top: calc(100% + 8px);
+
+  min-width: 100%;
+  padding: 4px 0;
+}
+
+.menuIsClosed
+{
+  composes: menu;
+
+  visibility: hidden;
+
+  opacity: 0;
+}
+
+.menuIsOpened
+{
+  composes: menu;
+
+  visibility: visible;
+
+  opacity: 1;
+}

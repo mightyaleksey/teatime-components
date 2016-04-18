@@ -14,6 +14,8 @@
   "author": "Alexey Litvinov",
   "license": "MIT",
   "dependencies": {
+    "lodash.find": "^4.3.0",
+    "lodash.get": "^4.2.1",
     "react-outside-event": "^1.2.4"
   },
   "devDependencies": {
