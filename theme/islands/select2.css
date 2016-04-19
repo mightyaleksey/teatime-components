@@ -84,6 +84,8 @@
   cursor: pointer;
   white-space: nowrap;
 
+  font-family: arial,helvetica,sans-serif;
+  font-size: 13px;
   line-height: 25px;
 }
 
