@@ -62,11 +62,6 @@ class Select extends Component {
   render() {
     const { disabled, name, options, styles } = this.props;
     const { isOpened, value } = this.state;
-    const opts = options.map((o, i) => <Option
-      onClick={ e => this.onOptionClick(e, o.value) }
-      className={ styles[ o.value === value ? 'menuItemIsSelected' : 'menuItem' ] }
-      key={ `${o.value}${i}` }
-    >{ o.label }</Option>);
 
     return (
       <div onKeyDown={ e => this.onKeyDown(e) } className={ styles.container }>
@@ -76,11 +71,25 @@ class Select extends Component {
           styles={{control: styles[isOpened ? 'controlIsOpened' : 'controlIsClosed']}}
         >{ find(options, {value}).label }</Button>
         <div className={ styles[isOpened ? 'menuIsOpened' : 'menuIsClosed'] }>
-          { opts }
+          { this.renderMenu(options, value, styles) }
         </div>
-        <input disabled={ disabled } name={ name } type='hidden'/>
+        <input disabled={ disabled } name={ name } type='hidden' value={ value }/>
       </div>
     );
+  }
+
+  /**
+   * @param  {object[]} options
+   * @param  {string} value
+   * @param  {object} styles
+   * @return {array}
+   */
+  renderMenu(options, value, styles) {
+    return options.map((o, i) => <Option
+      onClick={ e => this.onOptionClick(e, o.value) }
+      className={ styles[ o.value === value ? 'menuItemIsSelected' : 'menuItem' ] }
+      key={ `${i}${o.value}` }
+    >{ o.label }</Option>);
   }
 }
 
