@@ -12,20 +12,16 @@
 
 .control:after
 {
-  display: block;
-  float: right;
+  display: inline-block;
 
-  width: 8px;
-  height: 8px;
-  margin: 7px 0 0 5px;
+  width: 11px;
+  height: 6px;
+  margin: 0 0 0 12px;
 
   content: '';
   transition: transform .1s ease-out 0s;
-  transform: rotate(45deg);
-  transform-origin: 75% 75%;
 
-  border: 1px solid #000;
-  border-width: 0 1px 1px 0;
+  background: url(./arrow.svg) 0 0 no-repeat;
 }
 
 .controlIsClosed
@@ -35,7 +31,7 @@
 
 .controlIsClosed:after
 {
-  transform: rotate(45deg);
+  transform: rotate(0deg);
 }
 
 .controlIsOpened
@@ -45,7 +41,7 @@
 
 .controlIsOpened:after
 {
-  transform: rotate(-135deg);
+  transform: rotate(-180deg);
 }
 
 .menu

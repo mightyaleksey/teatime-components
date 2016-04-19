@@ -21,6 +21,10 @@ module.exports = {
         loader: 'style!css?modules&localIdentName=[name]--[local]!postcss',
       },
       {
+        test: /\.svg$/i,
+        loader: 'file?name=[name].[ext]',
+      },
+      {
         test: /\.jade$/i,
         loader: 'jade',
       },
@@ -28,6 +32,7 @@ module.exports = {
   },
 
   postcss: [
+    require('postcss-url')({url: 'inline'}),
     require('autoprefixer'),
   ],
 
