@@ -89,5 +89,12 @@
 
 .menuItem:hover
 {
-  background: #ffeba0;
+  background-color: #ffeba0;
+}
+
+.menuItemIsSelected
+{
+  composes: menuItem;
+
+  background: url(./tip.svg) 13px 50% no-repeat;
 }

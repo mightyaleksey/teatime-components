@@ -64,7 +64,7 @@ class Select extends Component {
     const { isOpened, value } = this.state;
     const opts = options.map((o, i) => <Option
       onClick={ e => this.onOptionClick(e, o.value) }
-      className={ styles.menuItem }
+      className={ styles[ o.value === value ? 'menuItemIsSelected' : 'menuItem' ] }
       key={ `${o.value}${i}` }
     >{ o.label }</Option>);
 
