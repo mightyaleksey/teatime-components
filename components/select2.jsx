@@ -60,17 +60,18 @@ class Select extends Component {
   }
 
   render() {
-    const { disabled, name, options, styles } = this.props;
+    const { disabled, name, options, styles = {} } = this.props;
     const { isOpened, value } = this.state;
+    const { controlIsClosed, controlIsOpened, menuIsClosed, menuIsOpened } = styles;
 
     return (
       <div onKeyDown={ e => this.onKeyDown(e) } className={ styles.container }>
         <Button
           onClick={ e => this.onClick(e) }
           disabled={ disabled }
-          styles={{control: styles[isOpened ? 'controlIsOpened' : 'controlIsClosed']}}
+          styles={{control: isOpened ? controlIsOpened : controlIsClosed}}
         >{ find(options, {value}).label }</Button>
-        <div className={ styles[isOpened ? 'menuIsOpened' : 'menuIsClosed'] }>
+        <div className={ isOpened ? menuIsOpened : menuIsClosed }>
           { this.renderMenu(options, value, styles) }
         </div>
         <input disabled={ disabled } name={ name } type='hidden' value={ value }/>
