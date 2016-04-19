@@ -73,3 +73,21 @@
 
   opacity: 1;
 }
+
+.menuItem
+{
+  display: block;
+
+  height: 24px;
+  padding: 0 13px 0 30px;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  line-height: 25px;
+}
+
+.menuItem:hover
+{
+  background: #ffeba0;
+}
