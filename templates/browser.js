@@ -1,5 +1,5 @@
-import React from 'react';
+import { createElement } from 'react';
 import { render } from 'react-dom';
 
 import Container from './container.jsx';
-render(<Container/>, document.querySelector('.container'));
+render(createElement(Container), document.querySelector('.container'));

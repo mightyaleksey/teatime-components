@@ -1,66 +1,116 @@
-import React, { Component } from 'react';
+import Button from './button.jsx';
+import React, { Component, createElement } from 'react';
+import find from 'lodash.find';
+import get from 'lodash.get';
+import h from 'hyperscript-helpers';
 import reactOutsideEvent from 'react-outside-event';
 
-import Button from './button.jsx';
-import Option from './option.jsx';
+const { div, input, span } = h(createElement);
+
+class Option extends Component {
+  render() {
+    const { children, className, onClick } = this.props;
+
+    return span({onClick, className}, children);
+  }
+}
 
 class Select extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
-      value: props.defaultValue || '',
+      isOpened: false,
+      selected: -1,
+      value: props.defaultValue || get(props, 'options[0].value', ''),
     };
+
+    this.onClick = this.onClick.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
-  handleClick(e) {
-    this.setState({isOpen: !this.state.isOpen});
+  onClick() {
+    this.setState({isOpened: !this.state.isOpened});
   }
 
-  handleSelect(e, value) {
-    this.setState({isOpen: false, value});
+  /**
+   * http://facebook.github.io/react/docs/events.html#keyboard-events
+   *
+   * @param {object} e
+   * @param {number} e.keyCode
+   */
+  onKeyDown(e) {
+    if (this.props.disabled) return;
+
+    switch (e.keyCode) {
+    case 38:
+      if (!this.state.isOpened) this.setState({isOpened: true});
+      break;
+    case 40:
+      if (!this.state.isOpened) this.setState({isOpened: true});
+      break;
+    default:
+      return;
+    }
+
+    e.preventDefault();
+  }
+
+  onOptionClick(e, value) {
+    this.setState({isOpened: false, value});
   }
 
   onOutsideEvent() {
-    this.setState({isOpen: false});
+    this.setState({isOpened: false});
   }
 
   render() {
-    const { options, placeholder, styles } = this.props;
-    const { isOpen, value: selectedValue } = this.state;
-    const preview = findLabel(options, selectedValue);
-    const menuItems = options.map((o, i) => (
-      <Option { ...o } key={ `${i}${o.value}` } onClick={ e => this.handleSelect(e, o.value) } styles={ styles }/>
-    ));
+    const { disabled, name, options, styles = {} } = this.props;
+    const { isOpened, value } = this.state;
+    const { controlIsClosed, controlIsOpened, menuIsClosed, menuIsOpened } = styles;
 
-    const stylesForControl = !preview ? { ...styles, control: styles.controlWithEmptyValue } : styles;
-
-    return (
-      <div className={ styles.container }>
-        <Button onClick={ e => this.handleClick(e) } styles={ stylesForControl }>{ preview || placeholder }</Button>
-        <div className={ styles[isOpen ? 'menuIsOpen' : 'menuIsClosed'] }>{ menuItems }</div>
-      </div>
+    return div({onKeyDown: this.onKeyDown, className: styles.container},
+      createElement(Button, {
+        onClick: this.onClick,
+        disabled,
+        styles: {
+          control: isOpened
+            ? controlIsOpened
+            : controlIsClosed,
+        }
+      }, find(options, {value}).label),
+      div({
+        className: isOpened
+          ? menuIsOpened
+          : menuIsClosed,
+      }, this.renderMenu(options, value, styles)),
+      input({disabled, name, type: 'hidden', value})
     );
+  }
+
+  /**
+   * @param  {object[]} options
+   * @param  {string} value
+   * @param  {object} styles
+   * @return {array}
+   */
+  renderMenu(options, value, styles) {
+    return options.map((o, i) => createElement(Option, {
+      onClick: e => this.onOptionClick(e, o.value),
+      className: styles[ o.value === value ? 'menuItemIsSelected' : 'menuItem' ],
+      key: `${i}${o.value}`,
+    }, o.label));
   }
 }
 
 Select.displayName = 'Select';
+Select.defaultProps = {
+  options: [],
+  styles: {},
+},
 Select.propTypes = {
   defaultValue: React.PropTypes.string,
   options: React.PropTypes.array.isRequired,
-  placeholder: React.PropTypes.string,
   styles: React.PropTypes.object,
 };
 
 export default reactOutsideEvent(Select, ['click']);
-
-function findLabel(arr, val) {
-  var length = arr.length;
-  for (; length--;) {
-    if (arr[length].value === val) {
-      return arr[length].label;
-    }
-  }
-
-  return null;
-}
