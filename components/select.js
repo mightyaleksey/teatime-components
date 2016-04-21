@@ -1,4 +1,4 @@
-import Button from './button.jsx';
+import Button from './button.js';
 import React, { Component, createElement } from 'react';
 import find from 'lodash.find';
 import get from 'lodash.get';
