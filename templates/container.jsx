@@ -34,7 +34,10 @@ import Textarea from '../components/textarea.jsx';
 import Select from '../components/select.jsx';
 import select from '../theme/islands/select.css';
 
-const { div, h1 } = h(createElement);
+const { createTag, div, h1 } = h(createElement);
+const button = createTag(Button);
+const link = createTag(Link);
+const textarea = createTag(Textarea);
 
 const options = [
   {value: 'ava', label: 'ava'},
@@ -46,58 +49,58 @@ export default () => div(null,
   h1({className: container.header}, 'Buttons'),
 
   div({className: container.row},
-    createElement(Button, {styles: buttonNormalS}, 'button'), ' ',
-    createElement(Button, {disabled: true, styles: buttonNormalS}, 'button'),
+    button({styles: buttonNormalS}, 'button'), ' ',
+    button({disabled: true, styles: buttonNormalS}, 'button'),
   ),
   div({className: container.row},
-    createElement(Button, {styles: buttonNormalM}, 'button'), ' ',
-    createElement(Button, {disabled: true, styles: buttonNormalM}, 'button'),
+    button({styles: buttonNormalM}, 'button'), ' ',
+    button({disabled: true, styles: buttonNormalM}, 'button'),
   ),
   div({className: container.row},
-    createElement(Button, {styles: buttonNormalL}, 'button'), ' ',
-    createElement(Button, {disabled: true, styles: buttonNormalL}, 'button'),
+    button({styles: buttonNormalL}, 'button'), ' ',
+    button({disabled: true, styles: buttonNormalL}, 'button'),
   ),
   div({className: container.row},
-    createElement(Button, {styles: buttonNormalXL}, 'button'), ' ',
-    createElement(Button, {disabled: true, styles: buttonNormalXL}, 'button'),
+    button({styles: buttonNormalXL}, 'button'), ' ',
+    button({disabled: true, styles: buttonNormalXL}, 'button'),
   ),
 
   div({className: container.row},
-    createElement(Button, {styles: buttonActionS}, 'button'), ' ',
-    createElement(Button, {disabled: true, styles: buttonActionS}, 'button'),
+    button({styles: buttonActionS}, 'button'), ' ',
+    button({disabled: true, styles: buttonActionS}, 'button'),
   ),
   div({className: container.row},
-    createElement(Button, {styles: buttonActionM}, 'button'), ' ',
-    createElement(Button, {disabled: true, styles: buttonActionM}, 'button'),
+    button({styles: buttonActionM}, 'button'), ' ',
+    button({disabled: true, styles: buttonActionM}, 'button'),
   ),
   div({className: container.row},
-    createElement(Button, {styles: buttonActionL}, 'button'), ' ',
-    createElement(Button, {disabled: true, styles: buttonActionL}, 'button'),
+    button({styles: buttonActionL}, 'button'), ' ',
+    button({disabled: true, styles: buttonActionL}, 'button'),
   ),
   div({className: container.row},
-    createElement(Button, {styles: buttonActionXL}, 'button'), ' ',
-    createElement(Button, {disabled: true, styles: buttonActionXL}, 'button'),
+    button({styles: buttonActionXL}, 'button'), ' ',
+    button({disabled: true, styles: buttonActionXL}, 'button'),
   ),
 
   h1({className: container.header}, 'Links'),
 
   div({className: container.row},
-    createElement(Link, {href: '#', styles: buttonNormalS}, 'link'), ' ',
-    createElement(Link, {href: '#', styles: buttonNormalM}, 'link'), ' ',
-    createElement(Link, {href: '#', styles: buttonNormalL}, 'link'), ' ',
-    createElement(Link, {href: '#', styles: buttonNormalXL}, 'link')
+    link({href: '#', styles: buttonNormalS}, 'link'), ' ',
+    link({href: '#', styles: buttonNormalM}, 'link'), ' ',
+    link({href: '#', styles: buttonNormalL}, 'link'), ' ',
+    link({href: '#', styles: buttonNormalXL}, 'link')
   ),
   div({className: container.row},
-    createElement(Link, {href: '#', styles: buttonActionS}, 'link'), ' ',
-    createElement(Link, {href: '#', styles: buttonActionM}, 'link'), ' ',
-    createElement(Link, {href: '#', styles: buttonActionL}, 'link'), ' ',
-    createElement(Link, {href: '#', styles: buttonActionXL}, 'link')
+    link({href: '#', styles: buttonActionS}, 'link'), ' ',
+    link({href: '#', styles: buttonActionM}, 'link'), ' ',
+    link({href: '#', styles: buttonActionL}, 'link'), ' ',
+    link({href: '#', styles: buttonActionXL}, 'link')
   ),
   div({className: container.row},
-    createElement(Link, {href: '#', styles: linkS}, 'link'), ' ',
-    createElement(Link, {href: '#', styles: linkM}, 'link'), ' ',
-    createElement(Link, {href: '#', styles: linkL}, 'link'), ' ',
-    createElement(Link, {href: '#', styles: linkXL}, 'link')
+    link({href: '#', styles: linkS}, 'link'), ' ',
+    link({href: '#', styles: linkM}, 'link'), ' ',
+    link({href: '#', styles: linkL}, 'link'), ' ',
+    link({href: '#', styles: linkXL}, 'link')
   ),
 
   h1({className: container.header}, 'Text fields'),
