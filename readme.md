@@ -21,9 +21,7 @@ React components + CSS Modules
 - [React](https://facebook.github.io/react/)
 - [babel](https://babeljs.io/)
   - [preset-es2015](http://babeljs.io/docs/plugins/preset-es2015/)
-  - [preset-react](http://babeljs.io/docs/plugins/preset-react/)
   - [preset-stage-0](http://babeljs.io/docs/plugins/preset-stage-0/)
-  - [babel-plugin-react-require](https://github.com/vslinko/babel-plugin-react-require)
 - [autoprefixer](https://github.com/postcss/autoprefixer)
 
 

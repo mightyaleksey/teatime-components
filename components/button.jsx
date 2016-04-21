@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { createElement } from 'react';
+import h from 'hyperscript-helpers';
 
-const Button = ({ styles = {}, ...o }) => (
-  <button { ...o } className={ styles.control }/>
-);
+const { button } = h(createElement);
 
+const Button = ({ styles = {}, ...o }) => button({
+  ...o,
+  className: styles.control,
+});
+
+Button.defaultProps = {
+  styles: {},
+};
 Button.propTypes = {
   styles: React.PropTypes.object,
 };

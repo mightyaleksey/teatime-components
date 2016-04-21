@@ -14,11 +14,15 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/i,
-        loader: 'babel?presets[]=es2015&presets[]=react&presets[]=stage-0&plugins[]=react-require',
+        loader: 'babel?presets[]=es2015&presets[]=stage-0',
       },
       {
         test: /\.css$/i,
         loader: 'style!css?modules&localIdentName=[name]--[local]!postcss',
+      },
+      {
+        test: /\.svg$/i,
+        loader: 'file?name=[name].[ext]',
       },
       {
         test: /\.jade$/i,
@@ -28,6 +32,7 @@ module.exports = {
   },
 
   postcss: [
+    require('postcss-url')({url: 'inline'}),
     require('autoprefixer'),
   ],
 
