@@ -1,0 +1,71 @@
+.container
+{
+  display: inline-block;
+}
+
+.control
+{
+  position: relative;
+
+  display: inline-block;
+
+  width: 14px;
+  height: 14px;
+
+  cursor: pointer;
+  transition: background .1s ease-out 0s;
+
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  box-shadow: inset 0 0 0 1px #ccc;
+
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.control:hover
+{
+  box-shadow: inset 0 0 0 1px #b3b3b3;
+}
+
+.control:focus
+{
+  box-shadow: 0 0 0 1px #fc0,inset 0 0 0 1px #fc0;
+}
+
+.control:after
+{
+  position: absolute;
+  top: -10px;
+  left: 2px;
+
+  display: block;
+
+  width: 15px;
+  height: 16px;
+
+  content: '';
+  transition: top .05s ease-out, opacity .05s ease-out;
+
+  opacity: 0;
+  background: url(./tip.svg) 0 0 no-repeat;
+}
+
+.native
+{
+  display: none;
+}
+
+.native:checked + .control
+{
+  background: #ffeba0;
+  box-shadow: inset 0 0 0 1px #ccbd80;
+}
+
+.native:checked + .control:after
+{
+  top: -5px;
+
+  opacity: 1;
+}

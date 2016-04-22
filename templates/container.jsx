@@ -3,6 +3,10 @@ import h from 'hyperscript-helpers';
 import container from './container.css';
 
 import { button } from '../components/button.js';
+import { check } from '../components/check.js';
+import { input } from '../components/input.js';
+import { link } from '../components/link.js';
+import { textarea } from '../components/textarea.js';
 
 import buttonNormalS from '../theme/islands/button-normal-s.css';
 import buttonNormalM from '../theme/islands/button-normal-m.css';
@@ -14,22 +18,14 @@ import buttonActionM from '../theme/islands/button-action-m.css';
 import buttonActionL from '../theme/islands/button-action-l.css';
 import buttonActionXL from '../theme/islands/button-action-xl.css';
 
-
-import { input } from '../components/input.js';
+import checkM from '../theme/islands/check-m.css';
 
 import inputM from '../theme/islands/input-m.css';
-
-
-import { link } from '../components/link.js';
 
 import linkS from '../theme/islands/link-s.css';
 import linkM from '../theme/islands/link-m.css';
 import linkL from '../theme/islands/link-l.css';
 import linkXL from '../theme/islands/link-xl.css';
-
-
-import { textarea } from '../components/textarea.js';
-
 
 import Select from '../components/select.js';
 import selectM from '../theme/islands/select-m.css';
@@ -77,6 +73,12 @@ export default () => div(null,
   div({className: container.row},
     button({styles: buttonActionXL}, 'button'), ' ',
     button({disabled: true, styles: buttonActionXL}, 'button'),
+  ),
+
+  h1({className: container.header}, 'Checkboxes'),
+
+  div({className: container.row},
+    check({name: 'cb', styles: checkM})
   ),
 
   h1({className: container.header}, 'Links'),
