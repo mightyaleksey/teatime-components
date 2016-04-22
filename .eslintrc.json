@@ -1,6 +1,7 @@
 {
   "env": {
     "browser": true,
+    "commonjs": true,
     "es6": true
   },
   "extends": "eslint:recommended",
@@ -25,7 +26,6 @@
       "error",
       "unix"
     ],
-    "no-console": "off",
     "quotes": [
       "error",
       "single"
