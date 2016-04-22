@@ -1,4 +1,5 @@
-import { createElement } from 'react';
+import React, { createElement } from 'react';
 import hyperscriptHelpers from 'hyperscript-helpers';
 
-export const h = hyperscriptHelpers(createElement);
+const h = hyperscriptHelpers(createElement);
+export { h, React };

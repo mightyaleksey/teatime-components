@@ -1,5 +1,4 @@
-import { h } from '../h';
-import React from 'react';
+import { h, React } from '../h';
 
 const { createTag, textarea } = h;
 const textareaHelper = createTag(Textarea);
