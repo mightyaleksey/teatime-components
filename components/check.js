@@ -17,8 +17,9 @@ Check.propTypes = {
 export { Check as default, checkHelper as check };
 
 function Check({ children, id, name, styles, ...o }) {
-  return span({className: styles.container},
+  return span({className: styles.container, htmlFor: id},
     input({className: styles.native, id, name, type: 'checkbox'}),
-    label({className: styles.control, htmlFor: id})
+    label({className: styles.control, htmlFor: id}),
+    children
   );
 }
