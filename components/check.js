@@ -5,7 +5,6 @@ const { createTag, input, label, span } = h;
 const checkHelper = createTag(Check);
 
 Check.defaultProps = {
-  id: generateId(),
   styles: {},
 };
 
@@ -16,9 +15,9 @@ Check.propTypes = {
 
 export { Check as default, checkHelper as check };
 
-function Check({ children, id, name, styles, ...o }) {
+function Check({ children, id = generateId(), name, styles, ...o }) {
   return span({className: styles.container, htmlFor: id},
-    input({className: styles.native, id, name, type: 'checkbox'}),
+    input({...o, className: styles.native, id, name, type: 'checkbox'}),
     label({className: styles.control, htmlFor: id}),
     children
   );

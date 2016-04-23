@@ -78,7 +78,10 @@ export default () => div(null,
   h1({className: container.header}, 'Checkboxes'),
 
   div({className: container.row},
-    check({name: 'cb', styles: checkM})
+    check({name: 'cb', styles: checkM}), ' ',
+    check({disabled: true, name: 'cbd', styles: checkM}), ' ',
+    check({defaultChecked: true, name: 'cbc', styles: checkM}), ' ',
+    check({checked: true, disabled: true, name: 'cbcd', styles: checkM})
   ),
 
   h1({className: container.header}, 'Links'),

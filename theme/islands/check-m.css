@@ -1,5 +1,7 @@
 .container
 {
+  position: relative;
+
   display: inline-block;
 }
 
@@ -18,6 +20,7 @@
   border: none;
   border-radius: 3px;
   outline: none;
+  background: #fff;
   box-shadow: inset 0 0 0 1px #ccc;
 
   font-size: 13px;
@@ -36,12 +39,13 @@
   left: 2px;
 
   display: block;
+  visibility: hidden;
 
   width: 15px;
   height: 16px;
 
   content: '';
-  transition: top .05s ease-out, opacity .05s ease-out;
+  transition: top .05s ease-out,opacity .05s ease-out,visibility 0s linear .05s;
 
   opacity: 0;
   background: url(./tip.svg) 0 0 no-repeat;
@@ -49,6 +53,8 @@
 
 .native
 {
+  position: absolute;
+
   opacity: 0;
 }
 
@@ -62,10 +68,25 @@
 {
   top: -5px;
 
+  visibility: visible;
+
   opacity: 1;
 }
 
 .native:focus + .control
 {
   box-shadow: 0 0 0 1px #fc0,inset 0 0 0 1px #fc0;
+}
+
+.native:disabled + .control
+{
+  cursor: default;
+
+  background: #ebebeb;
+  box-shadow: none;
+}
+
+.native:checked:disabled + .control:after
+{
+  opacity: .4;
 }
