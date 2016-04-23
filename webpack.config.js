@@ -33,7 +33,7 @@ module.exports = {
 
   postcss: [
     require('postcss-url')({url: 'inline'}),
-    require('autoprefixer'),
+    require('autoprefixer')({browsers: ['last 2 versions']}),
   ],
 
   plugins: [
