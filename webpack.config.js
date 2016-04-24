@@ -1,3 +1,4 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const resolve = require('path').resolve;
@@ -18,7 +19,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        loader: 'style!css?modules&localIdentName=[name]--[local]!postcss',
+        loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]--[local]!postcss'),
       },
       {
         test: /\.svg$/i,
@@ -37,6 +38,9 @@ module.exports = {
   ],
 
   plugins: [
+    new ExtractTextPlugin('styles.css', {
+      allChunks: true,
+    }),
     new HtmlPlugin({
       title: 'demo',
       filename: 'index.html',
