@@ -1,4 +1,4 @@
-import { h, React } from '../h';
+import { h, PropTypes } from '../h';
 
 const { createTag, button } = h;
 const buttonHelper = createTag(Button);
@@ -8,7 +8,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  styles: React.PropTypes.object,
+  styles: PropTypes.object,
 };
 
 export { Button as default, buttonHelper as button };

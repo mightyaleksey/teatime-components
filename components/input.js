@@ -1,4 +1,4 @@
-import { h, React } from '../h';
+import { h, PropTypes } from '../h';
 
 const { createTag, input } = h;
 const inputHelper = createTag(Input);
@@ -8,8 +8,8 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  styles: React.PropTypes.object,
+  name: PropTypes.string.isRequired,
+  styles: PropTypes.object,
 };
 
 export { Input as default, inputHelper as input };

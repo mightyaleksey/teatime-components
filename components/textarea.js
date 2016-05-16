@@ -1,4 +1,4 @@
-import { h, React } from '../h';
+import { h, PropTypes } from '../h';
 
 const { createTag, textarea } = h;
 const textareaHelper = createTag(Textarea);
@@ -8,8 +8,8 @@ Textarea.defaultProps = {
 };
 
 Textarea.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  styles: React.PropTypes.object,
+  name: PropTypes.string.isRequired,
+  styles: PropTypes.object,
 };
 
 export { Textarea as default, textareaHelper as textarea };

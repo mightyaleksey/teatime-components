@@ -1,4 +1,4 @@
-import { h, React } from '../h';
+import { h, PropTypes } from '../h';
 
 const { a, createTag } = h;
 const linkHelper = createTag(Link);
@@ -9,7 +9,7 @@ Link.defaultProps = {
 };
 
 Link.propTypes = {
-  styles: React.PropTypes.object,
+  styles: PropTypes.object,
 };
 
 export { Link as default, linkHelper as link };
