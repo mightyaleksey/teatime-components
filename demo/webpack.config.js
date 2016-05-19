@@ -16,6 +16,10 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.svg$/i,
+        loader: 'file?name=[name].[ext]',
+      },
+      {
         test: /\.js/i,
         exclude: /node_modules/,
         loader: 'babel',

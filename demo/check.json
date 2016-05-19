@@ -1,0 +1,24 @@
+{
+  "name": "check",
+  "hyper": "Check",
+  "data": [
+    [
+      {"name": "size-m", "size": "m", "value": "size-m"},
+      {"defaultChecked": true, "name": "size-m", "size": "m", "value": "size-m"},
+      {"disabled": true, "name": "size-m", "size": "m", "value": "size-m"},
+      {"defaultChecked": true, "disabled": true, "name": "size-m", "size": "m", "value": "size-m"}
+    ],
+    [
+      {"name": "size-l", "size": "l", "value": "size-l"},
+      {"defaultChecked": true, "name": "size-l", "size": "l", "value": "size-l"},
+      {"disabled": true, "name": "size-l", "size": "l", "value": "size-l"},
+      {"defaultChecked": true, "disabled": true, "name": "size-l", "size": "l", "value": "size-l"}
+    ],
+    [
+      {"children": "Size m", "name": "size-m", "size": "m", "value": "size-m"},
+      {"children": "Size m", "disabled": true, "name": "size-m", "size": "m", "value": "size-m"},
+      {"children": "Size l", "name": "size-l", "size": "l", "value": "size-l"},
+      {"children": "Size l", "disabled": true, "name": "size-l", "size": "l", "value": "size-l"}
+    ]
+  ]
+}

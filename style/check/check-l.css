@@ -1,0 +1,39 @@
+@value size-l from '../font.css';
+
+.container
+{
+  composes: container from './check.css';
+
+  font-size: size-l;
+  line-height: 15px;
+}
+
+.control
+{
+  composes: control from './check.css';
+
+  top: 3px;
+
+  width: 17px;
+  height: 17px;
+
+  line-height: 17px;
+}
+
+.control:after
+{
+  width: 18px;
+  height: 18px;
+}
+
+.native
+{
+  composes: native from './check.css';
+}
+
+.label
+{
+  composes: label from './check.css';
+
+  margin-left: 7px;
+}

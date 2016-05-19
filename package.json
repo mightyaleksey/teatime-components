@@ -39,6 +39,7 @@
     "babel-preset-stage-2": "^6.5.0",
     "css-loader": "^0.23.1",
     "eslint": "^2.10.2",
+    "file-loader": "^0.8.5",
     "glob": "^7.0.3",
     "html-webpack-plugin": "^2.17.0",
     "in-publish": "^2.0.0",
