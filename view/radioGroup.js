@@ -25,7 +25,7 @@ class RadioGroup extends Component {
   }
 
   renderOptions() {
-    const { name, options, styles, ...o } = this.props;
+    const { defaultValue, name, options, styles, ...o } = this.props; // eslint-disable-line no-unused-vars
     const { selected } = this.state;
 
     return options.map(({ text, value }, i) => RadioButton({
