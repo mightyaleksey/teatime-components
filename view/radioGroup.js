@@ -3,6 +3,7 @@
 const { Component, PropTypes } = require('react');
 const { RadioButton } = require('./radioButton');
 const { createTag, div } = require('../');
+const { noop } = require('../tools/func');
 const cssModules = require('react-css-modules');
 
 class RadioGroup extends Component {
@@ -17,7 +18,7 @@ class RadioGroup extends Component {
 
   onChange(e) {
     this.setState({selected: e.target.value});
-    typeof this.props.onChange === 'function' && this.props.onChange(e);
+    this.props.onChange(e);
   }
 
   render() {
@@ -41,6 +42,7 @@ class RadioGroup extends Component {
 }
 
 RadioGroup.defaultProps = {
+  onChange: noop,
   styles: {},
 };
 

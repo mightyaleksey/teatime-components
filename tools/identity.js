@@ -2,9 +2,11 @@
 
 var counter = 0;
 
+exports.generateId = generateId;
+
 /**
  * @return {string}
  */
-exports.generateId = function generateId() {
+function generateId() {
   return `_teatime${++counter}`;
-};
+}
