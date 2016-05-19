@@ -4,21 +4,33 @@
   "data": [
     [
       {"children": "button", "size": "s", "theme": "action"},
-      {"children": "button", "disabled": true, "size": "s", "theme": "action"},
+      {"children": "button", "disabled": true, "size": "s", "theme": "action"}
+    ],
+    [
       {"children": "button", "size": "m", "theme": "action"},
-      {"children": "button", "disabled": true, "size": "m", "theme": "action"},
+      {"children": "button", "disabled": true, "size": "m", "theme": "action"}
+    ],
+    [
       {"children": "button", "size": "l", "theme": "action"},
-      {"children": "button", "disabled": true, "size": "l", "theme": "action"},
+      {"children": "button", "disabled": true, "size": "l", "theme": "action"}
+    ],
+    [
       {"children": "button", "size": "xl", "theme": "action"},
       {"children": "button", "disabled": true, "size": "xl", "theme": "action"}
     ],
     [
       {"children": "button", "size": "s", "theme": "normal"},
-      {"children": "button", "disabled": true, "size": "s", "theme": "normal"},
+      {"children": "button", "disabled": true, "size": "s", "theme": "normal"}
+    ],
+    [
       {"children": "button", "size": "m", "theme": "normal"},
-      {"children": "button", "disabled": true, "size": "m", "theme": "normal"},
+      {"children": "button", "disabled": true, "size": "m", "theme": "normal"}
+    ],
+    [
       {"children": "button", "size": "l", "theme": "normal"},
-      {"children": "button", "disabled": true, "size": "l", "theme": "normal"},
+      {"children": "button", "disabled": true, "size": "l", "theme": "normal"}
+    ],
+    [
       {"children": "button", "size": "xl", "theme": "normal"},
       {"children": "button", "disabled": true, "size": "xl", "theme": "normal"}
     ]

@@ -3,12 +3,16 @@
   "hyper": "Input",
   "data": [
     [
-      {"defaultValue": "input", "placeholder": "size s", "size": "s"},
-      {"defaultValue": "input", "disabled": true, "placeholder": "size s", "size": "s"},
-      {"defaultValue": "input", "placeholder": "size m", "size": "m"},
-      {"defaultValue": "input", "disabled": true, "placeholder": "size m", "size": "m"},
-      {"defaultValue": "input", "placeholder": "size l", "size": "l"},
-      {"defaultValue": "input", "disabled": true, "placeholder": "size l", "size": "l"}
+      {"defaultValue": "input", "name": "input-size-s", "placeholder": "size s", "size": "s"},
+      {"defaultValue": "input", "disabled": true, "name": "input-size-s", "placeholder": "size s", "size": "s"}
+    ],
+    [
+      {"defaultValue": "input", "name": "input-size-m", "placeholder": "size m", "size": "m"},
+      {"defaultValue": "input", "disabled": true, "name": "input-size-m", "placeholder": "size m", "size": "m"}
+    ],
+    [
+      {"defaultValue": "input", "name": "input-size-l", "placeholder": "size l", "size": "l"},
+      {"defaultValue": "input", "disabled": true, "name": "input-size-l", "placeholder": "size l", "size": "l"}
     ]
   ]
 }
