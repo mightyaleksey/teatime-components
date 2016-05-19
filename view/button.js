@@ -44,6 +44,5 @@ Button.propTypes = {
   styles: PropTypes.object,
 };
 
-
 module.exports = cssModules(Button);
 module.exports.Button = createTag(module.exports);
