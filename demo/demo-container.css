@@ -1,0 +1,24 @@
+:global(html),
+:global(body)
+{
+  margin: 0;
+  padding: 0;
+}
+
+.header
+{
+  margin: 25px 20px;
+
+  text-transform: capitalize;
+
+  color: #333;
+
+  font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.row
+{
+  margin: 10px 20px;
+}

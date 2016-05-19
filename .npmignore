@@ -1,4 +1,6 @@
+.babelrc
 .csscomb.json
 .editorconfig
 .gitignore
 demo/*
+preview/*
