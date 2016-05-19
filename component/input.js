@@ -36,7 +36,6 @@ Input.propTypes = {
   onKeyUp: PropTypes.func,
   onPaste: PropTypes.func,
   onSelect: PropTypes.func,
-  onSubmit: PropTypes.func,
   placeholder: PropTypes.string,
   size: PropTypes.oneOf([
     's',

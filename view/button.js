@@ -37,6 +37,7 @@ Button.propTypes = {
   onMouseOut: PropTypes.func,
   onMouseOver: PropTypes.func,
   onMouseUp: PropTypes.func,
+  onSubmit: PropTypes.func,
   onTouchCancel: PropTypes.func,
   onTouchEnd: PropTypes.func,
   onTouchMove: PropTypes.func,

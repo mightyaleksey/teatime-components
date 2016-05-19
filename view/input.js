@@ -30,7 +30,6 @@ Input.propTypes = {
   onKeyUp: PropTypes.func,
   onPaste: PropTypes.func,
   onSelect: PropTypes.func,
-  onSubmit: PropTypes.func,
   placeholder: PropTypes.string,
   styles: PropTypes.object,
   value: PropTypes.string,

@@ -33,7 +33,6 @@ Textarea.propTypes = {
   onPaste: PropTypes.func,
   onScroll: PropTypes.func,
   onSelect: PropTypes.func,
-  onSubmit: PropTypes.func,
   onWheel: PropTypes.func,
   placeholder: PropTypes.string,
   rows: PropTypes.number,
