@@ -1,9 +1,11 @@
+@value size-m from '../font.css';
+
 .control
 {
   composes: control from './button-action.css';
 
   padding: 0 13px;
 
-  font-size:  13px;
+  font-size: size-m;
   line-height: 28px;
 }

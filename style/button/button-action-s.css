@@ -1,9 +1,11 @@
+@value size-s from '../font.css';
+
 .control
 {
   composes: control from './button-action.css';
 
   padding: 0 10px;
 
-  font-size: 13px;
+  font-size: size-s;
   line-height: 22px;
 }
