@@ -1,0 +1,12 @@
+@value size-m from '../font.css';
+
+.control
+{
+  composes: control from './input.css';
+
+  height: 28px;
+  padding: 0 8px;
+
+  font-size: size-m;
+  line-height: 16px;
+}

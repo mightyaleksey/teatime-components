@@ -2,7 +2,7 @@
 
 .control
 {
-  composes: control from './textarea.css';
+  composes: control from '../input/input.css';
 
   padding: 3px 5px;
 
