@@ -5,7 +5,7 @@ const { createTag, input } = require('../');
 const cssModules = require('react-css-modules');
 
 function Input(props) {
-  return input({...props, styleName: 'control'});
+  return input({...props, styleName: 'control', type: 'text'});
 }
 
 Input.defaultProps = {
