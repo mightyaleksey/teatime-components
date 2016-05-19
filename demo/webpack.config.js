@@ -38,6 +38,7 @@ module.exports = {
       hash: true,
     }),
     new NpmInstallPlugin({
+      cacheMin: 999999,
       save: true,
       saveDev: true,
     }),
