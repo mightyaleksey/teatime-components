@@ -31,6 +31,7 @@ React components + CSS Modules
 
 - React event system: http://facebook.github.io/react/docs/events.html
 - React forms: https://facebook.github.io/react/docs/forms.html
+  - React controlled components: https://facebook.github.io/react/docs/forms.html#controlled-components
 
 
 ## License

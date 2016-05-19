@@ -1,0 +1,11 @@
+@value size-m from '../font.css';
+
+.control
+{
+  composes: control from './textarea.css';
+
+  padding: 3px 5px;
+
+  font-size: size-m;
+  line-height: 17px;
+}
