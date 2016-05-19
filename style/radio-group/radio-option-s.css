@@ -1,0 +1,21 @@
+@value size-s from '../font.css';
+
+.container
+{
+  composes: container from './radio-option.css';
+}
+
+.control
+{
+  composes: control from './radio-option.css';
+
+  padding: 0 10px;
+
+  font-size: size-s;
+  line-height: 22px;
+}
+
+.native
+{
+  composes: native from './radio-option.css';
+}

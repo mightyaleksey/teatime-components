@@ -1,0 +1,46 @@
+{
+  "name": "radioGroup",
+  "hyper": "RadioGroup",
+  "data": [
+    [
+      {
+        "name": "motorrad-1",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "s"
+      }
+    ],
+    [
+      {
+        "defaultValue": "suzuki",
+        "name": "motorrad-2",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "m"
+      }
+    ],
+    [
+      {
+        "name": "motorrad-3",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "l"
+      }
+    ]
+  ]
+}
