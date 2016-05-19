@@ -4,8 +4,12 @@
   "description": "React components + CSS Modules",
   "main": "index.js",
   "scripts": {
+    "cleanup": "git reset --hard",
+    "compile": "babel component --out-dir component && babel tools --out-dir tools && babel view --out-dir view",
     "demo": "webpack --config demo/webpack.config.js",
     "lint": "eslint component/*.js demo/*.js view/*.js *.js",
+    "prepublish": "in-publish && npm run -s compile || in-install",
+    "publish": "in-publish && npm run -s cleanup || in-install",
     "start": "webpack-dev-server --config demo/webpack.config.js"
   },
   "pre-commit": [
@@ -16,6 +20,10 @@
     "css-modules",
     "react"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sullenor/teatime-components.git"
+  },
   "author": "Alexey Litvinov",
   "license": "MIT",
   "dependencies": {
@@ -24,6 +32,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
+    "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
@@ -32,6 +41,7 @@
     "eslint": "^2.10.2",
     "glob": "^7.0.3",
     "html-webpack-plugin": "^2.17.0",
+    "in-publish": "^2.0.0",
     "json-loader": "^0.5.4",
     "npm-install-webpack-plugin": "^3.1.3",
     "postcss-loader": "^0.9.1",
