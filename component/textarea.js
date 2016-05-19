@@ -4,17 +4,21 @@ const { Textarea: BaseTextarea } = require('../view/textarea');
 const { PropTypes } = require('react');
 const { createTag } = require('../');
 
-const styles = {
+const baseStyles = {
   'm': require('../style/textarea/textarea-m.css'),
   'l': require('../style/textarea/textarea-l.css'),
 };
 
-function Textarea({ size, ...o }) {
-  return BaseTextarea({...o, styles: styles[size]});
+function Textarea({ size, styles, ...o }) {
+  return BaseTextarea({...o, styles: {
+    ...baseStyles[size],
+    ...styles,
+  }});
 }
 
 Textarea.defaultProps = {
   size: 'm',
+  styles: {},
 };
 
 Textarea.propTypes = {
@@ -44,6 +48,7 @@ Textarea.propTypes = {
     'm',
     'l',
   ]),
+  styles: PropTypes.object,
   value: PropTypes.string,
 };
 

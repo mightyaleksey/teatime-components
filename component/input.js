@@ -4,18 +4,22 @@ const { Input: BaseInput } = require('../view/input');
 const { PropTypes } = require('react');
 const { createTag } = require('../');
 
-const styles = {
+const baseStyles = {
   's': require('../style/input/input-s.css'),
   'm': require('../style/input/input-m.css'),
   'l': require('../style/input/input-l.css'),
 };
 
-function Input({ size, ...o }) {
-  return BaseInput({...o, styles: styles[size]});
+function Input({ size, styles, ...o }) {
+  return BaseInput({...o, styles: {
+    ...baseStyles[size],
+    ...styles,
+  }});
 }
 
 Input.defaultProps = {
   size: 'm',
+  styles: {},
 };
 
 Input.propTypes = {
@@ -42,6 +46,7 @@ Input.propTypes = {
     'm',
     'l',
   ]),
+  styles: PropTypes.object,
   value: PropTypes.string,
 };
 

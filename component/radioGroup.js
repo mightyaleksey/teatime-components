@@ -4,7 +4,7 @@ const { RadioGroup: BaseRadioGroup } = require('../view/radioGroup');
 const { PropTypes } = require('react');
 const { createTag } = require('../');
 
-const styles = {
+const baseStyles = {
   common: require('../style/radio-group/radio-group.css'),
 };
 
@@ -14,12 +14,17 @@ const optionStyles = {
   l: require('../style/radio-group/radio-option-l.css'),
 };
 
-function RadioGroup({ size, ...o }) {
-  return BaseRadioGroup({...o, styles: {...styles.common, option: optionStyles[size]}});
+function RadioGroup({ size, styles, ...o }) {
+  return BaseRadioGroup({...o, styles: {
+    ...baseStyles.common,
+    option: optionStyles[size],
+    ...styles,
+  }});
 }
 
 RadioGroup.defaultProps = {
   size: 'm',
+  styles: {},
 };
 
 RadioGroup.propTypes = {

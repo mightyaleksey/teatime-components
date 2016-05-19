@@ -4,7 +4,7 @@ const { Button: BaseButton } = require('../view/button');
 const { PropTypes } = require('react');
 const { createTag } = require('../');
 
-const styles = {
+const baseStyles = {
   'action-s': require('../style/button/button-action-s.css'),
   'action-m': require('../style/button/button-action-m.css'),
   'action-l': require('../style/button/button-action-l.css'),
@@ -15,12 +15,16 @@ const styles = {
   'normal-xl': require('../style/button/button-normal-xl.css'),
 };
 
-function Button({ size, theme, ...o }) {
-  return BaseButton({...o, styles: styles[`${theme}-${size}`]});
+function Button({ size, styles, theme, ...o }) {
+  return BaseButton({...o, styles: {
+    ...baseStyles[`${theme}-${size}`],
+    ...styles,
+  }});
 }
 
 Button.defaultProps = {
   size: 'm',
+  styles: {},
   theme: 'normal',
 };
 
@@ -61,6 +65,7 @@ Button.propTypes = {
     'l',
     'xl',
   ]),
+  styles: PropTypes.object,
   theme: PropTypes.oneOf([
     'action',
     'normal',
