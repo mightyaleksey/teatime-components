@@ -10,7 +10,7 @@
     "lint": "eslint component/*.js demo/*.js view/*.js *.js",
     "prepublish": "in-publish && npm run -s compile || in-install",
     "publish": "in-publish && npm run -s cleanup || in-install",
-    "start": "webpack-dev-server --config demo/webpack.config.js --hot --no-info"
+    "start": "webpack-dev-server --config demo/webpack.config.js --no-info"
   },
   "pre-commit": [
     "lint"
