@@ -1,0 +1,9 @@
+.control
+{
+  composes: control from './button-action.css';
+
+  padding: 0 13px;
+
+  font-size:  13px;
+  line-height: 28px;
+}

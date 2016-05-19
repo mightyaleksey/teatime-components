@@ -1,0 +1,9 @@
+.control
+{
+  composes: control from './button-normal.css';
+
+  padding: 0 10px;
+
+  font-size: 13px;
+  line-height: 22px;
+}

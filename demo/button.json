@@ -1,0 +1,18 @@
+{
+  "name": "button",
+  "hyper": "Button",
+  "data": [
+    [
+      {"children": "button", "size": "s", "theme": "action"},
+      {"children": "button", "size": "m", "theme": "action"},
+      {"children": "button", "size": "l", "theme": "action"},
+      {"children": "button", "size": "xl", "theme": "action"}
+    ],
+    [
+      {"children": "button", "size": "s", "theme": "normal"},
+      {"children": "button", "size": "m", "theme": "normal"},
+      {"children": "button", "size": "l", "theme": "normal"},
+      {"children": "button", "size": "xl", "theme": "normal"}
+    ]
+  ]
+}
