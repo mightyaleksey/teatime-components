@@ -4,7 +4,9 @@
   "data": [
     [
       {"defaultValue": "textarea", "placeholder": "size m", "size": "m"},
-      {"defaultValue": "textarea", "placeholder": "size l", "size": "l"}
+      {"defaultValue": "textarea", "disabled": true, "placeholder": "size m", "size": "m"},
+      {"defaultValue": "textarea", "placeholder": "size l", "size": "l"},
+      {"defaultValue": "textarea", "disabled": true, "placeholder": "size l", "size": "l"}
     ]
   ]
 }

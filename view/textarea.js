@@ -16,6 +16,7 @@ Textarea.defaultProps = {
 Textarea.propTypes = {
   cols: PropTypes.number,
   defaultValue: PropTypes.string,
+  disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,

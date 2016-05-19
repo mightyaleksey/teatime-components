@@ -4,8 +4,11 @@
   "data": [
     [
       {"defaultValue": "input", "placeholder": "size s", "size": "s"},
+      {"defaultValue": "input", "disabled": true, "placeholder": "size s", "size": "s"},
       {"defaultValue": "input", "placeholder": "size m", "size": "m"},
-      {"defaultValue": "input", "placeholder": "size l", "size": "l"}
+      {"defaultValue": "input", "disabled": true, "placeholder": "size m", "size": "m"},
+      {"defaultValue": "input", "placeholder": "size l", "size": "l"},
+      {"defaultValue": "input", "disabled": true, "placeholder": "size l", "size": "l"}
     ]
   ]
 }

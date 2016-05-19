@@ -13,6 +13,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+  disabled: PropTypes.bool,
   onBlur: PropTypes.func,
   onClick: PropTypes.func,
   onContextMenu: PropTypes.func,

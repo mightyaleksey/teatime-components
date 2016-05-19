@@ -14,6 +14,7 @@ Input.defaultProps = {
 
 Input.propTypes = {
   defaultValue: PropTypes.string,
+  disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
