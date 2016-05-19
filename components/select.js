@@ -8,7 +8,12 @@ const { createTag, div, input, span } = h;
 const option = createTag(Option);
 
 function Option({ checked, children, selected, styles, ...o }) {
-  return span({...o}, children);
+  return span({
+    ...o,
+    className: styles[selected
+      ? 'menuItemIsSelected'
+      : 'menuItem'],
+  }, children);
 }
 
 class Select extends Component {

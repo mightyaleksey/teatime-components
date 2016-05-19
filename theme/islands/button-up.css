@@ -1,0 +1,9 @@
+.control
+{
+  composes: control from './button-down.css';
+}
+
+.control:after
+{
+  transform: rotate(-180deg);
+}

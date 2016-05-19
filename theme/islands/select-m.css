@@ -89,14 +89,29 @@
   line-height: 25px;
 }
 
+.isFocused
+{
+  background-color: #ffeba0;
+}
+
+.isSelected
+{
+  background: url(./tip.svg) 13px 50% no-repeat;
+}
+
+.menuItemIsFocused
+{
+  composes: menuItem;
+  composes: isFocused;
+}
+
 .menuItem:hover
 {
   background-color: #ffeba0;
 }
 
-.menuItemIsSelected
-{
-  composes: menuItem;
 
-  background: url(./tip.svg) 13px 50% no-repeat;
-}
+
+.menuItemIsFocusedAndIsSelected
+.menuItemIsFocusedAndIsSelected
+{}

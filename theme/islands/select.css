@@ -1,0 +1,18 @@
+.control
+{
+  position: relative;
+
+  display: inline-block;
+}
+
+.menu
+{
+  composes: container from './underlay.css';
+
+  position: absolute;
+  z-index: 1;
+  top: calc(100% + 8px);
+
+  min-width: 100%;
+  padding: 4px 0;
+}
