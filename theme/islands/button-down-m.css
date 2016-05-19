@@ -1,5 +1,0 @@
-.control
-{
-  composes: control from './button-normal-m.css';
-  composes: control from './button-down.css';
-}

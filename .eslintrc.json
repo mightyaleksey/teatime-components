@@ -6,12 +6,9 @@
   },
   "extends": "eslint:recommended",
   "parserOptions": {
-    "ecmaVersion": 6,
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "impliedStrict": true
-    },
-    "sourceType": "module"
+      "experimentalObjectRestSpread": true
+    }
   },
   "rules": {
     "comma-dangle": [
@@ -33,6 +30,7 @@
     "semi": [
       "error",
       "always"
-    ]
+    ],
+    "strict": "error"
   }
 }
