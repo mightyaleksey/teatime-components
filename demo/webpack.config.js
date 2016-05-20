@@ -16,10 +16,6 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.svg$/i,
-        loader: 'file?name=[name].[ext]',
-      },
-      {
         test: /\.js/i,
         exclude: /node_modules/,
         loader: 'babel',
@@ -31,6 +27,10 @@ module.exports = {
       {
         test: /\.css$/i,
         loader: 'style!css?modules&localIdentName=[name]--[local]!postcss',
+      },
+      {
+        test: /\.svg$/i,
+        loader: 'svg-url',
       },
     ],
   },
@@ -48,7 +48,7 @@ module.exports = {
     }),
   ],
 
-  postcss: [
+  postcss: () => [
     require('postcss-url')({url: 'inline'}),
     require('autoprefixer')({browsers: ['last 2 versions']}),
   ],
