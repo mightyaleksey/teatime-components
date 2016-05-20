@@ -1,0 +1,18 @@
+.container
+{
+  composes: container from '../check/check-l.css';
+
+  display: block;
+}
+.control
+{
+  composes: control from '../check/check-l.css';
+}
+.native
+{
+  composes: native from '../check/check-l.css';
+}
+.label
+{
+  composes: label from '../check/check-l.css';
+}
