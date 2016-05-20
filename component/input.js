@@ -23,31 +23,12 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
-  defaultValue: PropTypes.string,
-  disabled: PropTypes.bool,
-  name: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
-  onChange: PropTypes.func,
-  onCompositionEnd: PropTypes.func,
-  onCompositionStart: PropTypes.func,
-  onCompositionUpdate: PropTypes.func,
-  onCopy: PropTypes.func,
-  onCut: PropTypes.func,
-  onFocus: PropTypes.func,
-  onInput: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onPaste: PropTypes.func,
-  onSelect: PropTypes.func,
-  placeholder: PropTypes.string,
   size: PropTypes.oneOf([
     's',
     'm',
     'l',
   ]),
   styles: PropTypes.object,
-  value: PropTypes.string,
 };
 
 module.exports = Input;

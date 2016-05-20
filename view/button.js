@@ -18,14 +18,6 @@ Button.propTypes = {
   onClick: PropTypes.func,
   onContextMenu: PropTypes.func,
   onDoubleClick: PropTypes.func,
-  onDrag: PropTypes.func,
-  onDragEnd: PropTypes.func,
-  onDragEnter: PropTypes.func,
-  onDragExit: PropTypes.func,
-  onDragLeave: PropTypes.func,
-  onDragOver: PropTypes.func,
-  onDragStart: PropTypes.func,
-  onDrop: PropTypes.func,
   onFocus: PropTypes.func,
   onKeyDown: PropTypes.func,
   onKeyPress: PropTypes.func,
@@ -42,7 +34,6 @@ Button.propTypes = {
   onTouchEnd: PropTypes.func,
   onTouchMove: PropTypes.func,
   onTouchStart: PropTypes.func,
-  onTransitionEnd: PropTypes.func,
   styles: PropTypes.object,
 };
 
