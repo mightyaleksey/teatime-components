@@ -20,8 +20,9 @@ RadioButton.propTypes = {
   defaultChecked: PropTypes.bool,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   styles: PropTypes.object,
+  value: PropTypes.string.isRequired,
 };
 
 module.exports = cssModules(RadioButton);
