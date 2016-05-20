@@ -3,7 +3,7 @@
 const { Component, PropTypes } = require('react');
 const { RadioButton } = require('./radioButton');
 const { createTag, div } = require('../');
-const { noop } = require('../tools/func');
+const { bind, noop } = require('../tools/func');
 const cssModules = require('react-css-modules');
 
 class RadioGroup extends Component {
@@ -13,10 +13,14 @@ class RadioGroup extends Component {
       selected: this.props.value || this.props.defaultValue,
     };
 
-    this.onChange = this.onChange.bind(this);
+    bind(this, 'onChange');
   }
 
   onChange(e) {
+    if (e.target.value === this.state.selected) {
+      return;
+    }
+
     this.setState({selected: e.target.value});
     this.props.onChange(e);
   }
