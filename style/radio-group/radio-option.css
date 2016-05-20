@@ -59,6 +59,11 @@
   box-shadow: none;
 }
 
+.native:disabled:checked + .control
+{
+  background: #d9d9d9;
+}
+
 .container:first-child .control
 {
   margin-left: 0;

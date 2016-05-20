@@ -10,7 +10,7 @@ class RadioGroup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: this.props.value || this.props.defaultValue,
+      selected: this.props.value || this.props.defaultValue || '',
     };
 
     bind(this, 'onChange');
@@ -30,12 +30,13 @@ class RadioGroup extends Component {
   }
 
   renderOptions() {
-    const { defaultValue, name, options, styles, ...o } = this.props; // eslint-disable-line no-unused-vars
+    const { defaultValue, disabled, name, options, styles, ...o } = this.props; // eslint-disable-line no-unused-vars
     const { selected } = this.state;
 
     return options.map(({ text, value }, i) => RadioButton({
       ...o,
       checked: value === selected,
+      disabled,
       key: `_${value}${i}`,
       name,
       onChange: this.onChange,
@@ -57,19 +58,8 @@ RadioGroup.propTypes = {
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   onClick: PropTypes.func,
-  onCompositionEnd: PropTypes.func,
-  onCompositionStart: PropTypes.func,
-  onCompositionUpdate: PropTypes.func,
   onContextMenu: PropTypes.func,
   onDoubleClick: PropTypes.func,
-  onDrag: PropTypes.func,
-  onDragEnd: PropTypes.func,
-  onDragEnter: PropTypes.func,
-  onDragExit: PropTypes.func,
-  onDragLeave: PropTypes.func,
-  onDragOver: PropTypes.func,
-  onDragStart: PropTypes.func,
-  onDrop: PropTypes.func,
   onFocus: PropTypes.func,
   onKeyDown: PropTypes.func,
   onKeyPress: PropTypes.func,

@@ -17,8 +17,22 @@
     ],
     [
       {
-        "defaultValue": "suzuki",
+        "disabled": true,
         "name": "motorrad-2",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "s"
+      }
+    ],
+    [
+      {
+        "defaultValue": "suzuki",
+        "name": "motorrad-3",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
@@ -31,7 +45,36 @@
     ],
     [
       {
-        "name": "motorrad-3",
+        "defaultValue": "suzuki",
+        "disabled": true,
+        "name": "motorrad-4",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "m"
+      }
+    ],
+    [
+      {
+        "name": "motorrad-5",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "l"
+      }
+    ],
+    [
+      {
+        "disabled": true,
+        "name": "motorrad-6",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
