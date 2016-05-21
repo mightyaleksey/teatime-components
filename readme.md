@@ -34,6 +34,7 @@ React components + CSS Modules
 - React forms: https://facebook.github.io/react/docs/forms.html
   - React controlled components: https://facebook.github.io/react/docs/forms.html#controlled-components
 - React prop validation: https://facebook.github.io/react/docs/reusable-components.html#prop-validation
+- React supported attributes: https://facebook.github.io/react/docs/tags-and-attributes.html#supported-attributes
 
 
 ## License

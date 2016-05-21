@@ -1,0 +1,18 @@
+.control:after
+{
+  display: inline-block;
+
+  width: 11px;
+  height: 6px;
+  margin: 0 0 0 12px;
+
+  content: '';
+  transition: transform .1s ease-out 0s;
+
+  background: url(./arrow.svg) 0 0 no-repeat;
+}
+
+.control:disabled:after
+{
+  opacity: .4;
+}

@@ -1,0 +1,18 @@
+.container
+{
+  position: relative;
+
+  display: inline-block;
+}
+
+.popup
+{
+  position: absolute;
+  z-index: 1;
+  top: calc(100% + 8px);
+
+  min-width: 100%;
+
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1),0 10px 20px -5px rgba(0,0,0,.4);
+}

@@ -1,0 +1,5 @@
+.control
+{
+  composes: control from '../button/button-normal-s.css';
+  composes: control from './button-opened.css';
+}

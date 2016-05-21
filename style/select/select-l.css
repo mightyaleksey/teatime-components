@@ -1,0 +1,11 @@
+.container
+{
+  composes: container from './select.css';
+}
+
+.popup
+{
+  composes: popup from './select.css';
+
+  padding: 5px 0;
+}

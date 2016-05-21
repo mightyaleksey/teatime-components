@@ -1,0 +1,24 @@
+.control
+{
+  display: block;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  font-family: arial,helvetica,sans-serif;
+}
+
+.focused
+{
+  background-color: #ffeba0;
+}
+
+.selected
+{
+  background: url(../check/tip.svg) 13px 50% no-repeat;
+}
+
+.focusedSelected
+{
+  background: #ffeba0 url(../check/tip.svg) 13px 50% no-repeat;
+}
