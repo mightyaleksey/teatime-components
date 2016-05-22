@@ -3,3 +3,9 @@
   composes: control from '../button/button-normal-m.css';
   composes: control from './button-closed.css';
 }
+
+.control:after
+{
+  height: 9px;
+  margin: 0 0 0 11px;
+}

@@ -15,6 +15,7 @@
         "size": "s"
       },
       {
+        "defaultValue": "mz",
         "disabled": true,
         "name": "motorrad-2",
         "options": [

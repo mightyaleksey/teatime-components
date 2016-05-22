@@ -4,7 +4,7 @@ const { Component, PropTypes } = require('react');
 const { Button } = require('./button');
 const { Option } = require('./option');
 const { createTag, div, input } = require('../');
-const { bind, decrement, increment } = require('../tools/func');
+const { bind, decrement, increment, findIndexByValueProp } = require('../tools/func');
 const cssModules = require('react-css-modules');
 const reactOutsideEvent = require('react-outside-event');
 
@@ -12,11 +12,21 @@ class Select extends Component {
   constructor(props) {
     super(props);
 
+    const value = props.defaultValue || props.value;
+    var index = typeof value === 'string'
+      ? findIndexByValueProp(props.options, value)
+      : 0;
+
+    if (index === -1) {
+      console.error(`Warning: Failed propType: Required prop \`options\` doesn't contains \`value\` \`${value}\` in \`Select\``); // eslint-disable-line no-console
+      index = 0;
+    }
+
     this.state = {
       isOpened: false,
-      position: 0,
-      selected: 0,
-      value: props.defaultValue || props.value || props.options[0].value,
+      position: index,
+      selected: index,
+      value: props.defaultValue || props.value || props.options[index].value,
     };
 
     bind(this, [
@@ -27,7 +37,6 @@ class Select extends Component {
     ]);
   }
 
-  // https://github.com/sullenor/teatime-components/blob/c01b639d39ab9c7ac387724c330cb9f11066749c/components/select.js
   onClick() {
     this.setState({isOpened: !this.state.isOpened});
   }
