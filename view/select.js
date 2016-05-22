@@ -105,8 +105,8 @@ class Select extends Component {
   }
 
   renderButton() {
-    const { disabled, styles } = this.props;
-    const { isOpened, value } = this.state;
+    const { disabled, options, styles } = this.props;
+    const { isOpened, selected } = this.state;
 
     return Button({
       disabled,
@@ -114,7 +114,7 @@ class Select extends Component {
       styles: styles[isOpened
         ? 'buttonOpened'
         : 'buttonClosed'],
-    }, value);
+    }, options[selected].text);
   }
 
   renderOptions() {
