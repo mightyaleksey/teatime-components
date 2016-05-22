@@ -19,7 +19,12 @@ class Select extends Component {
       value: props.defaultValue || props.value || props.options[0].value,
     };
 
-    bind(this, ['onClick', 'onKeyDown']);
+    bind(this, [
+      'onClick',
+      'onKeyDown',
+      'onOptionClick',
+      'onOptionMouseEnter',
+    ]);
   }
 
   // https://github.com/sullenor/teatime-components/blob/c01b639d39ab9c7ac387724c330cb9f11066749c/components/select.js
@@ -108,10 +113,11 @@ class Select extends Component {
     const { position, selected } = this.state;
 
     return options.map(({ text, value }, i) => Option({
-      onClick: e => this.onOptionClick(e, i),
-      onMouseEnter: e => this.onOptionMouseEnter(e, i),
-      key: `_${value}${i}`,
       focused: position === i,
+      identity: i,
+      key: `_${value}${i}`,
+      onClick: this.onOptionClick,
+      onMouseEnter: this.onOptionMouseEnter,
       selected: selected === i,
       styles: styles.option,
       value,
