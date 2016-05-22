@@ -1,0 +1,13 @@
+{
+  "name": "spin",
+  "hyper": "Spin",
+  "data": [
+    [
+      {"size": "xs"},
+      {"size": "s"},
+      {"size": "m"},
+      {"size": "l"},
+      {"size": "xl"}
+    ]
+  ]
+}

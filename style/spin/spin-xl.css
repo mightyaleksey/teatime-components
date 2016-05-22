@@ -1,0 +1,9 @@
+.control
+{
+  composes: control from './spin.css';
+
+  width: 38px;
+  height: 38px;
+
+  line-height: 38px;
+}

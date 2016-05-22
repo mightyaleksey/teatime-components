@@ -1,0 +1,27 @@
+@keyframes spin
+{
+  from
+  {
+    transform: rotate(0deg);
+  }
+
+  to
+  {
+    transform: rotate(360deg);
+  }
+}
+
+.control
+{
+  display: inline-block;
+
+  width: 16px;
+  height: 16px;
+
+  animation: spin 1s infinite linear;
+
+  border: 2px solid #fc0;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-radius: 50%;
+}
