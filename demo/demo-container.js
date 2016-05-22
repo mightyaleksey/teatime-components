@@ -1,7 +1,7 @@
 'use strict';
 
 const { PropTypes } = require('react');
-const { createTag, div, h1 } = require('../');
+const { createTag, a, div, h1 } = require('../');
 const cssModules = require('react-css-modules');
 const styles = require('./demo-container.css');
 
@@ -11,8 +11,15 @@ function DemoContainer({ component, data, title }) {
     return div.apply(null, [{key: `_${title}${i}`, styleName: 'row'}].concat(components));
   });
 
+  const anchor = title.toLowerCase();
+
   return div(null,
-    h1({styleName: 'header'}, title),
+    h1({styleName: 'header'},
+      a({className: 'anchor', name: anchor}),
+      title,
+      ' ',
+      a({href: `#${anchor}`, styleName: 'hashLink'}, '#')
+    ),
     content
   );
 }
