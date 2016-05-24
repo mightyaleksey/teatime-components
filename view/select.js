@@ -4,7 +4,7 @@ const { Component, PropTypes } = require('react');
 const { Button } = require('./button');
 const { Option } = require('./option');
 const { createTag, div, input } = require('../');
-const { bind, decrement, increment, findIndexByValueProp } = require('../tools/func');
+const { bind, decrement, increment, findIndexByValueProp, noop } = require('../tools/func');
 const cssModules = require('react-css-modules');
 const reactOutsideEvent = require('react-outside-event');
 
@@ -58,11 +58,12 @@ class Select extends Component {
     switch (e.keyCode) {
     case 13: // enter
     case 32: // space
-      return this.setState({
+      this.setState({
         isOpened: false,
         selected: position,
         value: this.props.options[position].value,
       });
+      return this.props.onChange(e, this.props.options[position].value);
     case 27: // esc
       return this.setState({isOpened: false, position: selected});
     case 38: // up
@@ -81,6 +82,8 @@ class Select extends Component {
       selected: i,
       value: this.props.options[i].value,
     });
+
+    this.props.onChange(e, this.props.options[i].value);
   }
 
   onOptionMouseEnter(e, i) {
@@ -92,7 +95,7 @@ class Select extends Component {
   }
 
   render() {
-    const { className, disabled, name, onChange } = this.props;
+    const { className, disabled, name } = this.props;
     const { isOpened, value } = this.state;
 
     return div({className, onKeyDown: this.onKeyDown, styleName: 'container'},
@@ -100,7 +103,7 @@ class Select extends Component {
       isOpened
         ? div({styleName: 'popup'}, this.renderOptions())
         : null,
-      input({disabled, name, onChange, type: 'hidden', value})
+      input({disabled, name, type: 'hidden', value})
     );
   }
 
@@ -135,6 +138,7 @@ class Select extends Component {
 }
 
 Select.defaultProps = {
+  onChange: noop,
   styles: {},
 };
 
