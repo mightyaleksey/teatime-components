@@ -92,10 +92,10 @@ class Select extends Component {
   }
 
   render() {
-    const { disabled, name, onChange } = this.props;
+    const { className, disabled, name, onChange } = this.props;
     const { isOpened, value } = this.state;
 
-    return div({onKeyDown: this.onKeyDown, styleName: 'container'},
+    return div({className, onKeyDown: this.onKeyDown, styleName: 'container'},
       this.renderButton(),
       isOpened
         ? div({styleName: 'popup'}, this.renderOptions())
