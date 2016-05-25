@@ -1,14 +1,16 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
-const { RadioButton } = require('./radioButton');
-const { createTag, div } = require('../');
+const RadioButton = require('./RadioButton');
+const React = require('react');
+const { Component, PropTypes } = React;
 const { bind, noop } = require('../tools/func');
 const cssModules = require('react-css-modules');
 
 class RadioGroup extends Component {
   constructor(props) {
     super(props);
+
+    // @todo make assertion for single property
     this.state = {
       selected: this.props.value || this.props.defaultValue || '',
     };
@@ -26,23 +28,36 @@ class RadioGroup extends Component {
   }
 
   render() {
-    return div({styleName: 'container'}, this.renderOptions());
+    const { onChange, ...o } = this.props; // eslint-disable-line no-unused-vars
+
+    return (
+      <div {...o} styleName='container'>{this.renderOptions()}</div>
+    );
   }
 
   renderOptions() {
-    const { defaultValue, disabled, name, options, styles, ...o } = this.props; // eslint-disable-line no-unused-vars
+    const {
+      defaultValue, // eslint-disable-line no-unused-vars
+      disabled,
+      name,
+      optionStyles,
+      options,
+    } = this.props;
     const { selected } = this.state;
 
-    return options.map(({ text, value }, i) => RadioButton({
-      ...o,
-      checked: value === selected,
-      disabled,
-      key: `_${value}${i}`,
-      name,
-      onChange: this.onChange,
-      styles: styles.option,
-      value,
-    }, text));
+    return options.map(({ text, value }, i) => (
+      <RadioButton
+        checked={value === selected}
+        disabled={disabled}
+        key={`_${value}${i}`}
+        name={name}
+        onChange={this.onChange}
+        styles={optionStyles}
+        value={value}
+      >
+        {text}
+      </RadioButton>
+    ));
   }
 }
 
@@ -81,4 +96,3 @@ RadioGroup.propTypes = {
 };
 
 module.exports = cssModules(RadioGroup);
-module.exports.RadioGroup = createTag(module.exports);

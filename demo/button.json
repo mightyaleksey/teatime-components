@@ -1,6 +1,6 @@
 {
   "name": "button",
-  "hyper": "Button",
+  "path": "Button",
   "data": [
     [
       {"children": "button", "size": "s", "theme": "action"},

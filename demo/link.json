@@ -1,6 +1,6 @@
 {
   "name": "link",
-  "hyper": "Link",
+  "path": "Link",
   "data": [
     [
       {"children": "link", "href": "#", "size": "s"},

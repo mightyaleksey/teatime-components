@@ -1,15 +1,16 @@
 'use strict';
 
+const React = require('react');
 const { render } = require('react-dom');
-const demoContainer = require('./demo-container');
+const DemoContainer = require('./demo-container');
 
 module.exports = function demoRender(data, comp) {
   const container = document.createElement('div');
   container.className = 'container';
   document.body.appendChild(container);
 
-  render(demoContainer({
-    component: comp[data.hyper],
+  render(React.createElement(DemoContainer, {
+    Component: comp,
     data: data.data,
     title: data.name,
   }), container);

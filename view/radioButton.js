@@ -1,15 +1,30 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const { createTag, input, label, span } = require('../');
+const React = require('react');
+const { Component, PropTypes } = React;
 const { generateId } = require('../tools/identity');
 const cssModules = require('react-css-modules');
 
-function RadioButton({ children, id = generateId(), ...o }) {
-  return span({styleName: 'container'},
-    input({...o, id, styleName: 'native', type: 'radio'}),
-    label({htmlFor: id, styleName: 'control'}, children)
-  );
+class RadioButton extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      id: this.props.id || generateId(),
+    };
+  }
+
+  render() {
+    const { children, className, ...o } = this.props;
+    const { id } = this.state;
+
+    return (
+      <span className={className} styleName='container'>
+        <input {...o} id={id} styleName='native' type='radio'/>
+        <label htmlFor={id} styleName='control'>{children}</label>
+      </span>
+    );
+  }
 }
 
 RadioButton.defaultProps = {
@@ -26,4 +41,3 @@ RadioButton.propTypes = {
 };
 
 module.exports = cssModules(RadioButton);
-module.exports.RadioButton = createTag(module.exports);

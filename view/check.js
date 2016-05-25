@@ -1,18 +1,31 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const { createTag, div, input, label } = require('../');
+const React = require('react');
+const { Component, PropTypes } = React;
 const { generateId } = require('../tools/identity');
 const cssModules = require('react-css-modules');
 
-function Check({ children, id = generateId(), ...o }) {
-  return div({styleName: 'container'},
-    input({...o, id, styleName: 'native', type: 'checkbox'}),
-    label({htmlFor: id, styleName: 'control'}),
-    children
-      ? label({htmlFor: id, styleName: 'label'}, children)
-      : null
-  );
+class Check extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      id: this.props.id || generateId(),
+    };
+  }
+
+  render() {
+    const { children, className, ...o } = this.props;
+    const { id } = this.state;
+
+    return (
+      <div className={className} styleName='container'>
+        <input {...o} id={id} styleName='native' type='checkbox'/>
+        <label htmlFor={id} styleName='control'/>
+        <label htmlFor={id} styleName='label'>{children}</label>
+      </div>
+    );
+  }
 }
 
 Check.defaultProps = {
@@ -49,4 +62,3 @@ Check.propTypes = {
 };
 
 module.exports = cssModules(Check);
-module.exports.Check = createTag(module.exports);

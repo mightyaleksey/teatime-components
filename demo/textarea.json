@@ -1,6 +1,6 @@
 {
   "name": "textarea",
-  "hyper": "Textarea",
+  "path": "Textarea",
   "data": [
     [
       {"defaultValue": "textarea", "name": "textarea-size-m", "placeholder": "size m", "size": "m"},

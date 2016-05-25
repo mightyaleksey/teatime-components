@@ -1,11 +1,15 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const { createTag, textarea } = require('../');
+const React = require('react');
+const { Component, PropTypes } = React;
 const cssModules = require('react-css-modules');
 
-function Textarea(props) {
-  return textarea({...props, styleName: 'control'});
+class Textarea extends Component {
+  render() {
+    return (
+      <textarea {...this.props} styleName='control'/>
+    );
+  }
 }
 
 Textarea.defaultProps = {
@@ -38,4 +42,3 @@ Textarea.propTypes = {
 };
 
 module.exports = cssModules(Textarea);
-module.exports.Textarea = createTag(module.exports);

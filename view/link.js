@@ -1,11 +1,15 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const { a, createTag } = require('../');
+const React = require('react');
+const { Component, PropTypes } = React;
 const cssModules = require('react-css-modules');
 
-function Link({ href, ...o }) {
-  return a({...o, href, styleName: 'control'});
+class Link extends Component {
+  render() {
+    return (
+      <a {...this.props} styleName='control'></a>
+    );
+  }
 }
 
 Link.defaultProps = {
@@ -37,4 +41,3 @@ Link.propTypes = {
 };
 
 module.exports = cssModules(Link);
-module.exports.Link = createTag(module.exports);

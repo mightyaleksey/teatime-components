@@ -1,11 +1,15 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const { createTag, span } = require('../');
+const React = require('react');
+const { Component, PropTypes } = React;
 const cssModules = require('react-css-modules');
 
-function Spin(props) {
-  return span({...props, styleName: 'control'});
+class Spin extends Component {
+  render() {
+    return (
+      <span {...this.props} styleName='control'/>
+    );
+  }
 }
 
 Spin.defaultProps = {
@@ -17,4 +21,3 @@ Spin.propTypes = {
 };
 
 module.exports = cssModules(Spin);
-module.exports.Spin = createTag(module.exports);

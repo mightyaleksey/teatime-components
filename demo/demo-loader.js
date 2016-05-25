@@ -6,7 +6,7 @@ module.exports = function demoLoader() {
   this.cacheable();
 
   const data = Array.isArray(this.inputValue) ? this.inputValue[0] : this.inputValue;
-  const componentPath = require.resolve(`../component/${data.name}`);
+  const componentPath = require.resolve(`../component/${data.path}`);
   const str = JSON.stringify(data, null, 2);
 
   this.addDependency(demoRenderPath);

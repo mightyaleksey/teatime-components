@@ -1,40 +1,31 @@
 'use strict';
 
-const { RadioGroup: BaseRadioGroup } = require('../view/radioGroup');
 const { PropTypes } = require('react');
-const { createTag } = require('../');
+const RadioGroup = require('../view/RadioGroup');
+const simplify = require('../mixin/simplify');
 
-const baseStyles = {
-  common: require('../style/radio-group/radio-group.css'),
-};
-
-const optionStyles = {
-  s: require('../style/radio-group/radio-option-s.css'),
-  m: require('../style/radio-group/radio-option-m.css'),
-  l: require('../style/radio-group/radio-option-l.css'),
-};
-
-function RadioGroup({ size, styles, ...o }) {
-  return BaseRadioGroup({...o, styles: {
-    ...baseStyles.common,
-    option: optionStyles[size],
-    ...styles,
-  }});
-}
-
-RadioGroup.defaultProps = {
-  size: 'm',
-  styles: {},
-};
-
-RadioGroup.propTypes = {
-  size: PropTypes.oneOf([
-    's',
-    'm',
-    'l',
-  ]),
-  styles: PropTypes.object,
-};
-
-module.exports = RadioGroup;
-module.exports.RadioGroup = createTag(module.exports);
+module.exports = simplify(
+  RadioGroup,
+  (styles, { size }) => ({
+    optionStyles: styles.optionStyles[size],
+    styles: styles.styles,
+  }),
+  {
+    optionStyles: {
+      s: require('../style/radio-group/radio-option-s.css'),
+      m: require('../style/radio-group/radio-option-m.css'),
+      l: require('../style/radio-group/radio-option-l.css'),
+    },
+    styles: require('../style/radio-group/radio-group.css'),
+  },
+  {
+    size: 'm',
+  },
+  {
+    size: PropTypes.oneOf([
+      's',
+      'm',
+      'l',
+    ]),
+  }
+);

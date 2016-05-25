@@ -1,8 +1,8 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const React = require('react');
+const { Component, PropTypes } = React;
 const { camelcase, bind } = require('../tools/func');
-const { createTag, span } = require('../');
 const classnames = require('classnames');
 const cssModules = require('react-css-modules');
 
@@ -31,16 +31,18 @@ class Option extends Component {
       ...o,
     } = this.props;
 
-    return span({
-      ...o,
-      'data-value': value,
-      onClick: this.onClick,
-      onMouseEnter: this.onMouseEnter,
-      styleName: camelcase(classnames('control', {
-        focused,
-        selected,
-      })),
-    });
+    return (
+      <span
+        {...o}
+        data-value={value}
+        onClick={this.onClick}
+        onMouseEnter={this.onMouseEnter}
+        styleName={camelcase(classnames('control', {
+          focused,
+          selected,
+        }))}
+      />
+    );
   }
 }
 
@@ -59,4 +61,3 @@ Option.propTypes = {
 };
 
 module.exports = cssModules(Option);
-module.exports.Option = createTag(module.exports);

@@ -1,11 +1,15 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const { createTag, input } = require('../');
+const React = require('react');
+const { Component, PropTypes } = React;
 const cssModules = require('react-css-modules');
 
-function Input(props) {
-  return input({...props, styleName: 'control', type: 'text'});
+class Input extends Component {
+  render() {
+    return (
+      <input {...this.props} styleName='control' type='text'/>
+    );
+  }
 }
 
 Input.defaultProps = {
@@ -33,4 +37,3 @@ Input.propTypes = {
 };
 
 module.exports = cssModules(Input);
-module.exports.Input = createTag(module.exports);

@@ -1,6 +1,6 @@
 {
   "name": "check",
-  "hyper": "Check",
+  "path": "Check",
   "data": [
     [
       {"name": "size-m", "size": "m", "value": "size-m"},

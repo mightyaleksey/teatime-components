@@ -1,35 +1,36 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const { createTag, a, div, h1 } = require('../');
+const React = require('react');
+const { PropTypes } = React;
 const cssModules = require('react-css-modules');
 const styles = require('./demo-container.css');
 
-function DemoContainer({ component, data, title }) {
+function DemoContainer({ Component, data, title }) {
   const content = data.map((line, i) => {
-    const components = line.reduce((set, props) => set.concat(component(props), ' '), []);
-    return div.apply(null, [{key: `_${title}${i}`, styleName: 'row'}].concat(components));
+    const components = line.reduce((set, props, j) => set.concat(<Component key={`_${i}${j}`} {...props}/>, ' '), []);
+    return (<div key={`_${title}${i}`} styleName='row'>{components}</div>);
   });
 
   const anchor = title.toLowerCase();
 
-  return div(null,
-    h1({styleName: 'header'},
-      a({className: 'anchor', name: anchor}),
-      title,
-      ' ',
-      a({href: `#${anchor}`, styleName: 'hashLink'}, '#')
-    ),
-    content
+  return (
+    <div>
+      <h1 styleName='header'>
+        <a className='anchor' name={anchor}/>
+        {title}
+        <a styleName='hashLink' href={`#${anchor}`}>#</a>
+      </h1>
+      {content}
+    </div>
   );
 }
 
 DemoContainer.defaultProps = {};
 
 DemoContainer.propTypes = {
-  component: PropTypes.func.isRequired,
+  Component: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
 };
 
-module.exports = createTag(cssModules(DemoContainer, styles));
+module.exports = cssModules(DemoContainer, styles);

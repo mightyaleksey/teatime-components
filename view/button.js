@@ -1,11 +1,15 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const { createTag, button } = require('../');
+const React = require('react');
+const { Component, PropTypes } = React;
 const cssModules = require('react-css-modules');
 
-function Button(props) {
-  return button({...props, styleName: 'control'});
+class Button extends Component {
+  render() {
+    return (
+      <button {...this.props} styleName='control'/>
+    );
+  }
 }
 
 Button.defaultProps = {
@@ -38,4 +42,3 @@ Button.propTypes = {
 };
 
 module.exports = cssModules(Button);
-module.exports.Button = createTag(module.exports);

@@ -7,9 +7,13 @@
   "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
+      "experimentalObjectRestSpread": true,
+      "jsx": true
     }
   },
+  "plugins": [
+    "react"
+  ],
   "rules": {
     "comma-dangle": [
       "error",
@@ -18,6 +22,10 @@
     "indent": [
       "error",
       2
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
     ],
     "linebreak-style": [
       "error",
@@ -37,6 +45,8 @@
         "allowTemplateLiterals": true
       }
     ],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
     "semi": [
       "error",
       "always"

@@ -1,6 +1,6 @@
 {
   "name": "spin",
-  "hyper": "Spin",
+  "path": "Spin",
   "data": [
     [
       {"size": "xs"},

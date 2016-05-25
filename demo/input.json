@@ -1,6 +1,6 @@
 {
   "name": "input",
-  "hyper": "Input",
+  "path": "Input",
   "data": [
     [
       {"defaultValue": "input", "name": "input-size-s", "placeholder": "size s", "size": "s"},
