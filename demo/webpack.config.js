@@ -26,11 +26,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        loader: 'style!css?modules&localIdentName=[name]--[local]!postcss',
-      },
-      {
-        test: /\.svg$/i,
-        loader: 'svg-url',
+        loader: 'style!css?modules&localIdentName=[name]--[local]&importLoaders=1!postcss',
       },
     ],
   },
