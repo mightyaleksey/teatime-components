@@ -1,9 +1,12 @@
 .control:after
 {
-  display: inline-block;
+  position: absolute;
+  top: 0;
+
+  display: block;
 
   width: 11px;
-  height: 6px;
+  /*height: 6px;*/
 
   content: '';
   transition: transform .1s ease-out 0s;

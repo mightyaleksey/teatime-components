@@ -2,10 +2,17 @@
 {
   composes: control from '../button/button-normal-l.css';
   composes: control from './button-closed.css';
+
+  position: relative;
+
+  padding-right: 39px;
+
+  text-align: left;
 }
 
 .control:after
 {
-  height: 11px;
-  margin: 0 0 0 13px;
+  right: 15px;
+
+  height: 32px;
 }
