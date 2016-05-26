@@ -5,6 +5,7 @@
   padding: 0 10px;
 
   cursor: pointer;
+  white-space: nowrap;
 
   color: #fff;
   background: #ff7474;
