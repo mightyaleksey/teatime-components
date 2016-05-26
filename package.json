@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cleanup": "git reset --hard",
-    "compile": "babel component --out-dir component && babel tools --out-dir tools && babel view --out-dir view",
+    "compile": "babel component --out-dir component && babel mixin --out-dir mixin && babel tools --out-dir tools && babel view --out-dir view",
     "demo": "webpack --config demo/webpack.config.js",
     "lint": "eslint component/*.js demo/*.js view/*.js *.js",
     "prepublish": "in-publish && npm run -s compile || in-install",
