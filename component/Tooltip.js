@@ -1,11 +1,11 @@
 'use strict';
 
 const { PropTypes } = require('react');
-const Popup = require('../view/Popup');
+const Tooltip = require('../view/Tooltip');
 const simplify = require('../mixin/simplify');
 
 module.exports = simplify(
-  Popup,
+  Tooltip,
   (styles, { direction }) => ({
     styleName: 'control',
     styles: styles[`${direction}-m`],
