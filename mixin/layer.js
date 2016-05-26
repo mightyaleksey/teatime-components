@@ -55,5 +55,5 @@ module.exports = function (Target) {
  * @return {number}
  */
 function toNum(top, left) {
-  return Math.round(top) - Number(`.${Math.round(left)}`);
+  return Number(`${Math.round(top)}.${Math.round(left)}`);
 }
