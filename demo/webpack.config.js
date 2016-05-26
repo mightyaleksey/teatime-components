@@ -1,6 +1,7 @@
 'use strict';
 
 const { resolve } = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const glob = require('glob').sync;
@@ -26,12 +27,14 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        loader: 'style!css?modules&localIdentName=[name]--[local]&importLoaders=1!postcss',
+        loader: ExtractTextPlugin.extract('style',
+          'css?modules&localIdentName=[name]--[local]&importLoaders=1!postcss'),
       },
     ],
   },
 
   plugins: [
+    new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
       title: 'demo',
       inject: 'body',
