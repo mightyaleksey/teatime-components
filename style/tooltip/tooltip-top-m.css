@@ -1,0 +1,18 @@
+.control
+{
+  composes: control from './tooltip.css';
+
+  bottom: calc(100% + 7px);
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.control:after
+{
+  bottom: -7px;
+  left: calc(50% - 7px);
+
+  border-width: 7px 7px 0 7px;
+  border-bottom-color: #ff7474;
+}

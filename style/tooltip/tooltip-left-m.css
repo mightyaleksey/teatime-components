@@ -1,0 +1,18 @@
+.control
+{
+  composes: control from './tooltip.css';
+
+  top: 50%;
+  right: calc(100% + 7px);
+
+  transform: translateY(-50%);
+}
+
+.control:after
+{
+  top: calc(50% - 7px);
+  right: -7px;
+
+  border-width: 7px 0 7px 7px;
+  border-right-color: #ff7474;
+}

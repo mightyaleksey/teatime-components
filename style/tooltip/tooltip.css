@@ -1,0 +1,22 @@
+.control
+{
+  position: absolute;
+
+  padding: 0 10px;
+
+  cursor: pointer;
+
+  color: #fff;
+  background: #ff7474;
+
+  font: 13px/32px arial,helvetica,sans-serif;
+}
+
+.control:after
+{
+  position: absolute;
+
+  content: '';
+
+  border: 7px solid transparent;
+}
