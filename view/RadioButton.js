@@ -19,7 +19,7 @@ class RadioButton extends Component {
     const { id } = this.state;
 
     return (
-      <span className={className} styleName='container'>
+      <span className={className} styleName='wrapper'>
         <input {...o} id={id} styleName='native' type='radio'/>
         <label htmlFor={id} styleName='control'>{children}</label>
       </span>

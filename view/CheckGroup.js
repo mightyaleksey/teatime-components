@@ -46,8 +46,8 @@ class CheckGroup extends Component {
       defaultValue, // eslint-disable-line no-unused-vars
       disabled,
       name,
-      optionStyles,
       options,
+      styles,
     } = this.props;
     const { selected } = this.state;
 
@@ -58,7 +58,7 @@ class CheckGroup extends Component {
         key={`_${value}${i}`}
         name={name}
         onChange={this.onChange}
-        styles={optionStyles}
+        styles={styles}
         value={value}
       >
         {text}
@@ -69,7 +69,6 @@ class CheckGroup extends Component {
 
 CheckGroup.defaultProps = {
   onChange: noop,
-  optionStyles: {},
   styles: {},
 };
 
@@ -97,7 +96,6 @@ CheckGroup.propTypes = {
   onTouchEnd: PropTypes.func,
   onTouchMove: PropTypes.func,
   onTouchStart: PropTypes.func,
-  optionStyles: PropTypes.object,
   options: PropTypes.array.isRequired,
   styles: PropTypes.object,
   value: PropTypes.array,

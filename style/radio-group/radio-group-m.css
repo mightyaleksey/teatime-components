@@ -1,0 +1,26 @@
+@value size-m from '../font.css';
+
+.container
+{
+  composes: container from './radio-group.css';
+}
+
+.wrapper
+{
+  composes: wrapper from './radio-group.css';
+}
+
+.control
+{
+  composes: control from './radio-group.css';
+
+  padding: 0 13px;
+
+  font-size: size-m;
+  line-height: 28px;
+}
+
+.native
+{
+  composes: native from './radio-group.css';
+}

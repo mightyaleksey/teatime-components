@@ -1,17 +1,25 @@
 .container
 {
-  composes: container from '../check/check-m.css';
+  composes: container from './check-group.css';
+}
+
+.wrapper
+{
+  composes: wrapper from '../check/check-m.css';
 
   display: block;
 }
+
 .control
 {
   composes: control from '../check/check-m.css';
 }
+
 .native
 {
   composes: native from '../check/check-m.css';
 }
+
 .label
 {
   composes: label from '../check/check-m.css';

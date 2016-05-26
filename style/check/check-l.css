@@ -1,8 +1,8 @@
 @value size-l from '../font.css';
 
-.container
+.wrapper
 {
-  composes: container from './check.css';
+  composes: wrapper from './check.css';
 
   font-size: size-l;
   line-height: 15px;

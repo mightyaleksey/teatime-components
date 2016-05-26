@@ -4,3 +4,81 @@
 
   white-space: nowrap;
 }
+
+.wrapper
+{
+  position: relative;
+
+  display: inline;
+}
+
+.control
+{
+  display: inline-block;
+
+  margin-left: -1px;
+
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  text-decoration: none;
+
+  color: #000;
+  border: none;
+  outline: none;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #ccc;
+
+  font-family: arial,helvetica,sans-serif;
+}
+
+.control:hover
+{
+  box-shadow: inset 0 0 0 1px #b3b3b3;
+}
+
+.native
+{
+  position: absolute;
+
+  opacity: 0;
+}
+
+.native:checked + .control
+{
+  position: relative;
+
+  color: #000;
+  background: #ffeba0;
+}
+
+.native:focus + .control
+{
+  box-shadow: 0 0 0 1px #fc0,inset 0 0 0 1px #fc0;
+}
+
+.native:disabled + .control
+{
+  cursor: default;
+
+  color: #aaa;
+  background: #ebebeb;
+  box-shadow: none;
+}
+
+.native:disabled:checked + .control
+{
+  background: #d9d9d9;
+}
+
+.wrapper:first-child .control
+{
+  margin-left: 0;
+
+  border-radius: 3px 0 0 3px;
+}
+
+.wrapper:last-child .control
+{
+  border-radius: 0 3px 3px 0;
+}

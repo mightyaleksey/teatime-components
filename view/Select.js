@@ -110,7 +110,7 @@ class Select extends Component {
         {...o}
         className={className}
         onKeyDown={this.onKeyDown}
-        styleName='container'
+        styleName='wrapper'
       >
         {this.renderButton()}
         {this.renderPopup()}
@@ -120,14 +120,15 @@ class Select extends Component {
   }
 
   renderButton() {
-    const { disabled, options, buttonStyles } = this.props;
+    const { disabled, options, styles } = this.props;
     const { isOpened, selected } = this.state;
 
     return (
       <Button
+        className={styles[isOpened ? 'isOpened' : 'isClosed']}
         disabled={disabled}
         onClick={this.onClick}
-        styles={buttonStyles[isOpened ? 'buttonOpened' : 'buttonClosed']}
+        styles={styles}
       >
         {options[selected].text}
       </Button>
@@ -142,12 +143,12 @@ class Select extends Component {
     }
 
     return (
-      <div styleName='popup'>{this.renderOptions()}</div>
+      <div styleName='menu'>{this.renderOptions()}</div>
     );
   }
 
   renderOptions() {
-    const { optionStyles, options } = this.props;
+    const { options, styles } = this.props;
     const { position, selected } = this.state;
 
     return options.map(({ text, value }, i) => (
@@ -158,7 +159,7 @@ class Select extends Component {
         onClick={this.onOptionClick}
         onMouseEnter={this.onOptionMouseEnter}
         selected={selected === i}
-        styles={optionStyles}
+        styles={styles}
         value={value}
       >
         {text}
@@ -168,16 +169,13 @@ class Select extends Component {
 }
 
 Select.defaultProps = {
-  buttonStyles: {},
   onClick: noop,
   onChange: noop,
   onKeyDown: noop,
-  optionStyles: {},
   styles: {},
 };
 
 Select.propTypes = {
-  buttonStyles: PropTypes.object,
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
@@ -201,7 +199,6 @@ Select.propTypes = {
   onTouchEnd: PropTypes.func,
   onTouchMove: PropTypes.func,
   onTouchStart: PropTypes.func,
-  optionStyles: PropTypes.object,
   options: PropTypes.array,
   styles: PropTypes.object,
   value: PropTypes.string,

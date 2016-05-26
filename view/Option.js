@@ -27,6 +27,7 @@ class Option extends Component {
       onClick, // eslint-disable-line no-unused-vars
       onMouseEnter, // eslint-disable-line no-unused-vars
       selected,
+      styles,
       value,
       ...o,
     } = this.props;
@@ -34,13 +35,11 @@ class Option extends Component {
     return (
       <span
         {...o}
+        className={styles[camelcase(classnames('is', {focused, selected}))]}
         data-value={value}
         onClick={this.onClick}
         onMouseEnter={this.onMouseEnter}
-        styleName={camelcase(classnames('control', {
-          focused,
-          selected,
-        }))}
+        styleName='item'
       />
     );
   }

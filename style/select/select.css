@@ -1,18 +1,54 @@
-.container
+.wrapper
 {
   position: relative;
 
   display: inline-block;
 }
 
-.popup
+.control
 {
-  position: absolute;
+  composes: control from './arrow.css';
+}
+
+.menu
+{
+  composes: popup from '../popup/popup.css';
+
   z-index: 1;
-  top: calc(100% + 8px);
 
   min-width: 100%;
 
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.1),0 10px 20px -5px rgba(0,0,0,.4);
+}
+
+.item
+{
+  /* base */
+}
+
+/* mixins */
+
+.isClosed:after
+{
+  transform: rotate(0deg);
+}
+
+.isOpened:after
+{
+  transform: rotate(-180deg);
+}
+
+.isFocused
+{
+  background-color: #ffeba0;
+}
+
+.isSelected
+{
+  background: url(../check/tip.svg) 13px 50% no-repeat;
+}
+
+.isFocusedSelected
+{
+  background: #ffeba0 url(../check/tip.svg) 13px 50% no-repeat;
 }

@@ -1,11 +1,71 @@
-.container
+.wrapper
 {
-  composes: container from './select.css';
+  composes: wrapper from './select.css';
 }
 
-.popup
+.control
 {
-  composes: popup from './select.css';
+  composes: control from '../button/button-normal-l.css';
+  composes: control from './select.css';
 
-  padding: 5px 0;
+  position: relative;
+
+  padding-right: 39px;
+
+  text-align: left;
+}
+
+.control:after
+{
+  right: 15px;
+
+  height: 32px;
+}
+
+.menu
+{
+  composes: menu from '../menu/menu-l.css';
+  composes: menu from './select.css';
+}
+
+.item
+{
+  composes: item from '../menu/menu-l.css';
+  composes: item from './select.css';
+}
+
+/* mixins */
+
+.isClosed
+{
+  composes: isClosed from './select.css';
+}
+
+.isOpened
+{
+  composes: isOpened from './select.css';
+}
+
+.is
+{
+  background-position: 15px 50%;
+  background-size: 15px 15px;
+}
+
+.isFocused
+{
+  composes: isFocused from './select.css';
+  composes: is;
+}
+
+.isSelected
+{
+  composes: isSelected from './select.css';
+  composes: is;
+}
+
+.isFocusedSelected
+{
+  composes: isFocusedSelected from './select.css';
+  composes: is;
 }

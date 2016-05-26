@@ -1,9 +1,0 @@
-.control
-{
-  composes: control from './arrow.css';
-}
-
-.control:after
-{
-  transform: rotate(0deg);
-}

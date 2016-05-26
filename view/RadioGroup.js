@@ -40,8 +40,8 @@ class RadioGroup extends Component {
       defaultValue, // eslint-disable-line no-unused-vars
       disabled,
       name,
-      optionStyles,
       options,
+      styles,
     } = this.props;
     const { selected } = this.state;
 
@@ -52,7 +52,7 @@ class RadioGroup extends Component {
         key={`_${value}${i}`}
         name={name}
         onChange={this.onChange}
-        styles={optionStyles}
+        styles={styles}
         value={value}
       >
         {text}

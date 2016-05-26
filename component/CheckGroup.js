@@ -7,15 +7,11 @@ const simplify = require('../mixin/simplify');
 module.exports = simplify(
   CheckGroup,
   (styles, { size }) => ({
-    optionStyles: styles.optionStyles[size],
-    styles: styles.styles,
+    styles: styles[size],
   }),
   {
-    optionStyles: {
-      m: require('../style/check-group/check-option-m.css'),
-      l: require('../style/check-group/check-option-l.css'),
-    },
-    styles: require('../style/check-group/check-group.css'),
+    m: require('../style/check-group/check-group-m.css'),
+    l: require('../style/check-group/check-group-l.css'),
   },
   {
     size: 'm',

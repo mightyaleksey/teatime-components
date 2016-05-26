@@ -7,16 +7,12 @@ const simplify = require('../mixin/simplify');
 module.exports = simplify(
   RadioGroup,
   (styles, { size }) => ({
-    optionStyles: styles.optionStyles[size],
-    styles: styles.styles,
+    styles: styles[size],
   }),
   {
-    optionStyles: {
-      s: require('../style/radio-group/radio-option-s.css'),
-      m: require('../style/radio-group/radio-option-m.css'),
-      l: require('../style/radio-group/radio-option-l.css'),
-    },
-    styles: require('../style/radio-group/radio-group.css'),
+    s: require('../style/radio-group/radio-group-s.css'),
+    m: require('../style/radio-group/radio-group-m.css'),
+    l: require('../style/radio-group/radio-group-l.css'),
   },
   {
     size: 'm',

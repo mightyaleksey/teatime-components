@@ -1,0 +1,14 @@
+.menu
+{
+  /* base */
+}
+
+.item
+{
+  display: block;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  font-family: arial,helvetica,sans-serif;
+}

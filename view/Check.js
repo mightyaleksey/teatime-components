@@ -19,7 +19,7 @@ class Check extends Component {
     const { id } = this.state;
 
     return (
-      <div className={className} styleName='container'>
+      <div className={className} styleName='wrapper'>
         <input {...o} id={id} styleName='native' type='checkbox'/>
         <label htmlFor={id} styleName='control'/>
         <label htmlFor={id} styleName='label'>{children}</label>
