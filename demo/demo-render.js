@@ -12,6 +12,7 @@ module.exports = function demoRender(data, comp) {
   render(React.createElement(DemoContainer, {
     Component: comp,
     data: data.data,
+    layout: data.layout,
     title: data.name,
   }), container);
 };

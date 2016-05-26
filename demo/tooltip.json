@@ -1,0 +1,13 @@
+{
+  "name": "tooltip",
+  "path": "Tooltip",
+  "layout": "custom",
+  "data": [
+    [
+      {"children": "bottom", "direction": "bottom", "size": "m"},
+      {"children": "left", "direction": "left", "size": "m"},
+      {"children": "right", "direction": "right", "size": "m"},
+      {"children": "top", "direction": "top", "size": "m"}
+    ]
+  ]
+}

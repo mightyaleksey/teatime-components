@@ -20,3 +20,8 @@
 
   border: 7px solid transparent;
 }
+
+.control:hover
+{
+  opacity: .85;
+}

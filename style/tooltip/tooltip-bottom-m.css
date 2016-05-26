@@ -14,5 +14,5 @@
   left: calc(50% - 7px);
 
   border-width: 0 7px 7px 7px;
-  border-top-color: #ff7474;
+  border-bottom-color: #ff7474;
 }

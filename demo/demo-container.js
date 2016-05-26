@@ -5,10 +5,10 @@ const { PropTypes } = React;
 const cssModules = require('react-css-modules');
 const styles = require('./demo-container.css');
 
-function DemoContainer({ Component, data, title }) {
+function DemoContainer({ Component, data, layout = 'row', title }) {
   const content = data.map((line, i) => {
     const components = line.reduce((set, props, j) => set.concat(<Component key={`_${i}${j}`} {...props}/>, ' '), []);
-    return (<div key={`_${title}${i}`} styleName='row'>{components}</div>);
+    return (<div key={`_${title}${i}`} styleName={layout}>{components}</div>);
   });
 
   const anchor = title.toLowerCase();
