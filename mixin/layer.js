@@ -14,29 +14,20 @@ const layers = {};
 module.exports = function (Target) {
   class Layer extends Component {
     componentDidMount() {
-      const id = this._id = generateId();
-      layers[id] = {node: findDOMNode(this.refs.target), ref: this.refs.target};
-      this.updateLayers();
+      subscribeTo(this);
+      updateLayers();
     }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //   if (this.state.zIndex !== prevState.zIndex) {
+    //     return;
+    //   }
+
+    //   updateLayers();
+    // }
 
     componentWillUnmount() {
-      delete layers[this._id];
-    }
-
-    updateLayers() {
-      const rects = [];
-
-      for (var id in layers) {
-        // https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
-        const rect = layers[id].node.getBoundingClientRect();
-        rects.push({id, z: toNum(rect.top, rect.left)});
-      }
-
-      var length = rects.length;
-      rects.sort((a, b) => b.z - a.z);
-      while (length--) {
-        layers[rects[length].id].ref.onOrderChange(length + 100);
-      }
+      unsubscribeFrom(this);
     }
 
     render() {
@@ -49,11 +40,65 @@ module.exports = function (Target) {
   return Layer;
 };
 
+function updateLayers() {
+  const positions = [];
+  var target;
+
+  for (var id in layers) {
+    var layer = layers[id];
+    if (!layer) {
+      continue;
+    }
+
+    target = layer.refs.target;
+    if (!target) {
+      continue;
+    }
+
+    target = findDOMNode(target);
+    if (!target) {
+      continue;
+    }
+
+    positions.push({
+      layer,
+      position: calcPosition(target.getBoundingClientRect()),
+    });
+  }
+
+  positions.sort((a, b) => b.position - a.position);
+
+  var length = positions.length;
+  while (length--) {
+    target = positions[length].layer.refs.target;
+    if (typeof target.onLayersUpdate === 'function') {
+      target.onLayersUpdate(length + 100);
+    }
+  }
+}
+
 /**
- * @param  {number} top
- * @param  {number} left
+ * @param {reactClass} component
+ */
+function subscribeTo(component) {
+  const id = component._id = generateId();
+  layers[id] = component;
+}
+
+/**
+ * @param {reactClass} component
+ */
+function unsubscribeFrom(component) {
+  layers[component._id] = null;
+  component._id = null;
+}
+
+/**
+ * @param  {object} rect
+ * @param  {number} rect.top
+ * @param  {number} rect.left
  * @return {number}
  */
-function toNum(top, left) {
-  return Number(`${Math.round(top)}.${Math.round(left)}`);
+function calcPosition(clientRect) {
+  return clientRect.top + Number(`.${Math.round(clientRect.left)}`);
 }

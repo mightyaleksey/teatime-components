@@ -10,11 +10,11 @@ class Popup extends Component {
     super(props);
 
     this.state = {
-      zIndex: 0,
+      zIndex: 1,
     };
   }
 
-  onOrderChange(zIndex) {
+  onLayersUpdate(zIndex) {
     this.setState({zIndex});
   }
 
