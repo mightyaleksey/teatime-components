@@ -1,7 +1,6 @@
 'use strict';
 
 const { Component } = require('react');
-const { createTag } = require('../');
 const { findDOMNode } = require('react-dom');
 const { generateId } = require('../tools/identity');
 const React = require('react');
