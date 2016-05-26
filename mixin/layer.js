@@ -4,6 +4,7 @@ const { Component } = require('react');
 const { createTag } = require('../');
 const { findDOMNode } = require('react-dom');
 const { generateId } = require('../tools/identity');
+const React = require('react');
 
 const layers = {};
 
@@ -12,8 +13,6 @@ const layers = {};
  * @return {component}
  */
 module.exports = function (Target) {
-  const target = createTag(Target);
-
   class Layer extends Component {
     componentDidMount() {
       const id = this._id = generateId();
@@ -42,7 +41,9 @@ module.exports = function (Target) {
     }
 
     render() {
-      return target({ref: 'target', ...this.props});
+      return (
+        <Target ref='target' {...this.props}/>
+      );
     }
   }
 

@@ -2,6 +2,7 @@
 
 const Button = require('./Button');
 const Option = require('./Option');
+const Popup = require('./Popup');
 const React = require('react');
 const { Component, PropTypes } = React;
 const {
@@ -136,6 +137,7 @@ class Select extends Component {
   }
 
   renderPopup() {
+    const { styles } = this.props;
     const { isOpened } = this.state;
 
     if (!isOpened) {
@@ -143,7 +145,9 @@ class Select extends Component {
     }
 
     return (
-      <div styleName='menu'>{this.renderOptions()}</div>
+      <Popup styleName='menu' styles={styles}>
+        {this.renderOptions()}
+      </Popup>
     );
   }
 
