@@ -6,7 +6,7 @@
     "cleanup": "git reset --hard",
     "compile": "babel component --out-dir component && babel mixin --out-dir mixin && babel tools --out-dir tools && babel view --out-dir view",
     "demo": "webpack --config demo/webpack.config.js",
-    "lint": "eslint component/*.js demo/*.js view/*.js *.js",
+    "lint": "eslint component/*.js demo/*.js mixin/*.js view/*.js *.js",
     "prepublish": "in-publish && npm run -s compile || in-install",
     "publish": "in-publish && npm run -s cleanup || in-install",
     "start": "webpack-dev-server --config demo/webpack.config.js --no-info"
