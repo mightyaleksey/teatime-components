@@ -2,17 +2,29 @@
 
 const React = require('react');
 const { Component, PropTypes } = React;
+const { bind, noop } = require('../tools/func');
 const cssModules = require('react-css-modules');
 
 class Input extends Component {
+  constructor(props) {
+    super(props);
+
+    bind(this, 'onChange');
+  }
+
+  onChange(e) {
+    this.props.onChange(e, {value: e.target.value});
+  }
+
   render() {
     return (
-      <input {...this.props} styleName='control' type='text'/>
+      <input {...this.props} onChange={this.onChange} styleName='control' type='text'/>
     );
   }
 }
 
 Input.defaultProps = {
+  onChange: noop,
   styles: {},
 };
 
