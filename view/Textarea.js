@@ -2,17 +2,29 @@
 
 const React = require('react');
 const { Component, PropTypes } = React;
+const { bind, noop } = require('../tools/func');
 const cssModules = require('react-css-modules');
 
 class Textarea extends Component {
+  constructor(props) {
+    super(props);
+
+    bind(this, 'onChange');
+  }
+
+  onChange(e) {
+    this.props.onChange(e, {value: e.target.value});
+  }
+
   render() {
     return (
-      <textarea {...this.props} styleName='control'/>
+      <textarea {...this.props} onChange={this.onChange} styleName='control'/>
     );
   }
 }
 
 Textarea.defaultProps = {
+  onChange: noop,
   rows: 3,
   styles: {},
 };
