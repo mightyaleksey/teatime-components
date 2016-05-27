@@ -2,6 +2,7 @@
 
 const React = require('react');
 const { Component, PropTypes } = React;
+const { bind, noop } = require('../tools/func');
 const { generateId } = require('../tools/identity');
 const cssModules = require('react-css-modules');
 
@@ -12,6 +13,13 @@ class Check extends Component {
     this.state = {
       id: this.props.id || generateId(),
     };
+
+    bind(this, 'onChange');
+  }
+
+  onChange(e) {
+    const { checked, value } = e.target;
+    this.props.onChange(e, {checked, value});
   }
 
   render() {
@@ -20,7 +28,7 @@ class Check extends Component {
 
     return (
       <div className={className} styleName='wrapper'>
-        <input {...o} id={id} styleName='native' type='checkbox'/>
+        <input {...o} id={id} styleName='native' onChange={this.onChange} type='checkbox'/>
         <label htmlFor={id} styleName='control'/>
         <label htmlFor={id} styleName='label'>{children}</label>
       </div>
@@ -29,6 +37,7 @@ class Check extends Component {
 }
 
 Check.defaultProps = {
+  onChange: noop,
   styles: {},
 };
 
