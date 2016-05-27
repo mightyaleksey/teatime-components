@@ -28,9 +28,9 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "lodash.camelcase": "^4.1.1",
-    "react": "^15.0.2",
+    "react": "15.0.2",
     "react-css-modules": "^3.7.6",
-    "react-dom": "^15.0.2",
+    "react-dom": "15.0.2",
     "react-outside-event": "^1.2.4"
   },
   "devDependencies": {
