@@ -3,16 +3,16 @@
   "path": "Input",
   "data": [
     [
+      {"defaultValue": "input", "name": "input-size-xs", "placeholder": "size xs", "size": "xs"},
+      {"defaultValue": "input", "disabled": true, "name": "input-size-xs", "placeholder": "size xs", "size": "xs"}
+    ],
+    [
       {"defaultValue": "input", "name": "input-size-s", "placeholder": "size s", "size": "s"},
       {"defaultValue": "input", "disabled": true, "name": "input-size-s", "placeholder": "size s", "size": "s"}
     ],
     [
       {"defaultValue": "input", "name": "input-size-m", "placeholder": "size m", "size": "m"},
       {"defaultValue": "input", "disabled": true, "name": "input-size-m", "placeholder": "size m", "size": "m"}
-    ],
-    [
-      {"defaultValue": "input", "name": "input-size-l", "placeholder": "size l", "size": "l"},
-      {"defaultValue": "input", "disabled": true, "name": "input-size-l", "placeholder": "size l", "size": "l"}
     ]
   ]
 }

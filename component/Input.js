@@ -8,18 +8,18 @@ module.exports = simplify(
   Input,
   (styles, { size }) => ({styles: styles[size]}),
   {
+    'xs': require('../style/input/input-xs.css'),
     's': require('../style/input/input-s.css'),
     'm': require('../style/input/input-m.css'),
-    'l': require('../style/input/input-l.css'),
   },
   {
     size: 'm',
   },
   {
     size: PropTypes.oneOf([
+      'xs',
       's',
       'm',
-      'l',
     ]),
   }
 );

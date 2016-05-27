@@ -4,9 +4,8 @@
 {
   composes: control from './input.css';
 
-  height: 24px;
-  padding: 0 6px;
+  height: 28px;
+  padding: 0 8px;
 
   font-size: size-s;
-  line-height: 16px;
 }
