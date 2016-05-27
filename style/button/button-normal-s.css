@@ -4,8 +4,8 @@
 {
   composes: control from './button-normal.css';
 
-  padding: 0 10px;
+  padding: 0 13px;
 
   font-size: size-s;
-  line-height: 22px;
+  line-height: 28px;
 }

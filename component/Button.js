@@ -8,14 +8,14 @@ module.exports = simplify(
   Button,
   (styles, { size, theme }) => ({styles: styles[`${theme}-${size}`]}),
   {
+    'action-xs': require('../style/button/button-action-xs.css'),
     'action-s': require('../style/button/button-action-s.css'),
     'action-m': require('../style/button/button-action-m.css'),
     'action-l': require('../style/button/button-action-l.css'),
-    'action-xl': require('../style/button/button-action-xl.css'),
+    'normal-xs': require('../style/button/button-normal-xs.css'),
     'normal-s': require('../style/button/button-normal-s.css'),
     'normal-m': require('../style/button/button-normal-m.css'),
     'normal-l': require('../style/button/button-normal-l.css'),
-    'normal-xl': require('../style/button/button-normal-xl.css'),
   },
   {
     size: 'm',
@@ -23,10 +23,10 @@ module.exports = simplify(
   },
   {
     size: PropTypes.oneOf([
+      'xs',
       's',
       'm',
       'l',
-      'xl',
     ]),
     theme: PropTypes.oneOf([
       'action',

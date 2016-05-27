@@ -1,0 +1,11 @@
+@value size-xs from '../font.css';
+
+.control
+{
+  composes: control from './button-normal.css';
+
+  padding: 0 10px;
+
+  font-size: size-xs;
+  line-height: 24px;
+}
