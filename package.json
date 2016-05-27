@@ -1,6 +1,6 @@
 {
   "name": "teatime-components",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "React components + CSS Modules",
   "scripts": {
     "cleanup": "git reset --hard",
