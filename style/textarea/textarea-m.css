@@ -4,8 +4,7 @@
 {
   composes: control from '../input/input.css';
 
-  padding: 3px 5px;
+  padding: 6px 8px;
 
   font-size: size-m;
-  line-height: 17px;
 }

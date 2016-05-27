@@ -32,7 +32,7 @@
 {
   cursor: default;
 
-  color: #aaa;
+  color: rgba(0,0,0,.5);
   background: #ebebeb;
   box-shadow: none;
 }

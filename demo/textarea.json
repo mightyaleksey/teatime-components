@@ -3,12 +3,12 @@
   "path": "Textarea",
   "data": [
     [
-      {"defaultValue": "textarea", "name": "textarea-size-m", "placeholder": "size m", "size": "m"},
-      {"defaultValue": "textarea", "disabled": true, "name": "textarea-size-m", "placeholder": "size m", "size": "m"}
+      {"defaultValue": "textarea", "name": "textarea-size-s", "placeholder": "size s", "size": "s"},
+      {"defaultValue": "textarea", "disabled": true, "name": "textarea-size-s", "placeholder": "size s", "size": "s"}
     ],
     [
-      {"defaultValue": "textarea", "name": "textarea-size-l", "placeholder": "size l", "size": "l"},
-      {"defaultValue": "textarea", "disabled": true, "name": "textarea-size-l", "placeholder": "size l", "size": "l"}
+      {"defaultValue": "textarea", "name": "textarea-size-m", "placeholder": "size m", "size": "m"},
+      {"defaultValue": "textarea", "disabled": true, "name": "textarea-size-m", "placeholder": "size m", "size": "m"}
     ]
   ]
 }

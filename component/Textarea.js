@@ -8,16 +8,16 @@ module.exports = simplify(
   Textarea,
   (styles, { size }) => ({styles: styles[size]}),
   {
+    s: require('../style/textarea/textarea-s.css'),
     m: require('../style/textarea/textarea-m.css'),
-    l: require('../style/textarea/textarea-l.css'),
   },
   {
     size: 'm',
   },
   {
     size: PropTypes.oneOf([
+      's',
       'm',
-      'l',
     ]),
   }
 );
