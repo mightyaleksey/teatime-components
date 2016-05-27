@@ -1,4 +1,4 @@
-@value size-l from '../font.css';
+@value size-s from '../font.css';
 
 .control
 {
@@ -6,5 +6,5 @@
 
   padding: 4px 6px;
 
-  font-size: size-l;
+  font-size: size-s;
 }
