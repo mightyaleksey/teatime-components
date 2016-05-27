@@ -12,7 +12,7 @@
           {"text": "Vespa", "value": "vespa"},
           {"text": "MZ", "value": "mz"}
         ],
-        "size": "s"
+        "size": "xs"
       }
     ],
     [
@@ -26,13 +26,40 @@
           {"text": "Vespa", "value": "vespa"},
           {"text": "MZ", "value": "mz"}
         ],
+        "size": "xs"
+      }
+    ],
+    [
+      {
+        "name": "motorrad-3",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "s"
+      }
+    ],
+    [
+      {
+        "disabled": true,
+        "name": "motorrad-4",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
         "size": "s"
       }
     ],
     [
       {
         "defaultValue": "suzuki",
-        "name": "motorrad-3",
+        "name": "motorrad-5",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
@@ -47,7 +74,7 @@
       {
         "defaultValue": "suzuki",
         "disabled": true,
-        "name": "motorrad-4",
+        "name": "motorrad-6",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
@@ -60,7 +87,7 @@
     ],
     [
       {
-        "name": "motorrad-5",
+        "name": "motorrad-7",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
@@ -74,7 +101,7 @@
     [
       {
         "disabled": true,
-        "name": "motorrad-6",
+        "name": "motorrad-8",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},

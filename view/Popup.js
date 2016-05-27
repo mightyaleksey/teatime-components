@@ -10,7 +10,7 @@ class Popup extends Component {
     super(props);
 
     this.state = {
-      zIndex: 1,
+      zIndex: 100,
     };
   }
 

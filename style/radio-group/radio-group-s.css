@@ -14,10 +14,10 @@
 {
   composes: control from './radio-group.css';
 
-  padding: 0 10px;
+  padding: 0 13px;
 
   font-size: size-s;
-  line-height: 22px;
+  line-height: 28px;
 }
 
 .native

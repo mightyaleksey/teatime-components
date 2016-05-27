@@ -1,4 +1,4 @@
-@value size-l from '../font.css';
+@value size-xs from '../font.css';
 
 .container
 {
@@ -14,10 +14,10 @@
 {
   composes: control from './radio-group.css';
 
-  padding: 0 18px;
+  padding: 0 10px;
 
-  font-size: size-l;
-  line-height: 38px;
+  font-size: size-xs;
+  line-height: 24px;
 }
 
 .native
