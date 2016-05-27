@@ -7,7 +7,7 @@ const test = require('tape');
 
 const styles = {control: 'control'};
 
-test('className mixin', t => {
+test('className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<Input
     className='mixin'
     name='motorrad'

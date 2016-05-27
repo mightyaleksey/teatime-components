@@ -12,7 +12,7 @@ const styles = {
   wrapper: 'wrapper',
 };
 
-test('className mixin', t => {
+test('className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<Check
     className='mixin'
     name='motorrad'
