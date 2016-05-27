@@ -18,13 +18,9 @@ module.exports = function (Target) {
       updateLayers();
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //   if (this.state.zIndex !== prevState.zIndex) {
-    //     return;
-    //   }
-
-    //   updateLayers();
-    // }
+    componentDidUpdate() {
+      updateLayers();
+    }
 
     componentWillUnmount() {
       unsubscribeFrom(this);
