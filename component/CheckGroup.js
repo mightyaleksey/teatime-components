@@ -10,16 +10,16 @@ module.exports = simplify(
     styles: styles[size],
   }),
   {
+    s: require('../style/check-group/check-group-s.css'),
     m: require('../style/check-group/check-group-m.css'),
-    l: require('../style/check-group/check-group-l.css'),
   },
   {
     size: 'm',
   },
   {
     size: PropTypes.oneOf([
+      's',
       'm',
-      'l',
     ]),
   }
 );

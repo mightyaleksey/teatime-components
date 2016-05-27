@@ -12,7 +12,7 @@
           {"text": "Vespa", "value": "vespa"},
           {"text": "MZ", "value": "mz"}
         ],
-        "size": "m"
+        "size": "s"
       },
       {
         "disabled": true,
@@ -24,7 +24,7 @@
           {"text": "Vespa", "value": "vespa"},
           {"text": "MZ", "value": "mz"}
         ],
-        "size": "m"
+        "size": "s"
       }
     ],
     [
@@ -37,7 +37,7 @@
           {"text": "Vespa", "value": "vespa"},
           {"text": "MZ", "value": "mz"}
         ],
-        "size": "l"
+        "size": "m"
       },
       {
         "disabled": true,
@@ -49,7 +49,7 @@
           {"text": "Vespa", "value": "vespa"},
           {"text": "MZ", "value": "mz"}
         ],
-        "size": "l"
+        "size": "m"
       }
     ]
   ]

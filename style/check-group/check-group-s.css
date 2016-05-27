@@ -1,0 +1,28 @@
+.container
+{
+  composes: container from './check-group.css';
+}
+
+.wrapper
+{
+  composes: wrapper from '../check/check-s.css';
+
+  display: block;
+
+  margin: 0 0 13px;
+}
+
+.control
+{
+  composes: control from '../check/check-s.css';
+}
+
+.native
+{
+  composes: native from '../check/check-s.css';
+}
+
+.label
+{
+  composes: label from '../check/check-s.css';
+}

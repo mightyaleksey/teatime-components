@@ -8,6 +8,8 @@
   composes: wrapper from '../check/check-m.css';
 
   display: block;
+
+  margin: 0 0 15px;
 }
 
 .control
