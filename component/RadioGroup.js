@@ -16,7 +16,7 @@ module.exports = simplify(
     l: require('../style/radio-group/radio-group-l.css'),
   },
   {
-    size: 'm',
+    size: 's',
   },
   {
     size: PropTypes.oneOf([

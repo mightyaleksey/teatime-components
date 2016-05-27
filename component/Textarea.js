@@ -12,7 +12,7 @@ module.exports = simplify(
     m: require('../style/textarea/textarea-m.css'),
   },
   {
-    size: 'm',
+    size: 's',
   },
   {
     size: PropTypes.oneOf([

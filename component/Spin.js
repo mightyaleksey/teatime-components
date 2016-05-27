@@ -15,7 +15,7 @@ module.exports = simplify(
     xl: require('../style/spin/spin-xl.css'),
   },
   {
-    size: 'm',
+    size: 's',
   },
   {
     size: PropTypes.oneOf([

@@ -12,7 +12,7 @@ module.exports = simplify(
     m: require('../style/check/check-m.css'),
   },
   {
-    size: 'm',
+    size: 's',
   },
   {
     size: PropTypes.oneOf([

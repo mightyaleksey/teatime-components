@@ -18,7 +18,7 @@ module.exports = simplify(
     'normal-l': require('../style/button/button-normal-l.css'),
   },
   {
-    size: 'm',
+    size: 's',
     theme: 'normal',
   },
   {

@@ -13,7 +13,7 @@ module.exports = simplify(
     'm': require('../style/input/input-m.css'),
   },
   {
-    size: 'm',
+    size: 's',
   },
   {
     size: PropTypes.oneOf([

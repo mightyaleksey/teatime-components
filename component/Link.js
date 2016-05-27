@@ -13,7 +13,7 @@ module.exports = simplify(
     'l': require('../style/link/link-l.css'),
   },
   {
-    size: 'm',
+    size: 's',
   },
   {
     size: PropTypes.oneOf([
