@@ -12,7 +12,6 @@ module.exports = simplify(
   {
     s: require('../style/select/select-s.css'),
     m: require('../style/select/select-m.css'),
-    l: require('../style/select/select-l.css'),
   },
   {
     size: 'm',
@@ -21,7 +20,6 @@ module.exports = simplify(
     size: PropTypes.oneOf([
       's',
       'm',
-      'l',
     ]),
   }
 );

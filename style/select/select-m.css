@@ -10,16 +10,14 @@
 
   position: relative;
 
-  padding-right: 35px;
+  padding-right: 29px;
 
   text-align: left;
 }
 
 .control:after
 {
-  right: 13px;
-
-  height: 28px;
+  right: 12px;
 }
 
 .menu
@@ -62,10 +60,16 @@
 {
   composes: isSelected from './select.css';
   composes: is;
+
+  background: url(../check/tick-m.svg) 15px 50% no-repeat;
+  background-size: 15px;
 }
 
 .isFocusedSelected
 {
   composes: isFocusedSelected from './select.css';
   composes: is;
+
+  background: #ffeba0 url(../check/tick-m.svg) 15px 50% no-repeat;
+  background-size: 15px;
 }

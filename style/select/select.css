@@ -45,10 +45,10 @@
 
 .isSelected
 {
-  background: url(../check/tip.svg) 13px 50% no-repeat;
+  /* base */
 }
 
 .isFocusedSelected
 {
-  background: #ffeba0 url(../check/tip.svg) 13px 50% no-repeat;
+  /* base */
 }

@@ -52,31 +52,6 @@
         ],
         "size": "m"
       }
-    ],
-    [
-      {
-        "name": "motorrad-5",
-        "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
-        ],
-        "size": "l"
-      },
-      {
-        "disabled": true,
-        "name": "motorrad-6",
-        "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
-        ],
-        "size": "l"
-      }
     ]
   ]
 }

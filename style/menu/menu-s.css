@@ -1,17 +1,18 @@
+@value size-s from '../font.css';
+
 .menu
 {
   composes: menu from './menu.css';
 
-  padding: 3px 0;
+  padding: 4px 0;
 }
 
 .item
 {
   composes: item from './menu.css';
 
-  height: 24px;
-  padding: 0 13px 0 30px;
+  padding: 0 15px 0 30px;
 
-  font-size: 13px;
-  line-height: 25px;
+  font-size: size-s;
+  line-height: 24px;
 }
