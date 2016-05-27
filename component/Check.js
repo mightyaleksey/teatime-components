@@ -8,16 +8,16 @@ module.exports = simplify(
   Check,
   (styles, { size }) => ({styles: styles[size]}),
   {
+    s: require('../style/check/check-s.css'),
     m: require('../style/check/check-m.css'),
-    l: require('../style/check/check-l.css'),
   },
   {
     size: 'm',
   },
   {
     size: PropTypes.oneOf([
+      's',
       'm',
-      'l',
     ]),
   }
 );

@@ -4,7 +4,10 @@
 
   display: inline-block;
 
-  font-family: arial,helvetica,sans-serif;
+  color: #000;
+
+  font-family: arial,sans-serif;
+  line-height: normal;
 }
 
 .control
@@ -15,7 +18,7 @@
 
   cursor: pointer;
   user-select: none;
-  transition: background .1s ease-out 0s;
+  transition: background .1s ease-out,box-shadow .1s ease-out;
 
   border: none;
   border-radius: 3px;
@@ -29,28 +32,37 @@
   box-shadow: inset 0 0 0 1px #b3b3b3;
 }
 
+.control:before
+{
+  visibility: hidden;
+
+  content: '\00A0';
+}
+
 .control:after
 {
   position: absolute;
-  top: -10px;
+  top: -11px;
   left: 2px;
 
   display: block;
   visibility: hidden;
 
   content: '';
-  transition: top .05s ease-out,opacity .05s ease-out,visibility 0s linear .05s;
+  transition: top .05s,opacity .05s,visibility 0s .05s;
 
   opacity: 0;
-  background: url(./tip.svg) 0 0 no-repeat;
-  background-size: 100%;
 }
 
 .native
 {
   position: absolute;
 
+  margin: 0;
+
   opacity: 0;
+  border: 0;
+  outline: 0;
 }
 
 .native:checked + .control
@@ -70,7 +82,7 @@
 
 .native:focus + .control
 {
-  box-shadow: 0 0 0 1px #fc0,inset 0 0 0 1px #fc0;
+  box-shadow: inset 0 0 0 2px #ffdb4d;
 }
 
 .native:disabled + .control
@@ -81,12 +93,8 @@
   box-shadow: none;
 }
 
-.native:disabled + .control:after
-{
-  opacity: .4;
-}
-
+.native:disabled + .control:after,
 .native:disabled ~ .label
 {
-  color: #999;
+  opacity: .5;
 }

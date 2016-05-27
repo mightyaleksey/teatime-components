@@ -1,39 +1,39 @@
-@value size-l from '../font.css';
+@value size-s from '../font.css';
 
 .wrapper
 {
   composes: wrapper from './check.css';
 
-  font-size: size-l;
-  line-height: 15px;
+  font-size: size-s;
 }
 
 .control
 {
   composes: control from './check.css';
 
-  top: 3px;
-
-  width: 17px;
-  height: 17px;
-
-  line-height: 17px;
+  width: 14px;
+  height: 14px;
 }
 
 .control:after
 {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
+
+  background: url(./tick-s.svg) 0 0 no-repeat;
 }
 
 .native
 {
   composes: native from './check.css';
+
+  width: 14px;
+  height: 14px;
 }
 
 .label
 {
   composes: label from './check.css';
 
-  margin-left: 7px;
+  margin: 0 0 0 5px;
 }
