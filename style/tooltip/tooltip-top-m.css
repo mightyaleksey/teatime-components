@@ -16,3 +16,8 @@
   border-width: 7px 7px 0 7px;
   border-top-color: #ff7474;
 }
+
+.control:hover:after
+{
+  border-top-color: #ff8989;
+}

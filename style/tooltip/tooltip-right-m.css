@@ -16,3 +16,8 @@
   border-width: 7px 7px 7px 0;
   border-right-color: #ff7474;
 }
+
+.control:hover:after
+{
+  border-right-color: #ff8989;
+}
