@@ -2,15 +2,14 @@
 
 const Button = require('../../view/Button');
 const React = require('react');
-const { createRenderer } = require('react-addons-test-utils');
+const { shallowRender } = require('skin-deep');
 const test = require('tape');
 
 const styles = {control: 'control'};
 
 test('className mixin', t => {
-  const shallowRenderer = createRenderer();
-  shallowRenderer.render(<Button className='mixin' styles={styles}/>);
-  const result = shallowRenderer.getRenderOutput();
+  const tree = shallowRender(<Button className='mixin' styles={styles}/>);
+  const result = tree.getRenderOutput();
 
   t.isEqual(result.props.className, 'mixin control');
   t.end();
