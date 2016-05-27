@@ -30,7 +30,7 @@ class CheckGroup extends Component {
       : selected.filter(stored => stored !== value);
 
     this.setState({selected: newState});
-    this.props.onChange(e, newState);
+    this.props.onChange(e, {value: newState});
   }
 
   render() {
