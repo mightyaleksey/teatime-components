@@ -5,8 +5,7 @@
     [
       {"children": "link", "href": "#", "size": "s"},
       {"children": "link", "href": "#", "size": "m"},
-      {"children": "link", "href": "#", "size": "l"},
-      {"children": "link", "href": "#", "size": "xl"}
+      {"children": "link", "href": "#", "size": "l"}
     ]
   ]
 }

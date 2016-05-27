@@ -11,7 +11,6 @@ module.exports = simplify(
     's': require('../style/link/link-s.css'),
     'm': require('../style/link/link-m.css'),
     'l': require('../style/link/link-l.css'),
-    'xl': require('../style/link/link-xl.css'),
   },
   {
     size: 'm',
@@ -21,7 +20,6 @@ module.exports = simplify(
       's',
       'm',
       'l',
-      'xl',
     ]),
   }
 );

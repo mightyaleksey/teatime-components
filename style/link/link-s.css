@@ -5,5 +5,4 @@
   composes: control from './link.css';
 
   font-size: size-s;
-  line-height: 15px;
 }
