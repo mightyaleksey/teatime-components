@@ -27,7 +27,6 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.5",
-    "hyperscript-helpers": "^2.1.1",
     "lodash.camelcase": "^4.1.1",
     "react": "^15.0.2",
     "react-css-modules": "^3.7.6",
