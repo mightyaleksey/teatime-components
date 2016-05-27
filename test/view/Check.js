@@ -13,7 +13,12 @@ const styles = {
 };
 
 test('className mixin', t => {
-  const tree = shallowRender(<Check className='mixin' name='motorrad' styles={styles} value='kawasaki'/>);
+  const tree = shallowRender(<Check
+    className='mixin'
+    name='motorrad'
+    styles={styles}
+    value='kawasaki'/>);
+
   const result = tree.getRenderOutput();
 
   t.isEqual(result.props.className, 'mixin wrapper');
