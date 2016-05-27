@@ -24,7 +24,7 @@ class RadioGroup extends Component {
     }
 
     this.setState({selected: e.target.value});
-    this.props.onChange(e);
+    this.props.onChange(e, {value: e.target.value});
   }
 
   render() {
