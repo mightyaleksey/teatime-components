@@ -71,7 +71,7 @@ class Select extends Component {
         selected: position,
         value: this.props.options[position].value,
       });
-      return this.props.onChange(e, this.props.options[position].value);
+      return this.props.onChange(e, {value: this.props.options[position].value});
     case 27: // esc
       return this.setState({isOpened: false, position: selected});
     case 38: // up
@@ -91,7 +91,7 @@ class Select extends Component {
       value: this.props.options[i].value,
     });
 
-    this.props.onChange(e, this.props.options[i].value);
+    this.props.onChange(e, {value: this.props.options[i].value});
   }
 
   onOptionMouseEnter(e, i) {
