@@ -1,0 +1,59 @@
+.wrapper
+{
+  composes: wrapper from './color-picker.css';
+
+  width: 145px;
+  padding: 0 0 0 28px;
+}
+
+.preview
+{
+  composes: preview from './color-picker.css';
+
+  width: 28px;
+  height: 28px;
+  margin: 0 -1px 0 -28px;
+
+  line-height: 28px;
+}
+
+.preview:disabled
+{
+  background: linear-gradient(-45deg,#fff 19px,#ccc 19px, #ccc 20px,#fff 20px) !important;
+}
+
+.control
+{
+  composes: control from '../input/input-s.css';
+  composes: control from './color-picker.css';
+}
+
+.menu
+{
+  composes: menu from './color-picker.css';
+}
+
+.line
+{
+  composes: line from './color-picker.css';
+}
+
+.item
+{
+  composes: item from './color-picker.css';
+
+  width: 17px;
+  height: 17px;
+}
+
+/* mixin */
+
+.isClosed
+{
+  composes: isClosed from './color-picker.css';
+}
+
+.isOpened
+{
+  composes: isOpened from './color-picker.css';
+}

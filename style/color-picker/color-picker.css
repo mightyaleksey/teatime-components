@@ -1,0 +1,111 @@
+.wrapper
+{
+  position: relative;
+
+  display: inline-block;
+
+  box-sizing: border-box;
+  width: 166px;
+}
+
+.preview
+{
+  position: relative;
+  z-index: 0;
+
+  display: inline-block;
+
+  cursor: pointer;
+  vertical-align: top;
+
+  border: none;
+  outline: none;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #ccc;
+}
+
+.preview:hover
+{
+  z-index: 1;
+
+  box-shadow: inset 0 0 0 1px #b3b3b3;
+}
+
+.preview:focus
+{
+  z-index: 1;
+
+  box-shadow: inset 0 0 0 2px #fc0;
+}
+
+.preview:disabled
+{
+  z-index: 1;
+
+  cursor: default;
+
+  box-shadow: inset 0 0 0 1px #ccc;
+}
+
+.preview:active
+{
+  background: #f6f5f3;
+}
+
+.control
+{
+  position: relative;
+  z-index: 0;
+
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.control:focus
+{
+  z-index: 1;
+}
+
+.menu
+{
+  composes: popup from '../popup/popup.css';
+
+  z-index: 1;
+
+  padding: 0 0 1px;
+
+  background: #fff;
+}
+
+.line
+{
+  margin: 0 1px 0 0;
+
+  white-space: nowrap;
+
+  line-height: 0;
+}
+
+.item
+{
+  display: inline-block;
+
+  margin: 1px 0 0 1px;
+}
+
+.item:hover
+{
+  box-shadow: 0 0 0 1px #ccc;
+}
+
+/* mixin */
+
+.isClosed
+{
+  display: none;
+}
+
+.isOpened
+{
+  display: block;
+}

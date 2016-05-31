@@ -1,0 +1,14 @@
+{
+  "name": "colorPicker",
+  "path": "ColorPicker",
+  "data": [
+    [
+      {"name": "blue water", "size": "s", "theme": "action"},
+      {"disabled": true, "name": "blue water", "size": "s", "theme": "action"}
+    ],
+    [
+      {"name": "blue water", "size": "m", "theme": "action"},
+      {"disabled": true, "name": "blue water", "size": "m", "theme": "action"}
+    ]
+  ]
+}
