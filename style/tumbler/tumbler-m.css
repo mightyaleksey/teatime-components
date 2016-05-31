@@ -1,0 +1,52 @@
+@value size-m from '../font.css';
+
+.wrapper
+{
+  composes: wrapper from './tumbler.css';
+
+  width: 82px;
+  height: 32px;
+
+  font-size: size-m;
+}
+
+.control
+{
+  composes: control from './tumbler.css';
+}
+
+.label
+{
+  composes: label from './tumbler.css';
+
+  width: 82px;
+  padding: 0 0 0 32px;
+
+  line-height: 32px;
+}
+
+.label:first-child
+{
+  margin: 0 -32px 0 0;
+  padding: 0 32px 0 0;
+}
+
+.delimiter
+{
+  composes: delimiter from './tumbler.css';
+
+  width: 32px;
+  margin: 0 0 0 -82px;
+
+  line-height: 32px;
+}
+
+.native
+{
+  composes: native from './tumbler.css';
+}
+
+.native:checked + .control
+{
+  margin-left: -50px;
+}

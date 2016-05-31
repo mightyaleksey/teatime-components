@@ -1,0 +1,18 @@
+{
+  "name": "tumbler",
+  "path": "Tumbler",
+  "data": [
+    [
+      {"name": "size-xs", "size": "xs", "value": "size-xs"},
+      {"disabled": true, "name": "size-xs", "size": "xs", "value": "size-xs"}
+    ],
+    [
+      {"name": "size-s", "size": "s", "value": "size-s"},
+      {"defaultChecked": true, "disabled": true, "name": "size-s", "size": "s", "value": "size-s"}
+    ],
+    [
+      {"name": "size-m", "size": "m", "value": "size-m"},
+      {"disabled": true, "name": "size-m", "size": "m", "value": "size-m"}
+    ]
+  ]
+}
