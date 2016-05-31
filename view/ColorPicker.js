@@ -95,19 +95,21 @@ class ColorPicker extends Component {
     const { palette, styles } = this.props;
     const { isOpened } = this.state;
 
-    const tiles = palette.map((row, y) => (
-      <div key={y} styleName='line'>
-        {
-          row.map((tile, x) => (
-            <Tile
-              color={`#${tile}`}
-              key={`_${x}${y}${tile}`}
-              onClick={this.onTileClick}
-              styles={styles}/>
-          ))
-        }
-      </div>
-    ));
+    const tiles = isOpened
+      ? palette.map((row, y) => (
+        <div key={y} styleName='line'>
+          {
+            row.map((tile, x) => (
+              <Tile
+                color={`#${tile}`}
+                key={`_${x}${y}${tile}`}
+                onClick={this.onTileClick}
+                styles={styles}/>
+            ))
+          }
+        </div>
+      ))
+      : null;
 
     return (
       <Popup className={styles[isOpened ? 'isOpened' : 'isClosed']} styleName='menu'>
