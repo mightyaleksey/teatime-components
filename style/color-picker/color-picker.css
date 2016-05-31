@@ -91,6 +91,8 @@
   display: inline-block;
 
   margin: 1px 0 0 1px;
+
+  cursor: pointer;
 }
 
 .item:hover
