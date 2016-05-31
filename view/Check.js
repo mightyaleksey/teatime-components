@@ -17,6 +17,10 @@ class Check extends Component {
     bind(this, 'onChange');
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({id: nextProps.id});
+  }
+
   onChange(e) {
     const { checked, value } = e.target;
     this.props.onChange(e, {checked, value});
@@ -25,6 +29,15 @@ class Check extends Component {
   render() {
     const { children, className, ...o } = this.props;
     const { id } = this.state;
+
+    /**
+     * Still there is an issue about controlled and uncontrolled components,
+     * related to the input[type="checkbox"] and input[type="radio"].
+     * It results in the way controlled components are determined.
+     *
+     * @see https://github.com/facebook/react/blob/v15.1.0/src/renderers/dom/client/wrappers/ReactDOMInput.js#L171
+     * @see https://github.com/facebook/react/issues/6779
+     */
 
     return (
       <div className={className} styleName='wrapper'>

@@ -17,6 +17,10 @@ class Tumbler extends Component {
     bind(this, 'onChange');
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({id: nextProps.id});
+  }
+
   onChange(e) {
     const { checked, value } = e.target;
     this.props.onChange(e, {checked, value});
