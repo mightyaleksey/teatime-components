@@ -2,29 +2,29 @@
 {
   composes: wrapper from './color-picker.css';
 
-  width: 173px;
-  padding: 0 0 0 32px;
+  width: 152px;
+  padding: 0 0 0 24px;
 }
 
 .preview
 {
   composes: preview from './color-picker.css';
 
-  width: 32px;
-  height: 32px;
-  margin: 0 -1px 0 -32px;
+  width: 24px;
+  height: 24px;
+  margin: 0 -1px 0 -24px;
 
-  line-height: 32px;
+  line-height: 24px;
 }
 
 .preview:disabled
 {
-  background: linear-gradient(-45deg,#fff 22px,#ccc 22px, #ccc 23px,#fff 23px) !important;
+  background: linear-gradient(-45deg,#fff 16px,#ccc 16px, #ccc 17px,#fff 17px) !important;
 }
 
 .control
 {
-  composes: control from '../input/input-m.css';
+  composes: control from '../input/input-xs.css';
   composes: control from './color-picker.css';
 }
 
@@ -42,8 +42,8 @@
 {
   composes: item from './color-picker.css';
 
-  width: 19px;
-  height: 19px;
+  width: 14px;
+  height: 14px;
 }
 
 /* mixin */

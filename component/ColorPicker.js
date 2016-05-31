@@ -8,6 +8,7 @@ module.exports = simplify(
   ColorPicker,
   (styles, { size }) => ({styles: styles[size]}),
   {
+    xs: require('../style/color-picker/color-picker-xs.css'),
     s: require('../style/color-picker/color-picker-s.css'),
     m: require('../style/color-picker/color-picker-m.css'),
   },
@@ -16,6 +17,7 @@ module.exports = simplify(
   },
   {
     size: PropTypes.oneOf([
+      'xs',
       's',
       'm',
     ]),

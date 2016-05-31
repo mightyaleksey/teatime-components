@@ -2,7 +2,7 @@
 {
   composes: wrapper from './color-picker.css';
 
-  width: 145px;
+  width: 152px;
   padding: 0 0 0 28px;
 }
 
