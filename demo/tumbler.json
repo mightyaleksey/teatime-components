@@ -3,7 +3,7 @@
   "path": "Tumbler",
   "data": [
     [
-      {"name": "size-xs", "size": "xs", "value": "size-xs"},
+      {"defaultChecked": true, "name": "size-xs", "size": "xs", "value": "size-xs"},
       {"disabled": true, "name": "size-xs", "size": "xs", "value": "size-xs"}
     ],
     [

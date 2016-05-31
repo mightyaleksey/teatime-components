@@ -23,15 +23,24 @@ class Tumbler extends Component {
   }
 
   render() {
-    const { className, ...o } = this.props;
+    const { className, off, on, ...o } = this.props;
     const { id } = this.state;
+
+    /**
+     * Still there is an issue about controlled and uncontrolled components,
+     * related to the input[type="checkbox"] and input[type="radio"].
+     * It results in the way controlled components are determined.
+     *
+     * @see https://github.com/facebook/react/blob/v15.1.0/src/renderers/dom/client/wrappers/ReactDOMInput.js#L171
+     * @see https://github.com/facebook/react/issues/6779
+     */
 
     return (
       <div className={className} styleName='wrapper'>
         <input {...o} id={id} styleName='native' onChange={this.onChange} type='checkbox'/>
         <label htmlFor={id} styleName='control'>
-          <span styleName='label'>On</span>
-          <span styleName='label'>Off</span>
+          <span styleName='label'>{on}</span>
+          <span styleName='label'>{off}</span>
           <span styleName='delimiter'>&nbsp;</span>
         </label>
       </div>
@@ -40,6 +49,8 @@ class Tumbler extends Component {
 }
 
 Tumbler.defaultProps = {
+  off: 'Off',
+  on: 'On',
   onChange: noop,
   styles: {},
 };
@@ -49,6 +60,8 @@ Tumbler.propTypes = {
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
+  off: PropTypes.string,
+  on: PropTypes.string,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   onClick: PropTypes.func,
