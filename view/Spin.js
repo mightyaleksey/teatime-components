@@ -7,7 +7,7 @@ const cssModules = require('react-css-modules');
 class Spin extends Component {
   render() {
     return (
-      <span {...this.props} styleName='control'/>
+      <span styleName='control' {...this.props}/>
     );
   }
 }

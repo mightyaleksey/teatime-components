@@ -18,7 +18,7 @@ class Input extends Component {
 
   render() {
     return (
-      <input {...this.props} onChange={this.onChange} styleName='control' type='text'/>
+      <input styleName='control' {...this.props} onChange={this.onChange} type='text'/>
     );
   }
 }

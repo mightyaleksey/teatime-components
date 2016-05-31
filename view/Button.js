@@ -7,7 +7,7 @@ const cssModules = require('react-css-modules');
 class Button extends Component {
   render() {
     return (
-      <button {...this.props} styleName='control'/>
+      <button styleName='control' {...this.props}/>
     );
   }
 }

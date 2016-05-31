@@ -18,7 +18,7 @@ class Textarea extends Component {
 
   render() {
     return (
-      <textarea {...this.props} onChange={this.onChange} styleName='control'/>
+      <textarea styleName='control' {...this.props} onChange={this.onChange}/>
     );
   }
 }
