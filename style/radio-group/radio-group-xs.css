@@ -1,4 +1,4 @@
-@value size-xs from '../font.css';
+@value size-xs, line-xs from '../font.css';
 
 .container
 {
@@ -17,7 +17,7 @@
   padding: 0 10px;
 
   font-size: size-xs;
-  line-height: 24px;
+  line-height: line-xs;
 }
 
 .native

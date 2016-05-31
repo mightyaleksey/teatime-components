@@ -1,10 +1,10 @@
-@value size-s from '../font.css';
+@value size-s, line-s from '../font.css';
 
 .control
 {
   composes: control from './input.css';
 
-  height: 28px;
+  height: line-s;
   padding: 0 8px;
 
   font-size: size-s;
