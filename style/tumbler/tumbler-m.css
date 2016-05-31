@@ -13,6 +13,8 @@
 .control
 {
   composes: control from './tumbler.css';
+
+  margin: 0 0 0 -50px;
 }
 
 .label
@@ -44,9 +46,4 @@
 .native
 {
   composes: native from './tumbler.css';
-}
-
-.native:checked + .control
-{
-  margin-left: -50px;
 }
