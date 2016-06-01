@@ -7,8 +7,7 @@
   display: inline-block;
 }
 
-.control,
-.control:hover
+.control
 {
   box-sizing: border-box;
   width: 100%;
