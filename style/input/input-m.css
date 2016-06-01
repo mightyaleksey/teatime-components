@@ -1,11 +1,26 @@
 @value size-m, line-m from '../font.css';
 
+.wrapper
+{
+  composes: wrapper from './input.css';
+}
+
 .control
 {
   composes: control from './input.css';
 
   height: line-m;
-  padding: 0 10px;
+  padding: 0 32px 0 10px;
 
   font-size: size-m;
+}
+
+.clear
+{
+  composes: clear from './input.css';
+
+  width: 30px;
+  height: 30px;
+
+  background: url(./times-m.svg) 50% 50% no-repeat;
 }

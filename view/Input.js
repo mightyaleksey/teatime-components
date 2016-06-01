@@ -9,16 +9,60 @@ class Input extends Component {
   constructor(props) {
     super(props);
 
-    bind(this, 'onChange');
+    // @todo add assertion for defaultValue
+    this.controlled = props.value !== undefined;
+
+    this.state = {
+      value: props.value || props.defaultValue || '',
+    };
+
+    bind(this, [
+      'onChange',
+      'onClearClick',
+    ]);
   }
 
   onChange(e) {
-    this.props.onChange(e, {value: e.target.value});
+    this.updateValue(e.target.value, e);
+  }
+
+  onClearClick(e) {
+    if (this.props.disabled) {
+      return;
+    }
+
+    this.updateValue('', e);
+
+    if (this.refs.control) {
+      this.refs.control.focus();
+    }
+  }
+
+  updateValue(value, e) {
+    if (!this.controlled) {
+      this.setState({value});
+    }
+
+    this.props.onChange(e, {value});
   }
 
   render() {
+    const { value } = this.state;
+    const clearElement = value && !this.props.disabled
+      ? (<span styleName='clear' onClick={this.onClearClick}/>)
+      : null;
+
     return (
-      <input styleName='control' {...this.props} onChange={this.onChange} type='text'/>
+      <span styleName='wrapper'>
+        <input
+          ref='control'
+          styleName='control'
+          {...this.props}
+          defaultValue={undefined} // Cause we have a controlled input
+          onChange={this.onChange}
+          value={value}/>
+        {clearElement}
+      </span>
     );
   }
 }
@@ -26,6 +70,7 @@ class Input extends Component {
 Input.defaultProps = {
   onChange: noop,
   styles: {},
+  type: 'text',
 };
 
 Input.propTypes = {
@@ -45,6 +90,10 @@ Input.propTypes = {
   onSelect: PropTypes.func,
   placeholder: PropTypes.string,
   styles: PropTypes.object,
+  type:  PropTypes.oneOf([
+    'password',
+    'text',
+  ]),
   value: PropTypes.string,
 };
 

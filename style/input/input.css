@@ -1,8 +1,18 @@
 @value family from '../font.css';
 
+.wrapper
+{
+  position: relative;
+
+  display: inline-block;
+}
+
 .control,
 .control:hover
 {
+  box-sizing: border-box;
+  width: 100%;
+
   transition: box-shadow .1s ease-out;
 
   border: none;
@@ -35,4 +45,23 @@
   color: rgba(0,0,0,.5);
   background: #ebebeb;
   box-shadow: none;
+}
+
+.clear
+{
+  position: absolute;
+  top: 1px;
+  right: 1px;
+
+  display: block;
+
+  cursor: pointer;
+  transition: opacity .1s ease-out;
+
+  opacity: .3;
+}
+
+.clear:hover
+{
+  opacity: 1;
 }
