@@ -6,6 +6,7 @@ const { shallowRender } = require('skin-deep');
 const test = require('tape');
 
 const styles = {
+  container: 'container',
   item: 'item',
   line: 'line',
   menu: 'menu',
@@ -22,6 +23,6 @@ test('className to contain `mixin` and styleName', t => {
 
   const result = tree.dive(['ColorPicker']).getRenderOutput();
 
-  t.isEqual(result.props.className, 'mixin wrapper');
+  t.isEqual(result.props.className, 'mixin container');
   t.end();
 });

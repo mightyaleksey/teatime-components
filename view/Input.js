@@ -47,6 +47,12 @@ class Input extends Component {
     this.focus();
   }
 
+  select() {
+    if (this.refs.control) {
+      this.refs.control.select();
+    }
+  }
+
   updateValue(e, value) {
     if (!this.controlled) {
       this.setState({value});
@@ -56,16 +62,18 @@ class Input extends Component {
   }
 
   render() {
+    const { className, ...o } = this.props;
     const { value } = this.state;
+
     const clearElement = value && !this.props.disabled
       ? (<span styleName='clear' onClick={this.onClearClick}/>)
       : null;
 
     return (
-      <span styleName='wrapper'>
+      <span className={className} styleName='wrapper'>
         <input
           styleName='control'
-          {...this.props}
+          {...o}
           defaultValue={undefined} // Cause we have a controlled input
           onChange={this.onChange}
           ref='control'

@@ -5,7 +5,10 @@ const React = require('react');
 const { shallowRender } = require('skin-deep');
 const test = require('tape');
 
-const styles = {control: 'control'};
+const styles = {
+  control: 'control',
+  wrapper: 'wrapper',
+};
 
 test('className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<Input
@@ -15,6 +18,6 @@ test('className to contain `mixin` and styleName', t => {
 
   const result = tree.getRenderOutput();
 
-  t.isEqual(result.props.className, 'mixin control');
+  t.isEqual(result.props.className, 'mixin wrapper');
   t.end();
 });
