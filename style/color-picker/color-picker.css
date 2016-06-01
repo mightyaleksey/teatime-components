@@ -1,11 +1,10 @@
-.wrapper
+.container
 {
   position: relative;
 
   display: inline-block;
 
   box-sizing: border-box;
-  width: 166px;
 }
 
 .preview
@@ -50,6 +49,11 @@
 .preview:active
 {
   background: #f6f5f3;
+}
+
+.wrapper
+{
+  width: 100%;
 }
 
 .control

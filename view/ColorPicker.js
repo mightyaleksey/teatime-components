@@ -2,6 +2,7 @@
 
 const { Component, PropTypes } = require('react');
 const { bind, noop } = require('../tools/func');
+const { pureHex } = require('../tools/color');
 const Input = require('./Input');
 const Popup = require('./Popup');
 const Tile = require('./Tile');
@@ -23,6 +24,8 @@ class ColorPicker extends Component {
 
     bind(this, [
       'onChange',
+      'onInputFocus',
+      'onKeyDown',
       'onPreviewClick',
       'onTileClick',
     ]);
@@ -34,88 +37,118 @@ class ColorPicker extends Component {
     }
   }
 
-  onChange(e) {
-    if (!this.controlled) {
-      this.setState({value: e.target.value});
+  focus() {
+    if (this.refs.control) {
+      this.refs.control.focus();
     }
-
-    this.props.onChange(e, {value: e.target.value});
   }
 
-  onOutsideEvent() {
+  onChange(e, data) {
+    this.updateValue(e, data.value);
+  }
+
+  onInputFocus() {
+    // @todo add possibility to control focus from outside
+    if (this.state.isOpened === false) return;
     this.setState({isOpened: false});
+  }
+
+  onKeyDown(e) {
+    if (this.props.disabled) return;
+
+    const preview = this.refs.preview;
+
+    if (e.keyCode === 9 && preview && preview === e.target) { // tab
+      this.setState({isOpened: false});
+    }
   }
 
   onPreviewClick() {
     this.setState({isOpened: !this.state.isOpened});
   }
 
+  onOutsideEvent() {
+    if (this.state.isOpened === false) return;
+    this.setState({isOpened: false});
+  }
+
   onTileClick(e, color) {
+    this.updateValue(e, pureHex(color));
+    this.focus();
+  }
+
+  updateValue(e, value) {
     if (!this.controlled) {
-      this.setState({
-        isOpened: false,
-        value: color.replace('#', ''),
-      });
-    } else {
-      this.setState({
-        isOpened: false,
-      });
+      this.setState({isOpened: false, value});
     }
 
-    this.props.onChange(e, {value: color.replace('#', '')});
+    this.props.onChange(e, {isOpened: false, value});
   }
 
   render() {
     const { className, ...o } = this.props;
-    const { value } = this.state;
 
     return (
-      <div className={className} styleName='wrapper'>
+      <div
+        className={className}
+        onKeyDown={this.onKeyDown}
+        styleName='container'>
         {this.renderPreview()}
-        <Input {...o} onChange={this.onChange} value={value}/>
+        <Input
+          {...o}
+          defaultValue={undefined}
+          onChange={this.onChange}
+          onFocus={this.onInputFocus}
+          ref='control'
+          value={this.state.value}/>
         {this.renderMenu()}
       </div>
     );
   }
 
   renderPreview() {
-    const { disabled } = this.props;
-    const { value } = this.state;
-
     return (
       <button
-        disabled={disabled}
+        disabled={this.props.disabled}
         onClick={this.onPreviewClick}
-        style={{background: `#${value}`}}
+        ref='preview'
+        style={{background: `#${this.state.value}`}}
         styleName='preview'/>
     );
   }
 
   renderMenu() {
-    const { palette, styles } = this.props;
-    const { isOpened } = this.state;
-
-    const tiles = isOpened
-      ? palette.map((row, y) => (
-        <div key={y} styleName='line'>
-          {
-            row.map((tile, x) => (
-              <Tile
-                color={`#${tile}`}
-                key={`_${x}${y}${tile}`}
-                onClick={this.onTileClick}
-                styles={styles}/>
-            ))
-          }
-        </div>
-      ))
-      : null;
+    const popupMixin = this.props.styles[this.state.isOpened
+      ? 'isOpened'
+      : 'isClosed'];
 
     return (
-      <Popup className={styles[isOpened ? 'isOpened' : 'isClosed']} styleName='menu'>
-        {tiles}
+      <Popup className={popupMixin} styleName='menu'>
+        {this.renderTiles()}
       </Popup>
     );
+  }
+
+  renderTiles() {
+    if (!this.state.isOpened) {
+      return null;
+    }
+
+    const { palette, styles } = this.props;
+
+    return palette.map((tiles, p) => (
+      <div key={p} styleName='line'>{this.renderLine(tiles, p, styles)}</div>
+    ));
+  }
+
+  renderLine(tiles, position, styles) {
+    return tiles.map((tile, i) => (
+      <Tile
+        color={`#${tile}`}
+        key={`_${i}${position}`}
+        onClick={this.onTileClick}
+        styles={styles}/>
+    ));
   }
 }
 

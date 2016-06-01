@@ -1,8 +1,7 @@
-.wrapper
+.container
 {
-  composes: wrapper from './color-picker.css';
+  composes: container from './color-picker.css';
 
-  width: 173px;
   padding: 0 0 0 32px;
 }
 
@@ -22,10 +21,21 @@
   background: linear-gradient(-45deg,#fff 22px,#ccc 22px, #ccc 23px,#fff 23px) !important;
 }
 
+.wrapper
+{
+  composes: wrapper from '../input/input-m.css';
+  composes: wrapper from './color-picker.css';
+}
+
 .control
 {
   composes: control from '../input/input-m.css';
   composes: control from './color-picker.css';
+}
+
+.clear
+{
+  composes: clear from '../input/input-m.css';
 }
 
 .menu

@@ -22,8 +22,20 @@ class Input extends Component {
     ]);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.controlled) {
+      this.setState({value: nextProps.value});
+    }
+  }
+
+  focus() {
+    if (this.refs.control) {
+      this.refs.control.focus();
+    }
+  }
+
   onChange(e) {
-    this.updateValue(e.target.value, e);
+    this.updateValue(e, e.target.value);
   }
 
   onClearClick(e) {
@@ -31,14 +43,11 @@ class Input extends Component {
       return;
     }
 
-    this.updateValue('', e);
-
-    if (this.refs.control) {
-      this.refs.control.focus();
-    }
+    this.updateValue(e, '');
+    this.focus();
   }
 
-  updateValue(value, e) {
+  updateValue(e, value) {
     if (!this.controlled) {
       this.setState({value});
     }
@@ -55,11 +64,11 @@ class Input extends Component {
     return (
       <span styleName='wrapper'>
         <input
-          ref='control'
           styleName='control'
           {...this.props}
           defaultValue={undefined} // Cause we have a controlled input
           onChange={this.onChange}
+          ref='control'
           value={value}/>
         {clearElement}
       </span>
