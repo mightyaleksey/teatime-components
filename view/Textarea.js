@@ -12,13 +12,29 @@ class Textarea extends Component {
     bind(this, 'onChange');
   }
 
+  focus() {
+    if (this.refs.control) {
+      this.refs.control.focus();
+    }
+  }
+
   onChange(e) {
     this.props.onChange(e, {value: e.target.value});
   }
 
+  select() {
+    if (this.refs.control) {
+      this.refs.control.select();
+    }
+  }
+
   render() {
     return (
-      <textarea styleName='control' {...this.props} onChange={this.onChange}/>
+      <textarea
+        styleName='control'
+        {...this.props}
+        onChange={this.onChange}
+        ref='control'/>
     );
   }
 }
