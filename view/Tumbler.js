@@ -17,8 +17,10 @@ class Tumbler extends Component {
     bind(this, 'onChange');
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({id: nextProps.id});
+  componentWillReceiveProps({ id }) {
+    if (id) {
+      this.setState({id});
+    }
   }
 
   onChange(e) {
@@ -41,7 +43,12 @@ class Tumbler extends Component {
 
     return (
       <div className={className} styleName='wrapper'>
-        <input {...o} id={id} styleName='native' onChange={this.onChange} type='checkbox'/>
+        <input
+          styleName='native'
+          type='checkbox'
+          {...o}
+          id={id}
+          onChange={this.onChange}/>
         <label htmlFor={id} styleName='control'>
           <span styleName='label'>{on}</span>
           <span styleName='label'>{off}</span>
