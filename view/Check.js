@@ -32,6 +32,10 @@ class Check extends Component {
     const { children, className, ...o } = this.props;
     const { id } = this.state;
 
+    const labelElement = children
+      ? (<label htmlFor={id} styleName='label'>{children}</label>)
+      : null;
+
     /**
      * Still there is an issue about controlled and uncontrolled components,
      * related to the input[type="checkbox"] and input[type="radio"].
@@ -49,7 +53,7 @@ class Check extends Component {
           id={id}
           onChange={this.onChange}/>
         <label htmlFor={id} styleName='control'/>
-        <label htmlFor={id} styleName='label'>{children}</label>
+        {labelElement}
       </div>
     );
   }
