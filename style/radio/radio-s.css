@@ -1,0 +1,37 @@
+@value size-s from '../font.css';
+
+.wrapper
+{
+  composes: wrapper from './radio.css';
+
+  font-size: size-s;
+}
+
+.control
+{
+  composes: control from './radio.css';
+
+  width: 14px;
+  height: 14px;
+}
+
+.control:after
+{
+  top: 4px;
+  left: 4px;
+
+  width: 6px;
+  height: 6px;
+}
+
+.native
+{
+  composes: native from './radio.css';
+}
+
+.label
+{
+  composes: label from './radio.css';
+
+  margin: 0 0 0 5px;
+}
