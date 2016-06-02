@@ -47,8 +47,7 @@ class Check extends Component {
           styleName='native'
           {...o}
           id={id}
-          onChange={this.onChange}
-          type='checkbox'/>
+          onChange={this.onChange}/>
         <label htmlFor={id} styleName='control'/>
         <label htmlFor={id} styleName='label'>{children}</label>
       </div>
@@ -59,6 +58,7 @@ class Check extends Component {
 Check.defaultProps = {
   onChange: noop,
   styles: {},
+  type: 'checkbox',
 };
 
 Check.propTypes = {
@@ -87,6 +87,10 @@ Check.propTypes = {
   onTouchMove: PropTypes.func,
   onTouchStart: PropTypes.func,
   styles: PropTypes.object,
+  type:  PropTypes.oneOf([
+    'checkbox',
+    'radio',
+  ]),
   value: PropTypes.string.isRequired,
 };
 
