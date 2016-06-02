@@ -36,6 +36,7 @@
 .clear
 {
   composes: clear from '../input/input-xs.css';
+  composes: clear from './color-picker.css';
 }
 
 .menu

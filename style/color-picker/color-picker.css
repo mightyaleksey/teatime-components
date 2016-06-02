@@ -65,9 +65,9 @@
   width: 100%;
 }
 
-.control:focus
+.clear
 {
-  z-index: 1;
+  z-index: 0;
 }
 
 .menu
