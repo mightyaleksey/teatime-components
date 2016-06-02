@@ -1,6 +1,7 @@
 'use strict';
 
 const { resolve } = require('path');
+const { version } = require('../package');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
@@ -36,9 +37,10 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
-      title: 'demo',
+      title: `teatime-components ${version}`,
       inject: 'body',
       hash: true,
+      template: 'demo/template.ejs',
     }),
     new NpmInstallPlugin({
       cacheMin: 999999,
