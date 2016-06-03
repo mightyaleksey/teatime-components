@@ -16,6 +16,8 @@
 
   z-index: 1;
 
+  overflow-y: auto;
+
   min-width: 100%;
 
   background: #fff;
@@ -38,17 +40,12 @@
   transform: rotate(-180deg);
 }
 
+.isCheckedItem
+{
+  background-repeat: no-repeat;
+}
+
 .isFocused
 {
   background-color: #ffeba0;
-}
-
-.isSelected
-{
-  /* base */
-}
-
-.isFocusedSelected
-{
-  /* base */
 }

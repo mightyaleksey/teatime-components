@@ -27,8 +27,6 @@
   "author": "Alexey Litvinov",
   "license": "MIT",
   "dependencies": {
-    "classnames": "^2.2.5",
-    "lodash.camelcase": "^4.1.1",
     "react-css-modules": "^3.7.6",
     "react-outside-event": "^1.2.4"
   },

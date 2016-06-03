@@ -1,46 +1,61 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { camelcase, bind } = require('../tools/func');
+const { bind } = require('../tools/func');
 const React = require('react');
-const classnames = require('classnames');
 const cssModules = require('react-css-modules');
 
 class Option extends Component {
   constructor(props) {
     super(props);
 
-    bind(this, ['onClick', 'onMouseEnter']);
+    bind(this, [
+      'onClick',
+      'onFocus',
+      'onMouseEnter',
+      'onSelect',
+    ]);
   }
 
   onClick(e) {
-    this.props.onClick(e, this.props.identity);
+    this.onSelect(e);
   }
 
   onMouseEnter(e) {
-    this.props.onMouseEnter(e, this.props.identity);
+    this.onFocus(e);
+  }
+
+  onFocus(e) {
+    if (!this.props.isFocused) {
+      this.props.onFocus(e, null, this.props.tc);
+    }
+  }
+
+  onSelect(e) {
+    this.props.onSelect(e, null, this.props.tc);
   }
 
   render() {
-    const {
-      focused,
-      onClick, // eslint-disable-line no-unused-vars
-      onMouseEnter, // eslint-disable-line no-unused-vars
-      selected,
-      styles,
-      value,
-      ...o,
-    } = this.props;
+    const { checked, focused, styles, value, ...o } = this.props;
+
+    const mixin = styles[focused
+      ? 'isFocused'
+      : undefined];
+
+    const styleName = checked
+      ? 'isCheckedItem'
+      : 'item';
 
     return (
       <span
-        {...o}
-        className={styles[camelcase(classnames('is', {focused, selected}))]}
         data-value={value}
+        styleName={styleName}
+        {...o}
+        className={mixin}
         onClick={this.onClick}
+        onFocus={this.onFocus}
         onMouseEnter={this.onMouseEnter}
-        styleName='item'
-      />
+        onSelect={this.onFocus}/>
     );
   }
 }
@@ -50,12 +65,11 @@ Option.defaultProps = {
 };
 
 Option.propTypes = {
-  focused: PropTypes.bool,
-  identity: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
-  selected: PropTypes.bool,
+  checked: PropTypes.bool,
+  onFocus: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
   styles: PropTypes.object,
+  tc: PropTypes.any,
   value: PropTypes.string.isRequired,
 };
 

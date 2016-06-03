@@ -5,9 +5,15 @@ const React = require('react');
 const cssModules = require('react-css-modules');
 
 class Button extends Component {
+  focus() {
+    if (this.refs.control) {
+      this.refs.control.focus();
+    }
+  }
+
   render() {
     return (
-      <button styleName='control' {...this.props}/>
+      <button styleName='control' {...this.props} ref='control'/>
     );
   }
 }

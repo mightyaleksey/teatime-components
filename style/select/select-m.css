@@ -24,6 +24,8 @@
 {
   composes: menu from '../menu/menu-m.css';
   composes: menu from './select.css';
+
+  max-height: 230px;
 }
 
 .item
@@ -44,32 +46,17 @@
   composes: isOpened from './select.css';
 }
 
-.is
+.isCheckedItem
 {
+  composes: isCheckedItem from './select.css';
+  composes: item;
+
+  background-image: url(../check/tick-m.svg);
   background-position: 13px 50%;
-  background-size: 14px 14px;
+  background-size: 15px;
 }
 
 .isFocused
 {
   composes: isFocused from './select.css';
-  composes: is;
-}
-
-.isSelected
-{
-  composes: isSelected from './select.css';
-  composes: is;
-
-  background: url(../check/tick-m.svg) 15px 50% no-repeat;
-  background-size: 15px;
-}
-
-.isFocusedSelected
-{
-  composes: isFocusedSelected from './select.css';
-  composes: is;
-
-  background: #ffeba0 url(../check/tick-m.svg) 15px 50% no-repeat;
-  background-size: 15px;
 }
