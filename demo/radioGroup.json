@@ -4,7 +4,7 @@
   "data": [
     [
       {
-        "name": "motorrad-1",
+        "name": "radio-group-motorrad-1",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
@@ -18,7 +18,7 @@
     [
       {
         "disabled": true,
-        "name": "motorrad-2",
+        "name": "radio-group-motorrad-2",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
@@ -31,7 +31,7 @@
     ],
     [
       {
-        "name": "motorrad-3",
+        "name": "radio-group-motorrad-3",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
@@ -45,7 +45,7 @@
     [
       {
         "disabled": true,
-        "name": "motorrad-4",
+        "name": "radio-group-motorrad-4",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
@@ -59,7 +59,7 @@
     [
       {
         "defaultValue": "suzuki",
-        "name": "motorrad-5",
+        "name": "radio-group-motorrad-5",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
@@ -74,7 +74,7 @@
       {
         "defaultValue": "suzuki",
         "disabled": true,
-        "name": "motorrad-6",
+        "name": "radio-group-motorrad-6",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
@@ -87,7 +87,7 @@
     ],
     [
       {
-        "name": "motorrad-7",
+        "name": "radio-group-motorrad-7",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
@@ -101,7 +101,7 @@
     [
       {
         "disabled": true,
-        "name": "motorrad-8",
+        "name": "radio-group-motorrad-8",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},

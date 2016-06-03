@@ -1,8 +1,8 @@
 'use strict';
 
-const React = require('react');
-const { Component, PropTypes } = React;
+const { Component, PropTypes } = require('react');
 const { generateId } = require('../tools/identity');
+const React = require('react');
 const cssModules = require('react-css-modules');
 
 class RadioButton extends Component {

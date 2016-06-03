@@ -1,8 +1,8 @@
 'use strict';
 
-const React = require('react');
-const { Component, PropTypes } = React;
+const { Component, PropTypes } = require('react');
 const { bind, noop } = require('../tools/func');
+const React = require('react');
 const cssModules = require('react-css-modules');
 
 class Textarea extends Component {

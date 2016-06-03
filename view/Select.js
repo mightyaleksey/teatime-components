@@ -1,10 +1,6 @@
 'use strict';
 
-const Button = require('./Button');
-const Option = require('./Option');
-const Popup = require('./Popup');
-const React = require('react');
-const { Component, PropTypes } = React;
+const { Component, PropTypes } = require('react');
 const {
   bind,
   decrement,
@@ -12,6 +8,10 @@ const {
   findIndexByValueProp,
   noop,
 } = require('../tools/func');
+const Button = require('./Button');
+const Option = require('./Option');
+const Popup = require('./Popup');
+const React = require('react');
 const cssModules = require('react-css-modules');
 const reactOutsideEvent = require('react-outside-event');
 

@@ -1,7 +1,7 @@
 'use strict';
 
+const { Component, PropTypes } = require('react');
 const React = require('react');
-const { Component, PropTypes } = React;
 const cssModules = require('react-css-modules');
 
 class Button extends Component {

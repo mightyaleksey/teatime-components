@@ -1,9 +1,9 @@
 'use strict';
 
-const React = require('react');
-const { Component, PropTypes } = React;
+const { Component, PropTypes } = require('react');
 const { bind, noop } = require('../tools/func');
 const { generateId } = require('../tools/identity');
+const React = require('react');
 const cssModules = require('react-css-modules');
 
 class Tumbler extends Component {

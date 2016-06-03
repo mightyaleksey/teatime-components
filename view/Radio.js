@@ -3,8 +3,8 @@
 const { Component, PropTypes } = require('react');
 const { bind, findIndexByValueProp, noop } = require('../tools/func');
 const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
-const React = require('react');
 const Check = require('./Check');
+const React = require('react');
 const cssModules = require('react-css-modules');
 
 class Radio extends Component {

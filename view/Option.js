@@ -1,8 +1,8 @@
 'use strict';
 
-const React = require('react');
-const { Component, PropTypes } = React;
+const { Component, PropTypes } = require('react');
 const { camelcase, bind } = require('../tools/func');
+const React = require('react');
 const classnames = require('classnames');
 const cssModules = require('react-css-modules');
 

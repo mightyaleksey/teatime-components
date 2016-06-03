@@ -2,9 +2,9 @@
 
 const { Component, PropTypes } = require('react');
 const { bind, noop } = require('../tools/func');
-const { generateId } = require('../tools/identity');
-const React = require('react');
+const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
 const Check = require('./Check');
+const React = require('react');
 const cssModules = require('react-css-modules');
 
 class CheckGroup extends Component {
@@ -13,6 +13,7 @@ class CheckGroup extends Component {
 
     // @todo add assertion for defaultValue
     this.controlled = props.value !== undefined;
+    this.updateKeyMapper(props.options);
 
     const value = props.value || props.defaultValue;
 
@@ -28,6 +29,10 @@ class CheckGroup extends Component {
     if (this.controlled) {
       this.setState({values: mapValueToState(options, value)});
     }
+
+    if (this.props.options !== options) {
+      this.updateKeyMapper(options);
+    }
   }
 
   onChange(e, { checked }, tc) {
@@ -40,6 +45,12 @@ class CheckGroup extends Component {
     this.props.onChange(e, {
       value: mapStateToValue(this.props.options, values),
     });
+  }
+
+  updateKeyMapper(options) {
+    this.mapKey = !isUnique(options)
+      ? mapKeyBasedOnPos
+      : mapKey;
   }
 
   render() {
@@ -61,7 +72,7 @@ class CheckGroup extends Component {
       <Check
         disabled={disabled}
         checked={values[i]}
-        key={`${prefix}${value}`}
+        key={this.mapKey(prefix, value, i)}
         name={name}
         onChange={this.onChange}
         styles={styles}

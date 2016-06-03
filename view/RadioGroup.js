@@ -1,9 +1,9 @@
 'use strict';
 
+const { Component, PropTypes } = require('react');
+const { bind, noop } = require('../tools/func');
 const RadioButton = require('./RadioButton');
 const React = require('react');
-const { Component, PropTypes } = React;
-const { bind, noop } = require('../tools/func');
 const cssModules = require('react-css-modules');
 
 class RadioGroup extends Component {
