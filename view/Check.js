@@ -25,7 +25,7 @@ class Check extends Component {
 
   onChange(e) {
     const { checked, value } = e.target;
-    this.props.onChange(e, {checked, value});
+    this.props.onChange(e, {checked, value}, this.props.tc);
   }
 
   render() {
@@ -91,6 +91,7 @@ Check.propTypes = {
   onTouchMove: PropTypes.func,
   onTouchStart: PropTypes.func,
   styles: PropTypes.object,
+  tc: PropTypes.any,
   type:  PropTypes.oneOf([
     'checkbox',
     'radio',

@@ -4,63 +4,69 @@ const Check = require('./Check');
 const React = require('react');
 const { Component, PropTypes } = React;
 const { bind, noop } = require('../tools/func');
+const { generateId } = require('../tools/identity');
 const cssModules = require('react-css-modules');
 
 class CheckGroup extends Component {
   constructor(props) {
     super(props);
 
-    // @todo make assertion for one prop usage
-    const value = this.props.value || this.props.defaultValue;
+    // @todo add assertion for defaultValue
+    this.controlled = props.value !== undefined;
+
+    const value = props.value || props.defaultValue;
 
     this.state = {
-      selected: value
-        ? [...value] // @todo deep copy
-        : [],
+      prefix: generateId(),
+      values: mapValueToState(props.options, value || []),
     };
 
     bind(this, 'onChange');
   }
 
-  onChange(e) {
-    const { checked, value } = e.target;
-    const { selected } = this.state;
-    const newState = checked
-      ? selected.concat(value)
-      : selected.filter(stored => stored !== value);
+  componentWillReceiveProps({ options, value }) {
+    if (this.controlled) {
+      this.setState({values: mapValueToState(options, value)});
+    }
+  }
 
-    this.setState({selected: newState});
-    this.props.onChange(e, {value: newState});
+  onChange(e, { checked }, tc) {
+    const values = updateValue(this.state.values, tc, checked);
+
+    if (!this.controlled) {
+      this.setState({values});
+    }
+
+    this.props.onChange(e, {
+      value: mapStateToValue(this.props.options, values),
+    });
   }
 
   render() {
-    const { onChange, ...o } = this.props; // eslint-disable-line no-unused-vars
-
     return (
-      <div {...o} styleName='container'>{this.renderOptions()}</div>
+      <div
+        styleName='container'
+        {...this.props}
+        onChange={undefined}>
+        {this.renderOptions()}
+      </div>
     );
   }
 
   renderOptions() {
-    const {
-      defaultValue, // eslint-disable-line no-unused-vars
-      disabled,
-      name,
-      options,
-      styles,
-    } = this.props;
-    const { selected } = this.state;
+    const { disabled, name, options, styles } = this.props;
+    const { prefix, values } = this.state;
 
     return options.map(({ text, value }, i) => (
       <Check
-        checked={selected.indexOf(value) > -1}
         disabled={disabled}
-        key={`_${value}${i}`}
+        checked={values[i]}
+        key={`${prefix}${value}`}
         name={name}
         onChange={this.onChange}
         styles={styles}
-        value={value}
-      >
+        tc={i}
+        value={value}>
         {text}
       </Check>
     ));
@@ -102,3 +108,51 @@ CheckGroup.propTypes = {
 };
 
 module.exports = cssModules(CheckGroup);
+
+/**
+ * @param  {object[]} options
+ * @param  {boolean[]} values
+ * @return {string[]}
+ */
+function mapStateToValue(options, values) {
+  const selected = [];
+
+  for (var i = 0; i < values.length; ++i) {
+    if (!values[i]) {
+      continue;
+    }
+
+    selected.push(options[i].value);
+  }
+
+  return selected;
+}
+
+/**
+ * @param  {object[]} options
+ * @param  {string[]} selected
+ * @return {boolean[]}
+ */
+function mapValueToState(options, selected) {
+  var length = selected.length;
+  var i = 0;
+
+  return options.map(({ value }) => {
+    if (value === selected[i] && i < length) {
+      i++;
+      return true;
+    }
+
+    return false;
+  });
+}
+
+/**
+ * @param  {boolean[]} values
+ * @param  {number} position
+ * @param  {boolean} target
+ * @return {boolean[]}
+ */
+function updateValue(values, position, target) {
+  return values.map((value, i) => position !== i ? value : target);
+}
