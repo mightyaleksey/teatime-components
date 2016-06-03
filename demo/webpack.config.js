@@ -49,7 +49,7 @@ module.exports = {
     }),
   ],
 
-  postcss: () => [
+  postcss: [
     require('postcss-url')({url: 'inline'}),
     require('autoprefixer')({browsers: ['last 2 versions']}),
   ],
