@@ -1,8 +1,13 @@
+.container
+{
+  display: inline-block;
+}
+
 .wrapper
 {
   position: relative;
 
-  display: inline-block;
+  display: block;
 
   color: #000;
 

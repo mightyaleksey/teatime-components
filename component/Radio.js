@@ -1,15 +1,12 @@
 'use strict';
 
 const { PropTypes } = require('react');
-const Check = require('../view/Check');
+const Radio = require('../view/Radio');
 const simplify = require('../mixin/simplify');
 
 module.exports = simplify(
-  Check,
-  (styles, { size }) => ({
-    styles: styles[size],
-    type: 'radio',
-  }),
+  Radio,
+  (styles, { size }) => ({styles: styles[size]}),
   {
     s: require('../style/radio/radio-s.css'),
     m: require('../style/radio/radio-m.css'),

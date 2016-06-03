@@ -3,22 +3,54 @@
   "path": "Radio",
   "data": [
     [
-      {"name": "radio-size-s-1", "size": "s", "value": "size-s"},
-      {"defaultChecked": true, "name": "radio-size-s-1", "size": "s", "value": "size-s"},
-      {"disabled": true, "name": "radio-size-s-2", "size": "s", "value": "size-s"},
-      {"defaultChecked": true, "disabled": true, "name": "radio-size-s-2", "size": "s", "value": "size-s"}
+      {
+        "name": "motorrad-1",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "s"
+      },
+      {
+        "disabled": true,
+        "name": "motorrad-2",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "s"
+      }
     ],
     [
-      {"name": "radio-size-m-3", "size": "m", "value": "size-m"},
-      {"defaultChecked": true, "name": "radio-size-m-3", "size": "m", "value": "size-m"},
-      {"disabled": true, "name": "radio-size-m-4", "size": "m", "value": "size-m"},
-      {"defaultChecked": true, "disabled": true, "name": "radio-size-m-4", "size": "m", "value": "size-m"}
-    ],
-    [
-      {"children": "Size s", "name": "radio-size-5", "size": "s", "value": "size-s"},
-      {"children": "Size s", "disabled": true, "name": "radio-size-5", "size": "s", "value": "size-s"},
-      {"children": "Size m", "name": "radio-size-5", "size": "m", "value": "size-m"},
-      {"children": "Size m", "disabled": true, "name": "radio-size-5", "size": "m", "value": "size-m"}
+      {
+        "name": "motorrad-3",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "m"
+      },
+      {
+        "disabled": true,
+        "name": "motorrad-4",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "m"
+      }
     ]
   ]
 }

@@ -1,24 +1,25 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, noop } = require('../tools/func');
-const { generateId } = require('../tools/identity');
+const { bind, findIndexByValueProp, noop } = require('../tools/func');
+const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
 const React = require('react');
 const Check = require('./Check');
 const cssModules = require('react-css-modules');
 
-class CheckGroup extends Component {
+class Radio extends Component {
   constructor(props) {
     super(props);
 
     // @todo add assertion for defaultValue
     this.controlled = props.value !== undefined;
+    this.updateKeyMapper(props.options);
 
     const value = props.value || props.defaultValue;
 
     this.state = {
       prefix: generateId(),
-      values: mapValueToState(props.options, value || []),
+      selected: findIndexByValueProp(props.options, value),
     };
 
     bind(this, 'onChange');
@@ -26,20 +27,26 @@ class CheckGroup extends Component {
 
   componentWillReceiveProps({ options, value }) {
     if (this.controlled) {
-      this.setState({values: mapValueToState(options, value)});
+      this.setState({selected: findIndexByValueProp(options, value)});
+    }
+
+    if (this.props.options !== options) {
+      this.updateKeyMapper(options);
     }
   }
 
-  onChange(e, { checked }, tc) {
-    const values = updateValue(this.state.values, tc, checked);
-
+  onChange(e, _, tc) {
     if (!this.controlled) {
-      this.setState({values});
+      this.setState({selected: tc});
     }
 
-    this.props.onChange(e, {
-      value: mapStateToValue(this.props.options, values),
-    });
+    this.props.onChange(e, {value: this.props.options[tc].value});
+  }
+
+  updateKeyMapper(options) {
+    this.mapKey = !isUnique(options)
+      ? mapKeyBasedOnPos
+      : mapKey;
   }
 
   render() {
@@ -55,17 +62,18 @@ class CheckGroup extends Component {
 
   renderOptions() {
     const { disabled, name, options, styles } = this.props;
-    const { prefix, values } = this.state;
+    const { prefix, selected } = this.state;
 
     return options.map(({ text, value }, i) => (
       <Check
         disabled={disabled}
-        checked={values[i]}
-        key={`${prefix}${value}`}
+        checked={selected === i}
+        key={this.mapKey(prefix, value, i)}
         name={name}
         onChange={this.onChange}
         styles={styles}
         tc={i}
+        type='radio'
         value={value}>
         {text}
       </Check>
@@ -73,12 +81,12 @@ class CheckGroup extends Component {
   }
 }
 
-CheckGroup.defaultProps = {
+Radio.defaultProps = {
   onChange: noop,
   styles: {},
 };
 
-CheckGroup.propTypes = {
+Radio.propTypes = {
   defaultValue: PropTypes.array,
   disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
@@ -104,55 +112,7 @@ CheckGroup.propTypes = {
   onTouchStart: PropTypes.func,
   options: PropTypes.array.isRequired,
   styles: PropTypes.object,
-  value: PropTypes.array,
+  value: PropTypes.string,
 };
 
-module.exports = cssModules(CheckGroup);
-
-/**
- * @param  {object[]} options
- * @param  {boolean[]} values
- * @return {string[]}
- */
-function mapStateToValue(options, values) {
-  const selected = [];
-
-  for (var i = 0; i < values.length; ++i) {
-    if (!values[i]) {
-      continue;
-    }
-
-    selected.push(options[i].value);
-  }
-
-  return selected;
-}
-
-/**
- * @param  {object[]} options
- * @param  {string[]} selected
- * @return {boolean[]}
- */
-function mapValueToState(options, selected) {
-  var length = selected.length;
-  var i = 0;
-
-  return options.map(({ value }) => {
-    if (value === selected[i] && i < length) {
-      i++;
-      return true;
-    }
-
-    return false;
-  });
-}
-
-/**
- * @param  {boolean[]} values
- * @param  {number} position
- * @param  {boolean} target
- * @return {boolean[]}
- */
-function updateValue(values, position, target) {
-  return values.map((value, i) => position !== i ? value : target);
-}
+module.exports = cssModules(Radio);
