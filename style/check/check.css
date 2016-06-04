@@ -27,11 +27,18 @@
   box-shadow: inset 0 0 0 1px #ccc;
 
   line-height: normal;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
 .control:hover
 {
   box-shadow: inset 0 0 0 1px #b3b3b3;
+}
+
+.control:active
+{
+  background: #f6f5f3;
 }
 
 .control:before

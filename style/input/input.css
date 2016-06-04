@@ -23,6 +23,7 @@
   line-height: normal;
 
   -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .control::-webkit-input-placeholder,

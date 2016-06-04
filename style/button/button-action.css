@@ -30,6 +30,8 @@
   background: #ffdb4d;
 
   font-family: arial,sans-serif;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
 .control:hover
