@@ -2,15 +2,12 @@
 {
   position: absolute;
 
-  padding: 0 10px;
-
   cursor: pointer;
   white-space: nowrap;
 
   color: #fff;
-  background: #ff7474;
 
-  font: 13px/32px arial,helvetica,sans-serif;
+  font-family: arial,sans-serif;
 }
 
 .control:after
@@ -22,7 +19,40 @@
   border: 7px solid transparent;
 }
 
-.control:hover
+.center
 {
-  background: #ff8989;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.middle
+{
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+.bottom
+{
+  composes: control;
+  composes: center;
+}
+
+.left
+{
+  composes: control;
+  composes: middle;
+}
+
+.right
+{
+  composes: control;
+  composes: middle;
+}
+
+.top
+{
+  composes: control;
+  composes: center;
 }

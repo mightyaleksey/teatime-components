@@ -1,0 +1,27 @@
+.bottom
+{
+  composes: bottom from './tooltip.css';
+  composes: bottom from './size-xs.css';
+  composes: bottom from './color-warning.css';
+}
+
+.left
+{
+  composes: left from './tooltip.css';
+  composes: left from './size-xs.css';
+  composes: left from './color-warning.css';
+}
+
+.right
+{
+  composes: right from './tooltip.css';
+  composes: right from './size-xs.css';
+  composes: right from './color-warning.css';
+}
+
+.top
+{
+  composes: top from './tooltip.css';
+  composes: top from './size-xs.css';
+  composes: top from './color-warning.css';
+}

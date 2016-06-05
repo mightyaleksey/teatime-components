@@ -5,25 +5,25 @@ const { wrapper } = require('../style/anchor/anchor.css');
 const React = require('react');
 const Tooltip = require('../component/Tooltip');
 
-module.exports = function errorTooltip(Target) {
-  class ErrorTooltip extends Component {
+module.exports = function Tooltip(Target, defaultProps = {}) {
+  class TooltipWrapper extends Component {
     render() {
-      const { direction, error, ...o } = this.props;
+      const { direction, message, type, ...o } = this.props;
 
       return (
         <div className={wrapper}>
           <Target {...o}/>
-          <Tooltip direction={direction}>
-            {error}
+          <Tooltip {...defaultProps} direction={direction} type={type}>
+            {message}
           </Tooltip>
         </div>
       );
     }
   }
 
-  ErrorTooltip.propTypes = {
+  TooltipWrapper.propTypes = {
     error: PropTypes.string,
   };
 
-  return ErrorTooltip;
+  return TooltipWrapper;
 };

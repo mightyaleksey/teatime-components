@@ -8,6 +8,18 @@
       {"children": "left", "direction": "left", "size": "m"},
       {"children": "right", "direction": "right", "size": "m"},
       {"children": "top", "direction": "top", "size": "m"}
+    ],
+    [
+      {"children": "bottom", "direction": "bottom", "size": "s", "type": "success"},
+      {"children": "left", "direction": "left", "size": "s", "type": "success"},
+      {"children": "right", "direction": "right", "size": "s", "type": "success"},
+      {"children": "top", "direction": "top", "size": "s", "type": "success"}
+    ],
+    [
+      {"children": "bottom", "direction": "bottom", "size": "xs", "type": "warning"},
+      {"children": "left", "direction": "left", "size": "xs", "type": "warning"},
+      {"children": "right", "direction": "right", "size": "xs", "type": "warning"},
+      {"children": "top", "direction": "top", "size": "xs", "type": "warning"}
     ]
   ]
 }
