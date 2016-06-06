@@ -1,10 +1,11 @@
 'use strict';
 
 const { PropTypes } = require('react');
+const { appendMixin } = require('../tools/func');
 const Popup = require('../view/Popup');
 const React = require('react');
 
-const styles = {
+const baseStyles = {
   'normal-xs': require('../style/tooltip/tooltip-normal-xs.css'),
   'normal-s': require('../style/tooltip/tooltip-normal-s.css'),
   'normal-m': require('../style/tooltip/tooltip-normal-m.css'),
@@ -18,13 +19,21 @@ const styles = {
 
 class Tooltip extends Popup {
   render() {
-    const { direction, size, type, ...o } = this.props;
+    const { children, className, direction, size, type, ...o } = this.props;
+    const styles = baseStyles[`${type}-${size}`];
+
+    const mixin = children
+      ? styles.isOpened
+      : styles.isClosed;
 
     return (
       <Popup
         {...o}
+        className={appendMixin(className, mixin)}
         styleName={direction}
-        styles={styles[`${type}-${size}`]}/>
+        styles={styles}>
+        {children}
+      </Popup>
     );
   }
 }

@@ -1,11 +1,23 @@
 'use strict';
 
+exports.appendMixin = appendMixin;
 exports.bind = bind;
 exports.decrement = decrement;
 exports.increment = increment;
 exports.findIndexByValueProp = findIndexByValueProp;
 exports.noop = noop;
 exports.toArray = toArray;
+
+/**
+ * @param  {string} className
+ * @param  {string} mixin
+ * @return {string}
+ */
+function appendMixin(className, mixin) {
+  return className
+    ? `${className} ${mixin}`
+    : mixin;
+}
 
 /**
  * @param  {object} context

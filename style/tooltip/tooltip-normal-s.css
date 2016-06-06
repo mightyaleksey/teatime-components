@@ -25,3 +25,15 @@
   composes: top from './size-s.css';
   composes: top from './color-normal.css';
 }
+
+/* mixins */
+
+.isClosed
+{
+  composes: isClosed from './tooltip.css';
+}
+
+.isOpened
+{
+  composes: isOpened from './tooltip.css';
+}

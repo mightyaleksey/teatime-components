@@ -56,3 +56,15 @@
   composes: control;
   composes: center;
 }
+
+/* mixins */
+
+.isClosed
+{
+  display: none;
+}
+
+.isOpened
+{
+  display: block;
+}

@@ -8,12 +8,16 @@ const Tooltip = require('../component/Tooltip');
 module.exports = function Tooltip(Target, defaultProps = {}) {
   class TooltipWrapper extends Component {
     render() {
-      const { direction, message, type, ...o } = this.props;
+      const { direction, message, size, type, ...o } = this.props;
 
       return (
         <div className={wrapper}>
-          <Target {...o}/>
-          <Tooltip {...defaultProps} direction={direction} type={type}>
+          <Target {...o} size={size}/>
+          <Tooltip
+            size={size}
+            {...defaultProps}
+            direction={direction}
+            type={type}>
             {message}
           </Tooltip>
         </div>
