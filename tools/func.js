@@ -1,7 +1,6 @@
 'use strict';
 
 exports.bind = bind;
-exports.camelcase = require('lodash.camelcase');
 exports.decrement = decrement;
 exports.increment = increment;
 exports.findIndexByValueProp = findIndexByValueProp;
