@@ -5,7 +5,12 @@ const { wrapper } = require('../style/anchor/anchor.css');
 const React = require('react');
 const Tooltip = require('../component/Tooltip');
 
-module.exports = function tooltipWrapper(Target, defaultProps) {
+/**
+ * @param  {component} Target
+ * @param  {object}    [preset]
+ * @return {component}
+ */
+module.exports = function tooltipWrapper(Target, preset) {
   class TooltipWrapper extends Component {
     render() {
       const { direction, message, size, type, ...o } = this.props;
@@ -14,10 +19,10 @@ module.exports = function tooltipWrapper(Target, defaultProps) {
         <div className={wrapper}>
           <Target {...o} size={size}/>
           <Tooltip
-            size={size}
-            {...defaultProps}
             direction={direction}
-            type={type}>
+            size={size}
+            type={type}
+            {...preset}>
             {message}
           </Tooltip>
         </div>
