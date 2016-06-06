@@ -5,7 +5,7 @@ const { wrapper } = require('../style/anchor/anchor.css');
 const React = require('react');
 const Tooltip = require('../component/Tooltip');
 
-module.exports = function Tooltip(Target, defaultProps = {}) {
+module.exports = function tooltipWrapper(Target, defaultProps) {
   class TooltipWrapper extends Component {
     render() {
       const { direction, message, size, type, ...o } = this.props;
