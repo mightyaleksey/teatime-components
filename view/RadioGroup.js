@@ -1,7 +1,8 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, noop } = require('../tools/func');
+const { bind, findIndexByValueProp, noop } = require('../tools/func');
+const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
 const RadioButton = require('./RadioButton');
 const React = require('react');
 const cssModules = require('react-css-modules');
@@ -10,51 +11,70 @@ class RadioGroup extends Component {
   constructor(props) {
     super(props);
 
+    // @todo add assertion for defaultValue
+    this.controlled = props.value !== undefined;
+    this.updateKeyMapper(props.options);
+
+    const value = props.value || props.defaultValue;
+
     // @todo make assertion for single property
     this.state = {
-      selected: this.props.value || this.props.defaultValue || '',
+      prefix: generateId(),
+      selected: findIndexByValueProp(props.options, value),
     };
 
     bind(this, 'onChange');
   }
 
-  onChange(e) {
-    if (e.target.value === this.state.selected) {
-      return;
+  componentWillReceiveProps({ options, value }) {
+    if (this.controlled) {
+      this.setState({selected: findIndexByValueProp(options, value)});
     }
 
-    this.setState({selected: e.target.value});
-    this.props.onChange(e, {value: e.target.value});
+    if (this.props.options !== options) {
+      this.updateKeyMapper(options);
+    }
+  }
+
+  onChange(e, _, tc) {
+    if (!this.controlled) {
+      this.setState({selected: tc});
+    }
+
+    this.props.onChange(e, _);
+  }
+
+  updateKeyMapper(options) {
+    this.mapKey = !isUnique(options)
+      ? mapKeyBasedOnPos
+      : mapKey;
   }
 
   render() {
-    const { onChange, ...o } = this.props; // eslint-disable-line no-unused-vars
-
     return (
-      <div {...o} styleName='container'>{this.renderOptions()}</div>
+      <div
+        styleName='container'
+        {...this.props}
+        onChange={undefined}>
+        {this.renderOptions()}
+      </div>
     );
   }
 
   renderOptions() {
-    const {
-      defaultValue, // eslint-disable-line no-unused-vars
-      disabled,
-      name,
-      options,
-      styles,
-    } = this.props;
-    const { selected } = this.state;
+    const { disabled, name, options, styles } = this.props;
+    const { prefix, selected } = this.state;
 
     return options.map(({ text, value }, i) => (
       <RadioButton
-        checked={value === selected}
+        checked={selected === i}
         disabled={disabled}
-        key={`_${value}${i}`}
+        key={this.mapKey(prefix, value, i)}
         name={name}
         onChange={this.onChange}
         styles={styles}
-        value={value}
-      >
+        tc={i}
+        value={value}>
         {text}
       </RadioButton>
     ));
