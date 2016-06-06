@@ -10,7 +10,7 @@
     "prepublish": "in-publish && npm run -s compile || in-install",
     "publish": "in-publish && npm run -s cleanup || in-install",
     "start": "webpack-dev-server --config demo/webpack.config.js --no-info",
-    "test": "tape --require babel-register test/**/*.js"
+    "test": "tape --require ./test/setup test/**/*.js"
   },
   "pre-commit": [
     "lint"
@@ -40,6 +40,7 @@
     "babel-preset-stage-2": "^6.5.0",
     "babel-register": "^6.9.0",
     "css-loader": "^0.23.1",
+    "css-modules-require-hook": "^4.0.1",
     "eslint": "^2.10.2",
     "eslint-plugin-react": "^5.1.1",
     "extract-text-webpack-plugin": "^1.0.1",

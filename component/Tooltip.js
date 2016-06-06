@@ -31,7 +31,8 @@ class Tooltip extends Popup {
         {...o}
         className={appendMixin(className, mixin)}
         styleName={direction}
-        styles={styles}>
+        styles={styles}
+        type={type}>
         {children}
       </Popup>
     );
