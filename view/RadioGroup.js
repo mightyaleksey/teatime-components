@@ -62,11 +62,12 @@ class RadioGroup extends Component {
   }
 
   renderOptions() {
-    const { disabled, name, options, styles } = this.props;
+    const { childClassName, disabled, name, options, styles } = this.props;
     const { prefix, selected } = this.state;
 
     return options.map(({ text, value }, i) => (
       <RadioButton
+        className={childClassName}
         checked={selected === i}
         disabled={disabled}
         key={this.mapKey(prefix, value, i)}
@@ -87,6 +88,7 @@ RadioGroup.defaultProps = {
 };
 
 RadioGroup.propTypes = {
+  childClassName: PropTypes.string,
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,

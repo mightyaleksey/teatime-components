@@ -65,11 +65,12 @@ class CheckGroup extends Component {
   }
 
   renderOptions() {
-    const { disabled, name, options, styles } = this.props;
+    const { childClassName, disabled, name, options, styles } = this.props;
     const { prefix, values } = this.state;
 
     return options.map(({ text, value }, i) => (
       <Check
+        className={childClassName}
         disabled={disabled}
         checked={values[i]}
         key={this.mapKey(prefix, value, i)}
@@ -90,6 +91,7 @@ CheckGroup.defaultProps = {
 };
 
 CheckGroup.propTypes = {
+  childClassName: PropTypes.string,
   defaultValue: PropTypes.array,
   disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
