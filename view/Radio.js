@@ -61,12 +61,11 @@ class Radio extends Component {
   }
 
   renderOptions() {
-    const { childClassName, disabled, name, options, styles } = this.props;
+    const { disabled, name, options, styles } = this.props;
     const { prefix, selected } = this.state;
 
     return options.map(({ text, value }, i) => (
       <Check
-        className={childClassName}
         disabled={disabled}
         checked={selected === i}
         key={this.mapKey(prefix, value, i)}
@@ -88,7 +87,6 @@ Radio.defaultProps = {
 };
 
 Radio.propTypes = {
-  childClassName: PropTypes.string,
   defaultValue: PropTypes.array,
   disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
