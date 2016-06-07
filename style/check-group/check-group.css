@@ -1,4 +1,12 @@
-.container
+.container,
+.column
 {
   display: inline-block;
+
+  vertical-align: top;
+}
+
+.column:last-child
+{
+  margin-right: 0;
 }

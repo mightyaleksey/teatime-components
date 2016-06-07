@@ -5,6 +5,7 @@ exports.bind = bind;
 exports.decrement = decrement;
 exports.increment = increment;
 exports.findIndexByValueProp = findIndexByValueProp;
+exports.mapRange = mapRange;
 exports.noop = noop;
 exports.toArray = toArray;
 
@@ -67,6 +68,20 @@ function findIndexByValueProp(collection, value) {
   }
 
   return -1;
+}
+
+/**
+ * @param  {function} iteratee
+ * @param  {number} steps
+ * @return {array}
+ */
+function mapRange(iteratee, steps) {
+  const collection = new Array(steps);
+  for (var i = 0; i < steps; ++i) {
+    collection[i] = iteratee(i, steps);
+  }
+
+  return collection;
 }
 
 function noop() {}

@@ -4,6 +4,7 @@
   "data": [
     [
       {
+        "cols": 3,
         "name": "check-group-motorrad-1",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
@@ -15,6 +16,7 @@
         "size": "s"
       },
       {
+        "cols": 3,
         "disabled": true,
         "name": "check-group-motorrad-2",
         "options": [

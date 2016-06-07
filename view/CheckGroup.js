@@ -1,7 +1,7 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, noop } = require('../tools/func');
+const { bind, mapRange, noop } = require('../tools/func');
 const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
 const Check = require('./Check');
 const React = require('react');
@@ -59,28 +59,58 @@ class CheckGroup extends Component {
         styleName='container'
         {...this.props}
         onChange={undefined}>
-        {this.renderOptions()}
+        {this.renderColumns()}
       </div>
     );
   }
 
-  renderOptions() {
-    const { disabled, name, options, styles } = this.props;
+  renderColumns() {
+    const { prefix } = this.state;
+    const cols = Math.max(this.props.cols || 0, 1);
+
+    if (cols === 1) {
+      return this.renderOptions(0, cols);
+    }
+
+    return mapRange(step => (
+      <div
+        key={mapKeyBasedOnPos(prefix, '_', step)}
+        styleName='column'>
+        {this.renderOptions(step, cols)}
+      </div>
+    ), cols);
+  }
+
+  /**
+   * @param  {number} start
+   * @param  {number} step
+   * @return {component[]}
+   */
+  renderOptions(start, step) {
+    const { disabled: globalDisabled, name, options, styles } = this.props;
     const { prefix, values } = this.state;
 
-    return options.map(({ text, value }, i) => (
-      <Check
-        disabled={disabled}
-        checked={values[i]}
-        key={this.mapKey(prefix, value, i)}
-        name={name}
-        onChange={this.onChange}
-        styles={styles}
-        tc={i}
-        value={value}>
-        {text}
-      </Check>
-    ));
+    const result = [];
+
+    for (var i = start; i < options.length; i += step) {
+      const { disabled, text, value } = options[i];
+
+      result.push((
+        <Check
+          disabled={globalDisabled || disabled}
+          checked={values[i]}
+          key={this.mapKey(prefix, value, i)}
+          name={name}
+          onChange={this.onChange}
+          styles={styles}
+          tc={i}
+          value={value}>
+          {text}
+        </Check>
+      ));
+    }
+
+    return result;
   }
 }
 
@@ -90,6 +120,7 @@ CheckGroup.defaultProps = {
 };
 
 CheckGroup.propTypes = {
+  cols: PropTypes.number,
   defaultValue: PropTypes.array,
   disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
