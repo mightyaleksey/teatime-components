@@ -1,0 +1,12 @@
+.control
+{
+  padding: 0;
+
+  text-decoration: none;
+
+  border: none;
+  outline: none;
+  background: none;
+-webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}

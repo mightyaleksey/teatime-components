@@ -19,6 +19,11 @@
       {"children": "button", "disabled": true, "size": "l", "theme": "action"}
     ],
     [
+      {"children": "button", "size": "s", "theme": "link"},
+      {"children": "button", "size": "m", "theme": "link"},
+      {"children": "button", "size": "l", "theme": "link"}
+    ],
+    [
       {"children": "button", "size": "xs", "theme": "normal"},
       {"children": "button", "disabled": true, "size": "xs", "theme": "normal"}
     ],

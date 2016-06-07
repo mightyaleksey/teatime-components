@@ -5,7 +5,7 @@
   transition: color .15s ease-out;
   text-decoration: none;
 
-  color: #44b;
+  color: #04b;
 
   font-family: arial,sans-serif;
   line-height: normal;
@@ -13,5 +13,5 @@
 
 .control:hover
 {
-  color: #e00;
+  color: #c00;
 }

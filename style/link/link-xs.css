@@ -1,0 +1,8 @@
+@value size-xs from '../font.css';
+
+.control
+{
+  composes: control from './link.css';
+
+  font-size: size-xs;
+}
