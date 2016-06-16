@@ -2,9 +2,9 @@
 
 const { PropTypes } = require('react');
 const Select = require('../view/Select');
-const simplify = require('../mixin/simplify');
+const StyleComponent = require('../mixin/StyleComponent');
 
-module.exports = simplify(
+module.exports = StyleComponent(
   Select,
   (styles, { size }) => ({
     styles: styles[size],

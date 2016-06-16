@@ -1,10 +1,10 @@
 'use strict';
 
 const { PropTypes } = require('react');
+const StyleComponent = require('../mixin/StyleComponent');
 const Textarea = require('../view/Textarea');
-const simplify = require('../mixin/simplify');
 
-module.exports = simplify(
+module.exports = StyleComponent(
   Textarea,
   (styles, { size }) => ({styles: styles[size]}),
   {

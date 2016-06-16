@@ -2,9 +2,9 @@
 
 const { PropTypes } = require('react');
 const Spin = require('../view/Spin');
-const simplify = require('../mixin/simplify');
+const StyleComponent = require('../mixin/StyleComponent');
 
-module.exports = simplify(
+module.exports = StyleComponent(
   Spin,
   (styles, { size }) => ({styles: styles[size]}),
   {

@@ -2,9 +2,9 @@
 
 const { PropTypes } = require('react');
 const ColorPicker = require('../view/ColorPicker');
-const simplify = require('../mixin/simplify');
+const StyleComponent = require('../mixin/StyleComponent');
 
-module.exports = simplify(
+module.exports = StyleComponent(
   ColorPicker,
   (styles, { size }) => ({styles: styles[size]}),
   {

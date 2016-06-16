@@ -2,9 +2,9 @@
 
 const { PropTypes } = require('react');
 const Radio = require('../view/Radio');
-const simplify = require('../mixin/simplify');
+const StyleComponent = require('../mixin/StyleComponent');
 
-module.exports = simplify(
+module.exports = StyleComponent(
   Radio,
   (styles, { size }) => ({styles: styles[size]}),
   {

@@ -8,7 +8,7 @@ const Popup = require('./Popup');
 const Tile = require('./Tile');
 const React = require('react');
 const cssModules = require('react-css-modules');
-const reactOutsideEvent = require('react-outside-event');
+const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
 
 class ColorPicker extends Component {
   constructor(props) {

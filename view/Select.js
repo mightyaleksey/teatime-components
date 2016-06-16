@@ -9,7 +9,7 @@ const Option = require('./Option');
 const Popup = require('./Popup');
 const React = require('react');
 const cssModules = require('react-css-modules');
-const reactOutsideEvent = require('react-outside-event');
+const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
 
 class Select extends Component {
   constructor(props) {

@@ -2,9 +2,9 @@
 
 const { PropTypes } = require('react');
 const CheckGroup = require('../view/CheckGroup');
-const simplify = require('../mixin/simplify');
+const StyleComponent = require('../mixin/StyleComponent');
 
-module.exports = simplify(
+module.exports = StyleComponent(
   CheckGroup,
   (styles, { size }) => ({
     styles: styles[size],

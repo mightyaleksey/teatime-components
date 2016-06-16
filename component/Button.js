@@ -2,9 +2,9 @@
 
 const { PropTypes } = require('react');
 const Button = require('../view/Button');
-const simplify = require('../mixin/simplify');
+const StyleComponent = require('../mixin/StyleComponent');
 
-module.exports = simplify(
+module.exports = StyleComponent(
   Button,
   (styles, { size, theme }) => ({styles: styles[`${theme}-${size}`]}),
   {

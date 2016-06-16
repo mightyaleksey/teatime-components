@@ -11,7 +11,7 @@ const { Component } = React;
  * @param  {object} types propTypes
  * @return {component}
  */
-module.exports = function simplify(Target, getter, styles, defaults, types) {
+module.exports = function StyleComponent(Target, getter, styles, defaults, types) {
   class Simplified extends Component {
     render() {
       return (
@@ -20,6 +20,7 @@ module.exports = function simplify(Target, getter, styles, defaults, types) {
     }
   }
 
+  Simplified.displayName = `Styled${Target.displayName || 'Component'}`;
   Simplified.defaultProps = defaults;
   Simplified.propTypes = types;
 

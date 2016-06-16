@@ -1,10 +1,10 @@
 'use strict';
 
 const { PropTypes } = require('react');
+const StyleComponent = require('../mixin/StyleComponent');
 const Tumbler = require('../view/Tumbler');
-const simplify = require('../mixin/simplify');
 
-module.exports = simplify(
+module.exports = StyleComponent(
   Tumbler,
   (styles, { size }) => ({styles: styles[size]}),
   {
