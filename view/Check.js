@@ -29,7 +29,7 @@ class Check extends Component {
   }
 
   render() {
-    const { children, className, ...o } = this.props;
+    const { children, className, styleName = 'wrapper', ...o } = this.props;
     const { id } = this.state;
 
     const labelElement = children
@@ -46,7 +46,7 @@ class Check extends Component {
      */
 
     return (
-      <div className={className} styleName='wrapper'>
+      <div className={className} styleName={styleName}>
         <input
           styleName='native'
           {...o}

@@ -62,7 +62,7 @@ class Input extends Component {
   }
 
   render() {
-    const { className, id, ...o } = this.props;
+    const { className, id, styleName = 'wrapper', ...o } = this.props;
     const { value } = this.state;
 
     const clearElement = value && !this.props.disabled
@@ -70,7 +70,7 @@ class Input extends Component {
       : null;
 
     return (
-      <span className={className} styleName='wrapper'>
+      <span className={className} styleName={styleName}>
         <input
           styleName='control'
           {...o}

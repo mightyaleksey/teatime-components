@@ -86,13 +86,13 @@ class ColorPicker extends Component {
   }
 
   render() {
-    const { className, id, ...o } = this.props;
+    const { className, id, styleName = 'container', ...o } = this.props;
 
     return (
       <div
         className={className}
         onKeyDown={this.onKeyDown}
-        styleName='container'>
+        styleName={styleName}>
         {this.renderPreview()}
         <Input
           {...o}

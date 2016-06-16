@@ -29,7 +29,7 @@ class RadioButton extends Component {
   }
 
   render() {
-    const { children, className, ...o } = this.props;
+    const { children, className, styleName = 'wrapper', ...o } = this.props;
     const { id } = this.state;
 
     /**
@@ -42,7 +42,7 @@ class RadioButton extends Component {
      */
 
     return (
-      <span className={className} styleName='wrapper'>
+      <span className={className} styleName={styleName}>
         <input
           styleName='native'
           type='radio'

@@ -29,7 +29,7 @@ class Tumbler extends Component {
   }
 
   render() {
-    const { className, off, on, ...o } = this.props;
+    const { className, off, on, styleName = 'wrapper', ...o } = this.props;
     const { id } = this.state;
 
     /**
@@ -42,7 +42,7 @@ class Tumbler extends Component {
      */
 
     return (
-      <div className={className} styleName='wrapper'>
+      <div className={className} styleName={styleName}>
         <input
           styleName='native'
           type='checkbox'
