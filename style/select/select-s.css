@@ -6,6 +6,7 @@
 .control
 {
   composes: control from '../button/button-normal-s.css';
+  composes: control from './arrow-s.css';
   composes: control from './select.css';
 
   position: relative;

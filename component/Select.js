@@ -10,6 +10,7 @@ module.exports = StyleComponent(
     styles: styles[size],
   }),
   {
+    xs: require('../style/select/select-xs.css'),
     s: require('../style/select/select-s.css'),
     m: require('../style/select/select-m.css'),
   },
@@ -18,6 +19,7 @@ module.exports = StyleComponent(
   },
   {
     size: PropTypes.oneOf([
+      'xs',
       's',
       'm',
     ]),

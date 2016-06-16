@@ -1,0 +1,13 @@
+.control
+{
+  composes: control from './arrow.css';
+}
+
+.control:after
+{
+  width: 11px;
+  height: 6px;
+  margin: -3px 0 0;
+
+  background: url(./arrow-s.svg) 0 50% no-repeat;
+}

@@ -3,14 +3,8 @@
   position: absolute;
   top: 50%;
 
-  width: 11px;
-  height: 6px;
-  margin: -3px 0 0;
-
   content: '';
   transition: transform .1s ease-out;
-
-  background: url(./arrow.svg) 0 50% no-repeat;
 }
 
 .control:disabled:after

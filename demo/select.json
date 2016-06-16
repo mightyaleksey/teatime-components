@@ -6,6 +6,31 @@
       {
         "name": "motorrad-1",
         "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "xs"
+      },
+      {
+        "disabled": true,
+        "name": "motorrad-2",
+        "options": [
+          {"text": "Yamaha", "value": "yamaha"},
+          {"text": "Suzuki", "value": "suzuki"},
+          {"text": "Kawasaki", "value": "kawasaki"},
+          {"text": "Vespa", "value": "vespa"},
+          {"text": "MZ", "value": "mz"}
+        ],
+        "size": "xs"
+      }
+    ],
+    [
+      {
+        "name": "motorrad-3",
+        "options": [
           {"text": "BMW S 1000 RR", "value": "bmw s 1000 rr"},
           {"text": "BMW R 1200 RS", "value": "bmw r 1200 rs"},
           {"text": "BMW F 800 GT", "value": "bmw f 800 gt"},
@@ -34,7 +59,7 @@
       {
         "defaultValue": "mz",
         "disabled": true,
-        "name": "motorrad-2",
+        "name": "motorrad-4",
         "options": [
           {"text": "BMW S 1000 RR", "value": "bmw s 1000 rr"},
           {"text": "BMW R 1200 RS", "value": "bmw r 1200 rs"},
@@ -64,7 +89,7 @@
     ],
     [
       {
-        "name": "motorrad-3",
+        "name": "motorrad-5",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},
@@ -76,7 +101,7 @@
       },
       {
         "disabled": true,
-        "name": "motorrad-4",
+        "name": "motorrad-6",
         "options": [
           {"text": "Yamaha", "value": "yamaha"},
           {"text": "Suzuki", "value": "suzuki"},

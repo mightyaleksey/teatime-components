@@ -5,33 +5,33 @@
 
 .control
 {
-  composes: control from '../button/button-normal-m.css';
-  composes: control from './arrow-s.css';
+  composes: control from '../button/button-normal-xs.css';
+  composes: control from './arrow-xs.css';
   composes: control from './select.css';
 
   position: relative;
 
-  padding-right: 29px;
+  padding-right: 25px;
 
   text-align: left;
 }
 
 .control:after
 {
-  right: 12px;
+  right: 9px;
 }
 
 .menu
 {
-  composes: menu from '../menu/menu-m.css';
+  composes: menu from '../menu/menu-xs.css';
   composes: menu from './select.css';
 
-  max-height: 230px;
+  max-height: 200px;
 }
 
 .item
 {
-  composes: item from '../menu/menu-m.css';
+  composes: item from '../menu/menu-xs.css';
   composes: item from './select.css';
 }
 
@@ -52,9 +52,9 @@
   composes: isCheckedItem from './select.css';
   composes: item;
 
-  background-image: url(../check/tick-m.svg);
-  background-position: 13px 50%;
-  background-size: 15px;
+  background-image: url(../check/tick-s.svg);
+  background-position: 10px 50%;
+  background-size: 13px;
 }
 
 .isFocused
