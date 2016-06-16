@@ -23,7 +23,7 @@ class Select extends Component {
       isOpened: false,
       focused: -1,
       prefix: generateId(),
-      selected: 0,
+      selected: findIndexByValueProp(props.options, props.value),
     };
 
     bind(this, [
@@ -201,7 +201,7 @@ class Select extends Component {
 
   render() {
     const { disabled, name, options } = this.props;
-    const value = options[this.state.selected].value;
+    const value = options[Math.max(this.state.selected, 0)].value;
 
     return (
       <div
@@ -235,7 +235,7 @@ class Select extends Component {
         onClick={this.onButtonClick}
         ref='control'
         styles={styles}>
-        {options[selected].text}
+        {options[Math.max(selected, 0)].text}
       </Button>
     );
   }
