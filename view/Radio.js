@@ -5,7 +5,7 @@ const { bind, findIndexByValueProp, noop } = require('../tools/func');
 const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
 const Check = require('./Check');
 const React = require('react');
-const cssModules = require('react-css-modules');
+const cx = require('classnames');
 
 class Radio extends Component {
   constructor(props) {
@@ -50,10 +50,12 @@ class Radio extends Component {
   }
 
   render() {
+    const { className, styleName, styles, ...o } = this.props;
+
     return (
       <div
-        styleName='container'
-        {...this.props}
+        {...o}
+        className={cx(className, styles[styleName])}
         onChange={undefined}>
         {this.renderOptions()}
       </div>
@@ -83,36 +85,16 @@ class Radio extends Component {
 
 Radio.defaultProps = {
   onChange: noop,
+  styleName: 'container',
   styles: {},
 };
 
 Radio.propTypes = {
-  defaultValue: PropTypes.array,
-  disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
   onChange: PropTypes.func,
-  onClick: PropTypes.func,
-  onContextMenu: PropTypes.func,
-  onDoubleClick: PropTypes.func,
-  onFocus: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onMouseDown: PropTypes.func,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
-  onMouseMove: PropTypes.func,
-  onMouseOut: PropTypes.func,
-  onMouseOver: PropTypes.func,
-  onMouseUp: PropTypes.func,
-  onTouchCancel: PropTypes.func,
-  onTouchEnd: PropTypes.func,
-  onTouchMove: PropTypes.func,
-  onTouchStart: PropTypes.func,
   options: PropTypes.array.isRequired,
+  styleName: PropTypes.string,
   styles: PropTypes.object,
-  value: PropTypes.string,
 };
 
-module.exports = cssModules(Radio);
+module.exports = Radio;

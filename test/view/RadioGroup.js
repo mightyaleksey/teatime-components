@@ -15,7 +15,7 @@ const options = [
   {text: 'MZ', value: 'mz'},
 ];
 
-test('className to contain `mixin` and styleName', t => {
+test('RadioGroup className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<RadioGroup
     className='mixin'
     name='motorrad'

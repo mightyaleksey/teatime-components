@@ -10,7 +10,7 @@ const styles = {
   wrapper: 'wrapper',
 };
 
-test('className to contain `mixin` and styleName', t => {
+test('Input className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<Input
     className='mixin'
     name='motorrad'

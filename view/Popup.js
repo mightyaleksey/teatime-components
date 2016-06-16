@@ -2,7 +2,7 @@
 
 const { Component, PropTypes } = require('react');
 const React = require('react');
-const cssModules = require('react-css-modules');
+const cx = require('classnames');
 const layer = require('../mixin/layer');
 
 class Popup extends Component {
@@ -19,20 +19,26 @@ class Popup extends Component {
   }
 
   render() {
+    const { className, styleName, styles, ...o } = this.props;
     const { zIndex } = this.state;
 
     return (
-      <div style={{zIndex}} styleName='popup' {...this.props}/>
+      <div
+        style={{zIndex}}
+        {...o}
+        className={cx(className, styles[styleName])}/>
     );
   }
 }
 
-Popup.defaultTypes = {
+Popup.defaultProps = {
+  styleName: 'popup',
   styles: {},
 };
 
 Popup.propTypes = {
+  styleName: PropTypes.string,
   styles: PropTypes.object,
 };
 
-module.exports = layer(cssModules(Popup));
+module.exports = layer(Popup);

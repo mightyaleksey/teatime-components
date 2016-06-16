@@ -13,7 +13,7 @@ const styles = {
   wrapper: 'wrapper',
 };
 
-test('className to contain `mixin` and styleName', t => {
+test('Tumbler className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<Tumbler
     className='mixin'
     name='motorrad'

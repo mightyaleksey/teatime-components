@@ -7,7 +7,7 @@ const test = require('tape');
 
 const styles = {control: 'control'};
 
-test('className to contain `mixin` and styleName', t => {
+test('Spin className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<Spin className='mixin' styles={styles}/>);
   const result = tree.getRenderOutput();
 

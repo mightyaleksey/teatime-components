@@ -7,7 +7,7 @@ const Input = require('./Input');
 const Popup = require('./Popup');
 const Tile = require('./Tile');
 const React = require('react');
-const cssModules = require('react-css-modules');
+const cx = require('classnames');
 const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
 
 class ColorPicker extends Component {
@@ -86,13 +86,12 @@ class ColorPicker extends Component {
   }
 
   render() {
-    const { className, id, styleName = 'container', ...o } = this.props;
+    const { className, id, styleName, styles, ...o } = this.props;
 
     return (
       <div
-        className={className}
-        onKeyDown={this.onKeyDown}
-        styleName={styleName}>
+        className={cx(className, styles[styleName])}
+        onKeyDown={this.onKeyDown}>
         {this.renderPreview()}
         <Input
           {...o}
@@ -101,6 +100,7 @@ class ColorPicker extends Component {
           onChange={this.onChange}
           onFocus={this.onInputFocus}
           ref='control'
+          styles={styles}
           value={this.state.value}/>
         {this.renderMenu()}
       </div>
@@ -108,23 +108,26 @@ class ColorPicker extends Component {
   }
 
   renderPreview() {
+    const { disabled, styles } = this.props;
+
     return (
       <button
-        disabled={this.props.disabled}
+        className={styles.preview}
+        disabled={disabled}
         onClick={this.onPreviewClick}
         ref='preview'
-        style={{background: `#${this.state.value}`}}
-        styleName='preview'/>
+        style={{background: `#${this.state.value}`}}/>
     );
   }
 
   renderMenu() {
-    const popupMixin = this.props.styles[this.state.isOpened
+    const { styles } = this.props;
+    const popupMixin = styles[this.state.isOpened
       ? 'isOpened'
       : 'isClosed'];
 
     return (
-      <Popup className={popupMixin} styleName='menu'>
+      <Popup className={popupMixin} styleName='menu' styles={styles}>
         {this.renderTiles()}
       </Popup>
     );
@@ -138,7 +141,7 @@ class ColorPicker extends Component {
     const { palette, styles } = this.props;
 
     return palette.map((tiles, p) => (
-      <div key={p} styleName='line'>{this.renderLine(tiles, p, styles)}</div>
+      <div className={styles.line} key={p}>{this.renderLine(tiles, p, styles)}</div>
     ));
   }
 
@@ -163,27 +166,16 @@ ColorPicker.defaultProps = {
     ['CCCCCC', 'FF9999', 'FFCC99', 'FFFF99', 'CCFF99', '99FF99', '99FFCC', '99FFFF', '99CCFF', '9999FF', 'CC99FF', 'FF99FF', 'FF99CC'],
     ['FFFFFF', 'FFCCCC', 'FFE6CC', 'FFFFCC', 'E6FFCC', 'CCFFCC', 'CCFFE6', 'CCFFFF', 'CCE5FF', 'CCCCFF', 'E5CCFF', 'FFCCFF', 'FFCCE6'],
   ],
+  styleName: 'container',
 };
 
+// @todo add color validation for value prop
 ColorPicker.propTypes = {
-  defaultValue: PropTypes.string,
-  disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
   onChange: PropTypes.func,
-  onCopy: PropTypes.func,
-  onCut: PropTypes.func,
-  onFocus: PropTypes.func,
-  onInput: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onPaste: PropTypes.func,
-  onSelect: PropTypes.func,
   palette: PropTypes.array,
-  placeholder: PropTypes.string,
+  styleName: PropTypes.string,
   styles: PropTypes.object,
-  value: PropTypes.string, // @todo add color validation
 };
 
-module.exports = reactOutsideEvent(cssModules(ColorPicker), ['click']);
+module.exports = reactOutsideEvent(ColorPicker, ['click']);

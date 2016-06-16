@@ -3,7 +3,7 @@
 const { Component, PropTypes } = require('react');
 const { bind } = require('../tools/func');
 const React = require('react');
-const cssModules = require('react-css-modules');
+const cx = require('classnames');
 
 class Option extends Component {
   constructor(props) {
@@ -36,11 +36,7 @@ class Option extends Component {
   }
 
   render() {
-    const { checked, focused, styles, value, ...o } = this.props;
-
-    const mixin = styles[focused
-      ? 'isFocused'
-      : undefined];
+    const { checked, className, focused, styles, value, ...o } = this.props;
 
     const styleName = checked
       ? 'isCheckedItem'
@@ -48,10 +44,9 @@ class Option extends Component {
 
     return (
       <span
-        data-value={value}
-        styleName={styleName}
         {...o}
-        className={mixin}
+        className={cx(className, {[styles.isFocused]: focused}, styles[styleName])}
+        data-value={value}
         onClick={this.onClick}
         onFocus={this.onFocus}
         onMouseEnter={this.onMouseEnter}
@@ -73,4 +68,4 @@ Option.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-module.exports = cssModules(Option);
+module.exports = Option;

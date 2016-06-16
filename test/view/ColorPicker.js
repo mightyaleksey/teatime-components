@@ -14,7 +14,7 @@ const styles = {
   wrapper: 'wrapper',
 };
 
-test('className to contain `mixin` and styleName', t => {
+test('ColorPicker className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<ColorPicker
     className='mixin'
     name='motorrad'

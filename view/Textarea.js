@@ -3,7 +3,7 @@
 const { Component, PropTypes } = require('react');
 const { bind, noop } = require('../tools/func');
 const React = require('react');
-const cssModules = require('react-css-modules');
+const cx = require('classnames');
 
 class Textarea extends Component {
   constructor(props) {
@@ -29,10 +29,12 @@ class Textarea extends Component {
   }
 
   render() {
+    const { className, styleName, styles, ...o } = this.props;
+
     return (
       <textarea
-        styleName='control'
-        {...this.props}
+        {...o}
+        className={cx(className, styles[styleName])}
         onChange={this.onChange}
         ref='control'/>
     );
@@ -42,31 +44,17 @@ class Textarea extends Component {
 Textarea.defaultProps = {
   onChange: noop,
   rows: 3,
+  styleName: 'control',
   styles: {},
 };
 
 Textarea.propTypes = {
   cols: PropTypes.number,
-  defaultValue: PropTypes.string,
-  disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
   onChange: PropTypes.func,
-  onCopy: PropTypes.func,
-  onCut: PropTypes.func,
-  onFocus: PropTypes.func,
-  onInput: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onPaste: PropTypes.func,
-  onScroll: PropTypes.func,
-  onSelect: PropTypes.func,
-  onWheel: PropTypes.func,
-  placeholder: PropTypes.string,
   rows: PropTypes.number,
+  styleName: PropTypes.string,
   styles: PropTypes.object,
-  value: PropTypes.string,
 };
 
-module.exports = cssModules(Textarea);
+module.exports = Textarea;

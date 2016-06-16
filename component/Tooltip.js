@@ -1,9 +1,9 @@
 'use strict';
 
 const { PropTypes } = require('react');
-const { appendMixin } = require('../tools/func');
 const Popup = require('../view/Popup');
 const React = require('react');
+const cx = require('classnames');
 
 const baseStyles = {
   'normal-xs': require('../style/tooltip/tooltip-normal-xs.css'),
@@ -29,7 +29,7 @@ class Tooltip extends Popup {
     return (
       <Popup
         {...o}
-        className={appendMixin(className, mixin)}
+        className={cx(className, mixin)}
         styleName={direction}
         styles={styles}
         type={type}>

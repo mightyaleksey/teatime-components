@@ -4,7 +4,7 @@ const { Component, PropTypes } = require('react');
 const { bind, noop } = require('../tools/func');
 const { generateId } = require('../tools/identity');
 const React = require('react');
-const cssModules = require('react-css-modules');
+const cx = require('classnames');
 
 class RadioButton extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class RadioButton extends Component {
   }
 
   render() {
-    const { children, className, styleName = 'wrapper', ...o } = this.props;
+    const { children, className, styleName, styles, ...o } = this.props;
     const { id } = this.state;
 
     /**
@@ -42,14 +42,14 @@ class RadioButton extends Component {
      */
 
     return (
-      <span className={className} styleName={styleName}>
+      <span className={cx(className, styles[styleName])}>
         <input
-          styleName='native'
           type='radio'
           {...o}
+          className={styles.native}
           id={id}
           onChange={this.onChange}/>
-        <label htmlFor={id} styleName='control'>{children}</label>
+        <label className={styles.control} htmlFor={id}>{children}</label>
       </span>
     );
   }
@@ -57,18 +57,16 @@ class RadioButton extends Component {
 
 RadioButton.defaultProps = {
   onChange: noop,
+  styleName: 'wrapper',
   styles: {},
 };
 
 RadioButton.propTypes = {
-  defaultChecked: PropTypes.bool,
-  checked: PropTypes.bool,
-  disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  styleName: PropTypes.string,
   styles: PropTypes.object,
   tc: PropTypes.any,
-  value: PropTypes.string.isRequired,
 };
 
-module.exports = cssModules(RadioButton);
+module.exports = RadioButton;

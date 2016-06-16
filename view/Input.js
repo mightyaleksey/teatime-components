@@ -3,7 +3,7 @@
 const { Component, PropTypes } = require('react');
 const { bind, noop } = require('../tools/func');
 const React = require('react');
-const cssModules = require('react-css-modules');
+const cx = require('classnames');
 
 class Input extends Component {
   constructor(props) {
@@ -62,18 +62,18 @@ class Input extends Component {
   }
 
   render() {
-    const { className, id, styleName = 'wrapper', ...o } = this.props;
+    const { className, id, styleName, styles, ...o } = this.props;
     const { value } = this.state;
 
     const clearElement = value && !this.props.disabled
-      ? (<span styleName='clear' onClick={this.onClearClick}/>)
+      ? (<span className={styles.clear} onClick={this.onClearClick}/>)
       : null;
 
     return (
-      <span className={className} styleName={styleName}>
+      <span className={cx(className, styles[styleName])}>
         <input
-          styleName='control'
           {...o}
+          className={styles.control}
           defaultValue={undefined} // Cause we have a controlled input
           id={id}
           onChange={this.onChange}
@@ -87,32 +87,20 @@ class Input extends Component {
 
 Input.defaultProps = {
   onChange: noop,
+  styleName: 'wrapper',
   styles: {},
   type: 'text',
 };
 
 Input.propTypes = {
-  defaultValue: PropTypes.string,
-  disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
   onChange: PropTypes.func,
-  onCopy: PropTypes.func,
-  onCut: PropTypes.func,
-  onFocus: PropTypes.func,
-  onInput: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onPaste: PropTypes.func,
-  onSelect: PropTypes.func,
-  placeholder: PropTypes.string,
+  styleName: PropTypes.string,
   styles: PropTypes.object,
   type:  PropTypes.oneOf([
     'password',
     'text',
   ]),
-  value: PropTypes.string,
 };
 
-module.exports = cssModules(Input);
+module.exports = Input;

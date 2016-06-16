@@ -5,7 +5,7 @@ const { bind, mapRange, noop } = require('../tools/func');
 const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
 const Check = require('./Check');
 const React = require('react');
-const cssModules = require('react-css-modules');
+const cx = require('classnames');
 
 class CheckGroup extends Component {
   constructor(props) {
@@ -54,10 +54,12 @@ class CheckGroup extends Component {
   }
 
   render() {
+    const { className, styleName, styles, ...o } = this.props;
+
     return (
       <div
-        styleName='container'
-        {...this.props}
+        {...o}
+        className={cx(className, styles[styleName])}
         onChange={undefined}>
         {this.renderColumns()}
       </div>
@@ -65,20 +67,21 @@ class CheckGroup extends Component {
   }
 
   renderColumns() {
+    const { cols, styles } = this.props;
     const { prefix } = this.state;
-    const cols = Math.max(this.props.cols || 0, 1);
+    const rCols = Math.max(cols || 0, 1);
 
-    if (cols === 1) {
-      return this.renderOptions(0, cols);
+    if (rCols === 1) {
+      return this.renderOptions(0, rCols);
     }
 
     return mapRange(step => (
       <div
-        key={mapKeyBasedOnPos(prefix, '_', step)}
-        styleName='column'>
-        {this.renderOptions(step, cols)}
+        className={styles.column}
+        key={mapKeyBasedOnPos(prefix, '_', step)}>
+        {this.renderOptions(step, rCols)}
       </div>
-    ), cols);
+    ), rCols);
   }
 
   /**
@@ -116,40 +119,21 @@ class CheckGroup extends Component {
 
 CheckGroup.defaultProps = {
   onChange: noop,
+  styleName: 'container',
   styles: {},
 };
 
 CheckGroup.propTypes = {
   cols: PropTypes.number,
-  defaultValue: PropTypes.array,
-  disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
   onChange: PropTypes.func,
-  onClick: PropTypes.func,
   onContextMenu: PropTypes.func,
-  onDoubleClick: PropTypes.func,
-  onFocus: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onMouseDown: PropTypes.func,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
-  onMouseMove: PropTypes.func,
-  onMouseOut: PropTypes.func,
-  onMouseOver: PropTypes.func,
-  onMouseUp: PropTypes.func,
-  onTouchCancel: PropTypes.func,
-  onTouchEnd: PropTypes.func,
-  onTouchMove: PropTypes.func,
-  onTouchStart: PropTypes.func,
   options: PropTypes.array.isRequired,
+  styleName: PropTypes.string,
   styles: PropTypes.object,
-  value: PropTypes.array,
 };
 
-module.exports = cssModules(CheckGroup);
+module.exports = CheckGroup;
 
 /**
  * @param  {object[]} options

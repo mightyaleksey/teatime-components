@@ -8,7 +8,7 @@ const Button = require('./Button');
 const Option = require('./Option');
 const Popup = require('./Popup');
 const React = require('react');
-const cssModules = require('react-css-modules');
+const cx = require('classnames');
 const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
 
 class Select extends Component {
@@ -200,13 +200,13 @@ class Select extends Component {
   }
 
   render() {
-    const { disabled, id, name, options } = this.props;
+    const { className, disabled, id, name, options, styleName, styles } = this.props;
     const value = options[Math.max(this.state.selected, 0)].value;
 
     return (
       <div
-        styleName='wrapper'
         {...this.props}
+        className={cx(className, styles[styleName])}
         onKeyDown={this.onKeyDown}>
         {this.renderButton()}
         {this.renderPopup()}
@@ -285,36 +285,16 @@ class Select extends Component {
 
 Select.defaultProps = {
   onChange: noop,
+  styleName: 'wrapper',
   styles: {},
 };
 
 Select.propTypes = {
-  defaultValue: PropTypes.string,
-  disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
   onChange: PropTypes.func,
-  onClick: PropTypes.func,
-  onContextMenu: PropTypes.func,
-  onDoubleClick: PropTypes.func,
-  onFocus: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onMouseDown: PropTypes.func,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
-  onMouseMove: PropTypes.func,
-  onMouseOut: PropTypes.func,
-  onMouseOver: PropTypes.func,
-  onMouseUp: PropTypes.func,
-  onTouchCancel: PropTypes.func,
-  onTouchEnd: PropTypes.func,
-  onTouchMove: PropTypes.func,
-  onTouchStart: PropTypes.func,
   options: PropTypes.array,
+  styleName: PropTypes.string,
   styles: PropTypes.object,
-  value: PropTypes.string,
 };
 
-module.exports = reactOutsideEvent(cssModules(Select), ['click']);
+module.exports = reactOutsideEvent(Select, ['click']);

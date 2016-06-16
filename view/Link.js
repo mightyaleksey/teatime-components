@@ -2,42 +2,27 @@
 
 const { Component, PropTypes } = require('react');
 const React = require('react');
-const cssModules = require('react-css-modules');
+const cx = require('classnames');
 
 class Link extends Component {
   render() {
+    const { className, styleName, styles, ...o } = this.props;
+
     return (
-      <a styleName='control' {...this.props}></a>
+      <a {...o} className={cx(className, styles[styleName])}/>
     );
   }
 }
 
 Link.defaultProps = {
+  styleName: 'control',
   styles: {},
 };
 
 Link.propTypes = {
   href: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
-  onClick: PropTypes.func,
-  onContextMenu: PropTypes.func,
-  onDoubleClick: PropTypes.func,
-  onFocus: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onMouseDown: PropTypes.func,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
-  onMouseMove: PropTypes.func,
-  onMouseOut: PropTypes.func,
-  onMouseOver: PropTypes.func,
-  onMouseUp: PropTypes.func,
-  onTouchCancel: PropTypes.func,
-  onTouchEnd: PropTypes.func,
-  onTouchMove: PropTypes.func,
-  onTouchStart: PropTypes.func,
+  styleName: PropTypes.string,
   styles: PropTypes.object,
 };
 
-module.exports = cssModules(Link);
+module.exports = Link;

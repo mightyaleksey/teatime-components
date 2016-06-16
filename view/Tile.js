@@ -3,7 +3,7 @@
 const { Component, PropTypes } = require('react');
 const { bind } = require('../tools/func');
 const React = require('react');
-const cssModules = require('react-css-modules');
+const cx = require('classnames');
 
 class Tile extends Component {
   constructor(props) {
@@ -17,19 +17,26 @@ class Tile extends Component {
   }
 
   render() {
+    const { className, styleName, styles, ...o } = this.props;
+
     return (
       <div
-        styleName='item'
-        {...this.props}
+        {...o}
+        className={cx(className, styles[styleName])}
         onClick={this.onClick}
         style={{backgroundColor: this.props.color}}/>
     );
   }
 }
 
+Tile.defaultProps = {
+  styleName: 'item',
+};
+
 Tile.propTypes = {
   color: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  styleName: PropTypes.string,
 };
 
-module.exports = cssModules(Tile);
+module.exports = Tile;

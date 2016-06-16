@@ -17,7 +17,7 @@ const options = [
   {text: 'MZ', value: 'mz'},
 ];
 
-test('className to contain `mixin` and styleName', t => {
+test('Select className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<Select
     className='mixin'
     name='motorrad'

@@ -17,7 +17,7 @@ const options = [
   {text: 'MZ', value: 'mz'},
 ];
 
-test('className to contain `mixin` and styleName', t => {
+test('CheckGroup className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<CheckGroup
     className='mixin'
     name='motorrad'
