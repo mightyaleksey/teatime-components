@@ -200,7 +200,7 @@ class Select extends Component {
   }
 
   render() {
-    const { disabled, name, options } = this.props;
+    const { disabled, id, name, options } = this.props;
     const value = options[Math.max(this.state.selected, 0)].value;
 
     return (
@@ -212,6 +212,7 @@ class Select extends Component {
         {this.renderPopup()}
         <input
           disabled={disabled}
+          id={id}
           name={name}
           type='hidden'
           value={value}/>

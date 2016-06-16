@@ -86,7 +86,7 @@ class ColorPicker extends Component {
   }
 
   render() {
-    const { className, ...o } = this.props;
+    const { className, id, ...o } = this.props;
 
     return (
       <div
@@ -97,6 +97,7 @@ class ColorPicker extends Component {
         <Input
           {...o}
           defaultValue={undefined}
+          id={id}
           onChange={this.onChange}
           onFocus={this.onInputFocus}
           ref='control'

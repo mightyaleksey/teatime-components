@@ -7,7 +7,7 @@ const cssModules = require('react-css-modules');
 class Link extends Component {
   render() {
     return (
-      <a {...this.props} styleName='control'></a>
+      <a styleName='control' {...this.props}></a>
     );
   }
 }

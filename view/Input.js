@@ -62,7 +62,7 @@ class Input extends Component {
   }
 
   render() {
-    const { className, ...o } = this.props;
+    const { className, id, ...o } = this.props;
     const { value } = this.state;
 
     const clearElement = value && !this.props.disabled
@@ -75,6 +75,7 @@ class Input extends Component {
           styleName='control'
           {...o}
           defaultValue={undefined} // Cause we have a controlled input
+          id={id}
           onChange={this.onChange}
           ref='control'
           value={value}/>
