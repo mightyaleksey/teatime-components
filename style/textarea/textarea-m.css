@@ -4,7 +4,6 @@
 {
   composes: control from '../input/input.css';
 
-  width: auto;
   padding: 6px 8px;
 
   font-size: size-m;
