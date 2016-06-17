@@ -1,8 +1,8 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
+const { composition } = require('../tools/func');
 const React = require('react');
-const cx = require('classnames');
 
 class Button extends Component {
   focus() {
@@ -12,10 +12,8 @@ class Button extends Component {
   }
 
   render() {
-    const { className, styleName, styles, ...o } = this.props;
-
     return (
-      <button {...o} className={cx(className, styles[styleName])} ref='control'/>
+      <button {...this.props} className={composition(this.props)} ref='control'/>
     );
   }
 }

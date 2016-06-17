@@ -1,14 +1,13 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, decrement, increment, findIndexByValueProp, noop } = require('../tools/func');
+const { bind, composition, decrement, increment, findIndexByValueProp, noop } = require('../tools/func');
 const { findDOMNode } = require('react-dom');
 const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
 const Button = require('./Button');
 const Option = require('./Option');
 const Popup = require('./Popup');
 const React = require('react');
-const cx = require('classnames');
 const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
 
 class Select extends Component {
@@ -204,13 +203,13 @@ class Select extends Component {
   }
 
   render() {
-    const { className, disabled, id, name, options, styleName, styles } = this.props;
+    const { disabled, id, name, options } = this.props;
     const value = options[Math.max(this.state.selected, 0)].value;
 
     return (
       <div
         {...this.props}
-        className={cx(className, styles[styleName])}
+        className={composition(this.props)}
         onKeyDown={this.onKeyDown}>
         {this.renderButton()}
         {this.renderPopup()}

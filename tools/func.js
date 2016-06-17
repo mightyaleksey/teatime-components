@@ -1,6 +1,9 @@
 'use strict';
 
+const cx = require('classnames');
+
 exports.bind = bind;
+exports.composition = composition;
 exports.decrement = decrement;
 exports.increment = increment;
 exports.findIndexByValueProp = findIndexByValueProp;
@@ -16,6 +19,14 @@ exports.toArray = toArray;
 function bind(context, methods) {
   toArray(methods).forEach(method => context[method] = context[method].bind(context));
   return context;
+}
+
+/**
+ * @param  {object} props
+ * @return {string}
+ */
+function composition(props) {
+  return cx(props.className, props.styles[props.styleName]);
 }
 
 /**

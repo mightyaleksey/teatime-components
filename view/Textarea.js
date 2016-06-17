@@ -1,9 +1,8 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, noop } = require('../tools/func');
+const { bind, composition, noop } = require('../tools/func');
 const React = require('react');
-const cx = require('classnames');
 
 class Textarea extends Component {
   constructor(props) {
@@ -29,12 +28,10 @@ class Textarea extends Component {
   }
 
   render() {
-    const { className, styleName, styles, ...o } = this.props;
-
     return (
       <textarea
-        {...o}
-        className={cx(className, styles[styleName])}
+        {...this.props}
+        className={composition(this.props)}
         onChange={this.onChange}
         ref='control'/>
     );

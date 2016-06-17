@@ -1,15 +1,13 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
+const { composition } = require('../tools/func');
 const React = require('react');
-const cx = require('classnames');
 
 class Spin extends Component {
   render() {
-    const { className, styleName, styles, ...o } = this.props;
-
     return (
-      <span {...o} className={cx(className, styles[styleName])}/>
+      <span {...this.props} className={composition(this.props)}/>
     );
   }
 }

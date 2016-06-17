@@ -1,11 +1,10 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, findIndexByValueProp, noop } = require('../tools/func');
+const { bind, composition, findIndexByValueProp, noop } = require('../tools/func');
 const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
 const Check = require('./Check');
 const React = require('react');
-const cx = require('classnames');
 
 class Radio extends Component {
   constructor(props) {
@@ -50,12 +49,10 @@ class Radio extends Component {
   }
 
   render() {
-    const { className, styleName, styles, ...o } = this.props;
-
     return (
       <div
-        {...o}
-        className={cx(className, styles[styleName])}
+        {...this.props}
+        className={composition(this.props)}
         onChange={undefined}>
         {this.renderOptions()}
       </div>

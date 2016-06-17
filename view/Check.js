@@ -1,10 +1,9 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, noop } = require('../tools/func');
+const { bind, composition, noop } = require('../tools/func');
 const { generateId } = require('../tools/identity');
 const React = require('react');
-const cx = require('classnames');
 
 class Check extends Component {
   constructor(props) {
@@ -29,7 +28,7 @@ class Check extends Component {
   }
 
   render() {
-    const { children, className, styleName, styles, ...o } = this.props;
+    const { children, styles, ...o } = this.props;
     const { id } = this.state;
 
     const labelElement = children
@@ -46,7 +45,7 @@ class Check extends Component {
      */
 
     return (
-      <div className={cx(className, styles[styleName])}>
+      <div className={composition(this.props)}>
         <input
           {...o}
           className={styles.native}

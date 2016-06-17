@@ -1,9 +1,8 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, noop } = require('../tools/func');
+const { composition, bind, noop } = require('../tools/func');
 const React = require('react');
-const cx = require('classnames');
 
 class Input extends Component {
   constructor(props) {
@@ -62,7 +61,7 @@ class Input extends Component {
   }
 
   render() {
-    const { className, id, styleName, styles, ...o } = this.props;
+    const { id, styles, ...o } = this.props;
     const { value } = this.state;
 
     const clearElement = value && !this.props.disabled
@@ -70,7 +69,7 @@ class Input extends Component {
       : null;
 
     return (
-      <span className={cx(className, styles[styleName])}>
+      <span className={composition(this.props)}>
         <input
           {...o}
           className={styles.control}

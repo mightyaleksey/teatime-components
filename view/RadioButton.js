@@ -1,10 +1,9 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, noop } = require('../tools/func');
+const { bind, composition, noop } = require('../tools/func');
 const { generateId } = require('../tools/identity');
 const React = require('react');
-const cx = require('classnames');
 
 class RadioButton extends Component {
   constructor(props) {
@@ -29,7 +28,7 @@ class RadioButton extends Component {
   }
 
   render() {
-    const { children, className, styleName, styles, ...o } = this.props;
+    const { children, styles, ...o } = this.props;
     const { id } = this.state;
 
     /**
@@ -42,7 +41,7 @@ class RadioButton extends Component {
      */
 
     return (
-      <span className={cx(className, styles[styleName])}>
+      <span className={composition(this.props)}>
         <input
           type='radio'
           {...o}

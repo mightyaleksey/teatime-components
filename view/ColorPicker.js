@@ -1,13 +1,12 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, noop } = require('../tools/func');
+const { bind, composition, noop } = require('../tools/func');
 const { pureHex } = require('../tools/color');
 const Input = require('./Input');
 const Popup = require('./Popup');
 const Tile = require('./Tile');
 const React = require('react');
-const cx = require('classnames');
 const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
 
 class ColorPicker extends Component {
@@ -86,20 +85,22 @@ class ColorPicker extends Component {
   }
 
   render() {
-    const { className, id, styleName, styles, ...o } = this.props;
+    const { id, styles, ...o } = this.props;
 
     return (
       <div
-        className={cx(className, styles[styleName])}
+        className={composition(this.props)}
         onKeyDown={this.onKeyDown}>
         {this.renderPreview()}
         <Input
           {...o}
+          className={undefined}
           defaultValue={undefined}
           id={id}
           onChange={this.onChange}
           onFocus={this.onInputFocus}
           ref='control'
+          styleName={undefined}
           styles={styles}
           value={this.state.value}/>
         {this.renderMenu()}

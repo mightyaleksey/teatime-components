@@ -1,9 +1,8 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind } = require('../tools/func');
+const { bind, composition } = require('../tools/func');
 const React = require('react');
-const cx = require('classnames');
 
 class Tile extends Component {
   constructor(props) {
@@ -17,12 +16,10 @@ class Tile extends Component {
   }
 
   render() {
-    const { className, styleName, styles, ...o } = this.props;
-
     return (
       <div
-        {...o}
-        className={cx(className, styles[styleName])}
+        {...this.props}
+        className={composition(this.props)}
         onClick={this.onClick}
         style={{backgroundColor: this.props.color}}/>
     );

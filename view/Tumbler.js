@@ -1,10 +1,9 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, noop } = require('../tools/func');
+const { bind, composition, noop } = require('../tools/func');
 const { generateId } = require('../tools/identity');
 const React = require('react');
-const cx = require('classnames');
 
 class Tumbler extends Component {
   constructor(props) {
@@ -29,7 +28,7 @@ class Tumbler extends Component {
   }
 
   render() {
-    const { className, off, on, styleName, styles, ...o } = this.props;
+    const { off, on, styles, ...o } = this.props;
     const { id } = this.state;
 
     /**
@@ -42,7 +41,7 @@ class Tumbler extends Component {
      */
 
     return (
-      <div className={cx(className, styles[styleName])}>
+      <div className={composition(this.props)}>
         <input
           type='checkbox'
           {...o}
