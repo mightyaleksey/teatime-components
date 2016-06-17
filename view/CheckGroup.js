@@ -1,11 +1,10 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, mapRange, noop } = require('../tools/func');
+const { bind, composition, mapRange, noop } = require('../tools/func');
 const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
 const Check = require('./Check');
 const React = require('react');
-const cx = require('classnames');
 
 class CheckGroup extends Component {
   constructor(props) {
@@ -58,12 +57,10 @@ class CheckGroup extends Component {
   }
 
   render() {
-    const { className, styleName, styles, ...o } = this.props;
-
     return (
       <div
-        {...o}
-        className={cx(className, styles[styleName])}
+        {...this.props}
+        className={composition(this.props)}
         onChange={undefined}>
         {this.renderColumns()}
       </div>
