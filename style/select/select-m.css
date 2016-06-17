@@ -47,17 +47,16 @@
   composes: isOpened from './select.css';
 }
 
-.isCheckedItem
+.isFocused
 {
-  composes: isCheckedItem from './select.css';
-  composes: item;
+  composes: isFocused from './select.css';
+}
+
+.isSelected
+{
+  composes: isSelected from './select.css';
 
   background-image: url(../check/tick-m.svg);
   background-position: 13px 50%;
   background-size: 15px;
-}
-
-.isFocused
-{
-  composes: isFocused from './select.css';
 }

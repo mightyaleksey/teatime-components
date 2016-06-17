@@ -46,12 +46,12 @@
   transform: rotate(-180deg);
 }
 
-.isCheckedItem
-{
-  background-repeat: no-repeat;
-}
-
 .isFocused
 {
   background-color: #ffeba0;
+}
+
+.isSelected
+{
+  background-repeat: no-repeat;
 }

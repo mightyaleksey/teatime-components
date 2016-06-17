@@ -8,6 +8,7 @@ const Button = require('./Button');
 const Option = require('./Option');
 const Popup = require('./Popup');
 const React = require('react');
+const cx = require('classnames');
 const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
 
 class Select extends Component {
@@ -292,18 +293,28 @@ class Select extends Component {
     const { options, styles } = this.props;
     const { focused, prefix, selected } = this.state;
 
-    return options.map((option, i) => (
-      <Option
-        {...option}
-        checked={selected === i}
-        focused={focused === i}
-        key={this.mapKey(prefix, option.value, i)}
-        onFocus={this.onOptionFocus}
-        onSelect={this.onOptionSelect}
-        ref={selected === i ? 'selected' : null}
-        styles={styles}
-        tc={i}/>
-    ));
+    return options.map((option, i) => {
+      const isFocused = focused === i;
+      const isSelected = selected === i;
+      const ref = isFocused
+        ? 'selected'
+        : null;
+
+      return (
+        <Option
+          {...option}
+          className={cx(styles.item, {
+            [styles.isFocused]: isFocused,
+            [styles.isSelected]: isSelected,
+          })}
+          isFocused={isFocused}
+          key={this.mapKey(prefix, option.value, i)}
+          onFocus={this.onOptionFocus}
+          onSelect={this.onOptionSelect}
+          ref={ref}
+          tc={i}/>
+      );
+    });
   }
 }
 
