@@ -17,7 +17,7 @@ class Select extends Component {
 
     // @todo add assertion for defaultValue
     this.controlled = props.value !== undefined;
-    this.updateKeyMapper(props.options);
+    this.updateKeyMapper(props.hasUniqValues, props.options);
 
     this.state = {
       isOpened: false,
@@ -47,15 +47,15 @@ class Select extends Component {
     }
   }
 
-  componentWillReceiveProps({ options, value }) {
+  componentWillReceiveProps({ hasUniqValues, options, value }) {
     if (this.controlled) {
       this.setState({
         selected: findIndexByValueProp(options, value),
       });
     }
 
-    if (this.props.options !== options) {
-      this.updateKeyMapper(options);
+    if (this.props.hasUniqValues !== hasUniqValues) {
+      this.updateKeyMapper(hasUniqValues, options);
     }
   }
 
@@ -178,8 +178,12 @@ class Select extends Component {
     }
   }
 
-  updateKeyMapper(options) {
-    this.mapKey = !isUnique(options)
+  /**
+   * @param {boolean} hasUniqValues
+   * @param {object[]} options
+   */
+  updateKeyMapper(hasUniqValues, options) {
+    this.mapKey = !(hasUniqValues && isUnique(options))
       ? mapKeyBasedOnPos
       : mapKey;
   }
@@ -284,12 +288,14 @@ class Select extends Component {
 }
 
 Select.defaultProps = {
+  hasUniqValues: true,
   onChange: noop,
   styleName: 'wrapper',
   styles: {},
 };
 
 Select.propTypes = {
+  hasUniqValues: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   options: PropTypes.array,
