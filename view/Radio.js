@@ -67,8 +67,9 @@ class Radio extends Component {
     const { disabled, name, options, styles } = this.props;
     const { prefix, selected } = this.state;
 
-    return options.map(({ text, value }, i) => (
+    return options.map(({ className, text, value }, i) => (
       <Check
+        className={className}
         disabled={disabled}
         checked={selected === i}
         key={this.mapKey(prefix, value, i)}

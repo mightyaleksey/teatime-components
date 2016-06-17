@@ -292,8 +292,9 @@ class Select extends Component {
     const { options, styles } = this.props;
     const { focused, prefix, selected } = this.state;
 
-    return options.map(({ text, value }, i) => (
+    return options.map(({ className, text, value }, i) => (
       <Option
+        className={className}
         checked={selected === i}
         focused={focused === i}
         key={this.mapKey(prefix, value, i)}
