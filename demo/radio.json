@@ -6,11 +6,11 @@
       {
         "name": "motorrad-1",
         "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
         ],
         "size": "s"
       },
@@ -18,11 +18,11 @@
         "disabled": true,
         "name": "motorrad-2",
         "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
         ],
         "size": "s"
       }
@@ -31,11 +31,11 @@
       {
         "name": "motorrad-3",
         "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
         ],
         "size": "m"
       },
@@ -43,11 +43,11 @@
         "disabled": true,
         "name": "motorrad-4",
         "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
         ],
         "size": "m"
       }

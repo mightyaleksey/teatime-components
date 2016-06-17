@@ -36,7 +36,7 @@ class Option extends Component {
   }
 
   render() {
-    const { checked, className, focused, styles, value, ...o } = this.props;
+    const { checked, className, focused, label, styles, value, ...o } = this.props;
 
     const styleName = checked
       ? 'isCheckedItem'
@@ -45,6 +45,7 @@ class Option extends Component {
     return (
       <span
         {...o}
+        children={label}
         className={cx(className, {[styles.isFocused]: focused}, styles[styleName])}
         data-value={value}
         onClick={this.onClick}

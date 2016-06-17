@@ -64,23 +64,20 @@ class Radio extends Component {
   }
 
   renderOptions() {
-    const { disabled, name, options, styles } = this.props;
+    const { disabled: globalDisabled, name, options, styles } = this.props;
     const { prefix, selected } = this.state;
 
-    return options.map(({ className, text, value }, i) => (
+    return options.map((option, i) => (
       <Check
-        className={className}
-        disabled={disabled}
+        {...option}
+        disabled={globalDisabled || option.disabled}
         checked={selected === i}
-        key={this.mapKey(prefix, value, i)}
+        key={this.mapKey(prefix, option.value, i)}
         name={name}
         onChange={this.onChange}
         styles={styles}
         tc={i}
-        type='radio'
-        value={value}>
-        {text}
-      </Check>
+        type='radio'/>
     ));
   }
 }

@@ -28,7 +28,7 @@ class RadioButton extends Component {
   }
 
   render() {
-    const { children, styles, ...o } = this.props;
+    const { children, label, styles, ...o } = this.props;
     const { id } = this.state;
 
     /**
@@ -48,7 +48,7 @@ class RadioButton extends Component {
           className={styles.native}
           id={id}
           onChange={this.onChange}/>
-        <label className={styles.control} htmlFor={id}>{children}</label>
+        <label className={styles.control} htmlFor={id}>{label || children}</label>
       </span>
     );
   }

@@ -28,11 +28,12 @@ class Check extends Component {
   }
 
   render() {
-    const { children, styles, ...o } = this.props;
+    const { children, label, styles, ...o } = this.props;
     const { id } = this.state;
 
-    const labelElement = children
-      ? (<label className={styles.label} htmlFor={id}>{children}</label>)
+    const content = label || children;
+    const labelElement = content
+      ? (<label className={styles.label} htmlFor={id}>{content}</label>)
       : null;
 
     /**
@@ -66,6 +67,7 @@ Check.defaultProps = {
 };
 
 Check.propTypes = {
+  label: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   styleName: PropTypes.string,

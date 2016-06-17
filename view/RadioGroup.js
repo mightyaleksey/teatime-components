@@ -65,22 +65,19 @@ class RadioGroup extends Component {
   }
 
   renderOptions() {
-    const { disabled, name, options, styles } = this.props;
+    const { disabled: globalDisabled, name, options, styles } = this.props;
     const { prefix, selected } = this.state;
 
-    return options.map(({ className, text, value }, i) => (
+    return options.map((option, i) => (
       <RadioButton
-        className={className}
+        {...option}
         checked={selected === i}
-        disabled={disabled}
-        key={this.mapKey(prefix, value, i)}
+        disabled={globalDisabled || option.disabled}
+        key={this.mapKey(prefix, option.value, i)}
         name={name}
         onChange={this.onChange}
         styles={styles}
-        tc={i}
-        value={value}>
-        {text}
-      </RadioButton>
+        tc={i}/>
     ));
   }
 }

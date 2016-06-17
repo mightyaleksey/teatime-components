@@ -97,21 +97,16 @@ class CheckGroup extends Component {
     const result = [];
 
     for (var i = start; i < options.length; i += step) {
-      const { className, disabled, text, value } = options[i];
-
       result.push((
         <Check
-          className={className}
-          disabled={globalDisabled || disabled}
+          {...options[i]}
+          disabled={globalDisabled || options[i].disabled}
           checked={values[i]}
-          key={this.mapKey(prefix, value, i)}
+          key={this.mapKey(prefix, options[i].value, i)}
           name={name}
           onChange={this.onChange}
           styles={styles}
-          tc={i}
-          value={value}>
-          {text}
-        </Check>
+          tc={i}/>
       ));
     }
 

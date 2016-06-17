@@ -6,11 +6,11 @@
       {
         "name": "radio-group-motorrad-1",
         "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
         ],
         "size": "xs"
       }
@@ -20,11 +20,11 @@
         "disabled": true,
         "name": "radio-group-motorrad-2",
         "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
         ],
         "size": "xs"
       }
@@ -33,11 +33,11 @@
       {
         "name": "radio-group-motorrad-3",
         "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
         ],
         "size": "s"
       }
@@ -47,11 +47,11 @@
         "disabled": true,
         "name": "radio-group-motorrad-4",
         "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
         ],
         "size": "s"
       }
@@ -61,11 +61,11 @@
         "defaultValue": "suzuki",
         "name": "radio-group-motorrad-5",
         "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
         ],
         "size": "m"
       }
@@ -76,11 +76,11 @@
         "disabled": true,
         "name": "radio-group-motorrad-6",
         "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
         ],
         "size": "m"
       }
@@ -89,11 +89,11 @@
       {
         "name": "radio-group-motorrad-7",
         "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
         ],
         "size": "l"
       }
@@ -103,11 +103,11 @@
         "disabled": true,
         "name": "radio-group-motorrad-8",
         "options": [
-          {"text": "Yamaha", "value": "yamaha"},
-          {"text": "Suzuki", "value": "suzuki"},
-          {"text": "Kawasaki", "value": "kawasaki"},
-          {"text": "Vespa", "value": "vespa"},
-          {"text": "MZ", "value": "mz"}
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
         ],
         "size": "l"
       }

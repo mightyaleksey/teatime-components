@@ -15,10 +15,10 @@
       {"defaultChecked": true, "disabled": true, "name": "size-m", "size": "m", "value": "size-m"}
     ],
     [
-      {"children": "Size s", "name": "size-s", "size": "s", "value": "size-s"},
-      {"children": "Size s", "disabled": true, "name": "size-s", "size": "s", "value": "size-s"},
-      {"children": "Size m", "name": "size-m", "size": "m", "value": "size-m"},
-      {"children": "Size m", "disabled": true, "name": "size-m", "size": "m", "value": "size-m"}
+      {"label": "Size s", "name": "size-s", "size": "s", "value": "size-s"},
+      {"disabled": true, "label": "Size s", "name": "size-s", "size": "s", "value": "size-s"},
+      {"label": "Size m", "name": "size-m", "size": "m", "value": "size-m"},
+      {"disabled": true, "label": "Size m", "name": "size-m", "size": "m", "value": "size-m"}
     ]
   ]
 }

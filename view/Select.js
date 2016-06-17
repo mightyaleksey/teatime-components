@@ -71,7 +71,7 @@ class Select extends Component {
     const { selected } = this.state;
 
     return selected !== -1
-      ? this.props.options[selected].text
+      ? this.props.options[selected].label
       : '—';
   }
 
@@ -292,20 +292,17 @@ class Select extends Component {
     const { options, styles } = this.props;
     const { focused, prefix, selected } = this.state;
 
-    return options.map(({ className, text, value }, i) => (
+    return options.map((option, i) => (
       <Option
-        className={className}
+        {...option}
         checked={selected === i}
         focused={focused === i}
-        key={this.mapKey(prefix, value, i)}
+        key={this.mapKey(prefix, option.value, i)}
         onFocus={this.onOptionFocus}
         onSelect={this.onOptionSelect}
         ref={selected === i ? 'selected' : null}
         styles={styles}
-        tc={i}
-        value={value}>
-        {text}
-      </Option>
+        tc={i}/>
     ));
   }
 }
