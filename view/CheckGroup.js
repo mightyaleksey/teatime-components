@@ -13,7 +13,7 @@ class CheckGroup extends Component {
 
     // @todo add assertion for defaultValue
     this.controlled = props.value !== undefined;
-    this.updateKeyMapper(props.options);
+    this.updateKeyMapper(props.hasUniqValues, props.options);
 
     const value = props.value || props.defaultValue;
 
@@ -25,13 +25,13 @@ class CheckGroup extends Component {
     bind(this, 'onChange');
   }
 
-  componentWillReceiveProps({ options, value }) {
+  componentWillReceiveProps({ hasUniqValues, options, value }) {
     if (this.controlled) {
       this.setState({values: mapValueToState(options, value)});
     }
 
-    if (this.props.options !== options) {
-      this.updateKeyMapper(options);
+    if (this.props.hasUniqValues !== hasUniqValues) {
+      this.updateKeyMapper(hasUniqValues, options);
     }
   }
 
@@ -47,8 +47,12 @@ class CheckGroup extends Component {
     });
   }
 
-  updateKeyMapper(options) {
-    this.mapKey = !isUnique(options)
+  /**
+   * @param {boolean} hasUniqValues
+   * @param {object[]} options
+   */
+  updateKeyMapper(hasUniqValues, options) {
+    this.mapKey = !(hasUniqValues && isUnique(options))
       ? mapKeyBasedOnPos
       : mapKey;
   }
@@ -118,6 +122,7 @@ class CheckGroup extends Component {
 }
 
 CheckGroup.defaultProps = {
+  hasUniqValues: true,
   onChange: noop,
   styleName: 'container',
   styles: {},
@@ -125,6 +130,7 @@ CheckGroup.defaultProps = {
 
 CheckGroup.propTypes = {
   cols: PropTypes.number,
+  hasUniqValues: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   onContextMenu: PropTypes.func,

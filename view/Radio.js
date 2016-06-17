@@ -12,7 +12,7 @@ class Radio extends Component {
 
     // @todo add assertion for defaultValue
     this.controlled = props.value !== undefined;
-    this.updateKeyMapper(props.options);
+    this.updateKeyMapper(props.hasUniqValues, props.options);
 
     const value = props.value || props.defaultValue;
 
@@ -24,13 +24,13 @@ class Radio extends Component {
     bind(this, 'onChange');
   }
 
-  componentWillReceiveProps({ options, value }) {
+  componentWillReceiveProps({ hasUniqValues, options, value }) {
     if (this.controlled) {
       this.setState({selected: findIndexByValueProp(options, value)});
     }
 
-    if (this.props.options !== options) {
-      this.updateKeyMapper(options);
+    if (this.props.hasUniqValues !== hasUniqValues) {
+      this.updateKeyMapper(hasUniqValues, options);
     }
   }
 
@@ -42,8 +42,12 @@ class Radio extends Component {
     this.props.onChange(e, {value: this.props.options[tc].value});
   }
 
-  updateKeyMapper(options) {
-    this.mapKey = !isUnique(options)
+  /**
+   * @param {boolean} hasUniqValues
+   * @param {object[]} options
+   */
+  updateKeyMapper(hasUniqValues, options) {
+    this.mapKey = !(hasUniqValues && isUnique(options))
       ? mapKeyBasedOnPos
       : mapKey;
   }
@@ -81,12 +85,14 @@ class Radio extends Component {
 }
 
 Radio.defaultProps = {
+  hasUniqValues: true,
   onChange: noop,
   styleName: 'container',
   styles: {},
 };
 
 Radio.propTypes = {
+  hasUniqValues: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   options: PropTypes.array.isRequired,
