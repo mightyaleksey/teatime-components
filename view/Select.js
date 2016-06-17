@@ -22,7 +22,7 @@ class Select extends Component {
       isOpened: false,
       focused: -1,
       prefix: generateId(),
-      selected: findIndexByValueProp(props.options, props.value),
+      selected: this.getSelectedOption(props.options, props.value),
     };
 
     bind(this, [
@@ -49,7 +49,7 @@ class Select extends Component {
   componentWillReceiveProps({ hasUniqValues, options, value }) {
     if (this.controlled) {
       this.setState({
-        selected: findIndexByValueProp(options, value),
+        selected: this.getSelectedOption(options, value),
       });
     }
 
@@ -62,6 +62,30 @@ class Select extends Component {
     if (this.refs.control) {
       this.refs.control.focus();
     }
+  }
+
+  /**
+   * @return {string}
+   */
+  getSelectedLabel() {
+    const { selected } = this.state;
+
+    return selected !== -1
+      ? this.props.options[selected].text
+      : '—';
+  }
+
+  /**
+   * @todo add exception for unexisting values
+   * @param  {object[]} options
+   * @param  {string} value
+   * @return {number}
+   */
+  getSelectedOption(options, value) {
+    const selected = findIndexByValueProp(options, value);
+    return !this.props.hasEmptyValue
+      ? Math.max(selected, 0)
+      : selected;
   }
 
   onButtonClick() {
@@ -225,10 +249,9 @@ class Select extends Component {
   }
 
   renderButton() {
-    const { disabled, options, styles } = this.props;
-    const { isOpened, selected } = this.state;
+    const { disabled, styles } = this.props;
 
-    const mixin = styles[isOpened
+    const mixin = styles[this.state.isOpened
       ? 'isOpened'
       : 'isClosed'];
 
@@ -239,7 +262,7 @@ class Select extends Component {
         onClick={this.onButtonClick}
         ref='control'
         styles={styles}>
-        {options[Math.max(selected, 0)].text}
+        {this.getSelectedLabel()}
       </Button>
     );
   }
@@ -287,6 +310,7 @@ class Select extends Component {
 }
 
 Select.defaultProps = {
+  hasEmptyValue: false,
   hasUniqValues: true,
   onChange: noop,
   styleName: 'wrapper',
@@ -294,6 +318,7 @@ Select.defaultProps = {
 };
 
 Select.propTypes = {
+  hasEmptyValue: PropTypes.bool,
   hasUniqValues: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
