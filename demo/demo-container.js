@@ -2,23 +2,22 @@
 
 const React = require('react');
 const { PropTypes } = React;
-const cssModules = require('react-css-modules');
 const styles = require('./demo-container.css');
 
 function DemoContainer({ Component, data, layout = 'row', title }) {
   const content = data.map((line, i) => {
     const components = line.reduce((set, props, j) => set.concat(<Component key={`_${i}${j}`} {...props}/>, ' '), []);
-    return (<div key={`_${title}${i}`} styleName={layout}>{components}</div>);
+    return (<div className={styles[layout]} key={`_${title}${i}`}>{components}</div>);
   });
 
   const anchor = title.toLowerCase();
 
   return (
     <div>
-      <h1 styleName='header'>
+      <h1 className={styles.header}>
         <a className='anchor' name={anchor}/>
         {title}
-        <a styleName='hashLink' href={`#${anchor}`}>#</a>
+        <a className={styles.hashLink} href={`#${anchor}`}>#</a>
       </h1>
       {content}
     </div>
@@ -33,4 +32,4 @@ DemoContainer.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-module.exports = cssModules(DemoContainer, styles);
+module.exports = DemoContainer;
