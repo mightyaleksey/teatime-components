@@ -92,6 +92,11 @@
   opacity: 1;
 }
 
+.native:focus + .control
+{
+  box-shadow: inset 0 0 0 2px #ffdb4d;
+}
+
 .native:disabled + .control
 {
   cursor: default;
