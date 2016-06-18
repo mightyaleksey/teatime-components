@@ -333,7 +333,16 @@ Select.propTypes = {
   onChange: PropTypes.func,
   options: PropTypes.array,
   styleName: PropTypes.string,
-  styles: PropTypes.object,
+  styles: PropTypes.shape({
+    control: PropTypes.string.isRequired,
+    isClosed: PropTypes.string.isRequired,
+    isFocused: PropTypes.string.isRequired,
+    isOpened: PropTypes.string.isRequired,
+    isSelected: PropTypes.string.isRequired,
+    item: PropTypes.string.isRequired,
+    menu: PropTypes.string.isRequired,
+    wrapper: PropTypes.string,
+  }),
 };
 
 module.exports = reactOutsideEvent(Select, ['click']);

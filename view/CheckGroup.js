@@ -129,7 +129,14 @@ CheckGroup.propTypes = {
   onContextMenu: PropTypes.func,
   options: PropTypes.array.isRequired,
   styleName: PropTypes.string,
-  styles: PropTypes.object,
+  styles: PropTypes.shape({
+    column: PropTypes.string,
+    container: PropTypes.string,
+    control: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    native: PropTypes.string.isRequired,
+    wrapper: PropTypes.string.isRequired,
+  }),
 };
 
 module.exports = CheckGroup;

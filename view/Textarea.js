@@ -51,7 +51,9 @@ Textarea.propTypes = {
   onChange: PropTypes.func,
   rows: PropTypes.number,
   styleName: PropTypes.string,
-  styles: PropTypes.object,
+  styles: PropTypes.shape({
+    control: PropTypes.string,
+  }),
 };
 
 module.exports = Textarea;

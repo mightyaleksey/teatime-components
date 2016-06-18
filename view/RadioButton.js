@@ -64,7 +64,11 @@ RadioButton.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   styleName: PropTypes.string,
-  styles: PropTypes.object,
+  styles: PropTypes.shape({
+    control: PropTypes.string.isRequired,
+    native: PropTypes.string.isRequired,
+    wrapper: PropTypes.string,
+  }),
   tc: PropTypes.any,
 };
 

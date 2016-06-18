@@ -20,7 +20,9 @@ Link.defaultProps = {
 Link.propTypes = {
   href: PropTypes.string.isRequired,
   styleName: PropTypes.string,
-  styles: PropTypes.object,
+  styles: PropTypes.shape({
+    control: PropTypes.string,
+  }),
 };
 
 module.exports = Link;

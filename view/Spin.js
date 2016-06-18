@@ -19,7 +19,9 @@ Spin.defaultProps = {
 
 Spin.propTypes = {
   styleName: PropTypes.string,
-  styles: PropTypes.object,
+  styles: PropTypes.shape({
+    control: PropTypes.string,
+  }),
 };
 
 module.exports = Spin;

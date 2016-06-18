@@ -95,7 +95,11 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   styleName: PropTypes.string,
-  styles: PropTypes.object,
+  styles: PropTypes.shape({
+    clear: PropTypes.string.isRequired,
+    control: PropTypes.string.isRequired,
+    wrapper: PropTypes.string,
+  }),
   type:  PropTypes.oneOf([
     'password',
     'text',

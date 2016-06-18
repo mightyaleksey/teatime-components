@@ -72,7 +72,13 @@ Tumbler.propTypes = {
   on: PropTypes.string,
   onChange: PropTypes.func,
   styleName: PropTypes.string,
-  styles: PropTypes.object,
+  styles: PropTypes.shape({
+    control: PropTypes.string.isRequired,
+    delimiter: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    native: PropTypes.string.isRequired,
+    wrapper: PropTypes.string,
+  }),
 };
 
 module.exports = Tumbler;

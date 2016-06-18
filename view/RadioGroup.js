@@ -95,7 +95,12 @@ RadioGroup.propTypes = {
   onChange: PropTypes.func,
   options: PropTypes.array.isRequired,
   styleName: PropTypes.string,
-  styles: PropTypes.object,
+  styles: PropTypes.shape({
+    container: PropTypes.string,
+    control: PropTypes.string.isRequired,
+    native: PropTypes.string.isRequired,
+    wrapper: PropTypes.string.isRequired,
+  }),
 };
 
 module.exports = RadioGroup;
