@@ -10,13 +10,13 @@ exports.indexOf = indexOf;
  * @param  {string|string[]} methodNames
  */
 function bind(context, methodNames) {
-  const methods = !Array.isArray(methods)
+  const methods = !Array.isArray(methodNames)
     ? [methodNames]
     : methodNames;
 
-  const length = methodNames.length;
+  const length = methods.length;
   for (var method, i = 0; i < length; ++i) {
-    method = methodNames[i];
+    method = methods[i];
     context[method] = context[method].bind(context);
   }
 }

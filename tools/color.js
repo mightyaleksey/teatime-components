@@ -8,4 +8,4 @@ exports.pureHex = pureHex;
  */
 function pureHex(hex) {
   return hex.replace('#', '');
-};
+}
