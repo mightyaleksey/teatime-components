@@ -1,56 +1,72 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, composition, decrement, increment, findIndexByValueProp, noop } = require('../tools/func');
+const { bind, hasValueProp, indexOf } = require('../tool/component');
+const { classNames, composition } = require('../tool/className');
 const { findDOMNode } = require('react-dom');
-const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
+const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
+const { noop } = require('../tool/func');
 const Button = require('./Button');
 const Option = require('./Option');
 const Popup = require('./Popup');
 const React = require('react');
-const cx = require('classnames');
 const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
 
 class Select extends Component {
   constructor(props) {
     super(props);
 
-    // @todo add assertion for defaultValue
-    this.controlled = props.value !== undefined;
-    this.updateKeyMapper(props.hasUniqValues, props.options);
-
-    this.state = {
-      isOpened: false,
-      focused: -1,
-      prefix: generateId(),
-      selected: this.getSelectedOption(props.options, props.value),
-    };
-
     bind(this, [
-      'onButtonClick',
       'onKeyDown',
+      'onMenuToggle',
       'onOptionFocus',
       'onOptionSelect',
     ]);
+
+    this.controlled = hasValueProp(props);
+    this.updateKeyMapper(props.hasUniqValues, props.options);
+
+    var value = props.value || props.defaultValue;
+    var selected = value !== undefined
+      ? indexOf(props.options, value)
+      : 0; // in case of uncontrolled component
+
+    this.state = {
+      focused: -1,
+      isOpened: false,
+      prefix: generateId(),
+      selected,
+    };
   }
 
   componentDidUpdate() {
-    // @todo scroll on keyboard shortcuts
-    if (this.refs.menu && this.refs.selected && this.state.isOpened && !this.optionInView) {
+    if (this.refs.menu && this.refs.selected && this.state.isOpened && !this.wereOptionsShown) {
+      this.wereOptionsShown = true;
+
       const menu = findDOMNode(this.refs.menu);
       const selected = findDOMNode(this.refs.selected);
-
       menu.scrollTop = selected.offsetTop;
-      this.optionInView = true;
     } else if (!this.state.isOpened) {
-      this.optionInView = false;
+      this.wereOptionsShown = false;
+    }
+
+    if (this.wasKeyPressed && this.refs.menu && this.refs.selected) {
+      this.wasKeyPressed = false;
+
+      const menu = findDOMNode(this.refs.menu);
+      const selected = findDOMNode(this.refs.selected);
+      const menuRect = menu.getBoundingClientRect();
+      const selectedRect = selected.getBoundingClientRect();
+      if (selectedRect.bottom > menuRect.bottom || selectedRect.top < menuRect.top) {
+        menu.scrollTop = selected.offsetTop + selected.clientHeight - menu.offsetHeight;
+      }
     }
   }
 
   componentWillReceiveProps({ hasUniqValues, options, value }) {
     if (this.controlled) {
       this.setState({
-        selected: this.getSelectedOption(options, value),
+        selected: indexOf(options, value),
       });
     }
 
@@ -59,134 +75,129 @@ class Select extends Component {
     }
   }
 
+  closeMenu() {
+    this.setState({
+      isOpened: false,
+      focused: -1,
+    });
+  }
+
+  openMenu() {
+    this.setState({
+      isOpened: true,
+      focused: this.state.selected,
+    });
+  }
+
   focus() {
-    if (this.refs.control) {
-      this.refs.control.focus();
+    if (this.refs.label) {
+      this.refs.label.focus();
     }
   }
 
+  focusNextOption() {
+    const nextFocused = this.state.focused + 1;
+    if (nextFocused === this.props.options.length) return;
+    this.wasKeyPressed = true;
+    this.setState({focused: nextFocused});
+  }
+
+  focusPreviousOption() {
+    const { focused } = this.state;
+    if (focused === 0) return;
+    this.wasKeyPressed = true;
+    this.setState({focused: focused === -1
+      ? this.props.options.length - 1
+      : focused - 1});
+  }
+
   /**
+   * @param  {number} selected
    * @return {string}
    */
-  getSelectedLabel() {
-    const { selected } = this.state;
-
+  getSelectedLabel(selected) {
     return selected !== -1
       ? this.props.options[selected].label
-      : '—';
+      : this.props.placeholder;
   }
 
   /**
-   * @todo add exception for unexisting values
-   * @param  {object[]} options
-   * @param  {string} value
-   * @return {number}
+   * @param  {number} selected
+   * @return {string}
    */
-  getSelectedOption(options, value) {
-    const selected = findIndexByValueProp(options, value);
-    return !this.props.hasEmptyValue
-      ? Math.max(selected, 0)
-      : selected;
-  }
-
-  onButtonClick() {
-    if (this.state.isOpened) {
-      this.setState({
-        isOpened: false,
-      });
-    } else {
-      this.setState({
-        focused: this.state.selected,
-        isOpened: true,
-      });
-    }
+  getSelectedValue(selected) {
+    return selected !== -1
+      ? this.props.options[selected].value
+      : '';
   }
 
   onKeyDown(e) {
     if (this.props.disabled) return;
 
-    const { focused, isOpened, selected } = this.state;
+    const { isOpened } = this.state;
 
     switch (e.keyCode) {
-    case 27: // esc
-      if (isOpened) {
-        this.setState({
-          isOpened: false,
-        });
-      }
+    case 9: // tab
+      if (!isOpened) return;
+      return void this.closeMenu();
 
+    case 13: // enter
+      if (!isOpened) return;
+      e.stopPropagation();
+      this.updateValue(e, this.state.focused);
+      break;
+
+    case 27: // esc
+      if (!isOpened) return;
+      this.closeMenu();
       this.focus();
       break;
 
-    case 9: // tab
-      if (isOpened) {
-        this.setState({
-          isOpened: false,
-        });
-      }
-
-      return;
-
-    case 13: // enter
     case 32: // space
-      if (isOpened) {
-        if (focused > -1 && focused !== selected) {
-          this.updateValue(e, focused);
-        } else {
-          this.setState({
-            isOpened: false,
-            selected: focused > -1
-              ? focused
-              : selected,
-          });
-        }
+      if (!isOpened) {
+        this.openMenu();
       } else {
-        this.setState({
-          focused: selected,
-          isOpened: true,
-        });
+        this.updateValue(e, this.state.focused);
       }
 
       break;
 
     case 38: // up
       if (!isOpened) {
-        this.setState({
-          focused: selected,
-          isOpened: true,
-        });
+        this.openMenu();
       } else {
-        this.setState({
-          focused: decrement(focused, this.props.options.length),
-        });
+        this.focusPreviousOption();
       }
 
       break;
 
     case 40: // down
       if (!isOpened) {
-        this.setState({
-          focused: selected,
-          isOpened: true,
-        });
+        this.openMenu();
       } else {
-        this.setState({
-          focused: increment(focused, this.props.options.length),
-        });
+        this.focusNextOption();
       }
 
       break;
+
+    default:
+      return;
     }
 
     e.preventDefault();
   }
 
-  onOptionFocus(e, _, tc) {
-    if (this.state.focused !== tc) {
-      this.setState({
-        focused: tc,
-      });
+  onMenuToggle() {
+    if (this.state.isOpened) {
+      return void this.closeMenu();
     }
+
+    return void this.openMenu();
+  }
+
+  onOptionFocus(e, _, tc) {
+    if (this.state.focused === tc) return;
+    this.setState({focused: tc});
   }
 
   onOptionSelect(e, _, tc) {
@@ -195,11 +206,27 @@ class Select extends Component {
   }
 
   onOutsideEvent() {
-    if (this.state.isOpened) {
-      this.setState({
-        isOpened: false,
-      });
+    if (!this.state.isOpened) return;
+    this.closeMenu();
+  }
+
+  /**
+   * @param  {object} e
+   * @param  {number} nextSelected
+   */
+  updateValue(e, nextSelected) {
+    const nextState = {isOpened: false};
+
+    if (nextSelected === -1 || nextSelected === this.state.selected) {
+      return void this.setState(nextState);
     }
+
+    if (!this.controlled) {
+      nextState.selected = nextSelected;
+    }
+
+    this.setState(nextState);
+    this.props.onChange(e, {value: this.props.options[nextSelected].value});
   }
 
   /**
@@ -207,68 +234,42 @@ class Select extends Component {
    * @param {object[]} options
    */
   updateKeyMapper(hasUniqValues, options) {
-    this.mapKey = !(hasUniqValues && isUnique(options))
+    this.mapKey = !(hasUniqValues && hasUniqueValues(options))
       ? mapKeyBasedOnPos
       : mapKey;
   }
 
-  updateValue(e, tc) {
-    if (!this.controlled) {
-      this.setState({
-        isOpened: false,
-        selected: tc,
-      });
-    } else {
-      this.setState({
-        isOpened: false,
-      });
-    }
-
-    this.props.onChange(e, {value: this.props.options[tc].value});
-  }
-
   render() {
-    const { disabled, id, name, options } = this.props;
-    const value = options[Math.max(this.state.selected, 0)].value;
-
     return (
       <div
         {...this.props}
         className={composition(this.props)}
         onKeyDown={this.onKeyDown}>
-        {this.renderButton()}
-        {this.renderPopup()}
+        {this.renderLabel()}
+        {this.renderMenu()}
         <input
-          disabled={disabled}
-          id={id}
-          name={name}
+          disabled={this.props.disabled}
+          name={this.props.name}
           type='hidden'
-          value={value}/>
+          value={this.getSelectedValue(this.state.selected)}/>
       </div>
     );
-
   }
 
-  renderButton() {
-    const { disabled, styles } = this.props;
-
-    const mixin = styles[this.state.isOpened
-      ? 'isOpened'
-      : 'isClosed'];
-
+  renderLabel() {
     return (
       <Button
-        className={mixin}
-        disabled={disabled}
-        onClick={this.onButtonClick}
-        ref='control'
-        styles={styles}>
-        {this.getSelectedLabel()}
+        className={this.props.styles[this.state.isOpened ? 'isOpened' : 'isClosed']}
+        disabled={this.props.disabled}
+        onClick={this.onMenuToggle}
+        ref='label'
+        styles={this.props.styles}>
+        {this.getSelectedLabel(this.state.selected)}
       </Button>
     );
   }
 
-  renderPopup() {
+  renderMenu() {
     const { styles } = this.props;
 
     if (!this.state.isOpened) {
@@ -285,6 +286,14 @@ class Select extends Component {
     );
   }
 
+  /**
+   * @param  {option} option
+   * @return {string}
+   */
+  renderOption(option) {
+    return option.label;
+  }
+
   renderOptions() {
     if (!this.state.isOpened) {
       return null;
@@ -292,6 +301,7 @@ class Select extends Component {
 
     const { options, styles } = this.props;
     const { focused, prefix, selected } = this.state;
+    const renderOption = this.props.renderOption || this.renderOption;
 
     return options.map((option, i) => {
       const isFocused = focused === i;
@@ -303,7 +313,7 @@ class Select extends Component {
       return (
         <Option
           {...option}
-          className={cx(styles.item, {
+          className={classNames(styles.item, {
             [styles.isFocused]: isFocused,
             [styles.isSelected]: isSelected,
           })}
@@ -312,26 +322,29 @@ class Select extends Component {
           onFocus={this.onOptionFocus}
           onSelect={this.onOptionSelect}
           ref={ref}
-          tc={i}/>
+          tc={i}>
+          {renderOption(option)}
+        </Option>
       );
     });
   }
 }
 
 Select.defaultProps = {
-  hasEmptyValue: false,
   hasUniqValues: true,
   onChange: noop,
+  placeholder: '—',
   styleName: 'wrapper',
   styles: {},
 };
 
 Select.propTypes = {
-  hasEmptyValue: PropTypes.bool,
   hasUniqValues: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   options: PropTypes.array,
+  placeholder: PropTypes.string,
+  renderOption: PropTypes.func,
   styleName: PropTypes.string,
   styles: PropTypes.shape({
     control: PropTypes.string.isRequired,

@@ -30,7 +30,7 @@ class Option extends Component {
         data-value={this.props.value}
         onClick={this.onSelect}
         onMouseEnter={this.onFocus}>
-        {this.props.label}
+        {this.props.children}
       </span>
     );
   }

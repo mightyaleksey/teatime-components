@@ -402,6 +402,7 @@
     ],
     [
       {
+        "defaultValue": null,
         "name": "motorrad-5",
         "options": [
           {"label": "Yamaha", "value": "yamaha"},
