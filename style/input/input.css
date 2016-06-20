@@ -5,6 +5,8 @@
   display: inline-block;
 
   width: 100%;
+
+  font-family: arial,sans-serif;
 }
 
 .control
@@ -20,7 +22,6 @@
   box-shadow: inset 0 0 0 1px #ccc;
 
   font-family: arial,sans-serif;
-  line-height: normal;
 
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;

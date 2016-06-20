@@ -3,16 +3,19 @@
 .wrapper
 {
   composes: wrapper from './input.css';
+
+  font-size: size-m;
+  line-height: line-m;
 }
 
 .control
 {
   composes: control from './input.css';
 
-  height: line-m;
   padding: 0 32px 0 10px;
 
   font-size: size-m;
+  line-height: line-m;
 }
 
 .clear

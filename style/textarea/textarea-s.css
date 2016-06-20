@@ -3,6 +3,7 @@
 .control
 {
   composes: control from '../input/input.css';
+  composes: control from './textarea.css';
 
   padding: 4px 6px;
 
