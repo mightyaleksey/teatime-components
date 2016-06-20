@@ -5,6 +5,13 @@ const { noop } = require('./func');
 var warning = noop;
 
 if (process.env.NODE_ENV !== 'production') { // eslint-disable-line no-undef
+  /**
+   * Copy of React's warning function
+   *
+   * @param  {boolean}   condition
+   * @param  {string}    format
+   * @param  {...string} args
+   */
   warning = function warning(condition, format, ...args) {
     if (typeof format === 'undefined') {
       throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');

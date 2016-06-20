@@ -27,7 +27,6 @@ function bind(context, methodNames) {
  * @return {boolean}
  */
 function hasCheckedProp(props) {
-  // @todo add assertion for defaultValue
   return props.checked !== undefined;
 }
 
@@ -37,7 +36,6 @@ function hasCheckedProp(props) {
  * @return {boolean}
  */
 function hasValueProp(props) {
-  // @todo add assertion for defaultValue
   return props.value !== undefined;
 }
 

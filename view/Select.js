@@ -11,6 +11,9 @@ const Option = require('./Option');
 const Popup = require('./Popup');
 const React = require('react');
 const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
+const warning = require('../tool/warning');
+
+var didWarnForDefaultValue = false;
 
 class Select extends Component {
   constructor(props) {
@@ -24,6 +27,18 @@ class Select extends Component {
     ]);
 
     this.controlled = hasValueProp(props);
+
+    if (process.env.NODE_ENV !== 'production' && this.controlled && !didWarnForDefaultValue) { // eslint-disable-line no-undef
+      warning(typeof props.defaultValue === 'undefined',
+        'Select elements must be either controlled or uncontrolled ' +
+        '(specify either the value prop, or the defaultValue prop, but not ' +
+        'both). Decide between using a controlled or uncontrolled select ' +
+        'element and remove one of these props. More info: ' +
+        'https://fb.me/react-controlled-components');
+
+      didWarnForDefaultValue = true;
+    }
+
     this.updateKeyMapper(props.hasUniqValues, props.options);
 
     var value = props.value || props.defaultValue;

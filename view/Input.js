@@ -1,15 +1,32 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { composition, bind, noop } = require('../tools/func');
+const { bind, hasValueProp } = require('../tool/component');
+const { composition } = require('../tool/className');
+const { noop } = require('../tool/func');
 const React = require('react');
+const warning = require('../tool/warning');
+
+var didWarnForDefaultValue = false;
 
 class Input extends Component {
   constructor(props) {
     super(props);
 
-    // @todo add assertion for defaultValue
-    this.controlled = props.value !== undefined;
+    this.controlled = hasValueProp(props);
+
+    if (process.env.NODE_ENV !== 'production' && this.controlled && !didWarnForDefaultValue) { // eslint-disable-line no-undef
+      warning(typeof props.defaultValue === 'undefined',
+        'Input contains an input of type %s with both value and defaultValue props. ' +
+        'Input elements must be either controlled or uncontrolled ' +
+        '(specify either the value prop, or the defaultValue prop, but not ' +
+        'both). Decide between using a controlled or uncontrolled input ' +
+        'element and remove one of these props. More info: ' +
+        'https://fb.me/react-controlled-components',
+        props.type);
+
+      didWarnForDefaultValue = true;
+    }
 
     this.state = {
       value: props.value || props.defaultValue || '',
@@ -100,7 +117,7 @@ Input.propTypes = {
     control: PropTypes.string.isRequired,
     wrapper: PropTypes.string,
   }),
-  type:  PropTypes.oneOf([
+  type: PropTypes.oneOf([
     'password',
     'text',
   ]),

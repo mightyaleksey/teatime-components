@@ -1,20 +1,36 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, composition, noop } = require('../tools/func');
+const { bind, hasValueProp } = require('../tool/component');
+const { composition } = require('../tool/className');
+const { noop } = require('../tool/func');
 const { pureHex } = require('../tools/color');
 const Input = require('./Input');
 const Popup = require('./Popup');
 const Tile = require('./Tile');
 const React = require('react');
 const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
+const warning = require('../tool/warning');
+
+var didWarnForDefaultValue = false;
 
 class ColorPicker extends Component {
   constructor(props) {
     super(props);
 
-    // @todo add assertion for defaultValue
-    this.controlled = props.value !== undefined;
+    this.controlled = hasValueProp(props);
+
+    if (process.env.NODE_ENV !== 'production' && this.controlled && !didWarnForDefaultValue) { // eslint-disable-line no-undef
+      warning(typeof props.defaultValue === 'undefined',
+        'ColorPicker contains an input of type text with both value and defaultValue props. ' +
+        'Input elements must be either controlled or uncontrolled ' +
+        '(specify either the value prop, or the defaultValue prop, but not ' +
+        'both). Decide between using a controlled or uncontrolled input ' +
+        'element and remove one of these props. More info: ' +
+        'https://fb.me/react-controlled-components');
+
+      didWarnForDefaultValue = true;
+    }
 
     this.state = {
       isOpened: false,
