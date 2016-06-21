@@ -7,6 +7,10 @@ const test = require('tape');
 
 const styles = {
   container: 'container',
+  control: 'control',
+  label: 'label',
+  native: 'native',
+  wrapper: 'wrapper',
 };
 
 const options = [

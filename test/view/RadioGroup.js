@@ -5,7 +5,12 @@ const React = require('react');
 const { shallowRender } = require('skin-deep');
 const test = require('tape');
 
-const styles = {container: 'container'};
+const styles = {
+  container: 'container',
+  control: 'control',
+  native: 'native',
+  wrapper: 'wrapper',
+};
 
 const options = [
   {text: 'Yamaha', value: 'yamaha'},

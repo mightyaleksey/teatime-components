@@ -6,6 +6,13 @@ const { shallowRender } = require('skin-deep');
 const test = require('tape');
 
 const styles = {
+  control: 'control',
+  isClosed: 'isClosed',
+  isFocused: 'isFocused',
+  isOpened: 'isOpened',
+  isSelected: 'isSelected',
+  item: 'item',
+  menu: 'menu',
   wrapper: 'wrapper',
 };
 

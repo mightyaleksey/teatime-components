@@ -6,6 +6,7 @@ const { shallowRender } = require('skin-deep');
 const test = require('tape');
 
 const styles = {
+  clear: 'clear',
   control: 'control',
   wrapper: 'wrapper',
 };
