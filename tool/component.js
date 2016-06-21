@@ -42,12 +42,13 @@ function hasValueProp(props) {
 /**
  * @param  {object[]} collection
  * @param  {string} value
+ * @param  {string} [prop]
  * @return {number}
  */
-function indexOf(collection, value) {
+function indexOf(collection, value, prop = 'value') {
   const length = collection.length;
   for (var i = 0; i < length; ++i) {
-    if (collection[i].value !== value) {
+    if (collection[i][prop] !== value) {
       continue;
     }
 
