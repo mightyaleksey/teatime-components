@@ -19,6 +19,11 @@
   margin: 0 0 14px;
 }
 
+.wrapper:last-child
+{
+  margin: 0;
+}
+
 .control
 {
   composes: control from '../check/check-s.css';
