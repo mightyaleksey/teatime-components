@@ -3,7 +3,7 @@
 const { Component, PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
 const { composition } = require('../tool/className');
-const { noop } = require('../tool/func');
+const { isUndefined, noop } = require('../tool/func');
 const React = require('react');
 const warning = require('../tool/warning');
 
@@ -16,7 +16,7 @@ class Input extends Component {
     this.controlled = hasValueProp(props);
 
     if (process.env.NODE_ENV !== 'production' && this.controlled && !didWarnForDefaultValue) { // eslint-disable-line no-undef
-      warning(typeof props.defaultValue === 'undefined',
+      warning(isUndefined(props.defaultValue),
         'Input contains an input of type %s with both value and defaultValue props. ' +
         'Input elements must be either controlled or uncontrolled ' +
         '(specify either the value prop, or the defaultValue prop, but not ' +
@@ -28,8 +28,14 @@ class Input extends Component {
       didWarnForDefaultValue = true;
     }
 
+    const value = this.controlled
+      ? props.value
+      : props.defaultValue;
+
     this.state = {
-      value: props.value || props.defaultValue || '',
+      value: !isUndefined(value)
+        ? value
+        : '',
     };
 
     bind(this, [

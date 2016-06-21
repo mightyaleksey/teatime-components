@@ -5,7 +5,7 @@ const { bind, hasValueProp, indexOf } = require('../tool/component');
 const { classNames, composition } = require('../tool/className');
 const { findDOMNode } = require('react-dom');
 const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
-const { noop } = require('../tool/func');
+const { isUndefined, noop } = require('../tool/func');
 const Button = require('./Button');
 const Option = require('./Option');
 const Popup = require('./Popup');
@@ -29,7 +29,7 @@ class Select extends Component {
     this.controlled = hasValueProp(props);
 
     if (process.env.NODE_ENV !== 'production' && this.controlled && !didWarnForDefaultValue) { // eslint-disable-line no-undef
-      warning(typeof props.defaultValue === 'undefined',
+      warning(isUndefined(props.defaultValue),
         'Select elements must be either controlled or uncontrolled ' +
         '(specify either the value prop, or the defaultValue prop, but not ' +
         'both). Decide between using a controlled or uncontrolled select ' +
@@ -41,8 +41,11 @@ class Select extends Component {
 
     this.updateKeyMapper(props.hasUniqValues, props.options);
 
-    var value = props.value || props.defaultValue;
-    var selected = value !== undefined
+    var value = this.controlled
+      ? props.value
+      : props.defaultValue;
+
+    var selected = !isUndefined(value)
       ? indexOf(props.options, value)
       : 0; // in case of uncontrolled component
 
