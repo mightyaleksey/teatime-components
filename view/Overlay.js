@@ -56,8 +56,8 @@ module.exports = Overlay;
 
 /**
  * @param  {object} rect
- * @param  {number} rect.top
  * @param  {number} rect.left
+ * @param  {number} rect.top
  * @return {number}
  */
 function calculatePosition(rect) {

@@ -2,9 +2,9 @@
 
 const { Component, PropTypes } = require('react');
 const { bind } = require('../tool/component');
+const { classNames } = require('../tool/className');
 const Overlay = require('../view/Overlay');
 const React = require('react');
-const cx = require('classnames');
 
 const baseStyles = {
   'normal-xs': require('../style/tooltip/tooltip-normal-xs.css'),
@@ -18,51 +18,83 @@ const baseStyles = {
   'warning-m': require('../style/tooltip/tooltip-warning-m.css'),
 };
 
+const height = {
+  xs: 24,
+  s: 28,
+  m: 32,
+};
+
 class Tooltip extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      multiline: false,
-    };
+    bind(this, [
+      'calculatePosition',
+      'onPositionUpdate',
+      'shouldComponentUpdatePosition',
+    ]);
 
-    bind(this, 'handleOverlayUpdate');
+    this.state = {
+      isMultiline: false,
+    };
   }
 
-  handleOverlayUpdate(rect, ref) {
-    const isMultiline = rect.width * rect.height / this.props.maxWidth > 26;
-
-    if (this._isMultiline === isMultiline) {
-      return;
+  /**
+   * @param  {object} rect
+   * @param  {number} rect.height
+   * @param  {number} rect.left
+   * @param  {number} rect.top
+   * @param  {number} rect.width
+   * @return {number}
+   */
+  calculatePosition(rect) {
+    if (this.props.direction === 'bottom' || this.props.direction === 'top') {
+      return rect.top + (rect.left - rect.width / 2) / 10000;
     }
 
-    if (isMultiline) {
-      ref.style.width = this.props.maxWidth + 'px';
-      ref.style.whiteSpace = 'normal';
-    } else {
-      ref.style.width = 'auto';
-      ref.style.whiteSpace = 'nowrap';
-    }
+    return (rect.top - rect.height / 2) + rect.left / 10000;
+  }
 
-    this._isMultiline = isMultiline;
+  /**
+   * @param  {object}  rect
+   * @param  {number}  rect.height
+   * @param  {number}  rect.width
+   * @param  {number}  maxWidth
+   * @return {boolean}
+   */
+  isMultiline(rect, maxWidth) {
+    return rect.width * rect.height / maxWidth > height[this.props.size];
+  }
+
+  /**
+   * @param  {object} rect
+   * @param  {node}   ref
+   */
+  onPositionUpdate(rect) {
+    if (this.state.isMultiline !== this.isMultiline(rect, this.props.maxWidth)) {
+      this.setState({
+        isMultiline: !this.state.isMultiline,
+      });
+    }
+  }
+
+  shouldComponentUpdatePosition(prevProps) {
+    return prevProps.direction !== this.props.direction;
   }
 
   render() {
-    const { children, className, direction, size, type, ...o } = this.props;
+    const { children, className, direction, size, type } = this.props;
     const styles = baseStyles[`${type}-${size}`];
-
-    const mixin = children
-      ? styles.isOpened
-      : styles.isClosed;
 
     return (
       <Overlay
-        {...o}
-        className={cx(className, mixin, styles[direction])}
-        onUpdate={this.handleOverlayUpdate}
-        styleName={direction}
-        styles={styles}
-        type={type}>
+        className={classNames(className, styles[direction], {
+          [styles.isClosed]: !children,
+          [styles.isOpened]: children,
+          [styles.isLine]: !this.state.isMultiline,
+        })}
+        onPositionUpdate={this.onPositionUpdate}
+        shouldComponentUpdatePosition={this.shouldComponentUpdatePosition}>
         {children}
       </Overlay>
     );

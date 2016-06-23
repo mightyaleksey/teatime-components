@@ -37,3 +37,8 @@
 {
   composes: isOpened from './tooltip.css';
 }
+
+.isLine
+{
+  composes: isLine from './tooltip.css';
+}

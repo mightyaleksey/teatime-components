@@ -2,8 +2,9 @@
 {
   position: absolute;
 
+  width: 300px;
+
   cursor: pointer;
-  /*white-space: nowrap;*/
 
   color: #fff;
 
@@ -67,4 +68,11 @@
 .isOpened
 {
   display: block;
+}
+
+.isLine
+{
+  width: auto;
+
+  white-space: nowrap;
 }
