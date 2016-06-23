@@ -1,27 +1,45 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, composition, mapRange, noop } = require('../tools/func');
-const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
+const { bind, hasValueProp } = require('../tool/component');
+const { composition } = require('../tool/className');
+const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
+const { isUndefined, mapRange, noop } = require('../tool/func');
 const Check = require('./Check');
 const React = require('react');
+const warning = require('../tool/warning');
+
+var didWarnForDefaultValue = false;
 
 class CheckGroup extends Component {
   constructor(props) {
     super(props);
 
-    // @todo add assertion for defaultValue
-    this.controlled = props.value !== undefined;
+    bind(this, 'onChange');
+
+    this.controlled = hasValueProp(props);
+
+    if (process.env.NODE_ENV !== 'production' && this.controlled && !didWarnForDefaultValue) { // eslint-disable-line no-undef
+      warning(isUndefined(props.defaultValue),
+        'CheckGroup elements must be either controlled or uncontrolled ' +
+        '(specify either the value prop, or the defaultValue prop, but not ' +
+        'both). Decide between using a controlled or uncontrolled select ' +
+        'element and remove one of these props. More info: ' +
+        'https://fb.me/react-controlled-components');
+
+      didWarnForDefaultValue = true;
+    }
+
     this.updateKeyMapper(props.hasUniqValues, props.options);
 
-    const value = props.value || props.defaultValue;
+    const value = this.controlled
+      ? props.value
+      : props.defaultValue;
 
     this.state = {
       prefix: generateId(),
       values: mapValueToState(props.options, value || []),
     };
-
-    bind(this, 'onChange');
   }
 
   componentWillReceiveProps({ hasUniqValues, options, value }) {
@@ -51,7 +69,7 @@ class CheckGroup extends Component {
    * @param {object[]} options
    */
   updateKeyMapper(hasUniqValues, options) {
-    this.mapKey = !(hasUniqValues && isUnique(options))
+    this.mapKey = !(hasUniqValues && hasUniqueValues(options))
       ? mapKeyBasedOnPos
       : mapKey;
   }
@@ -123,6 +141,7 @@ CheckGroup.defaultProps = {
 
 CheckGroup.propTypes = {
   cols: PropTypes.number,
+  defaultValue: PropTypes.arrayOf(PropTypes.string),
   hasUniqValues: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
@@ -137,6 +156,7 @@ CheckGroup.propTypes = {
     native: PropTypes.string.isRequired,
     wrapper: PropTypes.string.isRequired,
   }),
+  value: PropTypes.arrayOf(PropTypes.string),
 };
 
 module.exports = CheckGroup;
@@ -166,17 +186,14 @@ function mapStateToValue(options, values) {
  * @return {boolean[]}
  */
 function mapValueToState(options, selected) {
+  const selectedMap = {};
+
   var length = selected.length;
-  var i = 0;
+  while (length--) {
+    selectedMap[selected[length]] = null;
+  }
 
-  return options.map(({ value }) => {
-    if (value === selected[i] && i < length) {
-      i++;
-      return true;
-    }
-
-    return false;
-  });
+  return options.map(({ value }) => value in selectedMap);
 }
 
 /**

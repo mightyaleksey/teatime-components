@@ -2,6 +2,7 @@
 
 exports.isEqual = isEqual;
 exports.isUndefined = isUndefined;
+exports.mapRange = mapRange;
 exports.noop = noop;
 
 /**
@@ -31,6 +32,20 @@ function isEqual(source, target) {
  */
 function isUndefined(a) {
   return void 0 === a;
+}
+
+/**
+ * @param  {function} iteratee
+ * @param  {number} steps
+ * @return {array}
+ */
+function mapRange(iteratee, steps) {
+  const collection = new Array(steps);
+  for (var i = 0; i < steps; ++i) {
+    collection[i] = iteratee(i, steps);
+  }
+
+  return collection;
 }
 
 function noop() {}
