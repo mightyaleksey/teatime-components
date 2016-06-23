@@ -18,7 +18,7 @@
     [
       {"children": "bottom", "direction": "bottom", "size": "xs", "type": "warning"},
       {"children": "left", "direction": "left", "size": "xs", "type": "warning"},
-      {"children": "right", "direction": "right", "size": "xs", "type": "warning"},
+      {"children": "Any development starts with pain and frustration. The pain is a reason to improve the product or create a new one.", "direction": "right", "size": "xs", "type": "warning"},
       {"children": "top", "direction": "top", "size": "xs", "type": "warning"}
     ]
   ]

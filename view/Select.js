@@ -8,7 +8,7 @@ const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../to
 const { isUndefined, noop } = require('../tool/func');
 const Button = require('./Button');
 const Option = require('./Option');
-const Popup = require('./Popup');
+const Overlay = require('./Overlay');
 const React = require('react');
 const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
 const warning = require('../tool/warning');
@@ -295,12 +295,11 @@ class Select extends Component {
     }
 
     return (
-      <Popup
-        ref='menu'
-        styleName='menu'
-        styles={styles}>
+      <Overlay
+        className={styles.menu}
+        ref='menu'>
         {this.renderOptions()}
-      </Popup>
+      </Overlay>
     );
   }
 

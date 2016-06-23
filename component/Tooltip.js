@@ -1,7 +1,8 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const Popup = require('../view/Popup');
+const { Component, PropTypes } = require('react');
+const { bind } = require('../tool/component');
+const Overlay = require('../view/Overlay');
 const React = require('react');
 const cx = require('classnames');
 
@@ -17,7 +18,35 @@ const baseStyles = {
   'warning-m': require('../style/tooltip/tooltip-warning-m.css'),
 };
 
-class Tooltip extends Popup {
+class Tooltip extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      multiline: false,
+    };
+
+    bind(this, 'handleOverlayUpdate');
+  }
+
+  handleOverlayUpdate(rect, ref) {
+    const isMultiline = rect.width * rect.height / this.props.maxWidth > 26;
+
+    if (this._isMultiline === isMultiline) {
+      return;
+    }
+
+    if (isMultiline) {
+      ref.style.width = this.props.maxWidth + 'px';
+      ref.style.whiteSpace = 'normal';
+    } else {
+      ref.style.width = 'auto';
+      ref.style.whiteSpace = 'nowrap';
+    }
+
+    this._isMultiline = isMultiline;
+  }
+
   render() {
     const { children, className, direction, size, type, ...o } = this.props;
     const styles = baseStyles[`${type}-${size}`];
@@ -27,20 +56,22 @@ class Tooltip extends Popup {
       : styles.isClosed;
 
     return (
-      <Popup
+      <Overlay
         {...o}
-        className={cx(className, mixin)}
+        className={cx(className, mixin, styles[direction])}
+        onUpdate={this.handleOverlayUpdate}
         styleName={direction}
         styles={styles}
         type={type}>
         {children}
-      </Popup>
+      </Overlay>
     );
   }
 }
 
 Tooltip.defaultProps = {
   direction: 'right',
+  maxWidth: 300,
   size: 's',
   type: 'normal',
 };
@@ -52,6 +83,7 @@ Tooltip.propTypes = {
     'right',
     'top',
   ]),
+  maxWidth: PropTypes.number,
   size: PropTypes.oneOf([
     'xs',
     's',
