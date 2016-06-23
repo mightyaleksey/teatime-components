@@ -1,38 +1,32 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const { classNames } = require('../tool/className');
 const { wrapper } = require('../style/anchor/anchor.css');
 const React = require('react');
 const Tooltip = require('../component/Tooltip');
 
 /**
  * @param  {component} Target
- * @param  {object}    [preset]
  * @return {component}
  */
-module.exports = function tooltipWrapper(Target, preset) {
-  class TooltipWrapper extends Component {
+module.exports = function TooltipWrapper(Target) {
+  const Wrapper = class extends Target {
     render() {
-      const { direction, message, size, type, ...o } = this.props;
+      const { tooltipDirection, tooltipMessage, tooltipSize, tooltipType, tooltipWrapper } = this.props;
 
       return (
-        <div className={wrapper}>
-          <Target {...o} size={size}/>
+        <div className={classNames(tooltipWrapper, wrapper)}>
+          {super.render()}
           <Tooltip
-            direction={direction}
-            size={size}
-            type={type}
-            {...preset}>
-            {message}
+            direction={tooltipDirection}
+            size={tooltipSize}
+            type={tooltipType}>
+            {tooltipMessage}
           </Tooltip>
         </div>
       );
     }
-  }
-
-  TooltipWrapper.propTypes = {
-    error: PropTypes.string,
   };
 
-  return TooltipWrapper;
+  return Wrapper;
 };

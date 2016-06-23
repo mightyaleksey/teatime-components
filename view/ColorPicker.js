@@ -2,11 +2,11 @@
 
 const { Component, PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
-const { composition } = require('../tool/className');
+const { classNames, composition } = require('../tool/className');
 const { noop } = require('../tool/func');
 const { pureHex } = require('../tools/color');
 const Input = require('./Input');
-const Popup = require('./Popup');
+const Overlay = require('./Overlay');
 const Tile = require('./Tile');
 const React = require('react');
 const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
@@ -144,9 +144,9 @@ class ColorPicker extends Component {
       : 'isClosed'];
 
     return (
-      <Popup className={popupMixin} styleName='menu' styles={styles}>
+      <Overlay className={classNames(popupMixin, styles.menu)}>
         {this.renderTiles()}
-      </Popup>
+      </Overlay>
     );
   }
 
