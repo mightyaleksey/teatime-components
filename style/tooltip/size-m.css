@@ -1,11 +1,11 @@
-@value size-m, line-m from '../font.css';
+@value size-m from '../font.css';
 
 .control
 {
-  padding: 0 10px;
+  padding: 7px 10px;
 
   font-size: size-m;
-  line-height: line-m;
+  line-height: 18px;
 }
 
 .bottom

@@ -1,11 +1,11 @@
-@value size-xs, line-xs from '../font.css';
+@value size-xs from '../font.css';
 
 .control
 {
-  padding: 0 8px;
+  padding: 4px 8px;
 
   font-size: size-xs;
-  line-height: line-xs;
+  line-height: 16px;
 }
 
 .bottom
