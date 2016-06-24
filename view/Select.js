@@ -313,9 +313,9 @@ class Select extends Component {
   render() {
     return (
       <div className={composition(this.props)}>
+        {this.renderValue()}
         {this.renderLabel()}
         {this.renderMenu()}
-        {this.renderValue()}
       </div>
     );
   }
@@ -330,6 +330,7 @@ class Select extends Component {
             [styles.isClosedControl]: !this.state.isOpened,
             [styles.isOpenedControl]: this.state.isOpened,
           })}
+          disabled={this.props.disabled}
           onClick={this.onMenuToggle}
           onKeyDown={this.onKeyDown}
           ref='label'
@@ -348,6 +349,7 @@ class Select extends Component {
         {this.state.inputValue ? '' : this.getSelectedLabel(this.state.selected)}
         <input
           className={this.props.styles.input}
+          disabled={this.props.disabled}
           onBlur={this.onControlBlur}
           onChange={this.onInputChange}
           onFocus={this.onControlFocus}
@@ -447,6 +449,7 @@ class Select extends Component {
   renderValue() {
     return (
       <input
+        className={this.props.styles.native}
         disabled={this.props.disabled}
         name={this.props.name}
         type='hidden'

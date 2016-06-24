@@ -5,6 +5,11 @@
   composes: wrapper from './select.css';
 }
 
+.native
+{
+  composes: native from './select.css';
+}
+
 .control
 {
   composes: control from '../button/button-normal-m.css';

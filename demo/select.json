@@ -328,6 +328,20 @@
         "size": "xs"
       },
       {
+        "disabled": true,
+        "name": "motorrad-2",
+        "options": [
+          {"label": "Yamaha", "value": "yamaha"},
+          {"label": "Suzuki", "value": "suzuki"},
+          {"label": "Kawasaki", "value": "kawasaki"},
+          {"label": "Vespa", "value": "vespa"},
+          {"label": "MZ", "value": "mz"}
+        ],
+        "size": "xs"
+      }
+    ],
+    [
+      {
         "isSearchable": true,
         "name": "cities2",
         "options": [
@@ -654,13 +668,14 @@
       },
       {
         "disabled": true,
-        "name": "motorrad-2",
+        "isSearchable": true,
+        "name": "cities3",
         "options": [
-          {"label": "Yamaha", "value": "yamaha"},
-          {"label": "Suzuki", "value": "suzuki"},
-          {"label": "Kawasaki", "value": "kawasaki"},
-          {"label": "Vespa", "value": "vespa"},
-          {"label": "MZ", "value": "mz"}
+          {"label": "Abakan", "value": "abakan"},
+          {"label": "Achinsk", "value": "achinsk"},
+          {"label": "Aleksin", "value": "aleksin"},
+          {"label": "Alexandrov", "value": "alexandrov"},
+          {"label": "Saransk", "value": "saransk"}
         ],
         "size": "xs"
       }

@@ -22,11 +22,6 @@
   transition: transform .1s ease-out;
 }
 
-.control:disabled:after
-{
-  opacity: .4;
-}
-
 .input
 {
   position: absolute;
@@ -69,6 +64,20 @@
   color: rgba(0,0,0,.4);
 
   font-family: arial,sans-serif;
+}
+
+.native:disabled ~ .control
+{
+  cursor: default;
+
+  color: rgba(0,0,0,.5);
+  background: #ebebeb;
+  box-shadow: none;
+}
+
+.native:disabled ~ .control:after
+{
+  opacity: .4;
 }
 
 /* mixins */
