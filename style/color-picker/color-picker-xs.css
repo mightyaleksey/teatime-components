@@ -53,18 +53,22 @@
 {
   composes: item from './color-picker.css';
 
-  width: 14px;
   height: 14px;
 }
 
 /* mixin */
 
-.isClosed
+.isClosedMenu
 {
-  composes: isClosed from './color-picker.css';
+  composes: isClosedMenu from './color-picker.css';
 }
 
-.isOpened
+.isOpenedMenu
 {
-  composes: isOpened from './color-picker.css';
+  composes: isOpenedMenu from './color-picker.css';
+}
+
+.isFixedMenu
+{
+  composes: isFixedMenu from './color-picker.css';
 }
