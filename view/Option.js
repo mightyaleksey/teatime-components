@@ -1,7 +1,7 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind } = require('../tools/func');
+const { bind, noop } = require('../tools/func');
 const React = require('react');
 
 class Option extends Component {
@@ -36,10 +36,15 @@ class Option extends Component {
   }
 }
 
+Option.defaultProps = {
+  onFocus: noop,
+  onSelect: noop,
+};
+
 Option.propTypes = {
   isFocused: PropTypes.bool,
-  onFocus: PropTypes.func.isRequired,
-  onSelect: PropTypes.func.isRequired,
+  onFocus: PropTypes.func,
+  onSelect: PropTypes.func,
   tc: PropTypes.any,
 };
 
