@@ -483,6 +483,7 @@ Select.propTypes = {
   styleName: PropTypes.string,
   styles: PropTypes.shape({
     control: PropTypes.string.isRequired,
+    empty: PropTypes.string.isRequired,
     input: PropTypes.string.isRequired,
     isClosedControl: PropTypes.string.isRequired,
     isClosedMenu: PropTypes.string.isRequired,
@@ -494,6 +495,7 @@ Select.propTypes = {
     isSelectedItem: PropTypes.string.isRequired,
     item: PropTypes.string.isRequired,
     menu: PropTypes.string.isRequired,
+    native: PropTypes.string.isRequired,
     wrapper: PropTypes.string,
   }),
 };
