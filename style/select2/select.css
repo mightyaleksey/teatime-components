@@ -1,0 +1,114 @@
+.wrapper
+{
+  position: relative;
+
+  display: inline-block;
+
+  width: 300px;
+}
+
+.control
+{
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.control:after
+{
+  position: absolute;
+  top: 50%;
+
+  content: '';
+  transition: transform .1s ease-out;
+}
+
+.control:disabled:after
+{
+  opacity: .4;
+}
+
+.input
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  border: none;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+
+  font-family: arial,sans-serif;
+
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu
+{
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.1),0 9px 20px -5px rgba(0,0,0,.4);
+}
+
+.item
+{
+  /* base */
+}
+
+.empty
+{
+  color: rgba(0,0,0,.4);
+
+  font-family: arial,sans-serif;
+}
+
+/* mixins */
+
+.isClosedControl:after
+{
+  transform: rotate(0deg);
+}
+
+.isOpenedControl:after
+{
+  transform: rotate(-180deg);
+}
+
+.isClosedMenu
+{
+  display: none;
+}
+
+.isOpenedMenu
+{
+  display: block;
+}
+
+.isFixedMenu
+{
+  width: 100%;
+}
+
+.isFixedItem
+{
+  overflow-x: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.isFocusedItem
+{
+  background-color: #ffeba0;
+}
+
+.isSelectedItem
+{
+  background-repeat: no-repeat;
+}

@@ -28,6 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.5",
+    "fuzzysearch": "^1.0.3",
     "react-outside-event": "^1.2.4"
   },
   "devDependencies": {

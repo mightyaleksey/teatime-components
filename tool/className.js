@@ -15,3 +15,6 @@ exports.composition = composition;
 function composition(props) {
   return classNames(props.className, props.styles[props.styleName]);
 }
+
+// @todo add helper to build state based on styles,
+//       like c(styles, {isOpened: true});

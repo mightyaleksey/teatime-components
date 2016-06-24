@@ -1,9 +1,20 @@
 'use strict';
 
+exports.constant = constant;
 exports.isEqual = isEqual;
 exports.isUndefined = isUndefined;
 exports.mapRange = mapRange;
 exports.noop = noop;
+
+/**
+ * @param  {*} a
+ * @return {function}
+ */
+function constant(a) {
+  return function constantly() {
+    return a;
+  };
+}
 
 /**
  * Simple object comparison
