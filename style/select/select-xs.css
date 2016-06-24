@@ -3,6 +3,8 @@
 .wrapper
 {
   composes: wrapper from './select.css';
+
+  line-height: line-xs;
 }
 
 .native
@@ -15,13 +17,12 @@
   composes: control from '../button/button-normal-xs.css';
   composes: control from './select.css';
 
-  height: line-xs;
   padding-right: 25px;
 
   text-align: left;
 }
 
-.control:after
+.control:before
 {
   right: 9px;
 
@@ -36,10 +37,10 @@
 {
   composes: input from './select.css';
 
+  height: line-xs;
   padding: 0 25px 0 10px;
 
   font-size: size-xs;
-  line-height: line-xs;
 }
 
 .menu

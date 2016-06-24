@@ -15,13 +15,12 @@
   composes: control from '../button/button-normal-m.css';
   composes: control from './select.css';
 
-  height: line-m;
   padding-right: 29px;
 
   text-align: left;
 }
 
-.control:after
+.control:before
 {
   right: 12px;
 
@@ -36,10 +35,10 @@
 {
   composes: input from './select.css';
 
+  height: line-m;
   padding: 0 29px 0 15px;
 
   font-size: size-m;
-  line-height: line-m;
 }
 
 .menu
