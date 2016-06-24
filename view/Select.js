@@ -437,7 +437,8 @@ class Select extends Component {
     if (isSearchable && list.length === 0) {
       list.push((
         <Option
-          className={styles.empty}>
+          className={styles.empty}
+          key={mapKey(prefix, 'noResults')}>
           {this.props.noResults}
         </Option>
       ));
