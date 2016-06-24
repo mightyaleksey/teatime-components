@@ -1,3 +1,5 @@
+@value size-s, line-s from '../font.css';
+
 .wrapper
 {
   composes: wrapper from './select.css';
@@ -6,11 +8,9 @@
 .control
 {
   composes: control from '../button/button-normal-s.css';
-  composes: control from './arrow-s.css';
   composes: control from './select.css';
 
-  position: relative;
-
+  height: line-s;
   padding-right: 25px;
 
   text-align: left;
@@ -19,6 +19,22 @@
 .control:after
 {
   right: 10px;
+
+  width: 11px;
+  height: 6px;
+  margin: -3px 0 0;
+
+  background: url(arrow-s.svg) 0 0 no-repeat;
+}
+
+.input
+{
+  composes: input from './select.css';
+
+  padding: 0 25px 0 13px;
+
+  font-size: size-s;
+  line-height: line-s;
 }
 
 .menu
@@ -26,7 +42,7 @@
   composes: menu from '../menu/menu-s.css';
   composes: menu from './select.css';
 
-  max-height: 200px;
+  max-height: 152px;
 }
 
 .item
@@ -35,26 +51,56 @@
   composes: item from './select.css';
 }
 
+.empty
+{
+  composes: empty from './select.css';
+
+  padding: 0 13px;
+
+  font-size: size-s;
+  line-height: line-s;
+}
+
 /* mixins */
 
-.isClosed
+.isClosedControl
 {
-  composes: isClosed from './select.css';
+  composes: isClosedControl from './select.css';
 }
 
-.isOpened
+.isOpenedControl
 {
-  composes: isOpened from './select.css';
+  composes: isOpenedControl from './select.css';
 }
 
-.isFocused
+.isClosedMenu
 {
-  composes: isFocused from './select.css';
+  composes: isClosedMenu from './select.css';
 }
 
-.isSelected
+.isOpenedMenu
 {
-  composes: isSelected from './select.css';
+  composes: isOpenedMenu from './select.css';
+}
+
+.isFixedMenu
+{
+  composes: isFixedMenu from './select.css';
+}
+
+.isFixedItem
+{
+  composes: isFixedItem from './select.css';
+}
+
+.isFocusedItem
+{
+  composes: isFocusedItem from './select.css';
+}
+
+.isSelectedItem
+{
+  composes: isSelectedItem from './select.css';
 
   background-image: url(../check/tick-s.svg);
   background-position: 10px 50%;
