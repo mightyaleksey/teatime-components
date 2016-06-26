@@ -2,8 +2,8 @@
 
 const { Component, PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
-const { composition } = require('../tool/className');
 const { isUndefined, noop } = require('../tool/func');
+const { styleName } = require('../tool/className');
 const React = require('react');
 const warning = require('../tool/warning');
 
@@ -92,7 +92,7 @@ class Input extends Component {
       : null;
 
     return (
-      <span className={composition(this.props)}>
+      <span className={styleName(this.props)}>
         <input
           {...o}
           className={styles.control}

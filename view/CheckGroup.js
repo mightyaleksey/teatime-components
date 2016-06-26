@@ -2,9 +2,9 @@
 
 const { Component, PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
-const { composition } = require('../tool/className');
 const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
 const { isUndefined, mapRange, noop } = require('../tool/func');
+const { styleName } = require('../tool/className');
 const Check = require('./Check');
 const React = require('react');
 const warning = require('../tool/warning');
@@ -78,7 +78,7 @@ class CheckGroup extends Component {
     return (
       <div
         {...this.props}
-        className={composition(this.props)}
+        className={styleName(this.props)}
         onChange={undefined}>
         {this.renderColumns()}
       </div>

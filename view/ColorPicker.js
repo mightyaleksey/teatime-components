@@ -2,7 +2,7 @@
 
 const { Component, PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
-const { classNames, composition } = require('../tool/className');
+const { classNames, styleName } = require('../tool/className');
 const { noop } = require('../tool/func');
 const { pureHex } = require('../tools/color');
 const Input = require('./Input');
@@ -105,7 +105,7 @@ class ColorPicker extends Component {
 
     return (
       <div
-        className={composition(this.props)}
+        className={styleName(this.props)}
         onKeyDown={this.onKeyDown}>
         {this.renderPreview()}
         <Input
