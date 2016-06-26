@@ -1,8 +1,10 @@
 'use strict';
 
 exports.constant = constant;
+exports.identity = identity;
 exports.isEqual = isEqual;
 exports.isUndefined = isUndefined;
+exports.mapKeys = mapKeys;
 exports.mapRange = mapRange;
 exports.noop = noop;
 
@@ -14,6 +16,14 @@ function constant(a) {
   return function constantly() {
     return a;
   };
+}
+
+/**
+ * @param  {*} a
+ * @return {*}
+ */
+function identity(a) {
+  return a;
 }
 
 /**
@@ -43,6 +53,25 @@ function isEqual(source, target) {
  */
 function isUndefined(a) {
   return void 0 === a;
+}
+
+/**
+ * @param  {function} iteratee
+ * @param  {object} collection
+ * @return {object}
+ */
+function mapKeys(iteratee, collection) {
+  if (!collection) {
+    return null;
+  }
+
+  const nextCollection = {};
+
+  for (var key in collection) {
+    nextCollection[iteratee(collection[key], key)] = collection[key];
+  }
+
+  return nextCollection;
 }
 
 /**
