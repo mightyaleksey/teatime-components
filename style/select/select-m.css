@@ -67,6 +67,11 @@
 
 /* mixins */
 
+.isFixedWrapper
+{
+  composes: isFixedWrapper from './select.css';
+}
+
 .isClosedControl
 {
   composes: isClosedControl from './select.css';

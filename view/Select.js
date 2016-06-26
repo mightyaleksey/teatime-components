@@ -2,7 +2,7 @@
 
 const { Component, PropTypes } = require('react');
 const { bind, hasValueProp, indexOf } = require('../tool/component');
-const { classNames, composition } = require('../tool/className');
+const { classNames, styleName } = require('../tool/className');
 const { constant } = require('../tool/func');
 const { findDOMNode } = require('react-dom');
 const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
@@ -312,7 +312,7 @@ class Select extends Component {
 
   render() {
     return (
-      <div className={composition(this.props)}>
+      <div className={styleName(this.props, {isFixedWrapper: this.props.isFixed})}>
         {this.renderValue()}
         {this.renderLabel()}
         {this.renderMenu()}

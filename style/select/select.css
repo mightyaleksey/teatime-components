@@ -88,6 +88,11 @@
 
 /* mixins */
 
+.isFixedWrapper
+{
+  width: 100%;
+}
+
 .isClosedControl:before
 {
   transform: rotate(0deg);
