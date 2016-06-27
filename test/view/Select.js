@@ -7,12 +7,20 @@ const test = require('tape');
 
 const styles = {
   control: 'control',
-  isClosed: 'isClosed',
-  isFocused: 'isFocused',
-  isOpened: 'isOpened',
-  isSelected: 'isSelected',
+  empty: 'empty',
+  input: 'input',
+  isClosedControl: 'isClosedControl',
+  isClosedMenu: 'isClosedMenu',
+  isFixedItem: 'isFixedItem',
+  isFixedMenu: 'isFixedMenu',
+  isFixedWrapper: 'isFixedWrapper',
+  isFocusedItem: 'isFocusedItem',
+  isOpenedControl: 'isOpenedControl',
+  isOpenedMenu: 'isOpenedMenu',
+  isSelectedItem: 'isSelectedItem',
   item: 'item',
   menu: 'menu',
+  native: 'native',
   wrapper: 'wrapper',
 };
 
@@ -33,6 +41,6 @@ test('Select className to contain `mixin` and styleName', t => {
 
   const result = tree.dive(['Select']).getRenderOutput();
 
-  t.isEqual(result.props.className, 'mixin wrapper');
+  t.isEqual(result.props.className, 'mixin wrapper isFixedWrapper');
   t.end();
 });

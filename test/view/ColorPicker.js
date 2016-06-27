@@ -9,8 +9,11 @@ const styles = {
   clear: 'clear',
   container: 'container',
   control: 'control',
+  isClosedMenu: 'isClosedMenu',
+  isFixedMenu: 'isFixedMenu',
+  isFixedWrapper: 'isFixedWrapper',
+  isOpenedMenu: 'isOpenedMenu',
   item: 'item',
-  line: 'line',
   menu: 'menu',
   preview: 'preview',
   wrapper: 'wrapper',
@@ -25,6 +28,6 @@ test('ColorPicker className to contain `mixin` and styleName', t => {
 
   const result = tree.dive(['ColorPicker']).getRenderOutput();
 
-  t.isEqual(result.props.className, 'mixin container');
+  t.isEqual(result.props.className, 'mixin container isFixedWrapper');
   t.end();
 });
