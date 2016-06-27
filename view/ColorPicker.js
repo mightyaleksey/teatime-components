@@ -105,7 +105,7 @@ class ColorPicker extends Component {
 
     return (
       <div
-        className={styleName(this.props)}
+        className={styleName(this.props, {isFixedWrapper: this.props.hasFixedWidth})}
         onKeyDown={this.onKeyDown}>
         {this.renderPreview()}
         <Input

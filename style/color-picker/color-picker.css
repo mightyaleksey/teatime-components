@@ -101,6 +101,11 @@
 
 /* mixin */
 
+.isFixedWrapper
+{
+  width: 100%;
+}
+
 .isClosedMenu
 {
   display: none;

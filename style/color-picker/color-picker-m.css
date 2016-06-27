@@ -58,6 +58,11 @@
 
 /* mixin */
 
+.isFixedWrapper
+{
+  composes: isFixedWrapper from './color-picker.css';
+}
+
 .isClosedMenu
 {
   composes: isClosedMenu from './color-picker.css';
