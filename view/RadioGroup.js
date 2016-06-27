@@ -1,8 +1,10 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, composition, findIndexByValueProp, noop } = require('../tools/func');
-const { generateId, isUnique, mapKey, mapKeyBasedOnPos } = require('../tools/identity');
+const { bind, indexOf } = require('../tool/component');
+const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
+const { noop } = require('../tool/func');
+const { styleName } = require('../tool/className');
 const RadioButton = require('./RadioButton');
 const React = require('react');
 
@@ -19,7 +21,7 @@ class RadioGroup extends Component {
     // @todo make assertion for single property
     this.state = {
       prefix: generateId(),
-      selected: findIndexByValueProp(props.options, value),
+      selected: indexOf(props.options, value),
     };
 
     bind(this, 'onChange');
@@ -27,7 +29,7 @@ class RadioGroup extends Component {
 
   componentWillReceiveProps({ hasUniqValues, options, value }) {
     if (this.controlled) {
-      this.setState({selected: findIndexByValueProp(options, value)});
+      this.setState({selected: indexOf(options, value)});
     }
 
     if (this.props.hasUniqValues !== hasUniqValues) {
@@ -48,7 +50,7 @@ class RadioGroup extends Component {
    * @param {object[]} options
    */
   updateKeyMapper(hasUniqValues, options) {
-    this.mapKey = !(hasUniqValues && isUnique(options))
+    this.mapKey = !(hasUniqValues && hasUniqueValues(options))
       ? mapKeyBasedOnPos
       : mapKey;
   }
@@ -57,7 +59,7 @@ class RadioGroup extends Component {
     return (
       <div
         {...this.props}
-        className={composition(this.props)}
+        className={styleName(this.props)}
         onChange={undefined}>
         {this.renderOptions()}
       </div>
