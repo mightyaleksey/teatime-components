@@ -21,6 +21,7 @@ class Option extends Component {
   }
 
   onSelect(e) {
+    e.stopPropagation();
     this.props.onSelect(e, {value: this.props.value}, this.props.tc);
   }
 

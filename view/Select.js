@@ -20,8 +20,6 @@ class Select extends Component {
     super(props);
 
     bind(this, [
-      'onControlBlur',
-      'onControlFocus',
       'onInputChange',
       'onKeyDown',
       'onMenuToggle',
@@ -192,18 +190,6 @@ class Select extends Component {
       : '';
   }
 
-  onControlBlur() {}
-
-  onControlFocus() {
-    if (this._openAfterFocus !== false) {
-      return void this.setState({
-        isOpened: true,
-      });
-    }
-
-    this.__openAfterFocus = true;
-  }
-
   onInputChange(e) {
     this.setState({
       inputValue: e.target.value,
@@ -293,13 +279,11 @@ class Select extends Component {
    * @param {number} tc
    */
   onOptionSelect(e, _, tc) {
-    this._openAfterFocus = false;
     this.updateValue(e, tc);
     this.focus();
   }
 
   onOutsideEvent() {
-    this._openAfterFocus = true;
     if (!this.state.isOpened) return;
     this.closeMenu();
   }
@@ -380,9 +364,8 @@ class Select extends Component {
         <input
           className={this.props.styles.input}
           disabled={this.props.disabled}
-          onBlur={this.onControlBlur}
           onChange={this.onInputChange}
-          onFocus={this.onControlFocus}
+          onClick={this.onMenuToggle}
           onKeyDown={this.onKeyDown}
           ref='label'
           tabIndex={this.props.tabIndex || 0}
