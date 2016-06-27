@@ -2,6 +2,7 @@
 
 const { resolve } = require('path');
 const { version } = require('../package');
+const DefinePlugin = require('webpack').DefinePlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
@@ -35,7 +36,14 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('styles.css'),
+    new DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+      },
+    }),
+    new ExtractTextPlugin('styles.css', {
+      allChunks: true,
+    }),
     new HtmlWebpackPlugin({
       title: `teatime-components ${version}`,
       inject: 'body',
