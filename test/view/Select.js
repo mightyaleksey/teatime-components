@@ -19,6 +19,7 @@ const styles = {
   isOpenedMenu: 'isOpenedMenu',
   isSelectedItem: 'isSelectedItem',
   item: 'item',
+  label: 'label',
   menu: 'menu',
   native: 'native',
   wrapper: 'wrapper',

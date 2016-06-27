@@ -3,6 +3,9 @@
 .wrapper
 {
   composes: wrapper from './select.css';
+
+  font-size: size-s;
+  line-height: line-s;
 }
 
 .native
@@ -31,14 +34,22 @@
   background: url(arrow-s.svg) 0 0 no-repeat;
 }
 
+.label
+{
+  composes: label from './select.css';
+
+  font-size: size-s;
+  line-height: line-s;
+}
+
 .input
 {
   composes: input from './select.css';
 
-  height: line-s;
   padding: 0 25px 0 13px;
 
   font-size: size-s;
+  line-height: line-s;
 }
 
 .menu

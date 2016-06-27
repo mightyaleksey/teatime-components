@@ -7,18 +7,11 @@
 
 .control
 {
-  overflow: hidden;
-
   box-sizing: border-box;
   width: 100%;
 
+  vertical-align: top;
   white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.control:after
-{
-  content: '\00a0';
 }
 
 .control:before
@@ -28,6 +21,22 @@
 
   content: '';
   transition: transform .1s ease-out;
+}
+
+.label
+{
+  display: block;
+  overflow: hidden;
+
+  width: 100%;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.label:after
+{
+  content: '\00a0';
 }
 
 .input

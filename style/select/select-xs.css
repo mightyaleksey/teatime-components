@@ -4,6 +4,7 @@
 {
   composes: wrapper from './select.css';
 
+  font-size: size-xs;
   line-height: line-xs;
 }
 
@@ -33,14 +34,22 @@
   background: url(arrow-xs.svg) 0 0 no-repeat;
 }
 
+.label
+{
+  composes: label from './select.css';
+
+  font-size: size-xs;
+  line-height: line-xs;
+}
+
 .input
 {
   composes: input from './select.css';
 
-  height: line-xs;
   padding: 0 25px 0 10px;
 
   font-size: size-xs;
+  line-height: line-xs;
 }
 
 .menu

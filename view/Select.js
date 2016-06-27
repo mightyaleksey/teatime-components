@@ -349,7 +349,9 @@ class Select extends Component {
           onKeyDown={this.onKeyDown}
           ref='label'
           tabIndex={this.props.tabIndex || 0}>
-          {this.getSelectedLabel(this.state.selected)}
+          <span className={style(this.props.styles, 'label')}>
+            {this.getSelectedLabel(this.state.selected)}
+          </span>
         </button>
       );
     }
@@ -360,7 +362,9 @@ class Select extends Component {
           isClosedControl: !this.state.isOpened,
           isOpenedControl: this.state.isOpened,
         })}>
-        {this.state.inputValue ? '' : this.getSelectedLabel(this.state.selected)}
+        <span className={style(this.props.styles, 'label')}>
+          {this.state.inputValue ? '' : this.getSelectedLabel(this.state.selected)}
+        </span>
         <input
           className={this.props.styles.input}
           disabled={this.props.disabled}
@@ -503,6 +507,7 @@ Select.propTypes = {
     isOpenedMenu: PropTypes.string.isRequired,
     isSelectedItem: PropTypes.string.isRequired,
     item: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
     menu: PropTypes.string.isRequired,
     native: PropTypes.string.isRequired,
     wrapper: PropTypes.string,
