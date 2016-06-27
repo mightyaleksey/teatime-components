@@ -11,11 +11,11 @@ class Tumbler extends Component {
   constructor(props) {
     super(props);
 
+    bind(this, 'onChange');
+
     this.state = {
       id: this.props.id || generateId(),
     };
-
-    bind(this, 'onChange');
   }
 
   componentWillReceiveProps({ id }) {

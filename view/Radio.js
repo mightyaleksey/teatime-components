@@ -1,29 +1,45 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, indexOf } = require('../tool/component');
+const { bind, hasValueProp, indexOf } = require('../tool/component');
 const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
-const { noop } = require('../tool/func');
+const { isUndefined, noop } = require('../tool/func');
 const { styleName } = require('../tool/className');
 const Check = require('./Check');
 const React = require('react');
+const warning = require('../tool/warning');
+
+var didWarnForDefaultValue = false;
 
 class Radio extends Component {
   constructor(props) {
     super(props);
 
-    // @todo add assertion for defaultValue
-    this.controlled = props.value !== undefined;
+    bind(this, 'onChange');
+
+    this.controlled = hasValueProp(props);
+
+    if (process.env.NODE_ENV !== 'production' && this.controlled && !didWarnForDefaultValue) { // eslint-disable-line no-undef
+      warning(isUndefined(props.defaultValue),
+        'Radio elements must be either controlled or uncontrolled ' +
+        '(specify either the value prop, or the defaultValue prop, but not ' +
+        'both). Decide between using a controlled or uncontrolled radio ' +
+        'element and remove one of these props. More info: ' +
+        'https://fb.me/react-controlled-components');
+
+      didWarnForDefaultValue = true;
+    }
+
     this.updateKeyMapper(props.hasUniqValues, props.options);
 
-    const value = props.value || props.defaultValue;
+    const value = this.controlled
+      ? props.value
+      : props.defaultValue;
 
     this.state = {
       prefix: generateId(),
       selected: indexOf(props.options, value),
     };
-
-    bind(this, 'onChange');
   }
 
   componentWillReceiveProps({ hasUniqValues, options, value }) {

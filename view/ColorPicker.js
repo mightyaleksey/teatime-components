@@ -3,7 +3,7 @@
 const { Component, PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
 const { classNames, styleName } = require('../tool/className');
-const { noop } = require('../tool/func');
+const { isUndefined, noop } = require('../tool/func');
 const { pureHex } = require('../tool/color');
 const Input = require('./Input');
 const Overlay = require('./Overlay');
@@ -17,6 +17,14 @@ var didWarnForDefaultValue = false;
 class ColorPicker extends Component {
   constructor(props) {
     super(props);
+
+    bind(this, [
+      'onChange',
+      'onInputFocus',
+      'onKeyDown',
+      'onPreviewClick',
+      'onTileClick',
+    ]);
 
     this.controlled = hasValueProp(props);
 
@@ -32,18 +40,16 @@ class ColorPicker extends Component {
       didWarnForDefaultValue = true;
     }
 
+    var value = this.controlled
+      ? props.value
+      : props.defaultValue;
+
     this.state = {
       isOpened: false,
-      value: props.value || props.defaultValue || 'FFFFFF',
+      value: !isUndefined(value)
+        ? value
+        : 'FFFFFF',
     };
-
-    bind(this, [
-      'onChange',
-      'onInputFocus',
-      'onKeyDown',
-      'onPreviewClick',
-      'onTileClick',
-    ]);
   }
 
   componentWillReceiveProps(nextProps) {
