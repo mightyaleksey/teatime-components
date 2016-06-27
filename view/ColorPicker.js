@@ -144,7 +144,7 @@ class ColorPicker extends Component {
       <Overlay className={classNames(styles.menu, {
         [styles.isClosedMenu]: !this.state.isOpened,
         [styles.isOpenedMenu]: this.state.isOpened,
-        [styles.isFixedMenu]: this.props.isFixed,
+        [styles.isFixedMenu]: this.props.hasFixedWidth,
       })}>
         {this.renderTiles()}
       </Overlay>
@@ -176,7 +176,7 @@ class ColorPicker extends Component {
 }
 
 ColorPicker.defaultProps = {
-  isFixed: true,
+  hasFixedWidth: true,
   onChange: noop,
   palette: [
     '000000',
@@ -263,7 +263,7 @@ ColorPicker.defaultProps = {
 
 // @todo add color validation for value prop
 ColorPicker.propTypes = {
-  isFixed: PropTypes.bool,
+  hasFixedWidth: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   palette: PropTypes.array,

@@ -312,7 +312,7 @@ class Select extends Component {
 
   render() {
     return (
-      <div className={styleName(this.props, {isFixedWrapper: this.props.isFixed})}>
+      <div className={styleName(this.props, {isFixedWrapper: this.props.hasFixedWidth})}>
         {this.renderValue()}
         {this.renderLabel()}
         {this.renderMenu()}
@@ -368,7 +368,7 @@ class Select extends Component {
     return (
       <Overlay
         className={classNames(styles.menu, {
-          [styles.isFixedMenu]: this.props.isFixed,
+          [styles.isFixedMenu]: this.props.hasFixedWidth,
           [styles.isClosedMenu]: !this.state.isOpened,
           [styles.isOpenedMenu]: this.state.isOpened,
         })}
@@ -391,7 +391,7 @@ class Select extends Component {
       return null;
     }
 
-    const { isFixed, isSearchable, options, styles } = this.props;
+    const { hasFixedWidth, isSearchable, options, styles } = this.props;
     const { focused, prefix, selected } = this.state;
     const inputValue = this.state.inputValue.toLowerCase();
     const filter = isSearchable
@@ -419,7 +419,7 @@ class Select extends Component {
         <Option
           {...option}
           className={classNames(styles.item, {
-            [styles.isFixedItem]: isFixed,
+            [styles.isFixedItem]: hasFixedWidth,
             [styles.isFocusedItem]: isFocused,
             [styles.isSelectedItem]: isSelected,
           })}
@@ -460,8 +460,8 @@ class Select extends Component {
 }
 
 Select.defaultProps = {
+  hasFixedWidth: true,
   hasUniqValues: true,
-  isFixed: true,
   isSearchable: false,
   noResults: 'No results found',
   onChange: noop,
@@ -472,8 +472,8 @@ Select.defaultProps = {
 
 Select.propTypes = {
   getHaystack: PropTypes.func,
+  hasFixedWidth: PropTypes.bool,
   hasUniqValues: PropTypes.bool,
-  isFixed: PropTypes.bool,
   isSearchable: PropTypes.bool,
   name: PropTypes.string.isRequired,
   noResults: PropTypes.string,
