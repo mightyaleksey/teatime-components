@@ -1,7 +1,7 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { composition } = require('../tools/func');
+const { styleName } = require('../tool/className');
 const React = require('react');
 const layer = require('../mixin/layer');
 
@@ -25,7 +25,7 @@ class Popup extends Component {
       <div
         style={{zIndex}}
         {...this.props}
-        className={composition(this.props)}/>
+        className={styleName(this.props)}/>
     );
   }
 }

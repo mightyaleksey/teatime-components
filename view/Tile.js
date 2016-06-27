@@ -1,7 +1,8 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, composition } = require('../tools/func');
+const { bind } = require('../tool/component');
+const { styleName } = require('../tool/className');
 const React = require('react');
 
 class Tile extends Component {
@@ -19,7 +20,7 @@ class Tile extends Component {
     return (
       <div
         {...this.props}
-        className={composition(this.props)}
+        className={styleName(this.props)}
         onClick={this.onClick}
         style={{backgroundColor: this.props.color}}/>
     );

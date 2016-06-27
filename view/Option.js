@@ -1,7 +1,8 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, noop } = require('../tools/func');
+const { bind } = require('../tool/component');
+const { noop } = require('../tool/func');
 const React = require('react');
 
 class Option extends Component {

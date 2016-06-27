@@ -1,7 +1,9 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, composition, noop } = require('../tools/func');
+const { bind } = require('../tool/component');
+const { noop } = require('../tool/func');
+const { styleName } = require('../tool/className');
 const React = require('react');
 
 class Textarea extends Component {
@@ -31,7 +33,7 @@ class Textarea extends Component {
     return (
       <textarea
         {...this.props}
-        className={composition(this.props)}
+        className={styleName(this.props)}
         onChange={this.onChange}
         ref='control'/>
     );

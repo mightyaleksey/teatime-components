@@ -1,8 +1,10 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, composition, noop } = require('../tools/func');
-const { generateId } = require('../tools/identity');
+const { bind } = require('../tool/component');
+const { generateId } = require('../tool/identity');
+const { noop } = require('../tool/func');
+const { styleName } = require('../tool/className');
 const React = require('react');
 
 class Tumbler extends Component {
@@ -41,7 +43,7 @@ class Tumbler extends Component {
      */
 
     return (
-      <div className={composition(this.props)}>
+      <div className={styleName(this.props)}>
         <input
           type='checkbox'
           {...o}
