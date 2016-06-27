@@ -108,6 +108,7 @@ Radio.defaultProps = {
 };
 
 Radio.propTypes = {
+  defaultValue: PropTypes.string,
   hasUniqValues: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
@@ -120,6 +121,7 @@ Radio.propTypes = {
     native: PropTypes.string.isRequired,
     wrapper: PropTypes.string.isRequired,
   }),
+  value: PropTypes.string,
 };
 
 module.exports = Radio;

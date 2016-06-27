@@ -490,6 +490,7 @@ Select.propTypes = {
     isClosedMenu: PropTypes.string.isRequired,
     isFixedItem: PropTypes.string.isRequired,
     isFixedMenu: PropTypes.string.isRequired,
+    isFixedWrapper: PropTypes.string.isRequired,
     isFocusedItem: PropTypes.string.isRequired,
     isOpenedControl: PropTypes.string.isRequired,
     isOpenedMenu: PropTypes.string.isRequired,

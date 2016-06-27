@@ -108,6 +108,7 @@ RadioGroup.defaultProps = {
 };
 
 RadioGroup.propTypes = {
+  defaultValue: PropTypes.string,
   hasUniqValues: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
@@ -119,6 +120,7 @@ RadioGroup.propTypes = {
     native: PropTypes.string.isRequired,
     wrapper: PropTypes.string.isRequired,
   }),
+  value: PropTypes.string,
 };
 
 module.exports = RadioGroup;
