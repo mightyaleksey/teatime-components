@@ -4,7 +4,19 @@ const { mapKeys } = require('./func');
 const classNames = require('classnames');
 
 exports.classNames = classNames;
+exports.style = style;
 exports.styleName = styleName;
+
+/**
+ * @param  {object} styles
+ * @param  {string} name
+ * @param  {object} [optional]
+ * @return {string}
+ */
+function style(styles, name, optional) {
+  return classNames(styles[name],
+    mapKeys((_, key) => styles[key], optional));
+}
 
 /**
  * @param  {object} props
