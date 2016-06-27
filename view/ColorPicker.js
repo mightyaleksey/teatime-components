@@ -182,7 +182,7 @@ class ColorPicker extends Component {
 }
 
 ColorPicker.defaultProps = {
-  hasFixedWidth: true,
+  hasFixedWidth: false,
   onChange: noop,
   palette: [
     '000000',

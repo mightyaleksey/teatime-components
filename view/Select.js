@@ -471,7 +471,7 @@ class Select extends Component {
 }
 
 Select.defaultProps = {
-  hasFixedWidth: true,
+  hasFixedWidth: false,
   hasUniqValues: true,
   isSearchable: false,
   noResults: 'No results found',
