@@ -141,18 +141,26 @@ class Select extends Component {
 
   focusNextOption() {
     const nextFocused = this.state.focused + 1;
-    if (nextFocused === this.props.options.length) return;
+
     this.wasKeyPressed = true;
-    this.setState({focused: nextFocused});
+
+    this.setState({
+      focused: nextFocused < this._availableOptions.length
+        ? nextFocused
+        : this._availableOptions.length - 1,
+    });
   }
 
   focusPreviousOption() {
-    const { focused } = this.state;
-    if (focused === 0) return;
+    const nextFocused = Math.max(this.state.focused - 1, 0);
+
     this.wasKeyPressed = true;
-    this.setState({focused: focused === -1
-      ? this.props.options.length - 1
-      : focused - 1});
+
+    this.setState({
+      focused: nextFocused < this._availableOptions.length
+        ? nextFocused
+        : this._availableOptions.length - 1,
+    });
   }
 
   /**
@@ -310,10 +318,13 @@ class Select extends Component {
    * @param {object} e
    * @param {number} nextSelected
    */
-  updateValue(e, nextSelected) {
+  updateValue(e, focused) {
     const nextState = {isOpened: false};
+    const nextSelected = this.state.inputValue
+      ? indexOf(this.props.options, this._availableOptions[focused].value)
+      : focused;
 
-    if (nextSelected === -1 || nextSelected === this.state.selected) {
+    if (focused === -1 || nextSelected === this.state.selected) {
       return void this.setState(nextState);
     }
 
@@ -409,8 +420,9 @@ class Select extends Component {
     }
 
     const { hasFixedWidth, styles } = this.props;
+    const length = options.length;
 
-    if (this.props.isSearchable && options.length === 0) {
+    if (this.props.isSearchable && length === 0) {
       return (
         <Option
           className={styles.empty}>
@@ -428,7 +440,7 @@ class Select extends Component {
     var option;
     var ref;
 
-    for (var length = options.length, i = 0; i < length; ++i) {
+    for (var i = 0; i < length; ++i) {
       isFocused = focused === i;
       isSelected = selected === i;
       ref = isFocused
