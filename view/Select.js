@@ -2,11 +2,10 @@
 
 const { Component, PropTypes } = require('react');
 const { bind, hasValueProp, indexOf } = require('../tool/component');
-const { classNames, styleName } = require('../tool/className');
-const { constant } = require('../tool/func');
 const { findDOMNode } = require('react-dom');
 const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
 const { isUndefined, noop } = require('../tool/func');
+const { style, styleName } = require('../tool/className');
 const Option = require('./Option');
 const Overlay = require('./Overlay');
 const React = require('react');
@@ -112,6 +111,26 @@ class Select extends Component {
     if (this.props.hasUniqValues !== hasUniqValues) {
       this.updateKeyMapper(hasUniqValues, options);
     }
+  }
+
+  filterOptions() {
+    const inputValue = this.state.inputValue.toLowerCase();
+
+    if (!this.state.inputValue) {
+      return this.props.options;
+    }
+
+    const filteredOptions = [];
+    const getHaystack = this.props.getHaystack || this.getHaystack;
+    const options = this.props.options || [];
+
+    for (var length = options.length, i = 0; i < length; ++i) {
+      if (fuzzysearch(inputValue, getHaystack(options[i]).toLowerCase())) {
+        filteredOptions.push(options[i]);
+      }
+    }
+
+    return filteredOptions;
   }
 
   focus() {
@@ -311,24 +330,24 @@ class Select extends Component {
   }
 
   render() {
+    const options = this._availableOptions = this.filterOptions();
+
     return (
       <div className={styleName(this.props, {isFixedWrapper: this.props.hasFixedWidth})}>
         {this.renderValue()}
         {this.renderLabel()}
-        {this.renderMenu()}
+        {this.renderMenu(options)}
       </div>
     );
   }
 
   renderLabel() {
-    const { styles } = this.props;
-
     if (!this.props.isSearchable) {
       return (
         <button
-          className={classNames(styles.control, {
-            [styles.isClosedControl]: !this.state.isOpened,
-            [styles.isOpenedControl]: this.state.isOpened,
+          className={style(this.props.styles, 'control', {
+            isClosedControl: !this.state.isOpened,
+            isOpenedControl: this.state.isOpened,
           })}
           disabled={this.props.disabled}
           onClick={this.onMenuToggle}
@@ -342,9 +361,9 @@ class Select extends Component {
 
     return (
       <span
-        className={classNames(styles.control, {
-          [styles.isClosedControl]: !this.state.isOpened,
-          [styles.isOpenedControl]: this.state.isOpened,
+        className={style(this.props.styles, 'control', {
+          isClosedControl: !this.state.isOpened,
+          isOpenedControl: this.state.isOpened,
         })}>
         {this.state.inputValue ? '' : this.getSelectedLabel(this.state.selected)}
         <input
@@ -362,18 +381,16 @@ class Select extends Component {
     );
   }
 
-  renderMenu() {
-    const { styles } = this.props;
-
+  renderMenu(options) {
     return (
       <Overlay
-        className={classNames(styles.menu, {
-          [styles.isFixedMenu]: this.props.hasFixedWidth,
-          [styles.isClosedMenu]: !this.state.isOpened,
-          [styles.isOpenedMenu]: this.state.isOpened,
+        className={style(this.props.styles, 'menu', {
+          isFixedMenu: this.props.hasFixedWidth,
+          isClosedMenu: !this.state.isOpened,
+          isOpenedMenu: this.state.isOpened,
         })}
         ref='menu'>
-        {this.renderOptions()}
+        {this.renderOptions(options)}
       </Overlay>
     );
   }
@@ -386,42 +403,47 @@ class Select extends Component {
     return option.label;
   }
 
-  renderOptions() {
+  renderOptions(options) {
     if (!this.state.isOpened) {
       return null;
     }
 
-    const { hasFixedWidth, isSearchable, options, styles } = this.props;
-    const { focused, prefix, selected } = this.state;
-    const inputValue = this.state.inputValue.toLowerCase();
-    const filter = isSearchable
-      ? fuzzysearch
-      : constant(true);
+    const { hasFixedWidth, styles } = this.props;
 
-    const getHaystack = this.props.getHaystack || this.getHaystack;
+    if (this.props.isSearchable && options.length === 0) {
+      return (
+        <Option
+          className={styles.empty}>
+          {this.props.noResults}
+        </Option>
+      );
+    }
+
+    const { focused, prefix, selected } = this.state;
     const renderOption = this.props.renderOption || this.renderOption;
-    const list = [];
+
+    const components = [];
+    var isFocused;
+    var isSelected;
+    var option;
+    var ref;
 
     for (var length = options.length, i = 0; i < length; ++i) {
-      const option = options[i];
-
-      if (!filter(inputValue, getHaystack(option).toLowerCase())) {
-        continue;
-      }
-
-      const isFocused = focused === i;
-      const isSelected = selected === i;
-      const ref = isFocused
+      isFocused = focused === i;
+      isSelected = selected === i;
+      ref = isFocused
         ? 'selected'
         : null;
 
-      list.push((
+      option = options[i];
+
+      components.push((
         <Option
           {...option}
-          className={classNames(styles.item, {
-            [styles.isFixedItem]: hasFixedWidth,
-            [styles.isFocusedItem]: isFocused,
-            [styles.isSelectedItem]: isSelected,
+          className={style(styles, 'item', {
+            isFixedItem: hasFixedWidth,
+            isFocusedItem: isFocused,
+            isSelectedItem: isSelected,
           })}
           isFocused={isFocused}
           key={this.mapKey(prefix, option.value, i)}
@@ -434,16 +456,7 @@ class Select extends Component {
       ));
     }
 
-    if (isSearchable && list.length === 0) {
-      return (
-        <Option
-          className={styles.empty}>
-          {this.props.noResults}
-        </Option>
-      );
-    }
-
-    return list;
+    return components;
   }
 
   renderValue() {
