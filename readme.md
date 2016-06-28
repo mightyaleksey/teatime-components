@@ -71,6 +71,19 @@ module.exports = {
 };
 ```
 
+In order to remove various test helpers, which you don't need in your production environment, you should add the Webpack  [DefinePlugin](https://webpack.github.io/docs/list-of-plugins.html#defineplugin). It will also decrease the bundle size and provide some performance. Configuration example:
+
+```javascript
+plugins: [
+  // ...
+  new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify('production')
+    }
+  })
+],
+```
+
 
 ## Development
 
