@@ -84,25 +84,35 @@ class Input extends Component {
   }
 
   render() {
-    const { id, styles, ...o } = this.props;
-    const { value } = this.state;
-
-    const clearElement = value && !this.props.disabled
-      ? (<span className={styles.clear} onClick={this.onClearClick}/>)
-      : null;
-
     return (
       <span className={styleName(this.props)}>
-        <input
-          {...o}
-          className={styles.control}
-          defaultValue={undefined} // Cause we have a controlled input
-          id={id}
-          onChange={this.onChange}
-          ref='control'
-          value={value}/>
-        {clearElement}
+        {this.renderInput()}
+        {this.renderClear()}
       </span>
+    );
+  }
+
+  renderClear() {
+    if (!this.state.value || this.props.disabled) {
+      return null;
+    }
+
+    return (
+      <span
+        className={this.props.styles.clear}
+        onClick={this.onClearClick}/>
+    );
+  }
+
+  renderInput() {
+    return (
+      <input
+        {...this.props}
+        className={this.props.styles.control}
+        defaultValue={undefined} // Cause we have a controlled input
+        onChange={this.onChange}
+        ref='control'
+        value={this.state.value}/>
     );
   }
 }
