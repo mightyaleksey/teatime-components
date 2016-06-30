@@ -3,7 +3,7 @@
 const { Component, PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
 const { isUndefined, noop } = require('../tool/func');
-const { styleName } = require('../tool/className');
+const { style, styleName } = require('../tool/className');
 const React = require('react');
 const warning = require('../tool/warning');
 
@@ -108,7 +108,9 @@ class Input extends Component {
     return (
       <input
         {...this.props}
-        className={this.props.styles.control}
+        className={style(this.props.styles, 'control', {
+          hasClear: this.state.value,
+        })}
         defaultValue={undefined} // Cause we have a controlled input
         onChange={this.onChange}
         ref='control'

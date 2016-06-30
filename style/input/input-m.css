@@ -12,7 +12,7 @@
 {
   composes: control from './input.css';
 
-  padding: 0 32px 0 10px;
+  padding: 0 10px;
 
   font-size: size-m;
   line-height: line-m;
@@ -26,4 +26,13 @@
   height: 30px;
 
   background: url(./times-m.svg) 50% 50% no-repeat;
+}
+
+/* mixin */
+
+.hasClear
+{
+  composes: hasClear from './input.css';
+
+  padding-right: 32px;
 }

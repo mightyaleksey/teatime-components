@@ -69,3 +69,10 @@
 {
   opacity: 1;
 }
+
+/* mixin */
+
+.hasClear
+{
+  /* base */
+}
