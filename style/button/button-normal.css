@@ -20,6 +20,11 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.control::-moz-focus-inner
+{
+  border: 0;
+}
+
 .control:hover
 {
   box-shadow: inset 0 0 0 1px #b3b3b3;

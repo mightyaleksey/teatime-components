@@ -34,6 +34,11 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.control::-moz-focus-inner
+{
+  border: 0;
+}
+
 .control:hover
 {
   background: #ffd633;

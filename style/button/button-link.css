@@ -7,6 +7,12 @@
   border: none;
   outline: none;
   background: none;
--webkit-appearance: none;
+
+  -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
+}
+
+.control::-moz-focus-inner
+{
+  border: 0;
 }
