@@ -25,6 +25,11 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.preview::-moz-focus-inner
+{
+  border: 0;
+}
+
 .preview:hover
 {
   z-index: 1;
