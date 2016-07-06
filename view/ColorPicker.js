@@ -4,7 +4,7 @@ const { Component, PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
 const { classNames, styleName } = require('../tool/className');
 const { isUndefined, noop } = require('../tool/func');
-const { pureHex } = require('../tool/color');
+const { isHexBased, trimHash } = require('../tool/color');
 const Input = require('./Input');
 const Overlay = require('./Overlay');
 const Tile = require('./Tile');
@@ -94,7 +94,7 @@ class ColorPicker extends Component {
   }
 
   onTileClick(e, color) {
-    this.updateValue(e, pureHex(color));
+    this.updateValue(e, trimHash(color));
     this.focus();
   }
 
@@ -132,6 +132,7 @@ class ColorPicker extends Component {
 
   renderPreview() {
     const { disabled, styles } = this.props;
+    const value = this.state.value;
 
     return (
       <button
@@ -139,7 +140,9 @@ class ColorPicker extends Component {
         disabled={disabled}
         onClick={this.onPreviewClick}
         ref='preview'
-        style={{background: `#${this.state.value}`}}/>
+        style={{
+          background: `#${isHexBased(value) ? trimHash(value) : 'fff'}`,
+        }}/>
     );
   }
 

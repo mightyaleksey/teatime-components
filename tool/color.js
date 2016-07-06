@@ -49,7 +49,9 @@ function normalizeColor(color) {
  * @return {string}
  */
 function trimHash(color) {
-  return color.replace('#', '');
+  return typeof color === 'string'
+    ? color.replace('#', '')
+    : color;
 }
 
 /**
