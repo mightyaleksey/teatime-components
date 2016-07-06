@@ -4,7 +4,7 @@ const { Component, PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
 const { classNames, styleName } = require('../tool/className');
 const { isUndefined, noop } = require('../tool/func');
-const { isHexBased, trimHash } = require('../tool/color');
+const { isHexBased, normalizeColor, trimHash } = require('../tool/color');
 const Input = require('./Input');
 const Overlay = require('./Overlay');
 const Tile = require('./Tile');
@@ -20,6 +20,7 @@ class ColorPicker extends Component {
 
     bind(this, [
       'onChange',
+      'onInputBlur',
       'onInputFocus',
       'onKeyDown',
       'onPreviewClick',
@@ -66,6 +67,12 @@ class ColorPicker extends Component {
 
   onChange(e, data) {
     this.updateValue(e, data.value);
+  }
+
+  onInputBlur(e) {
+    var nextValue = normalizeColor(this.state.value);
+    if (nextValue === this.state.value) return;
+    this.updateValue(e, normalizeColor(nextValue || 'FFFFFF'));
   }
 
   onInputFocus() {
@@ -119,6 +126,7 @@ class ColorPicker extends Component {
           className={undefined}
           defaultValue={undefined}
           id={id}
+          onBlur={this.onInputBlur}
           onChange={this.onChange}
           onFocus={this.onInputFocus}
           ref='control'
