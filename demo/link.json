@@ -3,9 +3,21 @@
   "path": "Link",
   "data": [
     [
+      {"children": "link", "href": "#", "size": "xs", "theme": "action"},
+      {"children": "link", "href": "#", "size": "s", "theme": "action"},
+      {"children": "link", "href": "#", "size": "m", "theme": "action"},
+      {"children": "link", "href": "#", "size": "l", "theme": "action"}
+    ],
+    [
       {"children": "link", "href": "#", "size": "s"},
       {"children": "link", "href": "#", "size": "m"},
       {"children": "link", "href": "#", "size": "l"}
+    ],
+    [
+      {"children": "link", "href": "#", "size": "xs", "theme": "normal"},
+      {"children": "link", "href": "#", "size": "s", "theme": "normal"},
+      {"children": "link", "href": "#", "size": "m", "theme": "normal"},
+      {"children": "link", "href": "#", "size": "l", "theme": "normal"}
     ]
   ]
 }

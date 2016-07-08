@@ -1,5 +1,5 @@
 .control
 {
   composes: control from './button-link.css';
-  composes: control from '../link/link-m.css';
+  composes: control from '../link/link-link-m.css';
 }

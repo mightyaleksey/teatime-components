@@ -1,0 +1,4 @@
+.control
+{
+  composes: control from '../button/button-action-s.css';
+}
