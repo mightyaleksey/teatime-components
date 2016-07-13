@@ -4,6 +4,7 @@
 
   display: inline-block;
   overflow: hidden;
+  vertical-align: middle;
 
   border-radius: 3px;
 }
