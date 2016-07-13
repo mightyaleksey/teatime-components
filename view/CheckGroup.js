@@ -1,7 +1,7 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, hasValueProp } = require('../tool/component');
+const { bind, hasValueProp, sanitizeProps } = require('../tool/component');
 const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
 const { isUndefined, mapRange, noop } = require('../tool/func');
 const { styleName } = require('../tool/className');
@@ -77,7 +77,7 @@ class CheckGroup extends Component {
   render() {
     return (
       <div
-        {...this.props}
+        {...sanitizeProps(['options', 'styles', 'hasUniqValues', 'styleName'], this.props)}
         className={styleName(this.props)}
         onChange={undefined}>
         {this.renderColumns()}

@@ -1,7 +1,7 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind } = require('../tool/component');
+const { bind, sanitizeProps } = require('../tool/component');
 const { generateId } = require('../tool/identity');
 const { noop } = require('../tool/func');
 const { styleName } = require('../tool/className');
@@ -46,7 +46,7 @@ class RadioButton extends Component {
       <span className={styleName(this.props)}>
         <input
           type='radio'
-          {...o}
+          {...sanitizeProps(['tc', 'styleName'], o)}
           className={styles.native}
           id={id}
           onChange={this.onChange}/>

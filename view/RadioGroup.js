@@ -1,7 +1,7 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, hasValueProp, indexOf } = require('../tool/component');
+const { bind, hasValueProp, indexOf, sanitizeProps } = require('../tool/component');
 const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
 const { isUndefined, noop } = require('../tool/func');
 const { styleName } = require('../tool/className');
@@ -74,7 +74,7 @@ class RadioGroup extends Component {
   render() {
     return (
       <div
-        {...this.props}
+        {...sanitizeProps(['options', 'styles', 'hasUniqValues', 'styleName'], this.props)}
         className={styleName(this.props)}
         onChange={undefined}>
         {this.renderOptions()}

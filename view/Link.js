@@ -2,12 +2,15 @@
 
 const { Component, PropTypes } = require('react');
 const { styleName } = require('../tool/className');
+const { sanitizeProps } = require('../tool/component');
 const React = require('react');
 
 class Link extends Component {
   render() {
     return (
-      <a {...this.props} className={styleName(this.props)}/>
+      <a
+        {...sanitizeProps(['theme', 'styles', 'styleName'], ...this.props)}
+        className={styleName(this.props)}/>
     );
   }
 }

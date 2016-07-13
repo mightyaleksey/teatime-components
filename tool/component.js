@@ -4,6 +4,7 @@ exports.bind = bind;
 exports.hasCheckedProp = hasCheckedProp;
 exports.hasValueProp = hasValueProp;
 exports.indexOf = indexOf;
+exports.sanitizeProps = sanitizeProps;
 
 /**
  * @param  {object} context
@@ -56,4 +57,18 @@ function indexOf(collection, value, prop = 'value') {
   }
 
   return -1;
+}
+
+/**
+ * @see: https://facebook.github.io/react/warnings/unknown-prop.html
+ */
+
+function sanitizeProps(exclude = [], props = {}) {
+  return Object.keys(props).reduce((sanitized, prop) => {
+    if (!exclude.includes(prop)) {
+      sanitized[prop] = props[prop];
+    }
+
+    return sanitized;
+  }, {});
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, hasValueProp } = require('../tool/component');
+const { bind, hasValueProp, sanitizeProps } = require('../tool/component');
 const { isUndefined, noop } = require('../tool/func');
 const { style, styleName } = require('../tool/className');
 const React = require('react');
@@ -107,7 +107,7 @@ class Input extends Component {
   renderInput() {
     return (
       <input
-        {...this.props}
+        {...sanitizeProps(['styleName', 'styles'], ...this.props)}
         className={style(this.props.styles, 'control', {
           hasClear: this.state.value,
         })}

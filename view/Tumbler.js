@@ -1,7 +1,7 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind } = require('../tool/component');
+const { bind, sanitizeProps } = require('../tool/component');
 const { generateId } = require('../tool/identity');
 const { noop } = require('../tool/func');
 const { styleName } = require('../tool/className');
@@ -46,7 +46,7 @@ class Tumbler extends Component {
       <div className={styleName(this.props)}>
         <input
           type='checkbox'
-          {...o}
+          {...sanitizeProps(['styleName'], o)}
           className={styles.native}
           id={id}
           onChange={this.onChange}/>
