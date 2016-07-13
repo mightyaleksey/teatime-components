@@ -1,7 +1,7 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind } = require('../tool/component');
+const { bind, sanitizeProps } = require('../tool/component');
 const { noop } = require('../tool/func');
 const { styleName } = require('../tool/className');
 const React = require('react');
@@ -32,7 +32,7 @@ class Textarea extends Component {
   render() {
     return (
       <textarea
-        {...this.props}
+        {...sanitizeProps(['styles', 'styleName'], this.props)}
         className={styleName(this.props)}
         onChange={this.onChange}
         ref='control'/>

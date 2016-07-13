@@ -1,7 +1,7 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { bind, hasValueProp } = require('../tool/component');
+const { bind, hasValueProp, sanitizeProps } = require('../tool/component');
 const { classNames, styleName } = require('../tool/className');
 const { isUndefined, noop } = require('../tool/func');
 const { isHexBased, normalizeColor, trimHash } = require('../tool/color');
@@ -122,7 +122,7 @@ class ColorPicker extends Component {
         onKeyDown={this.onKeyDown}>
         {this.renderPreview()}
         <Input
-          {...o}
+          {...sanitizeProps(['hasFixedWidth', 'palette'], o)}
           className={undefined}
           defaultValue={undefined}
           id={id}

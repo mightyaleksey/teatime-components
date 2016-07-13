@@ -2,6 +2,7 @@
 
 const { Component, PropTypes } = require('react');
 const { styleName } = require('../tool/className');
+const { sanitizeProps } = require('../tool/component');
 const React = require('react');
 
 class Button extends Component {
@@ -11,9 +12,21 @@ class Button extends Component {
     }
   }
 
+  filter(props) {
+    let filteredProps = {};
+
+    Object.keys(props).forEach(prop => {
+      if (!Button.illegalDOMProps.includes(prop)) {
+        filteredProps[prop] = props[prop];
+      }
+    });
+
+    return filteredProps;
+  }
+
   render() {
     return (
-      <button {...this.props} className={styleName(this.props)} ref='control'/>
+      <button {...sanitizeProps(['theme', 'styles', 'styleName'], this.props)} className={styleName(this.props)} ref='control'/>
     );
   }
 }

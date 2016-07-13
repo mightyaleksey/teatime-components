@@ -2,12 +2,15 @@
 
 const { Component, PropTypes } = require('react');
 const { styleName } = require('../tool/className');
+const { sanitizeProps } = require('../tool/component');
 const React = require('react');
 
 class Spin extends Component {
   render() {
     return (
-      <span {...this.props} className={styleName(this.props)}/>
+      <span
+        {...sanitizeProps(['styles', 'styleName'], this.props)}
+        className={styleName(this.props)}/>
     );
   }
 }

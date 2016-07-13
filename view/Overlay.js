@@ -2,6 +2,7 @@
 
 const { Component, PropTypes } = require('react');
 const { generateId } = require('../tool/identity');
+const { sanitizeProps } = require('../tool/component');
 const { noop } = require('../tool/func');
 const React = require('react');
 
@@ -35,7 +36,9 @@ class Overlay extends Component {
 
   render() {
     return (
-      <div {...this.props} ref='overlay'/>
+      <div
+        {...sanitizeProps(['calculatePosition', 'onPositionUpdate'], ...this.props)}
+        ref='overlay'/>
     );
   }
 }
