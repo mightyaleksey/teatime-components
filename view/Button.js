@@ -1,7 +1,7 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
-const { styleName } = require('../tool/className');
+const { PropTypes } = require('react');
+const Component = require('./Component');
 const React = require('react');
 
 class Button extends Component {
@@ -13,18 +13,12 @@ class Button extends Component {
 
   render() {
     return (
-      <button {...this.props} className={styleName(this.props)} ref='control'/>
+      <button {...this.props} className={this.style('control')} ref='control'/>
     );
   }
 }
 
-Button.defaultProps = {
-  styleName: 'control',
-  styles: {},
-};
-
 Button.propTypes = {
-  styleName: PropTypes.string,
   styles: PropTypes.shape({
     control: PropTypes.string,
   }),
