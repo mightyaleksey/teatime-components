@@ -264,9 +264,10 @@ class Select extends Component {
   }
 
   /**
-   * @param {object} e
-   * @param {*} _
-   * @param {number} tc
+   * @param  {object} e
+   * @param  {*} _
+   * @param  {number} tc
+   * @return {void}
    */
   onOptionFocus(e, _, tc) {
     if (this.state.focused === tc) return;
@@ -274,9 +275,10 @@ class Select extends Component {
   }
 
   /**
-   * @param {object} e
-   * @param {*} _
-   * @param {number} tc
+   * @param  {object} e
+   * @param  {*} _
+   * @param  {number} tc
+   * @return {void}
    */
   onOptionSelect(e, _, tc) {
     this.updateValue(e, tc);
@@ -289,8 +291,9 @@ class Select extends Component {
   }
 
   /**
-   * @param {boolean} hasUniqValues
-   * @param {object[]} options
+   * @param  {boolean} hasUniqValues
+   * @param  {object[]} options
+   * @return {void}
    */
   updateKeyMapper(hasUniqValues, options) {
     this.mapKey = !(hasUniqValues && hasUniqueValues(options))
@@ -299,8 +302,9 @@ class Select extends Component {
   }
 
   /**
-   * @param {object} e
-   * @param {number} nextSelected
+   * @param  {object} e
+   * @param  {number} focused
+   * @return {void}
    */
   updateValue(e, focused) {
     const nextState = {isOpened: false};

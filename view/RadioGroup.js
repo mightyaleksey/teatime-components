@@ -62,8 +62,9 @@ class RadioGroup extends Component {
   }
 
   /**
-   * @param {boolean} hasUniqValues
-   * @param {object[]} options
+   * @param  {boolean} hasUniqValues
+   * @param  {object[]} options
+   * @return {void}
    */
   updateKeyMapper(hasUniqValues, options) {
     this.mapKey = !(hasUniqValues && hasUniqueValues(options))

@@ -8,6 +8,7 @@ exports.indexOf = indexOf;
 /**
  * @param  {object} context
  * @param  {string|string[]} methodNames
+ * @return {void}
  */
 function bind(context, methodNames) {
   const methods = !Array.isArray(methodNames)

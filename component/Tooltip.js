@@ -69,6 +69,7 @@ class Tooltip extends Component {
   /**
    * @param  {object} rect
    * @param  {node}   ref
+   * @return {void}
    */
   onPositionUpdate(rect) {
     if (this.state.isMultiline !== this.isMultiline(rect, this.props.maxWidth)) {

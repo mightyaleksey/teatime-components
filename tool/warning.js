@@ -11,6 +11,7 @@ if (process.env.NODE_ENV !== 'production') { // eslint-disable-line no-undef
    * @param  {boolean}   condition
    * @param  {string}    format
    * @param  {...string} args
+   * @return {void}
    */
   warning = function warning(condition, format, ...args) {
     if (typeof format === 'undefined') {
