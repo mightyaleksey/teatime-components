@@ -37,12 +37,8 @@ class Teatime extends Component {
   }
 }
 
-Teatime.defaultProps = {
-  styles: {},
-};
-
 Teatime.propTypes = {
-  styles: PropTypes.object,
+  styles: PropTypes.object.isRequired,
 };
 
 Teatime.unwantedProps = [
