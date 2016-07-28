@@ -278,7 +278,17 @@ ColorPicker.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   palette: PropTypes.array,
-  styles: PropTypes.object,
+  styles: PropTypes.shape({
+    clear: PropTypes.string.isRequired,
+    container: PropTypes.string.isRequired,
+    control: PropTypes.string.isRequired,
+    is: PropTypes.string.isRequired,
+    item: PropTypes.string.isRequired,
+    line: PropTypes.string.isRequired,
+    menu: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
+    wrapper: PropTypes.string.isRequired,
+  }),
 };
 
 ColorPicker.unwantedProps = [

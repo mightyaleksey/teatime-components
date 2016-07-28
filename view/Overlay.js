@@ -57,6 +57,7 @@ Overlay.unwantedProps = [
   'calculatePosition',
   'onPositionUpdate',
   'shouldComponentUpdatePosition',
+  ...Teatime.unwantedProps,
 ];
 
 module.exports = Overlay;
