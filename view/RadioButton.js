@@ -1,13 +1,13 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const { PropTypes } = require('react');
 const { bind } = require('../tool/component');
 const { generateId } = require('../tool/identity');
 const { noop } = require('../tool/func');
-const { styleName } = require('../tool/className');
 const React = require('react');
+const TeatimeComponent = require('./TeatimeComponent');
 
-class RadioButton extends Component {
+class RadioButton extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -30,7 +30,7 @@ class RadioButton extends Component {
   }
 
   render() {
-    const { children, label, styles, ...o } = this.props;
+    const { children, label, ...o } = this.knownProps();
     const { id } = this.state;
 
     /**
@@ -43,14 +43,14 @@ class RadioButton extends Component {
      */
 
     return (
-      <span className={styleName(this.props)}>
+      <span className={this.style('wrapper')}>
         <input
           type='radio'
           {...o}
-          className={styles.native}
+          className={this.style('native')}
           id={id}
           onChange={this.onChange}/>
-        <label className={styles.control} htmlFor={id}>{label || children}</label>
+        <label className={this.style('control')} htmlFor={id}>{label || children}</label>
       </span>
     );
   }
@@ -58,20 +58,22 @@ class RadioButton extends Component {
 
 RadioButton.defaultProps = {
   onChange: noop,
-  styleName: 'wrapper',
-  styles: {},
 };
 
 RadioButton.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  styleName: PropTypes.string,
   styles: PropTypes.shape({
     control: PropTypes.string.isRequired,
     native: PropTypes.string.isRequired,
-    wrapper: PropTypes.string,
+    wrapper: PropTypes.string.isRequired,
   }),
   tc: PropTypes.any,
 };
+
+RadioButton.unwantedProps = [
+  'tc',
+  ...TeatimeComponent.unwantedProps,
+];
 
 module.exports = RadioButton;

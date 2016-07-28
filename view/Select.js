@@ -1,21 +1,21 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const { PropTypes } = require('react');
 const { bind, hasValueProp, indexOf } = require('../tool/component');
 const { findDOMNode } = require('react-dom');
 const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
 const { isUndefined, noop } = require('../tool/func');
-const { style, styleName } = require('../tool/className');
 const Option = require('./Option');
 const Overlay = require('./Overlay');
 const React = require('react');
+const TeatimeComponent = require('./TeatimeComponent');
+const classNames = require('classnames');
 const fuzzysearch = require('fuzzysearch');
-const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
 const warning = require('../tool/warning');
 
 var didWarnForDefaultValue = false;
 
-class Select extends Component {
+class Select extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -264,9 +264,10 @@ class Select extends Component {
   }
 
   /**
-   * @param {object} e
-   * @param {*} _
-   * @param {number} tc
+   * @param  {object} e
+   * @param  {*} _
+   * @param  {number} tc
+   * @return {void}
    */
   onOptionFocus(e, _, tc) {
     if (this.state.focused === tc) return;
@@ -274,9 +275,10 @@ class Select extends Component {
   }
 
   /**
-   * @param {object} e
-   * @param {*} _
-   * @param {number} tc
+   * @param  {object} e
+   * @param  {*} _
+   * @param  {number} tc
+   * @return {void}
    */
   onOptionSelect(e, _, tc) {
     this.updateValue(e, tc);
@@ -289,8 +291,9 @@ class Select extends Component {
   }
 
   /**
-   * @param {boolean} hasUniqValues
-   * @param {object[]} options
+   * @param  {boolean} hasUniqValues
+   * @param  {object[]} options
+   * @return {void}
    */
   updateKeyMapper(hasUniqValues, options) {
     this.mapKey = !(hasUniqValues && hasUniqueValues(options))
@@ -299,8 +302,9 @@ class Select extends Component {
   }
 
   /**
-   * @param {object} e
-   * @param {number} nextSelected
+   * @param  {object} e
+   * @param  {number} focused
+   * @return {void}
    */
   updateValue(e, focused) {
     const nextState = {isOpened: false};
@@ -328,7 +332,9 @@ class Select extends Component {
     const options = this._availableOptions = this.filterOptions();
 
     return (
-      <div className={styleName(this.props, {isFixedWrapper: this.props.hasFixedWidth})}>
+      <div className={classNames(this.style('wrapper'), {
+        [this.style('isFixedWrapper')]: this.props.hasFixedWidth,
+      })}>
         {this.renderValue()}
         {this.renderLabel()}
         {this.renderMenu(options)}
@@ -340,16 +346,16 @@ class Select extends Component {
     if (!this.props.isSearchable) {
       return (
         <button
-          className={style(this.props.styles, 'control', {
-            isClosedControl: !this.state.isOpened,
-            isOpenedControl: this.state.isOpened,
+          className={classNames(this.style('control'), {
+            [this.style('isClosedControl')]: !this.state.isOpened,
+            [this.style('isOpenedControl')]: this.state.isOpened,
           })}
           disabled={this.props.disabled}
           onClick={this.onMenuToggle}
           onKeyDown={this.onKeyDown}
           ref='label'
           tabIndex={this.props.tabIndex || 0}>
-          <span className={style(this.props.styles, 'label')}>
+          <span className={this.style('label')}>
             {this.getSelectedLabel(this.state.selected)}
           </span>
         </button>
@@ -358,15 +364,15 @@ class Select extends Component {
 
     return (
       <span
-        className={style(this.props.styles, 'control', {
-          isClosedControl: !this.state.isOpened,
-          isOpenedControl: this.state.isOpened,
+        className={classNames(this.style('control'), {
+          [this.style('isClosedControl')]: !this.state.isOpened,
+          [this.style('isOpenedControl')]: this.state.isOpened,
         })}>
-        <span className={style(this.props.styles, 'label')}>
+        <span className={this.style('label')}>
           {this.state.inputValue ? '' : this.getSelectedLabel(this.state.selected)}
         </span>
         <input
-          className={this.props.styles.input}
+          className={this.style('input')}
           disabled={this.props.disabled}
           onChange={this.onInputChange}
           onClick={this.onMenuToggle}
@@ -382,10 +388,10 @@ class Select extends Component {
   renderMenu(options) {
     return (
       <Overlay
-        className={style(this.props.styles, 'menu', {
-          isFixedMenu: this.props.hasFixedWidth,
-          isClosedMenu: !this.state.isOpened,
-          isOpenedMenu: this.state.isOpened,
+        className={classNames(this.style('menu'), {
+          [this.style('isFixedMenu')]: this.props.hasFixedWidth,
+          [this.style('isClosedMenu')]: !this.state.isOpened,
+          [this.style('isOpenedMenu')]: this.state.isOpened,
         })}
         ref='menu'>
         {this.renderOptions(options)}
@@ -406,13 +412,13 @@ class Select extends Component {
       return null;
     }
 
-    const { hasFixedWidth, styles } = this.props;
+    const { hasFixedWidth } = this.props;
     const length = options.length;
 
     if (this.props.isSearchable && length === 0) {
       return (
         <Option
-          className={styles.empty}>
+          className={this.style('empty')}>
           {this.props.noResults}
         </Option>
       );
@@ -439,10 +445,10 @@ class Select extends Component {
       components.push((
         <Option
           {...option}
-          className={style(styles, 'item', {
-            isFixedItem: hasFixedWidth,
-            isFocusedItem: isFocused,
-            isSelectedItem: isSelected,
+          className={classNames(this.style('item'), {
+            [this.style('isFixedItem')]: hasFixedWidth,
+            [this.style('isFocusedItem')]: isFocused,
+            [this.style('isSelectedItem')]: isSelected,
           })}
           isFocused={isFocused}
           key={this.mapKey(prefix, option.value, i)}
@@ -461,7 +467,7 @@ class Select extends Component {
   renderValue() {
     return (
       <input
-        className={this.props.styles.native}
+        className={this.style('native')}
         disabled={this.props.disabled}
         name={this.props.name}
         type='hidden'
@@ -477,8 +483,6 @@ Select.defaultProps = {
   noResults: 'No results found',
   onChange: noop,
   placeholder: '—',
-  styleName: 'wrapper',
-  styles: {},
 };
 
 Select.propTypes = {
@@ -492,7 +496,6 @@ Select.propTypes = {
   options: PropTypes.array,
   placeholder: PropTypes.string,
   renderOption: PropTypes.func,
-  styleName: PropTypes.string,
   styles: PropTypes.shape({
     control: PropTypes.string.isRequired,
     empty: PropTypes.string.isRequired,
@@ -510,8 +513,8 @@ Select.propTypes = {
     label: PropTypes.string.isRequired,
     menu: PropTypes.string.isRequired,
     native: PropTypes.string.isRequired,
-    wrapper: PropTypes.string,
+    wrapper: PropTypes.string.isRequired,
   }),
 };
 
-module.exports = reactOutsideEvent(Select, ['click']);
+module.exports = Select;

@@ -1,17 +1,17 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const { PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
 const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
 const { isUndefined, mapRange, noop } = require('../tool/func');
-const { styleName } = require('../tool/className');
 const Check = require('./Check');
 const React = require('react');
+const TeatimeComponent = require('./TeatimeComponent');
 const warning = require('../tool/warning');
 
 var didWarnForDefaultValue = false;
 
-class CheckGroup extends Component {
+class CheckGroup extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -65,8 +65,9 @@ class CheckGroup extends Component {
   }
 
   /**
-   * @param {boolean} hasUniqValues
-   * @param {object[]} options
+   * @param  {boolean} hasUniqValues
+   * @param  {object[]} options
+   * @return {void}
    */
   updateKeyMapper(hasUniqValues, options) {
     this.mapKey = !(hasUniqValues && hasUniqueValues(options))
@@ -77,8 +78,8 @@ class CheckGroup extends Component {
   render() {
     return (
       <div
-        {...this.props}
-        className={styleName(this.props)}
+        {...this.knownProps()}
+        className={this.style('container')}
         onChange={undefined}>
         {this.renderColumns()}
       </div>
@@ -86,7 +87,7 @@ class CheckGroup extends Component {
   }
 
   renderColumns() {
-    const { cols, styles } = this.props;
+    const { cols } = this.props;
     const { prefix } = this.state;
     const rCols = Math.max(cols || 0, 1);
 
@@ -96,7 +97,7 @@ class CheckGroup extends Component {
 
     return mapRange(step => (
       <div
-        className={styles.column}
+        className={this.style('column')}
         key={mapKeyBasedOnPos(prefix, '_', step)}>
         {this.renderOptions(step, rCols)}
       </div>
@@ -109,7 +110,7 @@ class CheckGroup extends Component {
    * @return {component[]}
    */
   renderOptions(start, step) {
-    const { disabled: globalDisabled, name, options, styles } = this.props;
+    const { disabled: globalDisabled, name, options } = this.props;
     const { prefix, values } = this.state;
 
     const result = [];
@@ -123,7 +124,7 @@ class CheckGroup extends Component {
           key={this.mapKey(prefix, options[i].value, i)}
           name={name}
           onChange={this.onChange}
-          styles={styles}
+          styles={this.styles()}
           tc={i}/>
       ));
     }
@@ -135,8 +136,6 @@ class CheckGroup extends Component {
 CheckGroup.defaultProps = {
   hasUniqValues: true,
   onChange: noop,
-  styleName: 'container',
-  styles: {},
 };
 
 CheckGroup.propTypes = {
@@ -147,10 +146,9 @@ CheckGroup.propTypes = {
   onChange: PropTypes.func,
   onContextMenu: PropTypes.func,
   options: PropTypes.array.isRequired,
-  styleName: PropTypes.string,
   styles: PropTypes.shape({
     column: PropTypes.string,
-    container: PropTypes.string,
+    container: PropTypes.string.isRequired,
     control: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     native: PropTypes.string.isRequired,
@@ -158,6 +156,12 @@ CheckGroup.propTypes = {
   }),
   value: PropTypes.arrayOf(PropTypes.string),
 };
+
+CheckGroup.unwantedProps = [
+  'hasUniqValues',
+  'options',
+  ...TeatimeComponent.unwantedProps,
+];
 
 module.exports = CheckGroup;
 

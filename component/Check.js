@@ -2,22 +2,36 @@
 
 const { PropTypes } = require('react');
 const Check = require('../view/Check');
-const StyleComponent = require('../mixin/StyleComponent');
 
-module.exports = StyleComponent(
-  Check,
-  (styles, { size }) => ({styles: styles[size]}),
-  {
-    s: require('../style/check/check-s.css'),
-    m: require('../style/check/check-m.css'),
-  },
-  {
-    size: 's',
-  },
-  {
-    size: PropTypes.oneOf([
-      's',
-      'm',
-    ]),
+const predefinedStyles = {
+  s: require('../style/check/check-s.css'),
+  m: require('../style/check/check-m.css'),
+};
+
+class CheckComponent extends Check {
+  /**
+   * @return {object}
+   */
+  styles() {
+    return predefinedStyles[this.props.size];
   }
-);
+}
+
+CheckComponent.defaultProps = {
+  size: 's',
+  ...Check.defaultProps,
+};
+
+CheckComponent.propTypes = {
+  size: PropTypes.oneOf([
+    's',
+    'm',
+  ]),
+  ...Check.propTypes,
+};
+
+CheckComponent.unwantedProps = [
+  'size',
+];
+
+module.exports = CheckComponent;

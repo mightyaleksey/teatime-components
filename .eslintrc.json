@@ -54,6 +54,20 @@
       "error",
       "always"
     ],
-    "strict": "error"
+    "strict": "error",
+    "valid-jsdoc": [
+      "error",
+      {
+        "requireParamDescription": false,
+        "requireReturnDescription": false
+      }
+    ],
+    "yoda": [
+      "error",
+      "never",
+      {
+        "exceptRange": true
+      }
+    ]
   }
 }

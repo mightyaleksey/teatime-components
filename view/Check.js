@@ -1,13 +1,13 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const { PropTypes } = require('react');
 const { bind } = require('../tool/component');
 const { generateId } = require('../tool/identity');
 const { noop } = require('../tool/func');
-const { styleName } = require('../tool/className');
 const React = require('react');
+const TeatimeComponent = require('./TeatimeComponent');
 
-class Check extends Component {
+class Check extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -30,12 +30,12 @@ class Check extends Component {
   }
 
   render() {
-    const { children, label, styles, ...o } = this.props;
+    const { children, label, ...o } = this.knownProps();
     const { id } = this.state;
 
     const content = label || children;
     const labelElement = content
-      ? (<label className={styles.label} htmlFor={id}>{content}</label>)
+      ? (<label className={this.style('label')} htmlFor={id}>{content}</label>)
       : null;
 
     /**
@@ -48,13 +48,13 @@ class Check extends Component {
      */
 
     return (
-      <div className={styleName(this.props)}>
+      <div className={this.style('wrapper')}>
         <input
           {...o}
-          className={styles.native}
+          className={this.style('native')}
           id={id}
           onChange={this.onChange}/>
-        <label className={styles.control} htmlFor={id}/>
+        <label className={this.style('control')} htmlFor={id}/>
         {labelElement}
       </div>
     );
@@ -63,8 +63,6 @@ class Check extends Component {
 
 Check.defaultProps = {
   onChange: noop,
-  styleName: 'wrapper',
-  styles: {},
   type: 'checkbox',
 };
 
@@ -72,12 +70,11 @@ Check.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  styleName: PropTypes.string,
   styles: PropTypes.shape({
     control: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     native: PropTypes.string.isRequired,
-    wrapper: PropTypes.string,
+    wrapper: PropTypes.string.isRequired,
   }),
   tc: PropTypes.any,
   type:  PropTypes.oneOf([
@@ -85,5 +82,10 @@ Check.propTypes = {
     'radio',
   ]),
 };
+
+Check.unwantedProps = [
+  'tc',
+  ...TeatimeComponent.unwantedProps,
+];
 
 module.exports = Check;

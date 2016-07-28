@@ -1,12 +1,12 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const { PropTypes } = require('react');
 const { bind } = require('../tool/component');
 const { noop } = require('../tool/func');
-const { styleName } = require('../tool/className');
 const React = require('react');
+const TeatimeComponent = require('./TeatimeComponent');
 
-class Textarea extends Component {
+class Textarea extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -32,8 +32,8 @@ class Textarea extends Component {
   render() {
     return (
       <textarea
-        {...this.props}
-        className={styleName(this.props)}
+        {...this.knownProps()}
+        className={this.style('control')}
         onChange={this.onChange}
         ref='control'/>
     );
@@ -43,8 +43,6 @@ class Textarea extends Component {
 Textarea.defaultProps = {
   onChange: noop,
   rows: 3,
-  styleName: 'control',
-  styles: {},
 };
 
 Textarea.propTypes = {
@@ -52,9 +50,8 @@ Textarea.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   rows: PropTypes.number,
-  styleName: PropTypes.string,
   styles: PropTypes.shape({
-    control: PropTypes.string,
+    control: PropTypes.string.isRequired,
   }),
 };
 

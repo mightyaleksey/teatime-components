@@ -1,17 +1,17 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const { PropTypes } = require('react');
 const { bind, hasValueProp, indexOf } = require('../tool/component');
 const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
 const { isUndefined, noop } = require('../tool/func');
-const { styleName } = require('../tool/className');
 const RadioButton = require('./RadioButton');
 const React = require('react');
+const TeatimeComponent = require('./TeatimeComponent');
 const warning = require('../tool/warning');
 
 var didWarnForDefaultValue = false;
 
-class RadioGroup extends Component {
+class RadioGroup extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -62,8 +62,9 @@ class RadioGroup extends Component {
   }
 
   /**
-   * @param {boolean} hasUniqValues
-   * @param {object[]} options
+   * @param  {boolean} hasUniqValues
+   * @param  {object[]} options
+   * @return {void}
    */
   updateKeyMapper(hasUniqValues, options) {
     this.mapKey = !(hasUniqValues && hasUniqueValues(options))
@@ -74,8 +75,8 @@ class RadioGroup extends Component {
   render() {
     return (
       <div
-        {...this.props}
-        className={styleName(this.props)}
+        {...this.knownProps()}
+        className={this.style('container')}
         onChange={undefined}>
         {this.renderOptions()}
       </div>
@@ -83,7 +84,7 @@ class RadioGroup extends Component {
   }
 
   renderOptions() {
-    const { disabled: globalDisabled, name, options, styles } = this.props;
+    const { disabled: globalDisabled, name, options } = this.props;
     const { prefix, selected } = this.state;
 
     return options.map((option, i) => (
@@ -94,7 +95,7 @@ class RadioGroup extends Component {
         key={this.mapKey(prefix, option.value, i)}
         name={name}
         onChange={this.onChange}
-        styles={styles}
+        styles={this.styles()}
         tc={i}/>
     ));
   }
@@ -103,8 +104,6 @@ class RadioGroup extends Component {
 RadioGroup.defaultProps = {
   hasUniqValues: true,
   onChange: noop,
-  styleName: 'container',
-  styles: {},
 };
 
 RadioGroup.propTypes = {
@@ -113,14 +112,19 @@ RadioGroup.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   options: PropTypes.array.isRequired,
-  styleName: PropTypes.string,
   styles: PropTypes.shape({
-    container: PropTypes.string,
+    container: PropTypes.string.isRequired,
     control: PropTypes.string.isRequired,
     native: PropTypes.string.isRequired,
     wrapper: PropTypes.string.isRequired,
   }),
   value: PropTypes.string,
 };
+
+RadioGroup.unwantedProps = [
+  'hasUniqValues',
+  'options',
+  ...TeatimeComponent.unwantedProps,
+];
 
 module.exports = RadioGroup;
