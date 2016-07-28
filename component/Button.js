@@ -30,6 +30,7 @@ class ButtonComponent extends Button {
 ButtonComponent.defaultProps = {
   size: 's',
   theme: 'normal',
+  ...Button.defaultProps,
 };
 
 ButtonComponent.propTypes = {
@@ -44,6 +45,7 @@ ButtonComponent.propTypes = {
     'link',
     'normal',
   ]),
+  ...Button.propTypes,
 };
 
 ButtonComponent.unwantedProps = [

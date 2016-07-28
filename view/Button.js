@@ -1,10 +1,10 @@
 'use strict';
 
 const { PropTypes } = require('react');
-const Component = require('./Component');
 const React = require('react');
+const Teatime = require('./Teatime');
 
-class Button extends Component {
+class Button extends Teatime {
   focus() {
     if (this.refs.control) {
       this.refs.control.focus();

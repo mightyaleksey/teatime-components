@@ -1,10 +1,10 @@
 'use strict';
 
-const { Component: ReactComponent, PropTypes } = require('react');
+const { Component, PropTypes } = require('react');
 const { compose, omit } = require('lodash/fp');
 const { findUnwantedProps } = require('../tool/component');
 
-class Component extends ReactComponent {
+class Teatime extends Component {
   constructor(props) {
     super(props);
 
@@ -14,6 +14,9 @@ class Component extends ReactComponent {
     }
   }
 
+  /**
+   * @return {object}
+   */
   knownProps() {
     return this.props;
   }
@@ -34,16 +37,16 @@ class Component extends ReactComponent {
   }
 }
 
-Component.defaultProps = {
+Teatime.defaultProps = {
   styles: {},
 };
 
-Component.propTypes = {
+Teatime.propTypes = {
   styles: PropTypes.object,
 };
 
-Component.unwantedProps = [
+Teatime.unwantedProps = [
   'styles',
 ];
 
-module.exports = Component;
+module.exports = Teatime;
