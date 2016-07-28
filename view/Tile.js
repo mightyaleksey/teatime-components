@@ -3,9 +3,9 @@
 const { PropTypes } = require('react');
 const { bind } = require('../tool/component');
 const React = require('react');
-const Teatime = require('./Teatime');
+const TeatimeComponent = require('./TeatimeComponent');
 
-class Tile extends Teatime {
+class Tile extends TeatimeComponent {
   constructor(props) {
     super(props);
 

@@ -4,7 +4,7 @@ const { Component, PropTypes } = require('react');
 const { compose, omit } = require('lodash/fp');
 const { findUnwantedProps } = require('../tool/component');
 
-class Teatime extends Component {
+class TeatimeComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -37,12 +37,12 @@ class Teatime extends Component {
   }
 }
 
-Teatime.propTypes = {
+TeatimeComponent.propTypes = {
   styles: PropTypes.object.isRequired,
 };
 
-Teatime.unwantedProps = [
+TeatimeComponent.unwantedProps = [
   'styles',
 ];
 
-module.exports = Teatime;
+module.exports = TeatimeComponent;

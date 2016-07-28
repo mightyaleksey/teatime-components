@@ -8,14 +8,14 @@ const { isUndefined, noop } = require('../tool/func');
 const Option = require('./Option');
 const Overlay = require('./Overlay');
 const React = require('react');
-const Teatime = require('./Teatime');
+const TeatimeComponent = require('./TeatimeComponent');
 const classNames = require('classnames');
 const fuzzysearch = require('fuzzysearch');
 const warning = require('../tool/warning');
 
 var didWarnForDefaultValue = false;
 
-class Select extends Teatime {
+class Select extends TeatimeComponent {
   constructor(props) {
     super(props);
 

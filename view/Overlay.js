@@ -4,13 +4,13 @@ const { PropTypes } = require('react');
 const { generateId } = require('../tool/identity');
 const { noop } = require('../tool/func');
 const React = require('react');
-const Teatime = require('./Teatime');
+const TeatimeComponent = require('./TeatimeComponent');
 
 const MOUNTED_OVERLAYS = {};
 
 var pendingUpdate;
 
-class Overlay extends Teatime {
+class Overlay extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -57,7 +57,7 @@ Overlay.unwantedProps = [
   'calculatePosition',
   'onPositionUpdate',
   'shouldComponentUpdatePosition',
-  ...Teatime.unwantedProps,
+  ...TeatimeComponent.unwantedProps,
 ];
 
 module.exports = Overlay;

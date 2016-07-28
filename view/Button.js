@@ -2,9 +2,9 @@
 
 const { PropTypes } = require('react');
 const React = require('react');
-const Teatime = require('./Teatime');
+const TeatimeComponent = require('./TeatimeComponent');
 
-class Button extends Teatime {
+class Button extends TeatimeComponent {
   focus() {
     if (this.refs.control) {
       this.refs.control.focus();

@@ -5,9 +5,9 @@ const { bind } = require('../tool/component');
 const { generateId } = require('../tool/identity');
 const { noop } = require('../tool/func');
 const React = require('react');
-const Teatime = require('./Teatime');
+const TeatimeComponent = require('./TeatimeComponent');
 
-class Tumbler extends Teatime {
+class Tumbler extends TeatimeComponent {
   constructor(props) {
     super(props);
 

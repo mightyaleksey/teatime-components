@@ -6,12 +6,12 @@ const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../to
 const { isUndefined, mapRange, noop } = require('../tool/func');
 const Check = require('./Check');
 const React = require('react');
-const Teatime = require('./Teatime');
+const TeatimeComponent = require('./TeatimeComponent');
 const warning = require('../tool/warning');
 
 var didWarnForDefaultValue = false;
 
-class CheckGroup extends Teatime {
+class CheckGroup extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -160,7 +160,7 @@ CheckGroup.propTypes = {
 CheckGroup.unwantedProps = [
   'hasUniqValues',
   'options',
-  ...Teatime.unwantedProps,
+  ...TeatimeComponent.unwantedProps,
 ];
 
 module.exports = CheckGroup;

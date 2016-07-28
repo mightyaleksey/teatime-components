@@ -4,9 +4,9 @@ const { PropTypes } = require('react');
 const { bind } = require('../tool/component');
 const { noop } = require('../tool/func');
 const React = require('react');
-const Teatime = require('./Teatime');
+const TeatimeComponent = require('./TeatimeComponent');
 
-class Textarea extends Teatime {
+class Textarea extends TeatimeComponent {
   constructor(props) {
     super(props);
 

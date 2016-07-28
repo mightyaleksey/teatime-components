@@ -6,12 +6,12 @@ const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../to
 const { isUndefined, noop } = require('../tool/func');
 const RadioButton = require('./RadioButton');
 const React = require('react');
-const Teatime = require('./Teatime');
+const TeatimeComponent = require('./TeatimeComponent');
 const warning = require('../tool/warning');
 
 var didWarnForDefaultValue = false;
 
-class RadioGroup extends Teatime {
+class RadioGroup extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -124,7 +124,7 @@ RadioGroup.propTypes = {
 RadioGroup.unwantedProps = [
   'hasUniqValues',
   'options',
-  ...Teatime.unwantedProps,
+  ...TeatimeComponent.unwantedProps,
 ];
 
 module.exports = RadioGroup;

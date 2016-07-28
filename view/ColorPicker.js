@@ -7,14 +7,14 @@ const { isHexBased, normalizeColor, trimHash } = require('../tool/color');
 const Input = require('./Input');
 const Overlay = require('./Overlay');
 const React = require('react');
-const Teatime = require('./Teatime');
+const TeatimeComponent = require('./TeatimeComponent');
 const Tile = require('./Tile');
 const classNames = require('classnames');
 const warning = require('../tool/warning');
 
 var didWarnForDefaultValue = false;
 
-class ColorPicker extends Teatime {
+class ColorPicker extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -294,7 +294,7 @@ ColorPicker.propTypes = {
 ColorPicker.unwantedProps = [
   'hasFixedWidth',
   'palette',
-  ...Teatime.unwantedProps,
+  ...TeatimeComponent.unwantedProps,
 ];
 
 module.exports = ColorPicker;

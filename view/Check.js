@@ -5,9 +5,9 @@ const { bind } = require('../tool/component');
 const { generateId } = require('../tool/identity');
 const { noop } = require('../tool/func');
 const React = require('react');
-const Teatime = require('./Teatime');
+const TeatimeComponent = require('./TeatimeComponent');
 
-class Check extends Teatime {
+class Check extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -85,7 +85,7 @@ Check.propTypes = {
 
 Check.unwantedProps = [
   'tc',
-  ...Teatime.unwantedProps,
+  ...TeatimeComponent.unwantedProps,
 ];
 
 module.exports = Check;

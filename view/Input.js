@@ -4,13 +4,13 @@ const { PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
 const { isUndefined, noop } = require('../tool/func');
 const React = require('react');
-const Teatime = require('./Teatime');
+const TeatimeComponent = require('./TeatimeComponent');
 const classNames = require('classnames');
 const warning = require('../tool/warning');
 
 var didWarnForDefaultValue = false;
 
-class Input extends Teatime {
+class Input extends TeatimeComponent {
   constructor(props) {
     super(props);
 

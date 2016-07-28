@@ -2,9 +2,9 @@
 
 const { PropTypes } = require('react');
 const React = require('react');
-const Teatime = require('./Teatime');
+const TeatimeComponent = require('./TeatimeComponent');
 
-class Spin extends Teatime {
+class Spin extends TeatimeComponent {
   render() {
     return (
       <span {...this.knownProps()} className={this.style('control')}/>
