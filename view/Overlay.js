@@ -1,15 +1,16 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const { PropTypes } = require('react');
 const { generateId } = require('../tool/identity');
 const { noop } = require('../tool/func');
 const React = require('react');
+const Teatime = require('./Teatime');
 
 const MOUNTED_OVERLAYS = {};
 
 var pendingUpdate;
 
-class Overlay extends Component {
+class Overlay extends Teatime {
   constructor(props) {
     super(props);
 
@@ -35,7 +36,7 @@ class Overlay extends Component {
 
   render() {
     return (
-      <div {...this.props} ref='overlay'/>
+      <div {...this.knownProps()} ref='overlay'/>
     );
   }
 }
@@ -51,6 +52,12 @@ Overlay.propTypes = {
   onPositionUpdate: PropTypes.func,
   shouldComponentUpdatePosition: PropTypes.func,
 };
+
+Overlay.unwantedProps = [
+  'calculatePosition',
+  'onPositionUpdate',
+  'shouldComponentUpdatePosition',
+];
 
 module.exports = Overlay;
 

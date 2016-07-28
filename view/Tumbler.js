@@ -1,13 +1,13 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const { PropTypes } = require('react');
 const { bind } = require('../tool/component');
 const { generateId } = require('../tool/identity');
 const { noop } = require('../tool/func');
-const { styleName } = require('../tool/className');
 const React = require('react');
+const Teatime = require('./Teatime');
 
-class Tumbler extends Component {
+class Tumbler extends Teatime {
   constructor(props) {
     super(props);
 
@@ -30,7 +30,7 @@ class Tumbler extends Component {
   }
 
   render() {
-    const { off, on, styles, ...o } = this.props;
+    const { off, on, ...o } = this.knownProps();
     const { id } = this.state;
 
     /**
@@ -43,17 +43,17 @@ class Tumbler extends Component {
      */
 
     return (
-      <div className={styleName(this.props)}>
+      <div className={this.style('wrapper')}>
         <input
           type='checkbox'
           {...o}
-          className={styles.native}
+          className={this.style('native')}
           id={id}
           onChange={this.onChange}/>
-        <label className={styles.control} htmlFor={id}>
-          <span className={styles.label}>{on}</span>
-          <span className={styles.label}>{off}</span>
-          <span className={styles.delimiter}>&nbsp;</span>
+        <label className={this.style('control')} htmlFor={id}>
+          <span className={this.style('label')}>{on}</span>
+          <span className={this.style('label')}>{off}</span>
+          <span className={this.style('delimiter')}>&nbsp;</span>
         </label>
       </div>
     );
@@ -64,8 +64,6 @@ Tumbler.defaultProps = {
   off: 'Off',
   on: 'On',
   onChange: noop,
-  styleName: 'wrapper',
-  styles: {},
 };
 
 Tumbler.propTypes = {
@@ -73,7 +71,6 @@ Tumbler.propTypes = {
   off: PropTypes.string,
   on: PropTypes.string,
   onChange: PropTypes.func,
-  styleName: PropTypes.string,
   styles: PropTypes.shape({
     control: PropTypes.string.isRequired,
     delimiter: PropTypes.string.isRequired,

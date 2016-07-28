@@ -30,7 +30,7 @@ class Check extends Teatime {
   }
 
   render() {
-    const { children, label, ...o } = this.props;
+    const { children, label, ...o } = this.knownProps();
     const { id } = this.state;
 
     const content = label || children;
@@ -82,5 +82,10 @@ Check.propTypes = {
     'radio',
   ]),
 };
+
+Check.unwantedProps = [
+  'tc',
+  ...Teatime.unwantedProps,
+];
 
 module.exports = Check;
