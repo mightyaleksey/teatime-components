@@ -1,6 +1,9 @@
 'use strict';
 
+const { isFunction, isUndefined } = require('./func');
+
 exports.bind = bind;
+exports.findUnwantedProps = findUnwantedProps;
 exports.hasCheckedProp = hasCheckedProp;
 exports.hasValueProp = hasValueProp;
 exports.indexOf = indexOf;
@@ -20,6 +23,26 @@ function bind(context, methodNames) {
     method = methods[i];
     context[method] = context[method].bind(context);
   }
+}
+
+/**
+ * @param  {object} instance
+ * @return {string[]|null}
+ */
+function findUnwantedProps(instance) {
+  const proto = Object.getPrototypeOf(instance);
+
+  if (proto === null) {
+    return null;
+  }
+
+  const constr = proto.constructor;
+
+  if (isFunction(constr) && !isUndefined(constr.unwantedProps)) {
+    return constr.unwantedProps;
+  }
+
+  return findUnwantedProps(proto);
 }
 
 /**

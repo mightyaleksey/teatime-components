@@ -1,8 +1,23 @@
 'use strict';
 
 const { Component: ReactComponent, PropTypes } = require('react');
+const { compose, omit } = require('lodash/fp');
+const { findUnwantedProps } = require('../tool/component');
 
 class Component extends ReactComponent {
+  constructor(props) {
+    super(props);
+
+    const unwantedProps = findUnwantedProps(this);
+    if (unwantedProps) {
+      this.knownProps = compose(omit(unwantedProps), this.knownProps);
+    }
+  }
+
+  knownProps() {
+    return this.props;
+  }
+
   /**
    * @param  {string} styleName
    * @return {string}
@@ -26,5 +41,9 @@ Component.defaultProps = {
 Component.propTypes = {
   styles: PropTypes.object,
 };
+
+Component.unwantedProps = [
+  'styles',
+];
 
 module.exports = Component;

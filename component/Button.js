@@ -19,6 +19,9 @@ const predefinedStyles = {
 };
 
 class ButtonComponent extends Button {
+  /**
+   * @return {object}
+   */
   styles() {
     return predefinedStyles[this.props.theme + '-' + this.props.size];
   }
@@ -42,5 +45,10 @@ ButtonComponent.propTypes = {
     'normal',
   ]),
 };
+
+ButtonComponent.unwantedProps = [
+  'size',
+  'theme',
+];
 
 module.exports = ButtonComponent;

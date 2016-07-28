@@ -13,7 +13,10 @@ class Button extends Component {
 
   render() {
     return (
-      <button {...this.props} className={this.style('control')} ref='control'/>
+      <button
+        {...this.knownProps()}
+        className={this.style('control')}
+        ref='control'/>
     );
   }
 }
