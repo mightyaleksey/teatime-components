@@ -23,7 +23,7 @@ class Button extends TeatimeComponent {
 
 Button.propTypes = {
   styles: PropTypes.shape({
-    control: PropTypes.string,
+    control: PropTypes.string.isRequired,
   }),
 };
 

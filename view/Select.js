@@ -513,7 +513,7 @@ Select.propTypes = {
     label: PropTypes.string.isRequired,
     menu: PropTypes.string.isRequired,
     native: PropTypes.string.isRequired,
-    wrapper: PropTypes.string,
+    wrapper: PropTypes.string.isRequired,
   }),
 };
 

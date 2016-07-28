@@ -113,7 +113,7 @@ RadioGroup.propTypes = {
   onChange: PropTypes.func,
   options: PropTypes.array.isRequired,
   styles: PropTypes.shape({
-    container: PropTypes.string,
+    container: PropTypes.string.isRequired,
     control: PropTypes.string.isRequired,
     native: PropTypes.string.isRequired,
     wrapper: PropTypes.string.isRequired,

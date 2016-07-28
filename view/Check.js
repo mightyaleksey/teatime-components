@@ -74,7 +74,7 @@ Check.propTypes = {
     control: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     native: PropTypes.string.isRequired,
-    wrapper: PropTypes.string,
+    wrapper: PropTypes.string.isRequired,
   }),
   tc: PropTypes.any,
   type:  PropTypes.oneOf([

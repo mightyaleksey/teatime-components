@@ -76,7 +76,7 @@ Tumbler.propTypes = {
     delimiter: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     native: PropTypes.string.isRequired,
-    wrapper: PropTypes.string,
+    wrapper: PropTypes.string.isRequired,
   }),
 };
 

@@ -148,7 +148,7 @@ CheckGroup.propTypes = {
   options: PropTypes.array.isRequired,
   styles: PropTypes.shape({
     column: PropTypes.string,
-    container: PropTypes.string,
+    container: PropTypes.string.isRequired,
     control: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     native: PropTypes.string.isRequired,

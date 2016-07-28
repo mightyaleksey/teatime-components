@@ -113,7 +113,7 @@ Radio.propTypes = {
   onChange: PropTypes.func,
   options: PropTypes.array.isRequired,
   styles: PropTypes.shape({
-    container: PropTypes.string,
+    container: PropTypes.string.isRequired,
     control: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     native: PropTypes.string.isRequired,

@@ -15,7 +15,7 @@ class Link extends TeatimeComponent {
 Link.propTypes = {
   href: PropTypes.string.isRequired,
   styles: PropTypes.shape({
-    control: PropTypes.string,
+    control: PropTypes.string.isRequired,
   }),
 };
 
