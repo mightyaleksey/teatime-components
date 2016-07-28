@@ -6,6 +6,7 @@ const { generateId } = require('../tool/identity');
 const { noop } = require('../tool/func');
 const React = require('react');
 const TeatimeComponent = require('./TeatimeComponent');
+const classNames = require('classnames');
 
 class Check extends TeatimeComponent {
   constructor(props) {
@@ -48,7 +49,7 @@ class Check extends TeatimeComponent {
      */
 
     return (
-      <div className={this.style('wrapper')}>
+      <div className={classNames(this.style('wrapper'), this.props.className)}>
         <input
           {...o}
           className={this.style('native')}

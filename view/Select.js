@@ -334,7 +334,7 @@ class Select extends TeatimeComponent {
     return (
       <div className={classNames(this.style('wrapper'), {
         [this.style('isFixedWrapper')]: this.props.hasFixedWidth,
-      })}>
+      }, this.props.className)}>
         {this.renderValue()}
         {this.renderLabel()}
         {this.renderMenu(options)}

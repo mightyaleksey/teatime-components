@@ -15,6 +15,6 @@ test('Link className to contain `mixin` and styleName', t => {
 
   const result = tree.getRenderOutput();
 
-  t.isEqual(result.props.className, 'mixin control');
+  t.isEqual(result.props.className, 'control mixin');
   t.end();
 });

@@ -6,6 +6,7 @@ const { generateId } = require('../tool/identity');
 const { noop } = require('../tool/func');
 const React = require('react');
 const TeatimeComponent = require('./TeatimeComponent');
+const classNames = require('classnames');
 
 class Tumbler extends TeatimeComponent {
   constructor(props) {
@@ -43,7 +44,7 @@ class Tumbler extends TeatimeComponent {
      */
 
     return (
-      <div className={this.style('wrapper')}>
+      <div className={classNames(this.style('wrapper'), this.props.className)}>
         <input
           type='checkbox'
           {...o}

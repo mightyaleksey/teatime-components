@@ -3,6 +3,7 @@
 const { PropTypes } = require('react');
 const React = require('react');
 const TeatimeComponent = require('./TeatimeComponent');
+const classNames = require('classnames');
 
 class Button extends TeatimeComponent {
   focus() {
@@ -15,7 +16,7 @@ class Button extends TeatimeComponent {
     return (
       <button
         {...this.knownProps()}
-        className={this.style('control')}
+        className={classNames(this.style('control'), this.props.className)}
         ref='control'/>
     );
   }

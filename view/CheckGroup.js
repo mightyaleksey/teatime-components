@@ -7,6 +7,7 @@ const { isUndefined, mapRange, noop } = require('../tool/func');
 const Check = require('./Check');
 const React = require('react');
 const TeatimeComponent = require('./TeatimeComponent');
+const classNames = require('classnames');
 const warning = require('../tool/warning');
 
 var didWarnForDefaultValue = false;
@@ -79,7 +80,7 @@ class CheckGroup extends TeatimeComponent {
     return (
       <div
         {...this.knownProps()}
-        className={this.style('container')}
+        className={classNames(this.style('container'), this.props.className)}
         onChange={undefined}>
         {this.renderColumns()}
       </div>

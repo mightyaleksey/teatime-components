@@ -6,6 +6,7 @@ const { generateId } = require('../tool/identity');
 const { noop } = require('../tool/func');
 const React = require('react');
 const TeatimeComponent = require('./TeatimeComponent');
+const classNames = require('classnames');
 
 class RadioButton extends TeatimeComponent {
   constructor(props) {
@@ -43,7 +44,7 @@ class RadioButton extends TeatimeComponent {
      */
 
     return (
-      <span className={this.style('wrapper')}>
+      <span className={classNames(this.style('wrapper'), this.props.className)}>
         <input
           type='radio'
           {...o}

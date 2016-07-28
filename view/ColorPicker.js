@@ -118,7 +118,7 @@ class ColorPicker extends TeatimeComponent {
       <div
         className={classNames(this.style('container'), {
           [this.style('isFixedWrapper')]: this.props.hasFixedWidth,
-        })}
+        }, this.props.className)}
         onKeyDown={this.onKeyDown}>
         {this.renderPreview()}
         <Input
@@ -282,7 +282,10 @@ ColorPicker.propTypes = {
     clear: PropTypes.string.isRequired,
     container: PropTypes.string.isRequired,
     control: PropTypes.string.isRequired,
-    is: PropTypes.string.isRequired,
+    isClosedMenu: PropTypes.string.isRequired,
+    isFixedMenu: PropTypes.string.isRequired,
+    isFixedWrapper: PropTypes.string.isRequired,
+    isOpenedMenu: PropTypes.string.isRequired,
     item: PropTypes.string.isRequired,
     line: PropTypes.string.isRequired,
     menu: PropTypes.string.isRequired,

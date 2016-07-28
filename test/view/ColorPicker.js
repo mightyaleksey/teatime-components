@@ -14,6 +14,7 @@ const styles = {
   isFixedWrapper: 'isFixedWrapper',
   isOpenedMenu: 'isOpenedMenu',
   item: 'item',
+  line: 'line',
   menu: 'menu',
   preview: 'preview',
   wrapper: 'wrapper',
@@ -22,12 +23,13 @@ const styles = {
 test('ColorPicker className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<ColorPicker
     className='mixin'
+    hasFixedWidth={true}
     name='motorrad'
     styles={styles}
     value='369'/>);
 
-  const result = tree.dive(['ColorPicker']).getRenderOutput();
+  const result = tree.getRenderOutput();
 
-  t.isEqual(result.props.className, 'mixin container isFixedWrapper');
+  t.isEqual(result.props.className, 'container isFixedWrapper mixin');
   t.end();
 });

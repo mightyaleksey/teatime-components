@@ -5,6 +5,7 @@ const { bind } = require('../tool/component');
 const { noop } = require('../tool/func');
 const React = require('react');
 const TeatimeComponent = require('./TeatimeComponent');
+const classNames = require('classnames');
 
 class Textarea extends TeatimeComponent {
   constructor(props) {
@@ -33,7 +34,7 @@ class Textarea extends TeatimeComponent {
     return (
       <textarea
         {...this.knownProps()}
-        className={this.style('control')}
+        className={classNames(this.style('control'), this.props.className)}
         onChange={this.onChange}
         ref='control'/>
     );

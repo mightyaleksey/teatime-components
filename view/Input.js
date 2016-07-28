@@ -86,7 +86,7 @@ class Input extends TeatimeComponent {
 
   render() {
     return (
-      <span className={this.style('wrapper')}>
+      <span className={classNames(this.style('wrapper'), this.props.className)}>
         {this.renderInput()}
         {this.renderClear()}
       </span>
