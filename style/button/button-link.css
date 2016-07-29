@@ -14,5 +14,8 @@
 
 .control::-moz-focus-inner
 {
+  margin: 0;
+  padding: 0;
+
   border: 0;
 }
