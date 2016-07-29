@@ -1,20 +1,20 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const { PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
-const { classNames, styleName } = require('../tool/className');
 const { isUndefined, noop } = require('../tool/func');
 const { isHexBased, normalizeColor, trimHash } = require('../tool/color');
 const Input = require('./Input');
 const Overlay = require('./Overlay');
-const Tile = require('./Tile');
 const React = require('react');
-const reactOutsideEvent = require('../mixin/ReactOutsideEvent');
+const TeatimeComponent = require('./TeatimeComponent');
+const Tile = require('./Tile');
+const classNames = require('classnames');
 const warning = require('../tool/warning');
 
 var didWarnForDefaultValue = false;
 
-class ColorPicker extends Component {
+class ColorPicker extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -114,24 +114,22 @@ class ColorPicker extends Component {
   }
 
   render() {
-    const { id, styles, ...o } = this.props;
-
     return (
       <div
-        className={styleName(this.props, {isFixedWrapper: this.props.hasFixedWidth})}
+        className={classNames(this.style('container'), {
+          [this.style('isFixedWrapper')]: this.props.hasFixedWidth,
+        }, this.props.className)}
         onKeyDown={this.onKeyDown}>
         {this.renderPreview()}
         <Input
-          {...o}
+          {...this.knownProps()}
           className={undefined}
           defaultValue={undefined}
-          id={id}
           onBlur={this.onInputBlur}
           onChange={this.onChange}
           onFocus={this.onInputFocus}
           ref='control'
-          styleName={undefined}
-          styles={styles}
+          styles={this.styles()}
           value={this.state.value}/>
         {this.renderMenu()}
       </div>
@@ -139,13 +137,12 @@ class ColorPicker extends Component {
   }
 
   renderPreview() {
-    const { disabled, styles } = this.props;
     const value = this.state.value;
 
     return (
       <button
-        className={styles.preview}
-        disabled={disabled}
+        className={this.style('preview')}
+        disabled={this.props.disabled}
         onClick={this.onPreviewClick}
         ref='preview'
         style={{
@@ -155,13 +152,11 @@ class ColorPicker extends Component {
   }
 
   renderMenu() {
-    const { styles } = this.props;
-
     return (
-      <Overlay className={classNames(styles.menu, {
-        [styles.isClosedMenu]: !this.state.isOpened,
-        [styles.isOpenedMenu]: this.state.isOpened,
-        [styles.isFixedMenu]: this.props.hasFixedWidth,
+      <Overlay className={classNames(this.style('menu'), {
+        [this.style('isClosedMenu')]: !this.state.isOpened,
+        [this.style('isOpenedMenu')]: this.state.isOpened,
+        [this.style('isFixedMenu')]: this.props.hasFixedWidth,
       })}>
         {this.renderTiles()}
       </Overlay>
@@ -173,7 +168,7 @@ class ColorPicker extends Component {
       return null;
     }
 
-    const { palette, styles } = this.props;
+    const palette = this.props.palette;
     const tiles = [];
 
     for (var length = palette.length, i = 0; i < length; ++i) {
@@ -184,7 +179,7 @@ class ColorPicker extends Component {
           color={`#${tile}`}
           key={`_${tile}`}
           onClick={this.onTileClick}
-          styles={styles}/>
+          styles={this.styles()}/>
       ));
     }
 
@@ -275,7 +270,6 @@ ColorPicker.defaultProps = {
     'FFCCFF',
     'FFCCE6',
   ],
-  styleName: 'container',
 };
 
 // @todo add color validation for value prop
@@ -284,8 +278,26 @@ ColorPicker.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   palette: PropTypes.array,
-  styleName: PropTypes.string,
-  styles: PropTypes.object,
+  styles: PropTypes.shape({
+    clear: PropTypes.string.isRequired,
+    container: PropTypes.string.isRequired,
+    control: PropTypes.string.isRequired,
+    isClosedMenu: PropTypes.string.isRequired,
+    isFixedMenu: PropTypes.string.isRequired,
+    isFixedWrapper: PropTypes.string.isRequired,
+    isOpenedMenu: PropTypes.string.isRequired,
+    item: PropTypes.string.isRequired,
+    line: PropTypes.string.isRequired,
+    menu: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
+    wrapper: PropTypes.string.isRequired,
+  }),
 };
 
-module.exports = reactOutsideEvent(ColorPicker, ['click']);
+ColorPicker.unwantedProps = [
+  'hasFixedWidth',
+  'palette',
+  ...TeatimeComponent.unwantedProps,
+];
+
+module.exports = ColorPicker;

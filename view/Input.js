@@ -1,15 +1,16 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const { PropTypes } = require('react');
 const { bind, hasValueProp } = require('../tool/component');
 const { isUndefined, noop } = require('../tool/func');
-const { style, styleName } = require('../tool/className');
 const React = require('react');
+const TeatimeComponent = require('./TeatimeComponent');
+const classNames = require('classnames');
 const warning = require('../tool/warning');
 
 var didWarnForDefaultValue = false;
 
-class Input extends Component {
+class Input extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -85,7 +86,7 @@ class Input extends Component {
 
   render() {
     return (
-      <span className={styleName(this.props)}>
+      <span className={classNames(this.style('wrapper'), this.props.className)}>
         {this.renderInput()}
         {this.renderClear()}
       </span>
@@ -99,7 +100,7 @@ class Input extends Component {
 
     return (
       <span
-        className={this.props.styles.clear}
+        className={this.style('clear')}
         onClick={this.onClearClick}/>
     );
   }
@@ -107,9 +108,9 @@ class Input extends Component {
   renderInput() {
     return (
       <input
-        {...this.props}
-        className={style(this.props.styles, 'control', {
-          hasClear: this.state.value,
+        {...this.knownProps()}
+        className={classNames(this.style('control'), {
+          [this.style('hasClear')]: this.state.value,
         })}
         defaultValue={undefined} // Cause we have a controlled input
         onChange={this.onChange}
@@ -121,19 +122,16 @@ class Input extends Component {
 
 Input.defaultProps = {
   onChange: noop,
-  styleName: 'wrapper',
-  styles: {},
   type: 'text',
 };
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  styleName: PropTypes.string,
   styles: PropTypes.shape({
     clear: PropTypes.string.isRequired,
     control: PropTypes.string.isRequired,
-    wrapper: PropTypes.string,
+    wrapper: PropTypes.string.isRequired,
   }),
   type: PropTypes.oneOf([
     'password',
