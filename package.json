@@ -4,10 +4,10 @@
   "description": "React components + CSS Modules",
   "scripts": {
     "cleanup": "git reset --hard",
-    "compile": "babel component --out-dir component && babel mixin --out-dir mixin && babel tool --out-dir tool && babel view --out-dir view",
+    "compile": "babel component --out-dir component && babel decorator --out-dir decorator && babel mixin --out-dir mixin && babel tool --out-dir tool && babel view --out-dir view",
     "demo": "webpack --config demo/webpack.config.js --progress",
     "demo:opt": "NODE_ENV=production webpack --config demo/webpack.config.js --progress",
-    "lint": "eslint {component,demo,mixin,test,tool,view}/*.js *.js",
+    "lint": "eslint {component,decorator,demo,mixin,test,tool,view}/*.js *.js",
     "prepublish": "in-publish && npm run -s compile || in-install",
     "publish": "in-publish && npm run -s cleanup || in-install",
     "start": "webpack-dev-server --config demo/webpack.config.js --no-info",
@@ -31,8 +31,7 @@
     "classnames": "^2.2.5",
     "fuzzysearch": "^1.0.3",
     "in-publish": "^2.0.0",
-    "lodash": "^4.14.0",
-    "react-outside-event": "^1.2.4"
+    "lodash": "^4.14.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
