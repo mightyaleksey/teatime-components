@@ -57,7 +57,7 @@
   composes: menu from '../menu/menu-s.css';
   composes: menu from './select.css';
 
-  max-height: 152px;
+  max-height: 200px;
 }
 
 .item
