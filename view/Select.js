@@ -6,7 +6,8 @@ const { findDOMNode } = require('react-dom');
 const { generateId, hasUniqueValues, mapKey, mapKeyBasedOnPos } = require('../tool/identity');
 const { isUndefined, noop } = require('../tool/func');
 const Option = require('./Option');
-const Overlay = require('./Overlay');
+const OutsideEventDecorator = require('../decorator/OutsideEventDecorator');
+const Overlay = OutsideEventDecorator(require('./Overlay'));
 const React = require('react');
 const TeatimeComponent = require('./TeatimeComponent');
 const classNames = require('classnames');
@@ -20,11 +21,13 @@ class Select extends TeatimeComponent {
     super(props);
 
     bind(this, [
+      'getParentNode',
       'onInputChange',
       'onKeyDown',
       'onMenuToggle',
       'onOptionFocus',
       'onOptionSelect',
+      'onOutsideEvent',
     ]);
 
     this.controlled = hasValueProp(props);
@@ -168,6 +171,13 @@ class Select extends TeatimeComponent {
    */
   getHaystack(option) {
     return option.label;
+  }
+
+  /**
+   * @return {node|void}
+   */
+  getParentNode() {
+    return this.refs.wrapper;
   }
 
   /**
@@ -332,9 +342,11 @@ class Select extends TeatimeComponent {
     const options = this._availableOptions = this.filterOptions();
 
     return (
-      <div className={classNames(this.style('wrapper'), {
-        [this.style('isFixedWrapper')]: this.props.hasFixedWidth,
-      }, this.props.className)}>
+      <div
+        className={classNames(this.style('wrapper'), {
+          [this.style('isFixedWrapper')]: this.props.hasFixedWidth,
+        }, this.props.className)}
+        ref='wrapper'>
         {this.renderValue()}
         {this.renderLabel()}
         {this.renderMenu(options)}
@@ -393,6 +405,8 @@ class Select extends TeatimeComponent {
           [this.style('isClosedMenu')]: !this.state.isOpened,
           [this.style('isOpenedMenu')]: this.state.isOpened,
         })}
+        getParentNode={this.getParentNode}
+        onOutsideEvent={this.onOutsideEvent}
         ref='menu'>
         {this.renderOptions(options)}
       </Overlay>

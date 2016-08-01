@@ -5,7 +5,8 @@ const { bind, hasValueProp } = require('../tool/component');
 const { isUndefined, noop } = require('../tool/func');
 const { isHexBased, normalizeColor, trimHash } = require('../tool/color');
 const Input = require('./Input');
-const Overlay = require('./Overlay');
+const OutsideEventDecorator = require('../decorator/OutsideEventDecorator');
+const Overlay = OutsideEventDecorator(require('./Overlay'));
 const React = require('react');
 const TeatimeComponent = require('./TeatimeComponent');
 const Tile = require('./Tile');
@@ -19,10 +20,12 @@ class ColorPicker extends TeatimeComponent {
     super(props);
 
     bind(this, [
+      'getParentNode',
       'onChange',
       'onInputBlur',
       'onInputFocus',
       'onKeyDown',
+      'onOutsideEvent',
       'onPreviewClick',
       'onTileClick',
     ]);
@@ -63,6 +66,13 @@ class ColorPicker extends TeatimeComponent {
     if (this.refs.control) {
       this.refs.control.focus();
     }
+  }
+
+  /**
+   * @return {node|void}
+   */
+  getParentNode() {
+    return this.refs.container;
   }
 
   onChange(e, data) {
@@ -119,7 +129,8 @@ class ColorPicker extends TeatimeComponent {
         className={classNames(this.style('container'), {
           [this.style('isFixedWrapper')]: this.props.hasFixedWidth,
         }, this.props.className)}
-        onKeyDown={this.onKeyDown}>
+        onKeyDown={this.onKeyDown}
+        ref='container'>
         {this.renderPreview()}
         <Input
           {...this.knownProps()}
@@ -153,11 +164,14 @@ class ColorPicker extends TeatimeComponent {
 
   renderMenu() {
     return (
-      <Overlay className={classNames(this.style('menu'), {
-        [this.style('isClosedMenu')]: !this.state.isOpened,
-        [this.style('isOpenedMenu')]: this.state.isOpened,
-        [this.style('isFixedMenu')]: this.props.hasFixedWidth,
-      })}>
+      <Overlay
+        className={classNames(this.style('menu'), {
+          [this.style('isClosedMenu')]: !this.state.isOpened,
+          [this.style('isOpenedMenu')]: this.state.isOpened,
+          [this.style('isFixedMenu')]: this.props.hasFixedWidth,
+        })}
+        getParentNode={this.getParentNode}
+        onOutsideEvent={this.onOutsideEvent}>
         {this.renderTiles()}
       </Overlay>
     );
