@@ -362,9 +362,6 @@ class Select extends Component {
           isClosedControl: !this.state.isOpened,
           isOpenedControl: this.state.isOpened,
         })}>
-        <span className={style(this.props.styles, 'label')}>
-          {this.state.inputValue ? '' : this.getSelectedLabel(this.state.selected)}
-        </span>
         <input
           className={this.props.styles.input}
           disabled={this.props.disabled}
@@ -375,6 +372,9 @@ class Select extends Component {
           tabIndex={this.props.tabIndex || 0}
           type='text'
           value={this.state.inputValue}/>
+        <span className={style(this.props.styles, 'label')}>
+          {this.state.inputValue ? '' : this.getSelectedLabel(this.state.selected)}
+        </span>
       </span>
     );
   }
