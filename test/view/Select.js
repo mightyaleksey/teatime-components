@@ -36,12 +36,13 @@ const options = [
 test('Select className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<Select
     className='mixin'
+    hasFixedWidth={true}
     name='motorrad'
     options={options}
     styles={styles}/>);
 
-  const result = tree.dive(['Select']).getRenderOutput();
+  const result = tree.getRenderOutput();
 
-  t.isEqual(result.props.className, 'mixin wrapper isFixedWrapper');
+  t.isEqual(result.props.className, 'wrapper isFixedWrapper mixin');
   t.end();
 });

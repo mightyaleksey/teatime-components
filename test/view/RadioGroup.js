@@ -29,6 +29,6 @@ test('RadioGroup className to contain `mixin` and styleName', t => {
 
   const result = tree.getRenderOutput();
 
-  t.isEqual(result.props.className, 'mixin container');
+  t.isEqual(result.props.className, 'container mixin');
   t.end();
 });

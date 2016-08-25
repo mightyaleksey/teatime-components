@@ -1,26 +1,23 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
-const { styleName } = require('../tool/className');
+const { PropTypes } = require('react');
 const React = require('react');
+const TeatimeComponent = require('./TeatimeComponent');
+const classNames = require('classnames');
 
-class Spin extends Component {
+class Spin extends TeatimeComponent {
   render() {
     return (
-      <span {...this.props} className={styleName(this.props)}/>
+      <span
+        {...this.knownProps()}
+        className={classNames(this.style('control'), this.props.className)}/>
     );
   }
 }
 
-Spin.defaultProps = {
-  styleName: 'control',
-  styles: {},
-};
-
 Spin.propTypes = {
-  styleName: PropTypes.string,
   styles: PropTypes.shape({
-    control: PropTypes.string,
+    control: PropTypes.string.isRequired,
   }),
 };
 
