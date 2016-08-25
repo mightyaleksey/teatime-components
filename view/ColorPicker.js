@@ -51,7 +51,7 @@ class ColorPicker extends TeatimeComponent {
     this.state = {
       isOpened: false,
       value: !isUndefined(value)
-        ? value
+        ? trimHash(value)
         : 'FFFFFF',
     };
   }
