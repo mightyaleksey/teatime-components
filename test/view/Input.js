@@ -19,6 +19,6 @@ test('Input className to contain `mixin` and styleName', t => {
 
   const result = tree.getRenderOutput();
 
-  t.isEqual(result.props.className, 'mixin wrapper');
+  t.isEqual(result.props.className, 'wrapper mixin');
   t.end();
 });

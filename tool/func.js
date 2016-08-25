@@ -3,7 +3,9 @@
 exports.constant = constant;
 exports.identity = identity;
 exports.isEqual = isEqual;
+exports.isFunction = isFunction;
 exports.isUndefined = isUndefined;
+exports.keys = keys;
 exports.mapKeys = mapKeys;
 exports.mapRange = mapRange;
 exports.noop = noop;
@@ -13,9 +15,11 @@ exports.noop = noop;
  * @return {function}
  */
 function constant(a) {
-  return function constantly() {
+  return constantly;
+
+  function constantly() {
     return a;
-  };
+  }
 }
 
 /**
@@ -34,7 +38,11 @@ function identity(a) {
  * @return {boolean}
  */
 function isEqual(source, target) {
-  if (Object.keys(source).length !== Object.keys(target).length) {
+  if (typeof source !== 'object' || typeof target !== 'object') {
+    return source === target;
+  }
+
+  if (keys(source).length !== keys(target).length) {
     return false;
   }
 
@@ -48,11 +56,27 @@ function isEqual(source, target) {
 }
 
 /**
- * @param  {*} a
+ * @param  {function} fn
+ * @return {boolean}
+ */
+function isFunction(fn) {
+  return typeof fn === 'function';
+}
+
+/**
+ * @param  {*}  a
  * @return {boolean}
  */
 function isUndefined(a) {
-  return void 0 === a;
+  return a === undefined;
+}
+
+/**
+ * @param  {object} object
+ * @return {string[]}
+ */
+function keys(object) {
+  return Object.keys(object);
 }
 
 /**
@@ -88,4 +112,9 @@ function mapRange(iteratee, steps) {
   return collection;
 }
 
+/**
+ * no operation
+ *
+ * @return {void}
+ */
 function noop() {}

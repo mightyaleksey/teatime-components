@@ -1,12 +1,13 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
+const { PropTypes } = require('react');
 const { bind } = require('../tool/component');
-const { classNames } = require('../tool/className');
 const Overlay = require('../view/Overlay');
 const React = require('react');
+const TeatimeComponent = require('../view/TeatimeComponent');
+const classNames = require('classnames');
 
-const baseStyles = {
+const predefinedStyles = {
   'normal-xs': require('../style/tooltip/tooltip-normal-xs.css'),
   'normal-s': require('../style/tooltip/tooltip-normal-s.css'),
   'normal-m': require('../style/tooltip/tooltip-normal-m.css'),
@@ -24,7 +25,7 @@ const height = {
   m: 32,
 };
 
-class Tooltip extends Component {
+class Tooltip extends TeatimeComponent {
   constructor(props) {
     super(props);
 
@@ -69,6 +70,7 @@ class Tooltip extends Component {
   /**
    * @param  {object} rect
    * @param  {node}   ref
+   * @return {void}
    */
   onPositionUpdate(rect) {
     if (this.state.isMultiline !== this.isMultiline(rect, this.props.maxWidth)) {
@@ -82,17 +84,23 @@ class Tooltip extends Component {
     return prevProps.direction !== this.props.direction;
   }
 
+  /**
+   * @return {object}
+   */
+  styles() {
+    return predefinedStyles[this.props.type + '-' + this.props.size];
+  }
+
   render() {
-    const { children, className, direction, size, type } = this.props;
-    const styles = baseStyles[`${type}-${size}`];
+    const { children, className, direction } = this.props;
 
     return (
       <Overlay
-        className={classNames(className, styles[direction], {
-          [styles.isClosed]: !children,
-          [styles.isOpened]: children,
-          [styles.isLine]: !this.state.isMultiline,
-        })}
+        className={classNames(this.style(direction), {
+          [this.style('isClosed')]: !children,
+          [this.style('isOpened')]: children,
+          [this.style('isLine')]: !this.state.isMultiline,
+        }, className)}
         onPositionUpdate={this.onPositionUpdate}
         shouldComponentUpdatePosition={this.shouldComponentUpdatePosition}>
         {children}

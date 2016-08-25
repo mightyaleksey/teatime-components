@@ -11,6 +11,6 @@ test('Button className to contain `mixin` and styleName', t => {
   const tree = shallowRender(<Button className='mixin' styles={styles}/>);
   const result = tree.getRenderOutput();
 
-  t.isEqual(result.props.className, 'mixin control');
+  t.isEqual(result.props.className, 'control mixin');
   t.end();
 });

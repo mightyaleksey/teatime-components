@@ -1,10 +1,11 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
-const { styleName } = require('../tool/className');
+const { PropTypes } = require('react');
 const React = require('react');
+const TeatimeComponent = require('./TeatimeComponent');
+const classNames = require('classnames');
 
-class Button extends Component {
+class Button extends TeatimeComponent {
   focus() {
     if (this.refs.control) {
       this.refs.control.focus();
@@ -13,20 +14,17 @@ class Button extends Component {
 
   render() {
     return (
-      <button {...this.props} className={styleName(this.props)} ref='control'/>
+      <button
+        {...this.knownProps()}
+        className={classNames(this.style('control'), this.props.className)}
+        ref='control'/>
     );
   }
 }
 
-Button.defaultProps = {
-  styleName: 'control',
-  styles: {},
-};
-
 Button.propTypes = {
-  styleName: PropTypes.string,
   styles: PropTypes.shape({
-    control: PropTypes.string,
+    control: PropTypes.string.isRequired,
   }),
 };
 
