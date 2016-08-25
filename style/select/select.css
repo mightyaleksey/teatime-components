@@ -44,6 +44,7 @@
 .input
 {
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
 
@@ -62,6 +63,11 @@
 
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
+}
+
+.input:focus + .label
+{
+  opacity: .4;
 }
 
 .menu

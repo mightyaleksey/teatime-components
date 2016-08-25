@@ -380,9 +380,6 @@ class Select extends TeatimeComponent {
           [this.style('isClosedControl')]: !this.state.isOpened,
           [this.style('isOpenedControl')]: this.state.isOpened,
         })}>
-        <span className={this.style('label')}>
-          {this.state.inputValue ? '' : this.getSelectedLabel(this.state.selected)}
-        </span>
         <input
           className={this.style('input')}
           disabled={this.props.disabled}
@@ -393,6 +390,9 @@ class Select extends TeatimeComponent {
           tabIndex={this.props.tabIndex || 0}
           type='text'
           value={this.state.inputValue}/>
+        <span className={this.style('label')}>
+          {this.state.inputValue ? '' : this.getSelectedLabel(this.state.selected)}
+        </span>
       </span>
     );
   }
