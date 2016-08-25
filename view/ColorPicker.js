@@ -48,7 +48,7 @@ class ColorPicker extends Component {
     this.state = {
       isOpened: false,
       value: !isUndefined(value)
-        ? value
+        ? trimHash(value)
         : 'FFFFFF',
     };
   }
