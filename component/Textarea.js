@@ -1,37 +1,78 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const Textarea = require('../view/Textarea');
+const { Component, PropTypes } = require('react');
+const { cssModules, omit } = require('../lib/tool');
+const { noop, prop } = require('../lib/dash');
+const React = require('react');
+const cc = require('classnames');
 
-const predefinedStyles = {
-  s: require('../style/textarea/textarea-s.css'),
+const omitProps = omit(['size', 'styles']);
+const themes = cssModules({
   m: require('../style/textarea/textarea-m.css'),
-};
+  s: require('../style/textarea/textarea-s.css'),
+});
 
-class TextareaComponent extends Textarea {
-  /**
-   * @return {object}
-   */
-  styles() {
-    return predefinedStyles[this.props.size];
+class Textarea extends Component {
+  constructor(props) {
+    super(props);
+
+    this._styles = themes(this.token);
+
+    this.state = {
+      styles: this._styles(props),
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      styles: this._styles(nextProps),
+    });
+  }
+
+  focus() {
+    if (!this._textarea) return;
+    this._textarea.focus();
+  }
+
+  select() {
+    if (!this._textarea) return;
+    this._textarea.select();
+  }
+
+  token = prop('size')
+
+  render() {
+    const {
+      className,
+      ...other,
+    } = this.props;
+    const { control } = this.state.styles;
+
+    return (
+      <textarea
+        {...omitProps(other)}
+        className={cc(control, className)}
+        ref={r => this._textarea = r}/>
+    );
   }
 }
 
-TextareaComponent.defaultProps = {
+Textarea.defaultProps = {
+  onChange: noop,
   size: 's',
-  ...Textarea.defaultProps,
+  rows: 3,
 };
 
-TextareaComponent.propTypes = {
+Textarea.propTypes = {
+  cols: PropTypes.number,
+  rows: PropTypes.number,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
   size: PropTypes.oneOf([
-    's',
     'm',
+    's',
   ]),
-  ...Textarea.propTypes,
+  styles: PropTypes.object,
 };
 
-TextareaComponent.unwantedProps = [
-  'size',
-];
-
-module.exports = TextareaComponent;
+module.exports = Textarea;

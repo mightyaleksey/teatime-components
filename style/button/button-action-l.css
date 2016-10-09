@@ -1,11 +1,6 @@
-@value size-l, line-l from '../font.css';
-
 .control
 {
-  composes: control from './button-action.css';
-
-  padding: 0 18px;
-
-  font-size: size-l;
-  line-height: line-l;
+  composes: selector from './button.css';
+  composes: action from './button.css';
+  composes: l from './button-size.css';
 }

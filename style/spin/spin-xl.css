@@ -1,9 +1,6 @@
 .control
 {
+  composes: selector from './spin.css';
   composes: control from './spin.css';
-
-  width: 38px;
-  height: 38px;
-
-  line-height: 38px;
+  composes: xl from './spin-size.css';
 }

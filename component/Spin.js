@@ -1,43 +1,67 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const Spin = require('../view/Spin');
+const { Component, PropTypes } = require('react');
+const { cssModules, omit } = require('../lib/tool');
+const { prop } = require('../lib/dash');
+const React = require('react');
+const cc = require('classnames');
 
-const predefinedStyles = {
-  xs: require('../style/spin/spin-xs.css'),
-  s: require('../style/spin/spin-s.css'),
-  m: require('../style/spin/spin-m.css'),
+const omitProps = omit(['size', 'styles']);
+const themes = cssModules({
   l: require('../style/spin/spin-l.css'),
+  m: require('../style/spin/spin-m.css'),
+  s: require('../style/spin/spin-s.css'),
   xl: require('../style/spin/spin-xl.css'),
-};
+  xs: require('../style/spin/spin-xs.css'),
+});
 
-class SpinComponent extends Spin {
-  /**
-   * @return {object}
-   */
-  styles() {
-    return predefinedStyles[this.props.size];
+class Spin extends Component {
+  constructor(props) {
+    super(props);
+
+    this._styles = themes(this.token);
+
+    this.state = {
+      styles: this._styles(props),
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      styles: this._styles(nextProps),
+    });
+  }
+
+  token = prop('size')
+
+  render() {
+    const {
+      className,
+      ...other,
+    } = this.props;
+    const { control } = this.state.styles;
+
+    return (
+      <span
+        {...omitProps(other)}
+        className={cc(control, className)}/>
+    );
   }
 }
 
-SpinComponent.defaultProps = {
+Spin.defaultProps = {
   size: 's',
-  ...Spin.defaultProps,
 };
 
-SpinComponent.propTypes = {
+Spin.propTypes = {
   size: PropTypes.oneOf([
-    'xs',
-    's',
-    'm',
     'l',
+    'm',
+    's',
     'xl',
+    'xs',
   ]),
-  ...Spin.propTypes,
+  styles: PropTypes.object,
 };
 
-SpinComponent.unwantedProps = [
-  'size',
-];
-
-module.exports = SpinComponent;
+module.exports = Spin;

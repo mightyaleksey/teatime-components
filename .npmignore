@@ -1,6 +1,8 @@
-.babelrc
-.csscomb.json
 .editorconfig
+.eslintrc.json
 .gitignore
-demo/*
-preview/*
+.npmignore
+.storybook
+.travis.yml
+docs
+test

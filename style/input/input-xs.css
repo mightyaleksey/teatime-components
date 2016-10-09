@@ -1,21 +1,18 @@
-@value size-xs, line-xs from '../font.css';
-
 .wrapper
 {
+  composes: selector from './input.css';
   composes: wrapper from './input.css';
 
-  font-size: size-xs;
-  line-height: line-xs;
+  font-size: 13px;
 }
 
 .control
 {
   composes: control from './input.css';
 
-  padding: 0 7px;
+  padding: 0 5px;
 
-  font-size: size-xs;
-  line-height: line-xs;
+  line-height: 22px;
 }
 
 .clear
@@ -25,14 +22,10 @@
   width: 22px;
   height: 22px;
 
-  background: url(./times-s.svg) 50% 50% no-repeat;
+  background: url(../asset/times-s.svg) 50% 50% no-repeat;
 }
 
-/* mixin */
-
-.hasClear
+.clear + .control
 {
-  composes: hasClear from './input.css';
-
-  padding-right: 24px;
+  padding-right: 23px;
 }

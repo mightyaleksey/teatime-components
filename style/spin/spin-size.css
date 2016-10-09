@@ -1,0 +1,39 @@
+.l
+{
+  width: 32px;
+  height: 32px;
+
+  line-height: 32px;
+}
+
+.m
+{
+  width: 28px;
+  height: 28px;
+
+  line-height: 28px;
+}
+
+.s
+{
+  width: 24px;
+  height: 24px;
+
+  line-height: 24px;
+}
+
+.xl
+{
+  width: 38px;
+  height: 38px;
+
+  line-height: 38px;
+}
+
+.xs
+{
+  width: 16px;
+  height: 16px;
+
+  line-height: 16px;
+}

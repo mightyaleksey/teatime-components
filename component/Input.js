@@ -1,39 +1,150 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const Input = require('../view/Input');
+const { Component, PropTypes } = require('react');
+const { cssModules, isControlled, omit } = require('../lib/tool');
+const { isUndefined, noop, prop } = require('../lib/dash');
+const React = require('react');
+const cc = require('classnames');
 
-const predefinedStyles = {
-  xs: require('../style/input/input-xs.css'),
-  s: require('../style/input/input-s.css'),
+const omitProps = omit(['defaultValue', 'onChange', 'onClear', 'value']);
+const themes = cssModules({
   m: require('../style/input/input-m.css'),
-};
+  s: require('../style/input/input-s.css'),
+  xs: require('../style/input/input-xs.css'),
+});
 
-class InputComponent extends Input {
-  /**
-   * @return {object}
-   */
-  styles() {
-    return predefinedStyles[this.props.size];
+class Input extends Component {
+  constructor(props) {
+    super(props);
+
+    this._controlled = isControlled(props);
+    this._styles = themes(this.token);
+
+    const value = this._controlled
+      ? props.value
+      : props.defaultValue;
+
+    this.state = {
+      styles: this._styles(props),
+      value: isUndefined(value) ? '' : value,
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this._controlled = isControlled(nextProps);
+
+    this.setState({
+      styles: this._styles(nextProps),
+      value: this._controlled
+        ? nextProps.value
+        : this.state.value,
+    });
+  }
+
+  focus() {
+    if (!this._input) return;
+    this._input.focus();
+  }
+
+  select() {
+    if (!this._input) return;
+    this._input.select();
+  }
+
+  token = prop('size')
+
+  _onChange = e => {
+    const value = e.target.value;
+    if (!this._controlled) this.setState({value});
+    this.props.onChange(e, {value});
+  }
+
+  _onClear = e => {
+    const value = '';
+    if (!this._controlled) this.setState({value});
+    this.props.onChange(e, {value});
+    this.focus();
+  }
+
+  render() {
+    const {
+      autoComplete,
+      autoFocus,
+      className,
+      disabled,
+      id,
+      maxLength,
+      name,
+      placeholder,
+      readOnly,
+      type,
+      ...other,
+    } = this.props;
+    const {
+      clear,
+      control,
+      wrapper,
+    } = this.state.styles;
+    const value = this.state.value;
+
+    return (
+      <span
+        {...omitProps(other)}
+        className={cc(wrapper, className)}>
+        {this.renderClear({
+          className: clear,
+          onClick: this._onClear,
+        })}
+        {this.renderInput({
+          autoComplete,
+          autoFocus,
+          className: control,
+          disabled,
+          id,
+          maxLength,
+          name,
+          onChange: this._onChange,
+          placeholder,
+          readOnly,
+          ref: r => this._input = r,
+          type,
+          value,
+        })}
+      </span>
+    );
+  }
+
+  renderClear(clearProps) {
+    if (this.props.disabled || !this.state.value) return null;
+
+    return (
+      <span {...clearProps}/>
+    );
+  }
+
+  renderInput(inputProps) {
+    return (
+      <input {...inputProps}/>
+    );
   }
 }
 
-InputComponent.defaultProps = {
+Input.defaultProps = {
+  onChange: noop,
   size: 's',
-  ...Input.defaultProps,
+  type: 'text',
 };
 
-InputComponent.propTypes = {
+Input.propTypes = {
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
   size: PropTypes.oneOf([
-    'xs',
-    's',
     'm',
+    's',
+    'xs',
   ]),
-  ...Input.propTypes,
+  styles: PropTypes.object,
+  type: PropTypes.string,
 };
 
-InputComponent.unwantedProps = [
-  'size',
-];
-
-module.exports = InputComponent;
+module.exports = Input;

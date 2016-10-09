@@ -1,4 +1,10 @@
+.selector
+{
+  /* the common selector */
+}
+
 .control
 {
-  line-height: normal;
+  font-family: arial,sans-serif;
+  line-height: 1.2;
 }

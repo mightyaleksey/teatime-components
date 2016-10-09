@@ -1,11 +1,10 @@
-@value size-s from '../font.css';
-
 .control
 {
+  composes: selector from './textarea.css';
   composes: control from '../input/input.css';
   composes: control from './textarea.css';
 
-  padding: 4px 6px;
+  padding: 2px 4px;
 
-  font-size: size-s;
+  font-size: 13px;
 }

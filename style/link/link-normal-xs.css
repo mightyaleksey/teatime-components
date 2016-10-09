@@ -1,4 +1,6 @@
 .control
 {
-  composes: control from '../button/button-normal-xs.css';
+  composes: selector from './link.css';
+  composes: normal from '../button/button.css';
+  composes: xs from '../button/button-size.css';
 }

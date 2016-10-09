@@ -1,56 +1,81 @@
 'use strict';
 
-const { PropTypes } = require('react');
-const Link = require('../view/Link');
+const { Component, PropTypes } = require('react');
+const { cssModules, omit } = require('../lib/tool');
+const React = require('react');
+const cc = require('classnames');
 
-const predefinedStyles = {
-  'action-xs': require('../style/link/link-action-xs.css'),
-  'action-s': require('../style/link/link-action-s.css'),
-  'action-m': require('../style/link/link-action-m.css'),
+const omitProps = omit(['size', 'styles', 'theme']);
+const themes = cssModules({
   'action-l': require('../style/link/link-action-l.css'),
-  'link-xs': require('../style/link/link-link-xs.css'),
-  'link-s': require('../style/link/link-link-s.css'),
-  'link-m': require('../style/link/link-link-m.css'),
-  'link-l': require('../style/link/link-link-l.css'),
-  'normal-xs': require('../style/link/link-normal-xs.css'),
-  'normal-s': require('../style/link/link-normal-s.css'),
-  'normal-m': require('../style/link/link-normal-m.css'),
+  'action-m': require('../style/link/link-action-m.css'),
+  'action-s': require('../style/link/link-action-s.css'),
+  'action-xs': require('../style/link/link-action-xs.css'),
+  'link-l': require('../style/link/link-l.css'),
+  'link-m': require('../style/link/link-m.css'),
+  'link-s': require('../style/link/link-s.css'),
+  'link-xs': require('../style/link/link-xs.css'),
   'normal-l': require('../style/link/link-normal-l.css'),
-};
+  'normal-m': require('../style/link/link-normal-m.css'),
+  'normal-s': require('../style/link/link-normal-s.css'),
+  'normal-xs': require('../style/link/link-normal-xs.css'),
+});
 
-class LinkComponent extends Link {
-  /**
-   * @return {object}
-   */
-  styles() {
-    return predefinedStyles[this.props.theme + '-' + this.props.size];
+class Link extends Component {
+  constructor(props) {
+    super(props);
+
+    this._styles = themes(this.token);
+
+    this.state = {
+      styles: this._styles(props),
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      styles: this._styles(nextProps),
+    });
+  }
+
+  // token :: object -> string
+  token({ size, theme }) {
+    return `${theme}-${size}`;
+  }
+
+  render() {
+    const {
+      className,
+      ...other,
+    } = this.props;
+    const { control } = this.state.styles;
+
+    return (
+      <a
+        {...omitProps(other)}
+        className={cc(control, className)}/>
+    );
   }
 }
 
-LinkComponent.defaultProps = {
+Link.defaultProps = {
   size: 's',
   theme: 'link',
-  ...Link.defaultProps,
 };
 
-LinkComponent.propTypes = {
+Link.propTypes = {
   size: PropTypes.oneOf([
-    'xs',
-    's',
-    'm',
     'l',
+    'm',
+    's',
+    'xs',
   ]),
+  styles: PropTypes.object,
   theme: PropTypes.oneOf([
     'action',
     'link',
     'normal',
   ]),
-  ...Link.propTypes,
 };
 
-LinkComponent.unwantedProps = [
-  'size',
-  'theme',
-];
-
-module.exports = LinkComponent;
+module.exports = Link;

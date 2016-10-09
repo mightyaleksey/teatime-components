@@ -1,13 +1,23 @@
-@value size-s from '../font.css';
-
 .wrapper
 {
+  composes: selector from './tumbler.css';
   composes: wrapper from './tumbler.css';
 
   width: 76px;
-  height: 28px;
 
-  font-size: size-s;
+  line-height: 28px;
+}
+
+.baseline
+{
+  composes: baseline from './tumbler.css';
+
+  line-height: 28px;
+}
+
+.shape
+{
+  composes: shape from './tumbler.css';;
 }
 
 .control
@@ -15,6 +25,8 @@
   composes: control from './tumbler.css';
 
   margin: 0 0 0 -48px;
+
+  font-size: 13px;
 }
 
 .label
@@ -45,5 +57,5 @@
 
 .native
 {
-  composes: native from './tumbler.css';
+  composes: native from './tumbler.css';;
 }
