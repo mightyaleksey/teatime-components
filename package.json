@@ -4,9 +4,9 @@
   "description": "React components + CSS Modules",
   "main": "index.js",
   "scripts": {
-    "docs": "build-storybook -o docs",
-    "start": "npm run storybook",
-    "storybook": "start-storybook -p 8080",
+    "docs": "styleguidist --config .styleguidist/config.js build",
+    "start": "npm run styleguide",
+    "styleguide": "styleguidist --config .styleguidist/config.js server",
     "test": "tape test/**/*.js"
   },
   "repository": {
@@ -23,7 +23,6 @@
     "react": "^15.3.2"
   },
   "devDependencies": {
-    "@kadira/storybook": "^2.21.0",
     "autoprefixer": "^6.5.0",
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.0.0",
@@ -34,11 +33,15 @@
     "css-loader": "^0.25.0",
     "eslint": "^3.7.1",
     "eslint-plugin-react": "^6.3.0",
+    "lodash.mergewith": "^4.6.0",
     "postcss-loader": "^0.13.0",
     "postcss-url": "^5.1.2",
     "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-styleguidist": "^4.0.1",
     "style-loader": "^0.13.1",
-    "tape": "^4.6.2"
+    "tape": "^4.6.2",
+    "webpack": "^1.13.2"
   },
   "dependencies": {
     "classnames": "^2.2.5"
