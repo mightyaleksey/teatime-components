@@ -11,6 +11,7 @@ const rootDir = dirname(__dirname);
 module.exports = {
   title: 'Teatime Components',
   components: '../component/*.js',
+  getComponentPathLine: replace(/^\.\.\//, ''),
   getExampleFilename: compose(
     replace(/\.js$/, '.md'),
     replace(/\/component\//, '/story/')),
