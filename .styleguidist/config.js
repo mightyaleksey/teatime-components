@@ -15,6 +15,10 @@ module.exports = {
     replace(/\.js$/, '.md'),
     replace(/\/component\//, '/story/')),
   updateWebpackConfig: merge({
+    entry: [
+      resolve(__dirname, 'common.css'),
+    ],
+
     module: {
       loaders: [
         {
@@ -26,6 +30,11 @@ module.exports = {
           test: /\.css$/i,
           include: resolve('style'),
           loader: 'style!css?modules&localIdentName=[name]--[local]&importLoaders=1!postcss',
+        },
+        {
+          test: /\.css$/i,
+          include: __dirname,
+          loader: 'style!css',
         },
       ],
     },
