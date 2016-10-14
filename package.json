@@ -4,6 +4,7 @@
   "description": "React components + CSS Modules",
   "main": "index.js",
   "scripts": {
+    "compile": ".script/compile.sh || :",
     "docs": "styleguidist --config .styleguidist/config.js build",
     "start": "npm run styleguide",
     "styleguide": "styleguidist --config .styleguidist/config.js server",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.5.0",
+    "babel-cli": "^6.16.0",
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.0.0",
     "babel-loader": "^6.2.5",
