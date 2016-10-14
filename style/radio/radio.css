@@ -69,9 +69,6 @@
 .native:disabled + .control
 {
   cursor: default;
-
-  border: 1px solid #ebebeb;
-  background: #ebebeb;
 }
 
 /* theme: `common` */
@@ -119,21 +116,40 @@
   background: #f6f5f3;
 }
 
+.common-label
+{
+  cursor: pointer;
+}
+
 .common-native
 {
   composes: native;
 }
 
-.common-native:checked + .control
+.common-native:checked + .common-control
 {
   background: #ffeba0;
 }
 
-.common-native:checked + .control:after
+.common-native:checked + .common-control:after
 {
   visibility: visible;
 
   opacity: 1;
+}
+
+.common-native:disabled + .common-control
+{
+  border: 1px solid #ebebeb;
+  background: #ebebeb;
+}
+
+.common-native:disabled + .common-control:after,
+.common-native:disabled ~ .common-label
+{
+  cursor: default;
+
+  opacity: .5;
 }
 
 /* theme: `button` */
@@ -201,4 +217,18 @@
 .button-native:checked + .button-control:active
 {
   background: #fee481;
+}
+
+.button-native:disabled + .button-control
+{
+  z-index: 0;
+
+  border: 1px solid #ebebeb;
+  background: #ebebeb;
+}
+
+.button-native:disabled:checked + .button-control
+{
+  border: 1px solid #d9d9d9;
+  background: #d9d9d9;
 }

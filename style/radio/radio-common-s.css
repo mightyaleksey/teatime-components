@@ -37,6 +37,8 @@
 
 .label
 {
+  composes: common-label from './radio.css';
+
   margin: 0 0 0 5px;
 }
 
