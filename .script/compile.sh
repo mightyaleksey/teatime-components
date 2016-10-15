@@ -23,6 +23,6 @@ then
   exit
 fi
 
-# npm publish --tag beta
-npm publish
+npm publish --tag beta
+# npm publish
 git reset --hard
