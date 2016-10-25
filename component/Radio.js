@@ -1,27 +1,28 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { cssModules, isControlled, omit } = require('../lib/tool');
 const { genericId } = require('../lib/identity');
-const { isUndefined, map, noop } = require('../lib/dash');
+const { isControlled, themes } = require('../lib/tool');
+const { isUndefined, map, noop, omit } = require('../lib/dash');
 const Box = require('../view/Box');
 const React = require('react');
 const cc = require('classnames');
 
-const omitProps = omit([
-  'onChange',
-  'size',
-  'theme',
-  'styles',
-]);
-const themes = cssModules({
+const cssModules = {
   'button-l': require('../style/radio/radio-button-l.css'),
   'button-m': require('../style/radio/radio-button-m.css'),
   'button-s': require('../style/radio/radio-button-s.css'),
   'button-xs': require('../style/radio/radio-button-xs.css'),
   'common-m': require('../style/radio/radio-common-m.css'),
   'common-s': require('../style/radio/radio-common-s.css'),
-});
+};
+
+const omitProps = omit([
+  'onChange',
+  'size',
+  'styles',
+  'theme',
+]);
 
 class Radio extends Component {
   constructor(props) {
@@ -110,6 +111,7 @@ class Radio extends Component {
 Radio.defaultProps = {
   onChange: noop,
   size: 's',
+  styles: cssModules,
   theme: 'common',
 };
 

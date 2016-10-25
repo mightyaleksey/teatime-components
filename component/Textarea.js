@@ -1,16 +1,20 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { cssModules, omit } = require('../lib/tool');
-const { noop, prop } = require('../lib/dash');
+const { noop, omit, prop } = require('../lib/dash');
+const { themes } = require('../lib/tool');
 const React = require('react');
 const cc = require('classnames');
 
-const omitProps = omit(['size', 'styles']);
-const themes = cssModules({
+const cssModules = {
   m: require('../style/textarea/textarea-m.css'),
   s: require('../style/textarea/textarea-s.css'),
-});
+};
+
+const omitProps = omit([
+  'size',
+  'styles',
+]);
 
 class Textarea extends Component {
   constructor(props) {
@@ -60,6 +64,7 @@ class Textarea extends Component {
 Textarea.defaultProps = {
   onChange: noop,
   size: 's',
+  styles: cssModules,
   rows: 3,
 };
 

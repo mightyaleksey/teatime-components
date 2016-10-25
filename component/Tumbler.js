@@ -1,18 +1,23 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { cssModules, omit } = require('../lib/tool');
 const { genericId } = require('../lib/identity');
-const { isUndefined, noop, prop } = require('../lib/dash');
+const { isUndefined, noop, omit, prop } = require('../lib/dash');
+const { themes } = require('../lib/tool');
 const React = require('react');
 const cc = require('classnames');
 
-const omitProps = omit(['onChange', 'size', 'styles']);
-const themes = cssModules({
+const cssModules = {
   m: require('../style/tumbler/tumbler-m.css'),
   s: require('../style/tumbler/tumbler-s.css'),
   xs: require('../style/tumbler/tumbler-xs.css'),
-});
+};
+
+const omitProps = omit([
+  'onChange',
+  'size',
+  'styles',
+]);
 
 class Tumbler extends Component {
   constructor(props) {
@@ -113,6 +118,7 @@ Tumbler.defaultProps = {
   on: 'On',
   onChange: noop,
   size: 's',
+  styles: cssModules,
 };
 
 Tumbler.propTypes = {

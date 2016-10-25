@@ -1,12 +1,12 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { cssModules, omit } = require('../lib/tool');
+const { omit } = require('../lib/dash');
+const { themes } = require('../lib/tool');
 const React = require('react');
 const cc = require('classnames');
 
-const omitProps = omit(['size', 'styles', 'theme']);
-const themes = cssModules({
+const cssModules = {
   'action-l': require('../style/link/link-action-l.css'),
   'action-m': require('../style/link/link-action-m.css'),
   'action-s': require('../style/link/link-action-s.css'),
@@ -19,7 +19,13 @@ const themes = cssModules({
   'normal-m': require('../style/link/link-normal-m.css'),
   'normal-s': require('../style/link/link-normal-s.css'),
   'normal-xs': require('../style/link/link-normal-xs.css'),
-});
+};
+
+const omitProps = omit([
+  'size',
+  'styles',
+  'theme',
+]);
 
 class Link extends Component {
   constructor(props) {
@@ -60,6 +66,7 @@ class Link extends Component {
 
 Link.defaultProps = {
   size: 's',
+  styles: cssModules,
   theme: 'link',
 };
 

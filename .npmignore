@@ -2,7 +2,8 @@
 .eslintrc.json
 .gitignore
 .npmignore
-.storybook
+.styleguidist
 .travis.yml
 docs
+story
 test

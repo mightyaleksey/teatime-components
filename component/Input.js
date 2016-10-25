@@ -1,17 +1,23 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { cssModules, isControlled, omit } = require('../lib/tool');
-const { isUndefined, noop, prop } = require('../lib/dash');
+const { isControlled, themes } = require('../lib/tool');
+const { isUndefined, noop, omit, prop } = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
 
-const omitProps = omit(['defaultValue', 'onChange', 'onClear', 'value']);
-const themes = cssModules({
+const cssModules = {
   m: require('../style/input/input-m.css'),
   s: require('../style/input/input-s.css'),
   xs: require('../style/input/input-xs.css'),
-});
+};
+
+const omitProps = omit([
+  'defaultValue',
+  'onChange',
+  'styles',
+  'value',
+]);
 
 class Input extends Component {
   constructor(props) {
@@ -132,6 +138,7 @@ class Input extends Component {
 Input.defaultProps = {
   onChange: noop,
   size: 's',
+  styles: cssModules,
   type: 'text',
 };
 

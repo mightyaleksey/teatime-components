@@ -1,12 +1,12 @@
 'use strict';
 
 const { Component, PropTypes } = require('react');
-const { cssModules, omit } = require('../lib/tool');
+const { omit } = require('../lib/dash');
+const { themes } = require('../lib/tool');
 const React = require('react');
 const cc = require('classnames');
 
-const omitProps = omit(['size', 'styles', 'theme']);
-const themes = cssModules({
+const cssModules = {
   'action-l': require('../style/button/button-action-l.css'),
   'action-m': require('../style/button/button-action-m.css'),
   'action-s': require('../style/button/button-action-s.css'),
@@ -19,7 +19,13 @@ const themes = cssModules({
   'normal-m': require('../style/button/button-normal-m.css'),
   'normal-s': require('../style/button/button-normal-s.css'),
   'normal-xs': require('../style/button/button-normal-xs.css'),
-});
+};
+
+const omitProps = omit([
+  'size',
+  'styles',
+  'theme',
+]);
 
 class Button extends Component {
   constructor(props) {
@@ -66,6 +72,7 @@ class Button extends Component {
 
 Button.defaultProps = {
   size: 's',
+  styles: cssModules,
   theme: 'normal',
 };
 

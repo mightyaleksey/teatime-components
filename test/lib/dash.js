@@ -9,6 +9,7 @@ const {
   identity,
   invert,
   map,
+  omit,
   prop,
   reduce,
 } = require('../../lib/dash');
@@ -27,6 +28,12 @@ test('defaultTo', t => {
 test('invert', t => {
   t.deepEqual(invert(['a', 'b']), {a: '0', b: '1'});
   t.deepEqual(invert({a: 'b'}), {b: 'a'});
+  t.end();
+});
+
+test('omit', t => {
+  t.deepEqual(omit(['a', 'b'], {b: 3, c: 0, d: false}), {c: 0, d: false});
+  t.deepEqual(omit(['a', 'b'])({b: 3, c: 0, d: false}), {c: 0, d: false});
   t.end();
 });
 

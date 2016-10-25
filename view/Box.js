@@ -2,12 +2,14 @@
 
 const { Component, PropTypes } = require('react');
 const { genericId } = require('../lib/identity');
-const { isUndefined, noop } = require('../lib/dash');
-const { omit } = require('../lib/tool');
+const { isUndefined, noop, omit } = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
 
-const omitProps = omit(['id', 'onChange']);
+const omitProps = omit([
+  'id',
+  'onChange',
+]);
 
 class Box extends Component {
   constructor(props) {
