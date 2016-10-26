@@ -1,0 +1,31 @@
+.l
+{
+  padding: 0 16px;
+
+  font-size: 18px;
+  line-height: 36px;
+}
+
+.m
+{
+  padding: 0 13px;
+
+  font-size: 15px;
+  line-height: 30px;
+}
+
+.s
+{
+  padding: 0 11px;
+
+  font-size: 13px;
+  line-height: 26px;
+}
+
+.xs
+{
+  padding: 0 8px;
+
+  font-size: 13px;
+  line-height: 22px;
+}

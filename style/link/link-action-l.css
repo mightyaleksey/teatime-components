@@ -1,4 +1,6 @@
 .control
 {
-  composes: control from '../button/button-action-l.css';
+  composes: selector from './link.css';
+  composes: action from '../button/button.css';
+  composes: l from '../button/button-size.css';
 }

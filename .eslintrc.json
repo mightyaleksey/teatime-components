@@ -2,12 +2,12 @@
   "env": {
     "browser": true,
     "commonjs": true,
-    "es6": true
-  },
-  "globals": {
-    "process": true
+    "es6": true,
+    "node": true
   },
   "extends": "eslint:recommended",
+  "installedESLint": true,
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -18,42 +18,92 @@
     "react"
   ],
   "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "array-bracket-spacing": [
+      "off"
+    ],
     "comma-dangle": [
       "error",
       "always-multiline"
+    ],
+    "comma-spacing": [
+      "error",
+      {
+        "after": true,
+        "before": false
+      }
+    ],
+    "computed-property-spacing": [
+      "error",
+      "never"
+    ],
+    "eol-last": [
+      "error",
+      "always"
     ],
     "indent": [
       "error",
       2
     ],
-    "jsx-quotes": [
+    "keyword-spacing": [
       "error",
-      "prefer-single"
+      {
+        "after": true,
+        "before": true
+      }
     ],
     "linebreak-style": [
       "error",
       "unix"
     ],
+    "max-len": [
+      "error",
+      {
+        "code": 80,
+        "ignoreComments": true,
+        "ignoreStrings": true,
+        "ignoreUrls": true
+      }
+    ],
+    "no-empty-pattern": "error",
     "no-multiple-empty-lines": [
       "error",
       {
         "max": 1,
+        "maxBOF": 0,
         "maxEOF": 0
       }
     ],
+    "object-curly-spacing": [
+      "off"
+    ],
     "quotes": [
       "error",
-      "single",
-      {
-        "allowTemplateLiterals": true
-      }
+      "single"
     ],
-    "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error",
     "semi": [
       "error",
       "always"
     ],
-    "strict": "error"
+    "prefer-const": "error",
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never"
+      }
+    ],
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    "space-unary-ops": [
+      "error",
+      {
+        "nonwords": false,
+        "words": true
+      }
+    ]
   }
 }

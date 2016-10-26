@@ -11,12 +11,14 @@
   }
 }
 
+.selector
+{
+  /* the common selector */
+}
+
 .control
 {
   display: inline-block;
-
-  width: 16px;
-  height: 16px;
 
   animation: spin 1s infinite linear;
 

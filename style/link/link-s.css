@@ -1,0 +1,6 @@
+.control
+{
+  composes: selector from './link.css';
+  composes: control from './link.css';
+  composes: s from './link-size.css';
+}

@@ -1,11 +1,6 @@
-@value size-s, line-s from '../font.css';
-
 .control
 {
-  composes: control from './button-normal.css';
-
-  padding: 0 13px;
-
-  font-size: size-s;
-  line-height: line-s;
+  composes: selector from './button.css';
+  composes: normal from './button.css';
+  composes: s from './button-size.css';
 }

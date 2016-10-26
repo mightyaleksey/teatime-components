@@ -1,6 +1,9 @@
-.babelrc
-.csscomb.json
 .editorconfig
+.eslintrc.json
 .gitignore
-demo/*
-preview/*
+.npmignore
+.styleguidist
+.travis.yml
+docs
+story
+test

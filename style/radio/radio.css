@@ -1,18 +1,22 @@
+.selector
+{
+  /* the common selector */
+}
+
 .container
 {
   display: inline-block;
+
+  font-family: arial,sans-serif;
 }
 
 .wrapper
 {
   position: relative;
 
-  display: block;
-
   color: #000;
 
-  font-family: arial,sans-serif;
-  line-height: normal;
+  font: inherit;
 }
 
 .control
@@ -23,45 +27,26 @@
 
   cursor: pointer;
   user-select: none;
-  transition: background .1s ease-out,box-shadow .1s ease-out;
+  text-decoration: none;
 
-  border-radius: 50%;
+  border: 1px solid #ccc;
+  outline: none;
   background: #fff;
-  box-shadow: inset 0 0 0 1px #ccc;
-
-  line-height: normal;
 
   -webkit-tap-highlight-color: transparent;
 }
 
+.control::-moz-focus-inner
+{
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+}
+
 .control:hover
 {
-  box-shadow: inset 0 0 0 1px #b3b3b3;
-}
-
-.control:active
-{
-  background: #f6f5f3;
-}
-
-.control:before
-{
-  visibility: hidden;
-
-  content: '\00A0';
-}
-
-.control:after
-{
-  position: absolute;
-
-  visibility: hidden;
-
-  content: '';
-
-  opacity: 0;
-  border-radius: 50%;
-  background: #000;
+  border: 1px solid #b3b3b3;
 }
 
 .native
@@ -75,38 +60,145 @@
   outline: 0;
 }
 
-.label
-{
-  /* base */
-}
-
-.native:checked + .control
-{
-  background: #ffeba0;
-}
-
-.native:checked + .control:after
-{
-  visibility: visible;
-
-  opacity: 1;
-}
-
 .native:focus + .control
 {
-  box-shadow: inset 0 0 0 2px #ffdb4d;
+  border: 1px solid #ffdb4d;
+  box-shadow: inset 0 0 0 1px #ffdb4d;
 }
 
 .native:disabled + .control
 {
   cursor: default;
 
+  border: 1px solid #ebebeb;
   background: #ebebeb;
-  box-shadow: none;
 }
 
-.native:disabled + .control:after,
-.native:disabled ~ .label
+/* theme: `common` */
+
+.common-wrapper
 {
-  opacity: .5;
+  composes: wrapper;
+
+  display: block;
+
+  line-height: 1.2;
+}
+
+.common-control
+{
+  composes: control;
+
+  transition: background .1s ease-out,border .1s ease-out,box-shadow .1s ease-out;
+
+  border-radius: 50%;
+}
+
+.common-control:before
+{
+  visibility: hidden;
+
+  content: '\00A0';
+}
+
+.common-control:after
+{
+  position: absolute;
+
+  visibility: hidden;
+
+  content: '';
+
+  opacity: 0;
+  border-radius: 50%;
+  background: #000;
+}
+
+.common-control:active
+{
+  background: #f6f5f3;
+}
+
+.common-native
+{
+  composes: native;
+}
+
+.common-native:checked + .control
+{
+  background: #ffeba0;
+}
+
+.common-native:checked + .control:after
+{
+  visibility: visible;
+
+  opacity: 1;
+}
+
+/* theme: `button` */
+
+.button-wrapper
+{
+  composes: wrapper;
+
+  display: inline;
+}
+
+.button-control
+{
+  composes: control;
+
+  z-index: 0;
+
+  box-sizing: border-box;
+  margin-right: -1px;
+
+  text-align: center;
+
+  color: #000;
+}
+
+.button-control:hover
+{
+  z-index: 1;
+}
+
+.button-wrapper:first-child .button-control
+{
+  border-radius: 3px 0 0 3px;
+}
+
+.button-wrapper:last-child .button-control
+{
+  margin-right: 0;
+
+  border-radius: 0 3px 3px 0;
+}
+
+.button-native
+{
+  composes: native;
+}
+
+.button-native:focus + .button-control
+{
+  z-index: 1;
+}
+
+.button-native + .button-control:active
+{
+  background: #f6f5f3;
+}
+
+.button-native:checked + .button-control
+{
+  position: relative;
+
+  background: #ffeca6;
+}
+
+.button-native:checked + .button-control:active
+{
+  background: #fee481;
 }
