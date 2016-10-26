@@ -81,7 +81,8 @@ class Select extends Component {
 
       const menu = findDOMNode(this.refs.menu);
       const selected = findDOMNode(this.refs.selected);
-      menu.scrollTop = selected.offsetTop;
+      // small fix for the padding offset. should change CSS in future.
+      menu.scrollTop = selected.offsetTop < 7 ? 0 : selected.offsetTop;
     } else if (!this.state.isOpened) {
       this.wereOptionsShown = false;
     }
