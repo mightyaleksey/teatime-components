@@ -2,6 +2,7 @@
 .eslintrc.json
 .gitignore
 .npmignore
+.script
 .styleguidist
 .travis.yml
 docs

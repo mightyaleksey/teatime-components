@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ `git status -s|wc -l` -gt '0' ]; then
+  echo 'commit changes first'
+  exit 1
+fi
+
+cli=node_modules/.bin
+
+babel() {
+  ${cli}/babel $1 --out-dir ${2:-$1} || exit 1
+}
+
+babel component
+babel lib
+babel view
+
+if [ "$1" = '--deploy' ]; then
+  npm publish --tag beta
+  git reset HEAD --hard
+fi

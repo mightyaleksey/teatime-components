@@ -4,7 +4,6 @@ const {
   compose,
   constant,
   curry,
-  defaultTo,
   groupBy,
   identity,
   invert,
@@ -17,13 +16,6 @@ const test = require('tape');
 
 const add = curry((a, b, c = 0) => a + b + c);
 const inc = add(1);
-
-test('defaultTo', t => {
-  t.equal(defaultTo('a')(void 0), 'a');
-  t.equal(defaultTo('a')(null), null);
-  t.equal(defaultTo('a')('b'), 'b');
-  t.end();
-});
 
 test('invert', t => {
   t.deepEqual(invert(['a', 'b']), {a: '0', b: '1'});
