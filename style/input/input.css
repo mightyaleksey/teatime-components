@@ -36,6 +36,12 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* http://stackoverflow.com/questions/14007655/remove-ie10s-clear-field-x-button-on-certain-inputs */
+.control::-ms-clear
+{
+  display: none;
+}
+
 .control:-moz-placeholder,
 .control:-ms-input-placeholder,
 .control::-moz-placeholder,
