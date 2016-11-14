@@ -27,6 +27,11 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.control::-ms-clear
+{
+  display: none;
+}
+
 .control::-webkit-input-placeholder,
 .control:-moz-placeholder,
 .control::-moz-placeholder,
