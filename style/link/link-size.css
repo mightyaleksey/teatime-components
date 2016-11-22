@@ -1,19 +1,19 @@
 .l
 {
-  font-size: 18px;
+  font: 18px arial,sans-serif;
 }
 
 .m
 {
-  font-size: 15px;
+  font: 15px arial,sans-serif;
 }
 
 .s
 {
-  font-size: 13px;
+  font: 13px arial,sans-serif;
 }
 
 .xs
 {
-  font-size: 13px;
+  font: 13px arial,sans-serif;
 }

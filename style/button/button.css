@@ -12,12 +12,11 @@
   cursor: pointer;
   user-select: none;
   text-align: center;
+  white-space: nowrap;
   text-decoration: none;
 
   border-radius: 3px;
   outline: none;
-
-  font-family: arial,sans-serif;
 
   -webkit-tap-highlight-color: transparent;
 }
@@ -53,7 +52,7 @@
 
   transition: background .1s ease-out;
 
-  color: #000;
+  color: black;
   border: 1px solid #ffdb4d;
   background: #ffdb4d;
 }
@@ -82,9 +81,9 @@
 
   transition: border .1s ease-out,box-shadow .1s ease-out;
 
-  color: #000;
+  color: black;
   border: 1px solid #ccc;
-  background: #fff;
+  background: white;
 }
 
 .normal:hover

@@ -1,0 +1,124 @@
+.selector
+{
+  /* the common selector */
+}
+
+.container
+{
+  position: relative;
+
+  display: inline-block;
+
+  width: 11em;
+
+  white-space: nowrap;
+}
+
+.button
+{
+  composes: control from '../button/button.css';
+
+  position: relative;
+
+  margin: 0 -1px 0 0;
+  padding: 0;
+
+  transition: border .1s ease-out,box-shadow .1s ease-out;
+
+  border: 1px solid #ccc;
+  border-radius: 0;
+  background: white;
+
+  font: inherit;
+}
+
+.button:before
+{
+  visibility: hidden;
+
+  content: '\00A0';
+}
+
+.button:hover
+{
+  border: 1px solid #b3b3b3;
+}
+
+.button:focus
+{
+  border: 1px solid #ffdb4d;
+  box-shadow: inset 0 0 0 1px #ffdb4d;
+}
+
+.button:active
+{
+  background: #f6f5f3;
+}
+
+.button:active,
+.button:hover,
+.button:focus
+{
+  z-index: 1;
+}
+
+.button:disabled
+{
+  z-index: 1;
+
+  border: 1px solid #ccc;
+  background: white;
+}
+
+.button:disabled:after
+{
+  position: absolute;
+  top: 49.5%;
+  left: -19.5%;
+
+  width: 141%;
+  height: 0;
+
+  content: '';
+  transform: rotate(-45deg);
+
+  border-bottom: 1px solid #ccc;
+}
+
+.clear
+{
+  composes: clear from '../input/input.css';
+
+  z-index: 1;
+}
+
+.control
+{
+  composes: control from '../input/input.css';
+
+  position: relative;
+}
+
+.menu
+{
+  position: absolute;
+  z-index: 200;
+  top: calc(100% + 8px);
+  left: 0;
+
+  min-width: 100%;
+
+  background: white;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.1),0 9px 20px -5px rgba(0,0,0,.4);
+}
+
+.menuItem
+{
+  float: left;
+
+  width: 7.69%;
+  height: 0;
+  padding-bottom: 7.69%;
+
+  cursor: pointer;
+}

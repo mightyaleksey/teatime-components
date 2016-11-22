@@ -2,29 +2,47 @@
 
 const {Component, PropTypes} = require('react');
 const {genericId} = require('../lib/identity');
-const {isUndefined, noop, omit} = require('../lib/dash');
+const {isUndefined, noop, omit, prop} = require('../lib/dash');
+const {themes} = require('../lib/tool');
 const React = require('react');
 const cc = require('classnames');
+
+const cssModules = {
+  s: require('../style/check/check-s.css'),
+  m: require('../style/check/check-m.css'),
+};
 
 const omitProps = omit([
   'id',
   'onChange',
+  'styles',
 ]);
 
-class Box extends Component {
+class Check extends Component {
   constructor(props) {
     super(props);
 
+    this._styles = themes(this.token);
+
     this.state = {
       id: props.id || genericId(),
+      styles: this._styles(props),
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       id: isUndefined(nextProps.id) ? this.state.id : nextProps.id,
+      styles: this._styles(nextProps),
     });
   }
+
+  focus() {
+    if (!this._check) return;
+    this._check.focus();
+  }
+
+  token = prop('size')
 
   _onChange = e => {
     const {checked, value} = e.target;
@@ -36,13 +54,11 @@ class Box extends Component {
       checked,
       children,
       className,
-      defaultValue,
+      defaultChecked,
       disabled,
       hasLabel,
       label,
       name,
-      styles,
-      type,
       value,
       ...other,
     } = this.props;
@@ -52,7 +68,7 @@ class Box extends Component {
       label: labelStyle,
       native,
       wrapper,
-    } = styles;
+    } = this.state.styles;
 
     const id = this.state.id;
     const text = isUndefined(label)
@@ -66,12 +82,13 @@ class Box extends Component {
         {this.renderInput({
           checked,
           className: native,
-          defaultValue,
+          defaultChecked,
           disabled,
           id,
           name,
           onChange: this._onChange,
-          type,
+          ref: r => this._check = r,
+          type: 'checkbox',
           value,
         })}
         {this.renderControl({
@@ -109,21 +126,23 @@ class Box extends Component {
   }
 }
 
-Box.defaultProps = {
+Check.defaultProps = {
   hasLabel: true,
   onChange: noop,
-  type: 'checkbox',
+  size: 's',
+  styles: cssModules,
 };
 
-Box.propTypes = {
+Check.propTypes = {
   hasLabel: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  type: PropTypes.oneOf([
-    'checkbox',
-    'radio',
+  size: PropTypes.oneOf([
+    's',
+    'm',
   ]),
+  styles: PropTypes.object,
 };
 
-module.exports = Box;
+module.exports = Check;

@@ -1,0 +1,22 @@
+.wrapper
+{
+  composes: selector from './check.css';
+  composes: wrapper from './check.css';
+  composes: wrapper-m from './check-size.css';
+}
+
+.native
+{
+  composes: native from './check.css';
+}
+
+.control
+{
+  composes: control from './check.css';
+  composes: control-m from './check-size.css';
+}
+
+.label
+{
+  composes: label from './check.css';
+}

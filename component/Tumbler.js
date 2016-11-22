@@ -1,9 +1,9 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
-const { genericId } = require('../lib/identity');
-const { isUndefined, noop, omit, prop } = require('../lib/dash');
-const { themes } = require('../lib/tool');
+const {Component, PropTypes} = require('react');
+const {genericId} = require('../lib/identity');
+const {isUndefined, noop, omit, prop} = require('../lib/dash');
+const {themes} = require('../lib/tool');
 const React = require('react');
 const cc = require('classnames');
 
@@ -46,7 +46,7 @@ class Tumbler extends Component {
   token = prop('size')
 
   _onChange = (e) => {
-    const { checked, value } = e.target;
+    const {checked, value} = e.target;
     this.props.onChange(e, {checked, value});
   }
 

@@ -1,9 +1,9 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
-const { genericId } = require('../lib/identity');
-const { isControlled, themes } = require('../lib/tool');
-const { isUndefined, map, noop, omit } = require('../lib/dash');
+const {Component, PropTypes} = require('react');
+const {genericId} = require('../lib/identity');
+const {isControlled, themes} = require('../lib/tool');
+const {isUndefined, map, noop, omit} = require('../lib/dash');
 const Box = require('../view/Box');
 const React = require('react');
 const cc = require('classnames');
@@ -54,7 +54,7 @@ class Radio extends Component {
   }
 
   // token :: object -> string
-  token({ size, theme }) {
+  token({size, theme}) {
     return `${theme}-${size}`;
   }
 

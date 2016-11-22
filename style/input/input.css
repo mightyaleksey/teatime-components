@@ -10,9 +10,6 @@
   display: inline-block;
 
   width: 100%;
-
-  font-family: arial,sans-serif;
-  font-size: 13px;
 }
 
 .control
@@ -26,11 +23,9 @@
   border: 1px solid #ccc;
   border-radius: 0;
   outline: none;
-  background: #fff;
+  background: white;
 
-  font-family: inherit;
-  font-size: inherit;
-  line-height: 30px;
+  font: inherit;
 
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
