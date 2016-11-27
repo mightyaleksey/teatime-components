@@ -1,0 +1,80 @@
+/* size xs */
+
+.container-xs
+{
+  font: 13px arial,sans-serif;
+}
+
+.button-xs
+{
+  width: 24px;
+  height: 24px;
+
+  line-height: 22px;
+}
+
+.clear-xs
+{
+  composes: clear from '../input/input-xs.css';
+}
+
+.control-xs
+{
+  composes: control from '../input/input-xs.css';
+
+  width: calc(100% - 23px);
+}
+
+/* size s */
+
+.container-s
+{
+  font: 13px arial,sans-serif;
+}
+
+.button-s
+{
+  width: 28px;
+  height: 28px;
+
+  line-height: 26px;
+}
+
+.clear-s
+{
+  composes: clear from '../input/input-s.css';
+}
+
+.control-s
+{
+  composes: control from '../input/input-s.css';
+
+  width: calc(100% - 27px);
+}
+
+/* size m */
+
+.container-m
+{
+  font: 15px arial,sans-serif;
+}
+
+.button-m
+{
+  width: 32px;
+  height: 32px;
+
+  line-height: 30px;
+}
+
+.clear-m
+{
+  composes: clear from '../input/input-m.css';
+}
+
+.control-m
+{
+  composes: control from '../input/input-m.css';
+
+  width: calc(100% - 31px);
+}

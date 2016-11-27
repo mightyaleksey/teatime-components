@@ -1,6 +1,6 @@
 'use strict';
 
-const { isControlled } = require('../../lib/tool');
+const {isControlled} = require('../../lib/tool');
 const test = require('tape');
 
 test('isControlled', t => {

@@ -12,7 +12,8 @@
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
       "jsx": true
-    }
+    },
+    "ecmaVersion": 6
   },
   "plugins": [
     "react"
@@ -21,11 +22,12 @@
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "array-bracket-spacing": [
-      "off"
+      "error",
+      "never"
     ],
     "comma-dangle": [
       "error",
-      "always-multiline"
+      "only-multiline"
     ],
     "comma-spacing": [
       "error",
@@ -76,7 +78,8 @@
       }
     ],
     "object-curly-spacing": [
-      "off"
+      "error",
+      "never"
     ],
     "quotes": [
       "error",

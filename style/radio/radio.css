@@ -6,15 +6,13 @@
 .container
 {
   display: inline-block;
-
-  font-family: arial,sans-serif;
 }
 
 .wrapper
 {
   position: relative;
 
-  color: #000;
+  color: black;
 
   font: inherit;
 }
@@ -31,7 +29,7 @@
 
   border: 1px solid #ccc;
   outline: none;
-  background: #fff;
+  background: white;
 
   -webkit-tap-highlight-color: transparent;
 }
@@ -111,7 +109,7 @@
 
   opacity: 0;
   border-radius: 50%;
-  background: #000;
+  background: black;
 }
 
 .common-control:active
@@ -156,7 +154,7 @@
 
   text-align: center;
 
-  color: #000;
+  color: black;
 }
 
 .button-control:hover
@@ -201,4 +199,17 @@
 .button-native:checked + .button-control:active
 {
   background: #fee481;
+}
+
+.button-native:disabled + .button-control
+{
+  z-index: 0;
+
+  border: 1px solid transparent;
+  background: #ebebeb;
+}
+
+.button-native:disabled:checked + .button-control
+{
+  background: #d9d9d9;
 }

@@ -1,0 +1,41 @@
+/* size s */
+
+.wrapper-s
+{
+  font: 13px/normal arial,sans-serif;
+}
+
+.control-s
+{
+  width: 14px;
+  height: 14px;
+}
+
+.control-s:after
+{
+  width: 16px;
+  height: 16px;
+
+  background: url(../asset/tick-s.svg) 0 0 no-repeat;
+}
+
+/* size m */
+
+.wrapper-m
+{
+  font: 15px/normal arial,sans-serif;
+}
+
+.control-m
+{
+  width: 17px;
+  height: 17px;
+}
+
+.control-m:after
+{
+  width: 18px;
+  height: 18px;
+
+  background: url(../asset/tick-m.svg) 0 0 no-repeat;
+}

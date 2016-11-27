@@ -1,8 +1,8 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
-const { omit, prop } = require('../lib/dash');
-const { themes } = require('../lib/tool');
+const {Component, PropTypes} = require('react');
+const {omit, prop} = require('../lib/dash');
+const {themes} = require('../lib/tool');
 const React = require('react');
 const cc = require('classnames');
 
@@ -43,7 +43,7 @@ class Spin extends Component {
       className,
       ...other,
     } = this.props;
-    const { control } = this.state.styles;
+    const {control} = this.state.styles;
 
     return (
       <span

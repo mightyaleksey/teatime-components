@@ -3,17 +3,17 @@
   composes: selector from './input.css';
   composes: wrapper from './input.css';
 
-  font-size: 13px;
+  font: 13px arial,sans-serif;
 }
 
 .control
 {
   composes: control from './input.css';
 
+  height: 24px;
   padding: 0 5px;
 
   line-height: 22px;
-  height: 22px;
 }
 
 .clear

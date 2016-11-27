@@ -1,8 +1,8 @@
 'use strict';
 
-const { Component, PropTypes } = require('react');
-const { isControlled, themes } = require('../lib/tool');
-const { isUndefined, noop, omit, prop } = require('../lib/dash');
+const {Component, PropTypes} = require('react');
+const {isControlled, themes} = require('../lib/tool');
+const {isUndefined, noop, omit, prop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
 
@@ -86,12 +86,14 @@ class Input extends Component {
       type,
       ...other,
     } = this.props;
+
+    const {styles, value} = this.state;
+
     const {
       clear,
       control,
       wrapper,
-    } = this.state.styles;
-    const value = this.state.value;
+    } = styles;
 
     return (
       <span

@@ -1,7 +1,7 @@
 'use strict';
 
-const { compose, curry, isArray } = require('../lib/dash');
-const { dirname, resolve } = require('path');
+const {compose, curry, isArray} = require('../lib/dash');
+const {dirname, resolve} = require('path');
 const mergeWith = require('lodash.mergewith');
 
 const merge = curry((b, a) => mergeWith(a, b, customizer));
@@ -23,7 +23,7 @@ module.exports = {
       loaders: [
         {
           test: /\.js$/i,
-          include: new RegExp(`${rootDir}/(component|lib|view)/`),
+          include: new RegExp(`${rootDir}/(component|decorator|lib|view)/`),
           loader: 'babel',
         },
         {
