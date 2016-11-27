@@ -12,6 +12,7 @@ babel() {
 }
 
 babel component
+babel decorator
 babel lib
 babel view
 
