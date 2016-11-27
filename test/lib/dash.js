@@ -2,16 +2,22 @@
 
 const {
   assign,
+  castArray,
   compose,
   constant,
   curry,
+  filter,
+  first,
   groupBy,
   identity,
   invert,
   isArray,
+  isFunction,
+  isString,
   isUndefined,
   map,
   negate,
+  noop,
   omit,
   prop,
   reduce,
@@ -29,6 +35,16 @@ test('assign', t => {
   t.notEqual(a, c);
   t.notEqual(b, c);
   t.deepEqual(c, {a: 5, b: 6, c: 7});
+  t.end();
+});
+
+test('castArray', t => {
+  const a = [];
+  t.equal(castArray(a), a);
+  t.notEqual(castArray([5]), [5]);
+  t.deepEqual(castArray(void 0), [void 0]);
+  t.deepEqual(castArray(null), [null]);
+  t.deepEqual(castArray(), []);
   t.end();
 });
 
@@ -58,6 +74,18 @@ test('curry', t => {
   t.end();
 });
 
+test('filter', t => {
+  const a = [0, 1, null, 2, 3];
+  t.notEqual(filter(Boolean, a), a);
+  t.deepEqual(filter(Boolean, a), [1, 2, 3]);
+  t.end();
+});
+
+test('first', t => {
+  t.equal(first([5]), 5);
+  t.end();
+});
+
 test('groupBy', t => {
   t.deepEqual(groupBy(Math.round, [1, 3.2, 1.5, 2, 3]), {
     1: [1],
@@ -79,6 +107,18 @@ test('isArray', t => {
   t.end();
 });
 
+test('isFunction', t => {
+  t.ok(isFunction(() => {}));
+  t.notOk(isFunction(void 0));
+  t.end();
+});
+
+test('isString', t => {
+  t.ok(isString(''));
+  t.notOk(isString(0));
+  t.end();
+});
+
 test('isUndefined', t => {
   t.ok(isUndefined(void 0));
   t.notOk(isUndefined(''));
@@ -93,6 +133,11 @@ test('map', t => {
 
 test('negate', t => {
   t.ok(negate(constant())());
+  t.end();
+});
+
+test('noop', t => {
+  t.equal(noop(), void 0);
   t.end();
 });
 

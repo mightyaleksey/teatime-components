@@ -46,6 +46,8 @@
     "webpack": "^1.13.3"
   },
   "dependencies": {
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "fuzzysearch": "^1.0.3",
+    "lodash.findindex": "^4.6.0"
   }
 }

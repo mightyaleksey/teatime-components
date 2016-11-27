@@ -1,0 +1,158 @@
+.selector
+{
+  /* the common selector */
+}
+
+.wrapper
+{
+  position: relative;
+
+  display: inline-block;
+
+  min-width: 7em;
+}
+
+.search
+{
+  position: absolute;
+  top: 1px;
+  left: 0;
+
+  display: inline-block;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  border: 0;
+  outline: 0;
+  background: transparent;
+  box-shadow: none;
+
+  font: inherit;
+  line-height: 26px;
+
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.control
+{
+  composes: control from '../button/button.css';
+  composes: normal from '../button/button.css';
+  composes: s from '../button/button-size.css';
+
+  display: block;
+
+  width: 100%;
+
+  text-align: left;
+  text-overflow: ellipsis;
+}
+
+.control:after
+{
+  content: '\A0';
+
+  font: inherit;
+}
+
+.arrow
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: block;
+
+  height: 100%;
+
+  cursor: pointer;
+  transition: transform .1s ease-out;
+  transform: rotate(0deg);
+}
+
+.menu
+{
+  position: absolute;
+  z-index: 200;
+  top: calc(100% + 8px);
+  left: 0;
+
+  overflow-y: auto;
+
+  background: white;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.1),0 9px 20px -5px rgba(0,0,0,.4);
+}
+
+.menuItem
+{
+  display: block;
+  overflow-x: hidden;
+
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font: inherit;
+}
+
+.emptyItem
+{
+  white-space: nowrap;
+
+  color: rgba(0,0,0,.4);
+
+  font: inherit;
+}
+
+/* states */
+
+.search:focus + .control
+{
+  border: 1px solid #ffdb4d;
+  box-shadow: inset 0 0 0 1px #ffdb4d;
+}
+
+.search:disabled + .control
+{
+  cursor: default;
+
+  color: rgba(0,0,0,.5);
+  border: 1px solid #ebebeb;
+  background: #ebebeb;
+}
+
+.control:disabled ~ .arrow,
+.search:disabled ~ .arrow
+{
+  cursor: default;
+
+  opacity: .4;
+}
+
+/* mixin */
+
+.isFixedMenu
+{
+  width: 100%;
+}
+
+.isFocusedMenuItem
+{
+  background-color: #ffeba0;
+}
+
+.isOpenedMenu
+{
+  transform: rotate(-180deg);
+}
+
+.isPseudoFocusedSearch
+{
+  opacity: 0;
+}
+
+.isSelectedMenuItem
+{
+  background-repeat: no-repeat;
+}

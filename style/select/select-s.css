@@ -1,0 +1,70 @@
+.wrapper
+{
+  composes: selector from './select.css';
+  composes: wrapper from './select.css';
+  composes: wrapper-s from './select-size.css';
+}
+
+.search
+{
+  composes: search from './select.css';
+  composes: search-s from './select-size.css';
+}
+
+.control
+{
+  composes: control from './select.css';
+  composes: control-s from './select-size.css';
+}
+
+.arrow
+{
+  composes: arrow from './select.css';
+  composes: arrow-s from './select-size.css';
+}
+
+.menu
+{
+  composes: menu from './select.css';
+  composes: menu-s from './select-size.css';
+}
+
+.menuItem
+{
+  composes: menuItem from './select.css';
+  composes: menuItem-s from './select-size.css';
+}
+
+.emptyItem
+{
+  composes: emptyItem from './select.css';
+  composes: emptyItem-s from './select-size.css';
+}
+
+/* mixin */
+
+.isFixedMenu
+{
+  composes: isFixedMenu from './select.css';
+}
+
+.isFocusedMenuItem
+{
+  composes: isFocusedMenuItem from './select.css';
+}
+
+.isOpenedMenu
+{
+  composes: isOpenedMenu from './select.css';
+}
+
+.isPseudoFocusedSearch
+{
+  composes: isPseudoFocusedSearch from './select.css';
+}
+
+.isSelectedMenuItem
+{
+  composes: isSelectedMenuItem from './select.css';
+  composes: isSelectedMenuItem-s from './select-size.css';
+}

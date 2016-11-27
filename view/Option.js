@@ -6,11 +6,11 @@ const React = require('react');
 
 class Option extends Component {
   _onClick = e => {
-    this.props.onClick(e);
+    this.props.onClick(e, this.props.position);
   }
 
   _onFocus = e => {
-    this.props.onFocus(e);
+    this.props.onFocus(e, this.props.position);
   }
 
   render() {
@@ -40,6 +40,8 @@ Option.defaultProps = {
 Option.propTypes = {
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
+  position: PropTypes.number,
+  value: PropTypes.string,
 };
 
 module.exports = Option;
