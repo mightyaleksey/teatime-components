@@ -1,6 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
+const {cssColorValue} = require('../lib/color');
 const {noop} = require('../lib/dash');
 const React = require('react');
 
@@ -19,7 +20,9 @@ class Tile extends Component {
       <i
         className={className}
         onClick={this._onClick}
-        style={{backgroundColor: '#' + color}}/>
+        style={{
+          backgroundColor: cssColorValue(color),
+        }}/>
     );
   }
 }

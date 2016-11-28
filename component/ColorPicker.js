@@ -2,6 +2,7 @@
 
 const {Component, PropTypes} = require('react');
 const {TAB} = require('../lib/keyCode');
+const {cssColorValue} = require('../lib/color');
 const {isControlled, themes} = require('../lib/tool');
 const {isUndefined, map, noop, omit, prop} = require('../lib/dash');
 const Overlay = require('../view/Overlay');
@@ -128,6 +129,7 @@ class ColorPicker extends Component {
       menuItem,
     } = styles;
 
+    // @todo move to the separeted method
     const tiles = map(color =>
       this.renderTile({
         className: menuItem,
@@ -146,7 +148,7 @@ class ColorPicker extends Component {
           disabled,
           onClick: this._onClick,
           style: {
-            backgroundColor: '#' + value,
+            backgroundColor: cssColorValue(value),
           },
         })}
         {this.renderClear({
