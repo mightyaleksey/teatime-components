@@ -63,12 +63,14 @@ class Check extends Component {
       ...other,
     } = this.props;
 
+    const {styles = {}} = this.state;
+
     const {
       control,
       label: labelStyle,
       native,
       wrapper,
-    } = this.state.styles;
+    } = styles;
 
     const id = this.state.id;
     const text = isUndefined(label)
