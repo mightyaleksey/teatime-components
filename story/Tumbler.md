@@ -1,13 +1,54 @@
+## Preview
+
+
+### size xs
+
 ```
 <div>
-  size `xs` <Tumbler name='exs' size='xs'/> <Tumbler disabled={true} name='dxs' size='xs'/>
+  some text for the baseline
+  <Tumbler
+    name='tumbler-xs'
+    size='xs'/>
+  {' '}
+  <Tumbler
+    disabled={true}
+    name='tumbler-xs-d'
+    size='xs'/>
+</div>
+```
 
-  <hr className='delimiter'/>
 
-  size `s` <Tumbler defaultChecked={true} name='es' size='s'/> <Tumbler defaultChecked={true} disabled={true} name='ds' size='s'/>
+### size s
 
-  <hr className='delimiter'/>
+```
+<div>
+  some text for the baseline
+  <Tumbler
+    defaultChecked={true}
+    name='tumbler-s'
+    size='s'/>
+  {' '}
+  <Tumbler
+    defaultChecked={true}
+    disabled={true}
+    name='tumbler-s-d'
+    size='s'/>
+</div>
+```
 
-  size `m` <Tumbler name='em' off='No' on='Yes' size='m'/> <Tumbler disabled={true} name='dm' size='m'/>
+
+### size m
+
+```
+<div>
+  some text for the baseline
+  <Tumbler
+    name='tumbler-m'
+    size='m'/>
+  {' '}
+  <Tumbler
+    disabled={true}
+    name='tumbler-m-d'
+    size='m'/>
 </div>
 ```

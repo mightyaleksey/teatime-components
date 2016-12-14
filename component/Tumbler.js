@@ -57,8 +57,8 @@ class Tumbler extends Component {
       defaultChecked,
       disabled,
       name,
-      off,
-      on,
+      offText,
+      onText,
       value,
       ...other,
     } = this.props;
@@ -96,8 +96,8 @@ class Tumbler extends Component {
             <label
               className={control}
               htmlFor={id}>
-              <span className={label}>{on}</span>
-              <span className={label}>{off}</span>
+              <span className={label}>{onText}</span>
+              <span className={label}>{offText}</span>
               <span className={delimiter}>&nbsp;</span>
             </label>
           </div>
@@ -114,8 +114,8 @@ class Tumbler extends Component {
 }
 
 Tumbler.defaultProps = {
-  off: 'Off',
-  on: 'On',
+  offText: 'Off',
+  onText: 'On',
   onChange: noop,
   size: 's',
   styles: cssModules,
