@@ -13,7 +13,7 @@ module.exports = {
   components: '../component/*.js',
   getExampleFilename: compose(
     replace(/\.js$/, '.md'),
-    replace(/\/component\//, '/story/')),
+    replace(/\/component\//, '/\.story/')),
   updateWebpackConfig: merge({
     entry: [
       resolve(__dirname, 'common.css'),
