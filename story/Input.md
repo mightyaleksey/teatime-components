@@ -1,29 +1,58 @@
+## Preview
+
+
+### size xs
+
 ```
-<div className='columns'>
-  <div className='column'>
-    <span className='label'>size `xs`</span>
-    <Input className='control' name='exs' size='xs'/>
+<div>
+  some text for the baseline
+  <Input
+    name='input-xs'
+    size='xs'
+    style={{width: '200px'}}/>
+  {' '}
+  <Input
+    disabled={true}
+    name='input-xs-d'
+    size='xs'
+    style={{width: '200px'}}/>
+</div>
+```
 
-    <hr className='delimiter'/>
 
-    <span className='label'>size `s`</span>
-    <Input className='control' name='es' size='s'/>
+### size s
 
-    <hr className='delimiter'/>
+```
+<div>
+  some text for the baseline
+  <Input
+    name='input-s'
+    size='s'
+    style={{width: '200px'}}/>
+  {' '}
+  <Input
+    disabled={true}
+    name='input-s-d'
+    size='s'
+    style={{width: '200px'}}/>
+</div>
+```
 
-    <span className='label'>size `m`</span>
-    <Input className='control' name='em' size='m'/>
-  </div>
-  <div className='column'>
-    <Input disabled={true} name='dxs' size='xs'/>
 
-    <hr className='delimiter'/>
+### size m
 
-    <Input disabled={true} name='ds' size='s'/>
-
-    <hr className='delimiter'/>
-
-    <Input disabled={true} name='dm' size='m'/>
-  </div>
+```
+<div>
+  some text for the baseline
+  <Input
+    name='input-m'
+    size='m'
+    style={{width: '200px'}}/>
+  {' '}
+  <Input
+    disabled={true}
+    name='input-m-d'
+    size='m'
+    style={{width: '200px'}}/>
 </div>
 ```

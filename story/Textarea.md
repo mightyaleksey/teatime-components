@@ -1,20 +1,39 @@
+## Preview
+
+
+### size s
+
 ```
-<div className='columns'>
-  <div className='column'>
-    <span className='label'>size `s`</span>
-    <Textarea className='control' name='es' size='s'/>
+<div>
+  some text for the baseline
+  <Textarea
+    name='textarea-s'
+    size='s'
+    style={{width: '200px'}}/>
+  {' '}
+  <Textarea
+    disabled={true}
+    name='textarea-s-d'
+    size='s'
+    style={{width: '200px'}}/>
+</div>
+```
 
-    <hr className='delimiter'/>
 
-    <span className='label'>size `m`</span>
-    <Textarea className='control' name='em' size='m'/>
-  </div>
-  <div className='column'>
-    <Textarea disabled={true} name='ds' size='s'/>
+### size m
 
-    <hr className='delimiter'/>
-
-    <Textarea disabled={true} name='dm' size='m'/>
-  </div>
+```
+<div>
+  some text for the baseline
+  <Textarea
+    name='textarea-m'
+    size='m'
+    style={{width: '200px'}}/>
+  {' '}
+  <Textarea
+    disabled={true}
+    name='textarea-m-d'
+    size='m'
+    style={{width: '200px'}}/>
 </div>
 ```

@@ -1,43 +1,85 @@
-### Theme `action`
+## Preview
+
+
+### theme action
 
 ```
 <div>
-  size: `xs` <Button size='xs' theme='action'>Action Button</Button>
-  <hr className='delimiter'/>
-  size: `s` <Button size='s' theme='action'>Action Button</Button>
-  <hr className='delimiter'/>
-  size: `m` <Button size='m' theme='action'>Action Button</Button>
-  <hr className='delimiter'/>
-  size: `l` <Button size='l' theme='action'>Action Button</Button>
+  <Button
+    disabled={true}
+    size='xs'
+    theme='action'>Action Button</Button>
+  {' '}size xs
+  <Button
+    size='xs'
+    theme='action'>Action Button</Button>
+  {' '}size s
+  <Button
+    size='s'
+    theme='action'>Action Button</Button>
+  {' '}size m
+  <Button
+    size='m'
+    theme='action'>Action Button</Button>
+  {' '}size l
+  <Button
+    size='l'
+    theme='action'>Action Button</Button>
 </div>
 ```
 
 
-### Theme `link`
+### theme link
 
 ```
 <div>
-  size: `xs` <Button size='xs' theme='link'>Action Button</Button>
-  <hr className='delimiter'/>
-  size: `s` <Button size='s' theme='link'>Action Button</Button>
-  <hr className='delimiter'/>
-  size: `m` <Button size='m' theme='link'>Action Button</Button>
-  <hr className='delimiter'/>
-  size: `l` <Button size='l' theme='link'>Action Button</Button>
+  <Button
+    disabled={true}
+    size='xs'
+    theme='link'>Link Button</Button>
+  {' '}size xs
+  <Button
+    size='xs'
+    theme='link'>Link Button</Button>
+  {' '}size s
+  <Button
+    size='s'
+    theme='link'>Link Button</Button>
+  {' '}size m
+  <Button
+    size='m'
+    theme='link'>Link Button</Button>
+  {' '}size l
+  <Button
+    size='l'
+    theme='link'>Link Button</Button>
 </div>
 ```
 
 
-### Theme `normal`
+### theme normal
 
 ```
 <div>
-  size: `xs` <Button size='xs' theme='normal'>Action Button</Button>
-  <hr className='delimiter'/>
-  size: `s` <Button size='s' theme='normal'>Action Button</Button>
-  <hr className='delimiter'/>
-  size: `m` <Button size='m' theme='normal'>Action Button</Button>
-  <hr className='delimiter'/>
-  size: `l` <Button size='l' theme='normal'>Action Button</Button>
+  <Button
+    disabled={true}
+    size='xs'
+    theme='normal'>Normal Button</Button>
+  {' '}size xs
+  <Button
+    size='xs'
+    theme='normal'>Normal Button</Button>
+  {' '}size s
+  <Button
+    size='s'
+    theme='normal'>Normal Button</Button>
+  {' '}size m
+  <Button
+    size='m'
+    theme='normal'>Normal Button</Button>
+  {' '}size l
+  <Button
+    size='l'
+    theme='normal'>Normal Button</Button>
 </div>
 ```

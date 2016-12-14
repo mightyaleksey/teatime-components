@@ -1,61 +1,49 @@
-### Theme `action`
+## Preview
+
+
+### theme action
 
 ```
 <div>
-  size: `xs` <Link size='xs' theme='action'>Link</Link>
-
-  <hr className='delimiter'/>
-
-  size: `s` <Link size='s' theme='action'>Link</Link>
-
-  <hr className='delimiter'/>
-
-  size: `m` <Link size='m' theme='action'>Link</Link>
-
-  <hr className='delimiter'/>
-
-  size: `l` <Link size='l' theme='action'>Link</Link>
+  size xs
+  <Link size='xs' theme='action'>Link</Link>
+  {' '}size s
+  <Link size='s' theme='action'>Link</Link>
+  {' '}size m
+  <Link size='m' theme='action'>Link</Link>
+  {' '}size l
+  <Link size='l' theme='action'>Link</Link>
 </div>
 ```
 
 
-### Theme `link`
+### theme link
 
 ```
 <div>
-  size: `xs` <Link size='xs' theme='link'>Link</Link>
-
-  <hr className='delimiter'/>
-
-  size: `s` <Link size='s' theme='link'>Link</Link>
-
-  <hr className='delimiter'/>
-
-  size: `m` <Link size='m' theme='link'>Link</Link>
-
-  <hr className='delimiter'/>
-
-  size: `l` <Link size='l' theme='link'>Link</Link>
+  size xs
+  <Link size='xs' theme='link'>Link</Link>
+  {' '}size s
+  <Link size='s' theme='link'>Link</Link>
+  {' '}size m
+  <Link size='m' theme='link'>Link</Link>
+  {' '}size l
+  <Link size='l' theme='link'>Link</Link>
 </div>
 ```
 
 
-### Theme `normal`
+### theme normal
 
 ```
 <div>
-  size: `xs` <Link size='xs' theme='normal'>Link</Link>
-
-  <hr className='delimiter'/>
-
-  size: `s` <Link size='s' theme='normal'>Link</Link>
-
-  <hr className='delimiter'/>
-
-  size: `m` <Link size='m' theme='normal'>Link</Link>
-
-  <hr className='delimiter'/>
-
-  size: `l` <Link size='l' theme='normal'>Link</Link>
+  size xs
+  <Link size='xs' theme='normal'>Link</Link>
+  {' '}size s
+  <Link size='s' theme='normal'>Link</Link>
+  {' '}size m
+  <Link size='m' theme='normal'>Link</Link>
+  {' '}size l
+  <Link size='l' theme='normal'>Link</Link>
 </div>
 ```
