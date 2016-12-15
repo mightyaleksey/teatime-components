@@ -1,0 +1,109 @@
+/* helpers */
+
+.xs
+{
+  padding: 4px 8px;
+
+  font: 13px arial,sans-serif;
+}
+
+.xs:after
+{
+  border-width: 7px;
+}
+
+.s
+{
+  padding: 6px 8px;
+
+  font: 13px arial,sans-serif;
+}
+
+.s:after
+{
+  border-width: 7px;
+}
+
+.m
+{
+  padding: 7px 10px;
+
+  font: 15px arial,sans-serif;
+}
+
+.m:after
+{
+  border-width: 7px;
+}
+
+.center
+{
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.middle
+{
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+/* size s */
+
+.bottom-s
+{
+  composes: s;
+  composes: center;
+
+  top: calc(100% + 7px);
+}
+
+.bottom-s:after
+{
+  top: -7px;
+  left: calc(50% - 7px);
+}
+
+.left-s
+{
+  composes: s;
+  composes: middle;
+
+  right: calc(100% + 7px);
+}
+
+.left-s:after
+{
+  top: calc(50% - 7px);
+  right: -7px;
+}
+
+.right-s
+{
+  composes: s;
+  composes: middle;
+
+  left: calc(100% + 7px);
+}
+
+.right-s:after
+{
+  top: calc(50% - 7px);
+  left: -7px;
+}
+
+.top-s
+{
+  composes: s;
+  composes: center;
+
+  bottom: calc(100% + 7px);
+}
+
+.top-s:after
+{
+  bottom: -7px;
+  left: calc(50% - 7px);
+}

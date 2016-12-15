@@ -1,0 +1,27 @@
+.bottom
+{
+  composes: selector from './tooltip.css';
+  composes: normal from './tooltip.css';
+  composes: bottom-s from './tooltip-size.css';
+}
+
+.left
+{
+  composes: selector from './tooltip.css';
+  composes: normal from './tooltip.css';
+  composes: left-s from './tooltip-size.css';
+}
+
+.right
+{
+  composes: selector from './tooltip.css';
+  composes: normal from './tooltip.css';
+  composes: right-s from './tooltip-size.css';
+}
+
+.top
+{
+  composes: selector from './tooltip.css';
+  composes: normal from './tooltip.css';
+  composes: top-s from './tooltip-size.css';
+}

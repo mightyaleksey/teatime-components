@@ -1,0 +1,101 @@
+.selector
+{
+  /* the common selector */
+}
+
+.control
+{
+  composes: tooltip from '../layer.css';
+
+  position: absolute;
+
+  max-width: 300px;
+
+  cursor: pointer;
+
+  color: white;
+}
+
+.control:after
+{
+  position: absolute;
+  z-index: -1;
+
+  content: '';
+  transform: rotate(45deg);
+
+  border-style: solid;
+}
+
+/* theme normal */
+
+.normal
+{
+  composes: control;
+
+
+  background: #5b5b5b;
+}
+
+.normal:after
+{
+  border-color: #5b5b5b;
+}
+
+.normal:hover
+{
+  background: #747474;
+}
+
+.normal:hover:after
+{
+  border-color: #747474;
+}
+
+/* theme success */
+
+.success
+{
+  composes: control;
+
+  background: #7bc177;
+}
+
+.success:after
+{
+  border-color: #7bc177;
+}
+
+.success:hover
+{
+  background: #8fca8b;
+}
+
+.success:hover:after
+{
+  border-color: #8fca8b;
+}
+
+/* theme warning */
+
+.warning
+{
+  composes: control;
+
+  background: #ff7474;
+}
+
+.warning:after
+{
+  border-color: #ff7474;
+}
+
+.warning:hover
+{
+  background: #ff8989;
+}
+
+.warning:hover:after
+{
+  border-color: #ff8989;
+}
