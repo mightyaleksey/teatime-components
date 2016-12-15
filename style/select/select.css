@@ -73,8 +73,9 @@
 
 .menu
 {
+  composes: menu from '../layer.css';
+
   position: absolute;
-  z-index: 200;
   top: calc(100% + 8px);
   left: 0;
 

@@ -1,0 +1,9 @@
+.tooltip
+{
+  z-index: 100;
+}
+
+.menu
+{
+  z-index: 200;
+}
