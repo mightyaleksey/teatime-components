@@ -39,7 +39,6 @@
 {
   composes: control from '../button/button.css';
   composes: normal from '../button/button.css';
-  composes: s from '../button/button-size.css';
 
   display: block;
 
