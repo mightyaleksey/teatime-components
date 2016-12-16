@@ -9,11 +9,14 @@
   <Select
     name='select-xs'
     options={[
-      {label: 'Yamaha', value: 'yamaha'},
-      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
       {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
       {label: 'Vespa', value: 'vespa'},
-      {label: 'MZ', value: 'mz'}
+      {label: 'Yamaha', value: 'yamaha'}
     ]}
     size='xs'/>
   {' '}
@@ -21,11 +24,14 @@
     disabled={true}
     name='select-xs-d'
     options={[
-      {label: 'Yamaha', value: 'yamaha'},
-      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
       {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
       {label: 'Vespa', value: 'vespa'},
-      {label: 'MZ', value: 'mz'}
+      {label: 'Yamaha', value: 'yamaha'}
     ]}
     size='xs'/>
 </div>
@@ -41,11 +47,14 @@
     defaultValue='kawasaki'
     name='select-s'
     options={[
-      {label: 'Yamaha', value: 'yamaha'},
-      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
       {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
       {label: 'Vespa', value: 'vespa'},
-      {label: 'MZ', value: 'mz'}
+      {label: 'Yamaha', value: 'yamaha'}
     ]}
     size='s'/>
   {' '}
@@ -54,11 +63,14 @@
     disabled={true}
     name='select-s-d'
     options={[
-      {label: 'Yamaha', value: 'yamaha'},
-      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
       {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
       {label: 'Vespa', value: 'vespa'},
-      {label: 'MZ', value: 'mz'}
+      {label: 'Yamaha', value: 'yamaha'}
     ]}
     size='s'/>
 </div>
@@ -73,11 +85,14 @@
   <Select
     name='select-m'
     options={[
-      {label: 'Yamaha', value: 'yamaha'},
-      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
       {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
       {label: 'Vespa', value: 'vespa'},
-      {label: 'MZ', value: 'mz'}
+      {label: 'Yamaha', value: 'yamaha'}
     ]}
     size='m'/>
   {' '}
@@ -85,11 +100,14 @@
     disabled={true}
     name='select-m-d'
     options={[
-      {label: 'Yamaha', value: 'yamaha'},
-      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
       {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
       {label: 'Vespa', value: 'vespa'},
-      {label: 'MZ', value: 'mz'}
+      {label: 'Yamaha', value: 'yamaha'}
     ]}
     size='m'/>
 </div>
@@ -100,30 +118,68 @@
 
 ```
 <div>
-  some text for the baseline
-  <Select
-    name='select-sa'
-    options={[
-      {label: 'Yamaha', value: 'yamaha'},
-      {label: 'Suzuki', value: 'suzuki'},
-      {label: 'Kawasaki', value: 'kawasaki'},
-      {label: 'Vespa', value: 'vespa'},
-      {label: 'MZ', value: 'mz'}
-    ]}
-    searchable={true}
-    size='m'/>
-  {' '}
   <Select
     disabled={true}
     name='select-sa-d'
     options={[
-      {label: 'Yamaha', value: 'yamaha'},
-      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
       {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
       {label: 'Vespa', value: 'vespa'},
-      {label: 'MZ', value: 'mz'}
+      {label: 'Yamaha', value: 'yamaha'}
     ]}
     searchable={true}
+    size='m'/>
+  {' '}fuzzy
+  <Select
+    name='select-sa'
+    options={[
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
+      {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
+      {label: 'Vespa', value: 'vespa'},
+      {label: 'Yamaha', value: 'yamaha'}
+    ]}
+    searchable={true}
+    searchEngine='fuzzy'
+    size='m'/>
+  {' '}includes
+  <Select
+    name='select-sa'
+    options={[
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
+      {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
+      {label: 'Vespa', value: 'vespa'},
+      {label: 'Yamaha', value: 'yamaha'}
+    ]}
+    searchable={true}
+    searchEngine='includes'
+    size='m'/>
+  {' '}startsWith
+  <Select
+    name='select-sa'
+    options={[
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
+      {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
+      {label: 'Vespa', value: 'vespa'},
+      {label: 'Yamaha', value: 'yamaha'}
+    ]}
+    searchable={true}
+    searchEngine='startsWith'
     size='m'/>
 </div>
 ```
