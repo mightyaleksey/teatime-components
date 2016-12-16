@@ -195,6 +195,18 @@ class Select extends Component {
     const {searchable} = this.props;
 
     switch (e.keyCode) {
+    case ESC:
+      if (!isOpened) return; // pass event to the native element
+
+      // capture event and close menu
+      this._closeMenu();
+      this.focus();
+      break;
+
+    case TAB:
+      if (isOpened) this._closeMenu();
+      return; // pass event to the native element
+
     case ARROR_DOWN:
       this._focusAdjacentItem();
       break; // capture event
@@ -213,21 +225,9 @@ class Select extends Component {
       e.stopPropagation();
       break;
 
-    case ESC:
-      if (!isOpened) return; // pass event to the native element
-
-      // capture event and close menu
-      this._closeMenu();
-      this.focus();
-      break;
-
     case SPACE:
       if (!searchable && isOpened) this._onItemSelect(null, this.state.focusedIndex);
       break;
-
-    case TAB:
-      if (isOpened) this._closeMenu();
-      return; // pass event to the native element
 
     default:
       if (searchable && isOpened) this.setState({focusedIndex: 0, selectedIndex: -1});
