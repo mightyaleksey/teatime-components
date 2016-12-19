@@ -103,6 +103,22 @@ class ColorPicker extends Component {
     return this.refs.parent;
   }
 
+  computeTiles() {
+    if (!this.state.isOpened) return null;
+
+    const {css} = this;
+    const {palette} = this.props;
+
+    const menuItem = css('menuItem');
+    return map(color =>
+      this.renderTile({
+        className: menuItem,
+        color,
+        key: color,
+        onClick: this._onTileClick,
+      }), palette);
+  }
+
   render() {
     const {
       autoFocus,
@@ -116,17 +132,9 @@ class ColorPicker extends Component {
     } = this.props;
 
     const {css} = this;
-    const {value} = this.state;
+    const {isOpened, value} = this.state;
 
-    // @todo move to the separeted method
-    const menuItem = css('menuItem');
-    const tiles = map(color =>
-      this.renderTile({
-        className: menuItem,
-        color,
-        key: color,
-        onClick: this._onTileClick,
-      }), palette);
+    const tiles = this.computeTiles();
 
     return (
       <span
@@ -162,7 +170,9 @@ class ColorPicker extends Component {
         })}
         {this.renderMenu({
           children: tiles,
-          className: css('menu'),
+          className: cc(css('menu'), {
+            [css('isClosedMenu')]: !isOpened,
+          }),
           onOutsideClick: this._onOutsideClick,
           parentNode: this._parentNode,
         })}
@@ -191,8 +201,6 @@ class ColorPicker extends Component {
   }
 
   renderMenu(menuProps) {
-    if (!this.state.isOpened) return null;
-
     return (
       <Overlay {...menuProps}/>
     );

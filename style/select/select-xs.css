@@ -43,6 +43,11 @@
 
 /* mixin */
 
+.isClosedMenu
+{
+  composes: isClosedMenu from './select.css';
+}
+
 .isFixedMenu
 {
   composes: isFixedMenu from './select.css';

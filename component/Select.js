@@ -285,6 +285,8 @@ class Select extends Component {
   }
 
   computeMenuItems() {
+    if (!this.state.isOpened) return null;
+
     const {css} = this;
 
     if (this._menuItems.length === 0) {
@@ -392,6 +394,7 @@ class Select extends Component {
         {this.renderMenu({
           children: menuItems,
           className: cc(css('menu'), {
+            [css('isClosedMenu')]: !isOpened,
             [css('isFixedMenu')]: hasFixedWidth
           }),
           onOutsideClick: this._onOutsideClick,
@@ -434,8 +437,6 @@ class Select extends Component {
   }
 
   renderMenu(menuProps) {
-    if (!this.state.isOpened) return null;
-
     return (
       <Overlay {...menuProps}/>
     );

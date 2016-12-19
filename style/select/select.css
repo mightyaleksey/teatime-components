@@ -132,6 +132,11 @@
 
 /* mixin */
 
+.isClosedMenu
+{
+  display: none;
+}
+
 .isFixedMenu
 {
   width: 100%;

@@ -123,3 +123,10 @@
 
   cursor: pointer;
 }
+
+/* mixin */
+
+.isClosedMenu
+{
+  display: none;
+}
