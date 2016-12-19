@@ -1,0 +1,78 @@
+.control
+{
+  position: absolute;
+
+  width: 300px;
+
+  cursor: pointer;
+
+  color: #fff;
+
+  font-family: arial,sans-serif;
+}
+
+.control:after
+{
+  position: absolute;
+
+  content: '';
+
+  border: 7px solid transparent;
+}
+
+.center
+{
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.middle
+{
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+.bottom
+{
+  composes: control;
+  composes: center;
+}
+
+.left
+{
+  composes: control;
+  composes: middle;
+}
+
+.right
+{
+  composes: control;
+  composes: middle;
+}
+
+.top
+{
+  composes: control;
+  composes: center;
+}
+
+/* mixins */
+
+.isClosed
+{
+  display: none;
+}
+
+.isOpened
+{
+  display: block;
+}
+
+.isLine
+{
+  width: auto;
+
+  white-space: nowrap;
+}

@@ -1,0 +1,58 @@
+@value success: #7bc177;
+@value successHovered: #8fca8b;
+
+.bottom,
+.left,
+.right,
+.top
+{
+  background: success;
+}
+
+.bottom:hover,
+.left:hover,
+.right:hover,
+.top:hover
+{
+  background: successHovered;
+}
+
+.bottom:after
+{
+  border-bottom-color: success;
+}
+
+.bottom:hover:after
+{
+  border-bottom-color: successHovered;
+}
+
+.left:after
+{
+  border-left-color: success;
+}
+
+.left:hover:after
+{
+  border-left-color: successHovered;
+}
+
+.right:after
+{
+  border-right-color: success;
+}
+
+.right:hover:after
+{
+  border-right-color: successHovered;
+}
+
+.top:after
+{
+  border-top-color: success;
+}
+
+.top:hover:after
+{
+  border-top-color: successHovered;
+}
