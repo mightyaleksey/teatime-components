@@ -3,8 +3,8 @@
 const {Component, PropTypes} = require('react');
 const {TAB} = require('../lib/keyCode');
 const {cssColorValue} = require('../lib/color');
-const {isControlled, themes} = require('../lib/tool');
-const {isUndefined, map, noop, omit, prop} = require('../lib/dash');
+const {isControlled, genericName} = require('../lib/util');
+const {isUndefined, map, noop, omit} = require('../lib/dash');
 const Overlay = require('../view/Overlay');
 const React = require('react');
 const Tile = require('../view/Tile');
@@ -26,7 +26,6 @@ class ColorPicker extends Component {
     super(props);
 
     this._controlled = isControlled(props);
-    this._styles = themes(this.token);
 
     const value = this._controlled
       ? props.value
@@ -34,7 +33,6 @@ class ColorPicker extends Component {
 
     this.state = {
       isOpened: false,
-      styles: this._styles(props),
       value: isUndefined(value) ? '' : value,
     };
   }
@@ -43,12 +41,13 @@ class ColorPicker extends Component {
     this._controlled = isControlled(nextProps);
 
     this.setState({
-      styles: this._styles(nextProps),
       value: this._controlled
         ? nextProps.value
         : this.state.value,
     });
   }
+
+  css = tokenName => genericName(this.props, tokenName)
 
   focus() {
     if (!this._input) return;
@@ -59,8 +58,6 @@ class ColorPicker extends Component {
     if (!this._input) return;
     this._input.select();
   }
-
-  token = prop('size')
 
   _onChange = e => {
     const value = e.target.value;
@@ -118,18 +115,11 @@ class ColorPicker extends Component {
       ...other,
     } = this.props;
 
-    const {styles, value} = this.state;
-
-    const {
-      container,
-      button,
-      clear,
-      control,
-      menu,
-      menuItem,
-    } = styles;
+    const {css} = this;
+    const {value} = this.state;
 
     // @todo move to the separeted method
+    const menuItem = css('menuItem');
     const tiles = map(color =>
       this.renderTile({
         className: menuItem,
@@ -141,10 +131,10 @@ class ColorPicker extends Component {
     return (
       <span
         {...omitProps(other)}
-        className={cc(container, className)}
+        className={cc(css('container'), className)}
         ref='parent'>
         {this.renderButton({
-          className: button,
+          className: css('button'),
           disabled,
           onClick: this._onClick,
           style: {
@@ -152,14 +142,14 @@ class ColorPicker extends Component {
           },
         })}
         {this.renderClear({
-          className: clear,
+          className: css('clear'),
           disabled,
           onClick: this._onClearClick,
           value,
         })}
         {this.renderInput({
           autoFocus,
-          className: control,
+          className: css('control'),
           disabled,
           id,
           name,
@@ -172,7 +162,7 @@ class ColorPicker extends Component {
         })}
         {this.renderMenu({
           children: tiles,
-          className: menu,
+          className: css('menu'),
           onOutsideClick: this._onOutsideClick,
           parentNode: this._parentNode,
         })}

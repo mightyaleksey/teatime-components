@@ -18,10 +18,9 @@ const {
   map,
   noop,
   omit,
-  prop,
 } = require('../lib/dash');
 const {findDOMNode} = require('react-dom');
-const {isControlled, themes} = require('../lib/tool');
+const {isControlled, genericName} = require('../lib/util');
 const Option = require('../view/Option');
 const Overlay = require('../view/Overlay');
 const React = require('react');
@@ -45,7 +44,6 @@ class Select extends Component {
     super(props);
 
     this._controlled = isControlled(props);
-    this._styles = themes(this.token);
 
     const searchEngine = this._searchEngine = getSearchEngine(props.searchEngine);
     const searchValue = '';
@@ -70,7 +68,6 @@ class Select extends Component {
       searchValue,
       selectedIndex,
       selectedPosition: selectedIndex,
-      styles: this._styles(props),
     };
   }
 
@@ -122,12 +119,12 @@ class Select extends Component {
     }
   }
 
+  css = tokenName => genericName(this.props, tokenName)
+
   focus() {
     if (!this._controlRef) return;
     this._controlRef.focus();
   }
-
-  token = prop('size')
 
   _closeMenu() {
     this.setState({
@@ -284,34 +281,22 @@ class Select extends Component {
       isPseudoFocused,
       searchValue,
       selectedPosition,
-      styles,
     } = this.state;
+    const {css} = this;
 
     const label = selectedPosition > -1
       ? options[selectedPosition].label
       : placeholder;
 
-    const {
-      wrapper,
-      search,
-      control,
-      arrow,
-      menu,
-      menuItem,
-      emptyItem,
-      isFixedMenu,
-      isFocusedMenuItem,
-      isOpenedMenu,
-      isPseudoFocusedSearch,
-      isSelectedMenuItem,
-    } = styles;
-
     // deps: focusedIndex|selectedPosition|_menuItems|classNames
     // @todo move to the separeted method
+    const isFocusedMenuItem = css('isFocusedMenuItem');
+    const isSelectedMenuItem = css('isSelectedMenuItem');
+    const menuItem = css('menuItem');
     const menuItems = this._menuItems.length === 0
       ? this.renderEmptyItem({
         children: searchEmptyText,
-        className: emptyItem,
+        className: css('emptyItem'),
       })
       : map(option =>
           this.renderMenuItem({
@@ -332,7 +317,7 @@ class Select extends Component {
     return (
       <div
         {...omitProps(other)}
-        className={cc(wrapper, className)}
+        className={cc(css('wrapper'), className)}
         ref={r => this._parentRef = r}>
         {this.renderValue({
           disabled,
@@ -341,8 +326,8 @@ class Select extends Component {
           value: '',
         })}
         {this.renderSearch({
-          className: cc(search, {
-            [isPseudoFocusedSearch]: isPseudoFocused
+          className: cc(css('search'), {
+            [css('isPseudoFocusedSearch')]: isPseudoFocused
           }),
           disabled,
           onChange: this._onSearchValueChange,
@@ -354,7 +339,7 @@ class Select extends Component {
         })}
         {this.renderLabel({
           children: searchValue ? '' : label,
-          className: control,
+          className: css('control'),
           disabled,
           onClick: this._onToggleMenu,
           onKeyDown: this._onKeyDown,
@@ -363,15 +348,15 @@ class Select extends Component {
             : r => this._controlRef = r,
         })}
         {this.renderArrow({
-          className: cc(arrow, {
-            [isOpenedMenu]: isOpened,
+          className: cc(css('arrow'), {
+            [css('isOpenedMenu')]: isOpened,
           }),
           onClick: this._onToggleMenu,
         })}
         {this.renderMenu({
           children: menuItems,
-          className: cc(menu, {
-            [isFixedMenu]: hasFixedWidth
+          className: cc(css('menu'), {
+            [css('isFixedMenu')]: hasFixedWidth
           }),
           onOutsideClick: this._onOutsideClick,
           parentNode: this._parentNode,

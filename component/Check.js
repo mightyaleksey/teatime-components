@@ -2,8 +2,8 @@
 
 const {Component, PropTypes} = require('react');
 const {genericId} = require('../lib/identity');
-const {isUndefined, noop, omit, prop} = require('../lib/dash');
-const {themes} = require('../lib/tool');
+const {genericName} = require('../lib/util');
+const {isUndefined, noop, omit} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
 
@@ -22,27 +22,25 @@ class Check extends Component {
   constructor(props) {
     super(props);
 
-    this._styles = themes(this.token);
-
     this.state = {
       id: props.id || genericId(),
-      styles: this._styles(props),
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      id: isUndefined(nextProps.id) ? this.state.id : nextProps.id,
-      styles: this._styles(nextProps),
+      id: isUndefined(nextProps.id)
+        ? this.state.id
+        : nextProps.id,
     });
   }
+
+  css = tokenName => genericName(this.props, tokenName)
 
   focus() {
     if (!this._check) return;
     this._check.focus();
   }
-
-  token = prop('size')
 
   _onChange = e => {
     const {checked, value} = e.target;
@@ -63,16 +61,9 @@ class Check extends Component {
       ...other,
     } = this.props;
 
-    const {styles = {}} = this.state;
+    const {css} = this;
+    const {id} = this.state;
 
-    const {
-      control,
-      label: labelStyle,
-      native,
-      wrapper,
-    } = styles;
-
-    const id = this.state.id;
     const text = isUndefined(label)
       ? children
       : label;
@@ -80,10 +71,10 @@ class Check extends Component {
     return (
       <span
         {...omitProps(other)}
-        className={cc(wrapper, className)}>
+        className={cc(css('wrapper'), className)}>
         {this.renderInput({
           checked,
-          className: native,
+          className: css('native'),
           defaultChecked,
           disabled,
           id,
@@ -95,12 +86,12 @@ class Check extends Component {
         })}
         {this.renderControl({
           children: hasLabel ? void 0 : text,
-          className: control,
+          className: css('control'),
           htmlFor: id,
         })}
         {this.renderLabel({
           children: text,
-          className: labelStyle,
+          className: css('label'),
           htmlFor: id,
         })}
       </span>

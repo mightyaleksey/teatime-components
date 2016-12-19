@@ -2,7 +2,7 @@
 
 const {Component, PropTypes} = require('react');
 const {genericId} = require('../lib/identity');
-const {isControlled, themes} = require('../lib/tool');
+const {isControlled, genericName} = require('../lib/util');
 const {isUndefined, map, noop, omit} = require('../lib/dash');
 const Box = require('../view/Box');
 const React = require('react');
@@ -29,7 +29,6 @@ class Radio extends Component {
     super(props);
 
     this._controlled = isControlled(props);
-    this._styles = themes(this.token);
 
     const value = this._controlled
       ? props.value
@@ -37,7 +36,6 @@ class Radio extends Component {
 
     this.state = {
       prefix: genericId(),
-      styles: this._styles(props),
       value: isUndefined(value) ? null : value,
     };
   }
@@ -46,17 +44,13 @@ class Radio extends Component {
     this._controlled = isControlled(nextProps);
 
     this.setState({
-      styles: this._styles(nextProps),
       value: this._controlled
         ? nextProps.value
         : this.state.value,
     });
   }
 
-  // token :: object -> string
-  token({size, theme}) {
-    return `${theme}-${size}`;
-  }
+  css = tokenName => genericName(this.props, tokenName)
 
   _onChange = (e, data) => {
     if (!this._controlled) this.setState({value: data.value});
@@ -72,11 +66,11 @@ class Radio extends Component {
       theme,
       ...other,
     } = this.props;
-    const {
-      prefix,
-      styles,
-      value,
-    } = this.state;
+
+    const {css} = this;
+    const {prefix, value} = this.state;
+
+    const styles = css();
 
     const elements = map(option =>
       this.renderOption(option, {
@@ -93,7 +87,7 @@ class Radio extends Component {
     return (
       <div
         {...omitProps(other)}
-        className={cc(styles.container, className)}>
+        className={cc(css('container'), className)}>
         {elements}
       </div>
     );

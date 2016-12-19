@@ -1,8 +1,8 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
+const {genericName} = require('../lib/util');
 const {omit} = require('../lib/dash');
-const {themes} = require('../lib/tool');
 const React = require('react');
 const cc = require('classnames');
 
@@ -28,38 +28,20 @@ const omitProps = omit([
 ]);
 
 class Link extends Component {
-  constructor(props) {
-    super(props);
-
-    this._styles = themes(this.token);
-
-    this.state = {
-      styles: this._styles(props),
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      styles: this._styles(nextProps),
-    });
-  }
-
-  // token :: object -> string
-  token({size, theme}) {
-    return `${theme}-${size}`;
-  }
+  css = tokenName => genericName(this.props, tokenName)
 
   render() {
     const {
       className,
       ...other,
     } = this.props;
-    const {control} = this.state.styles;
+
+    const {css} = this;
 
     return (
       <a
         {...omitProps(other)}
-        className={cc(control, className)}/>
+        className={cc(css('control'), className)}/>
     );
   }
 }

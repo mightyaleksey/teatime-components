@@ -63,7 +63,7 @@ class Tooltip extends Component {
   _onOutsideClick = noop
 
   render() {
-    const { children, className, direction, size, type } = this.props;
+    const {children, className, direction, size, type} = this.props;
     const styles = baseStyles[`${type}-${size}`];
 
     return (

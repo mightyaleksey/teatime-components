@@ -1,8 +1,8 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {assign, map, noop, omit, prop} = require('../lib/dash');
-const {isControlled, themes, tokenName} = require('../lib/tool');
+const {assign, map, noop, omit} = require('../lib/dash');
+const {isControlled, genericName} = require('../lib/util');
 const Box = require('../view/Box');
 const React = require('react');
 const cc = require('classnames');
@@ -34,8 +34,8 @@ class CheckGroup extends Component {
     };
   }
 
-  css = token => {
-    return tokenName(this.props, token);
+  css = tokenName => {
+    return genericName(this.props, tokenName);
   }
 
   focus = noop
@@ -136,7 +136,8 @@ function calculateCheckItems(items = []) {
   const length = items.length;
   const nextItems = Array(length);
 
-  for (var i = 0; i < length; ++i) nextItems[i] = assign(items[i], {_position: i});
+  for (var i = 0; i < length; ++i)
+    nextItems[i] = assign(items[i], {_position: i});
 
   return nextItems;
 }

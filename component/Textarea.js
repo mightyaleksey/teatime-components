@@ -1,8 +1,8 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {noop, omit, prop} = require('../lib/dash');
-const {themes} = require('../lib/tool');
+const {genericName} = require('../lib/util');
+const {noop, omit} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
 
@@ -17,21 +17,7 @@ const omitProps = omit([
 ]);
 
 class Textarea extends Component {
-  constructor(props) {
-    super(props);
-
-    this._styles = themes(this.token);
-
-    this.state = {
-      styles: this._styles(props),
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      styles: this._styles(nextProps),
-    });
-  }
+  css = tokenName => genericName(this.props, tokenName)
 
   focus() {
     if (!this._textarea) return;
@@ -43,19 +29,18 @@ class Textarea extends Component {
     this._textarea.select();
   }
 
-  token = prop('size')
-
   render() {
     const {
       className,
       ...other,
     } = this.props;
-    const {control} = this.state.styles;
+
+    const {css} = this;
 
     return (
       <textarea
         {...omitProps(other)}
-        className={cc(control, className)}
+        className={cc(css('control'), className)}
         ref={r => this._textarea = r}/>
     );
   }

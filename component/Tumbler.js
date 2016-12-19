@@ -2,8 +2,8 @@
 
 const {Component, PropTypes} = require('react');
 const {genericId} = require('../lib/identity');
-const {isUndefined, noop, omit, prop} = require('../lib/dash');
-const {themes} = require('../lib/tool');
+const {genericName} = require('../lib/util');
+const {isUndefined, noop, omit} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
 
@@ -23,27 +23,25 @@ class Tumbler extends Component {
   constructor(props) {
     super(props);
 
-    this._styles = themes(this.token);
-
     this.state = {
       id: props.id || genericId(),
-      styles: this._styles(props),
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      id: isUndefined(nextProps.id) ? this.state.id : nextProps.id,
-      styles: this._styles(nextProps),
+      id: isUndefined(nextProps.id)
+        ? this.state.id
+        : nextProps.id,
     });
   }
+
+  css = tokenName => genericName(this.props, tokenName)
 
   focus() {
     if (!this._input) return;
     this._input.focus();
   }
-
-  token = prop('size')
 
   _onChange = (e) => {
     const {checked, value} = e.target;
@@ -62,28 +60,21 @@ class Tumbler extends Component {
       value,
       ...other,
     } = this.props;
-    const {
-      baseline,
-      control,
-      delimiter,
-      label,
-      native,
-      shape,
-      wrapper,
-    } = this.state.styles;
-    const id = this.state.id;
 
-    // why it looks like a pie,
+    const {css} = this;
+    const {id} = this.state;
+
+    // why this looks like a pie,
     // see: http://stackoverflow.com/questions/9273016/why-is-this-inline-block-element-pushed-downward
     return (
       <span
         {...omitProps(other)}
-        className={cc(wrapper, className)}>
-        <span className={baseline}>
-          <div className={shape}>
+        className={cc(css('wrapper'), className)}>
+        <span className={css('baseline')}>
+          <div className={css('shape')}>
             {this.renderInput({
               checked,
-              className: native,
+              className: css('native'),
               defaultChecked,
               disabled,
               id,
@@ -94,11 +85,11 @@ class Tumbler extends Component {
               value,
             })}
             <label
-              className={control}
+              className={css('control')}
               htmlFor={id}>
-              <span className={label}>{onText}</span>
-              <span className={label}>{offText}</span>
-              <span className={delimiter}>&nbsp;</span>
+              <span className={css('label')}>{onText}</span>
+              <span className={css('label')}>{offText}</span>
+              <span className={css('delimiter')}>&nbsp;</span>
             </label>
           </div>
         </span>

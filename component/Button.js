@@ -1,8 +1,8 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
+const {genericName} = require('../lib/util');
 const {omit} = require('../lib/dash');
-const {themes} = require('../lib/tool');
 const React = require('react');
 const cc = require('classnames');
 
@@ -28,30 +28,11 @@ const omitProps = omit([
 ]);
 
 class Button extends Component {
-  constructor(props) {
-    super(props);
-
-    this._styles = themes(this.token);
-
-    this.state = {
-      styles: this._styles(props),
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      styles: this._styles(nextProps),
-    });
-  }
+  css = tokenName => genericName(this.props, tokenName)
 
   focus() {
     if (!this._button) return;
     this._button.focus();
-  }
-
-  // token :: object -> string
-  token({size, theme}) {
-    return `${theme}-${size}`;
   }
 
   render() {
@@ -60,12 +41,12 @@ class Button extends Component {
       ...other,
     } = this.props;
 
-    const {control} = this.state.styles;
+    const {css} = this;
 
     return (
       <button
         {...omitProps(other)}
-        className={cc(control, className)}
+        className={cc(css('control'), className)}
         ref={r => this._button = r}/>
     );
   }
