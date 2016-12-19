@@ -109,7 +109,7 @@ class Select extends Component {
 
     const value = nextProps.value;
     const selectedPosition = this._controlled
-      ? findIndex(menuItems, item => item.value === value)
+      ? findIndex(this._menuItems, item => item.value === value)
       : this.state.selectedPosition;
 
     this.setState({

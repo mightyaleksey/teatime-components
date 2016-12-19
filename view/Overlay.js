@@ -2,6 +2,7 @@
 
 const {Component} = require('react');
 const OutsideClick = require('../decorator/OutsideClick');
+const React = require('react');
 
 // @todo detect direction automaticaly in case it wasn't provided
 // use bounding reactangle on componentDidMount

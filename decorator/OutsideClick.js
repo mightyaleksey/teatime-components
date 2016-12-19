@@ -3,6 +3,7 @@
 const {Component} = require('react');
 const {findDOMNode} = require('react-dom');
 const {omit} = require('../lib/dash');
+const React = require('react');
 
 const omitProps = omit([
   'onOutsideClick',
