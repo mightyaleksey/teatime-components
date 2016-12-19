@@ -1,35 +1,20 @@
-.columns
+.anchor-container
 {
-  display: flex;
-
-  width: 100%;
-
-  flex-flow: row nowrap;
-  justify-content: space-between;
+  padding: 50px;
 }
 
-.column
+.anchor
 {
-  width: calc(50% - 4px);
+  position: relative;
+
+  width: 20px;
+  height: 20px;
+  margin: 0 0 100px;
+
+  border: 1px solid #bebebe;
 }
 
-.delimiter
+.anchor:last-child
 {
-  margin: 0 0 15px;
-  padding: 0;
-
-  border: none;
-}
-
-.label
-{
-  display: inline-block;
-
-  width: 62px;
-  margin: 0 8px 0 0;
-}
-
-.control
-{
-  width: calc(100% - 70px) !important;
+  margin: 0;
 }

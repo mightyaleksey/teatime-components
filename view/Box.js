@@ -7,8 +7,10 @@ const React = require('react');
 const cc = require('classnames');
 
 const omitProps = omit([
+  '_position',
   'id',
   'onChange',
+  'position',
 ]);
 
 class Box extends Component {
@@ -28,7 +30,7 @@ class Box extends Component {
 
   _onChange = e => {
     const {checked, value} = e.target;
-    this.props.onChange(e, {checked, value});
+    this.props.onChange(e, {checked, value}, this.props.position);
   }
 
   render() {
@@ -120,6 +122,7 @@ Box.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  position: PropTypes.number,
   type: PropTypes.oneOf([
     'checkbox',
     'radio',

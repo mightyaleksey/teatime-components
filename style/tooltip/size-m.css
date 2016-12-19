@@ -1,0 +1,67 @@
+.control
+{
+  padding: 7px 10px;
+
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.bottom
+{
+  composes: control;
+
+  top: calc(100% + 7px);
+}
+
+.bottom:after
+{
+  top: -7px;
+  left: calc(50% - 7px);
+
+  border-width: 0 7px 7px 7px;
+}
+
+.left
+{
+  composes: control;
+
+  right: calc(100% + 7px);
+}
+
+.left:after
+{
+  top: calc(50% - 7px);
+  right: -7px;
+
+  border-width: 7px 0 7px 7px;
+}
+
+.right
+{
+  composes: control;
+
+  left: calc(100% + 7px);
+}
+
+.right:after
+{
+  top: calc(50% - 7px);
+  left: -7px;
+
+  border-width: 7px 7px 7px 0;
+}
+
+.top
+{
+  composes: control;
+
+  bottom: calc(100% + 7px);
+}
+
+.top:after
+{
+  bottom: -7px;
+  left: calc(50% - 7px);
+
+  border-width: 7px 7px 0 7px;
+}

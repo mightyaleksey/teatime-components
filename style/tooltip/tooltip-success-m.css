@@ -1,0 +1,44 @@
+.bottom
+{
+  composes: bottom from './tooltip.css';
+  composes: bottom from './size-m.css';
+  composes: bottom from './color-success.css';
+}
+
+.left
+{
+  composes: left from './tooltip.css';
+  composes: left from './size-m.css';
+  composes: left from './color-success.css';
+}
+
+.right
+{
+  composes: right from './tooltip.css';
+  composes: right from './size-m.css';
+  composes: right from './color-success.css';
+}
+
+.top
+{
+  composes: top from './tooltip.css';
+  composes: top from './size-m.css';
+  composes: top from './color-success.css';
+}
+
+/* mixins */
+
+.isClosed
+{
+  composes: isClosed from './tooltip.css';
+}
+
+.isOpened
+{
+  composes: isOpened from './tooltip.css';
+}
+
+.isLine
+{
+  composes: isLine from './tooltip.css';
+}

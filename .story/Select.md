@@ -131,9 +131,8 @@
       {label: 'Vespa', value: 'vespa'},
       {label: 'Yamaha', value: 'yamaha'}
     ]}
-    searchable={true}
-    size='m'/>
-  {' '}fuzzy
+    searchable={true}/>
+  {' '}fuzzy engine
   <Select
     name='select-sa'
     options={[
@@ -147,9 +146,8 @@
       {label: 'Yamaha', value: 'yamaha'}
     ]}
     searchable={true}
-    searchEngine='fuzzy'
-    size='m'/>
-  {' '}includes
+    searchEngine='fuzzy'/>
+  {' '}includes engine
   <Select
     name='select-sa'
     options={[
@@ -163,9 +161,8 @@
       {label: 'Yamaha', value: 'yamaha'}
     ]}
     searchable={true}
-    searchEngine='includes'
-    size='m'/>
-  {' '}startsWith
+    searchEngine='includes'/>
+  {' '}startsWith engine
   <Select
     name='select-sa'
     options={[
@@ -179,8 +176,7 @@
       {label: 'Yamaha', value: 'yamaha'}
     ]}
     searchable={true}
-    searchEngine='startsWith'
-    size='m'/>
+    searchEngine='startsWith'/>
 </div>
 ```
 

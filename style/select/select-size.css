@@ -12,6 +12,8 @@
 
 .control-xs
 {
+  composes: xs from '../button/button-size.css';
+
   padding-right: 25px;
 }
 
@@ -63,6 +65,8 @@
 
 .control-s
 {
+  composes: s from '../button/button-size.css';
+
   padding-right: 25px;
 }
 
@@ -114,6 +118,8 @@
 
 .control-m
 {
+  composes: m from '../button/button-size.css';
+
   padding-right: 29px;
 }
 

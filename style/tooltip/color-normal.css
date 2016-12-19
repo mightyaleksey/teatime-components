@@ -1,0 +1,58 @@
+@value normal: #5b5b5b;
+@value normalHovered: #747474;
+
+.bottom,
+.left,
+.right,
+.top
+{
+  background: normal;
+}
+
+.bottom:hover,
+.left:hover,
+.right:hover,
+.top:hover
+{
+  background: normalHovered;
+}
+
+.bottom:after
+{
+  border-bottom-color: normal;
+}
+
+.bottom:hover:after
+{
+  border-bottom-color: normalHovered;
+}
+
+.left:after
+{
+  border-left-color: normal;
+}
+
+.left:hover:after
+{
+  border-left-color: normalHovered;
+}
+
+.right:after
+{
+  border-right-color: normal;
+}
+
+.right:hover:after
+{
+  border-right-color: normalHovered;
+}
+
+.top:after
+{
+  border-top-color: normal;
+}
+
+.top:hover:after
+{
+  border-top-color: normalHovered;
+}
