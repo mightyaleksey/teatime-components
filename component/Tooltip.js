@@ -60,22 +60,6 @@ class Tooltip extends Component {
     return rect.width * rect.height / maxWidth > height[this.props.size];
   }
 
-  /**
-   * @param  {object} rect
-   * @param  {node}   ref
-   */
-  onPositionUpdate = rect => {
-    if (this.state.isMultiline !== this.isMultiline(rect, this.props.maxWidth)) {
-      this.setState({
-        isMultiline: !this.state.isMultiline,
-      });
-    }
-  }
-
-  shouldComponentUpdatePosition = prevProps => {
-    return prevProps.direction !== this.props.direction;
-  }
-
   _onOutsideClick = noop
 
   render() {
@@ -89,9 +73,7 @@ class Tooltip extends Component {
           [styles.isOpened]: children,
           [styles.isLine]: !this.state.isMultiline,
         })}
-        onOutsideClick={this._onOutsideClick}
-        onPositionUpdate={this.onPositionUpdate}
-        shouldComponentUpdatePosition={this.shouldComponentUpdatePosition}>
+        onOutsideClick={this._onOutsideClick}>
         {children}
       </Overlay>
     );
