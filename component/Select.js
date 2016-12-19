@@ -35,6 +35,8 @@ const cssModules = {
 };
 
 const omitProps = omit([
+  'renderOption',
+  'searchEmptyText',
   'searchEngine',
   'styles',
 ]);
@@ -100,6 +102,20 @@ class Select extends Component {
         menuElem.scrollTop = focusedElem.offsetTop + menuElem.clientHeight - menuElem.offsetHeight;
       }
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this._controlled = isControlled(nextProps);
+
+    const value = nextProps.value;
+    const selectedPosition = this._controlled
+      ? findIndex(menuItems, item => item.value === value)
+      : this.state.selectedPosition;
+
+    this.setState({
+      selectedIndex: selectedPosition,
+      selectedPosition,
+    });
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -174,13 +190,20 @@ class Select extends Component {
   }
 
   _onItemSelect = (e, focusedIndex) => {
-    this.setState({
+    const menuItem = this._menuItems[focusedIndex];
+    const nextState = {
       isOpened: false,
       isPseudoFocused: true,
-      selectedIndex: focusedIndex,
       searchValue: '',
-      selectedPosition: this._menuItems[focusedIndex]._position,
-    });
+    };
+
+    if (!this._controlled) {
+      nextState.selectedIndex = focusedIndex;
+      nextState.selectedPosition = menuItem._position;
+    }
+
+    this.setState(nextState);
+    this.props.onChange(e, {value: menuItem.value});
 
     this.focus();
   }
@@ -261,6 +284,46 @@ class Select extends Component {
     return this._parentRef;
   }
 
+  computeMenuItems() {
+    const {css} = this;
+
+    if (this._menuItems.length === 0) {
+      return this.renderEmptyItem({
+        children: this.props.searchEmptyText,
+        className: css('emptyItem'),
+      });
+    }
+
+    const {
+      focusedIndex,
+      selectedPosition,
+    } = this.state;
+
+    const {
+      renderOption = this.renderItemLabel,
+    } = this.props;
+
+    const isFocusedMenuItem = css('isFocusedMenuItem');
+    const isSelectedMenuItem = css('isSelectedMenuItem');
+    const menuItem = css('menuItem');
+
+    return map(option =>
+      this.renderMenuItem({
+        children: renderOption(option),
+        className: cc(menuItem, {
+          [isFocusedMenuItem]: focusedIndex === option._index,
+          [isSelectedMenuItem]: selectedPosition === option._position,
+        }),
+        key: option.value,
+        onClick: this._onItemSelect,
+        onFocus: this._onFocusItem,
+        position: option._index,
+        ref: focusedIndex === option._index
+          ? r => this._focusedItemRef = r
+          : null,
+      }), this._menuItems);
+  }
+
   render() {
     const {
       className,
@@ -269,14 +332,11 @@ class Select extends Component {
       name,
       options,
       placeholder,
-      renderOption = this.renderItemLabel,
       searchable,
-      searchEmptyText,
       ...other,
     } = this.props;
 
     const {
-      focusedIndex,
       isOpened,
       isPseudoFocused,
       searchValue,
@@ -288,31 +348,7 @@ class Select extends Component {
       ? options[selectedPosition].label
       : placeholder;
 
-    // deps: focusedIndex|selectedPosition|_menuItems|classNames
-    // @todo move to the separeted method
-    const isFocusedMenuItem = css('isFocusedMenuItem');
-    const isSelectedMenuItem = css('isSelectedMenuItem');
-    const menuItem = css('menuItem');
-    const menuItems = this._menuItems.length === 0
-      ? this.renderEmptyItem({
-        children: searchEmptyText,
-        className: css('emptyItem'),
-      })
-      : map(option =>
-          this.renderMenuItem({
-            children: renderOption(option),
-            className: cc(menuItem, {
-              [isFocusedMenuItem]: focusedIndex === option._index,
-              [isSelectedMenuItem]: selectedPosition === option._position,
-            }),
-            key: option.value,
-            onClick: this._onItemSelect,
-            onFocus: this._onFocusItem,
-            position: option._index,
-            ref: focusedIndex === option._index
-              ? r => this._focusedItemRef = r
-              : null,
-          }), this._menuItems);
+    const menuItems = this.computeMenuItems();
 
     return (
       <div
