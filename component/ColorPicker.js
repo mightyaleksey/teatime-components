@@ -2,7 +2,7 @@
 
 const {Component, PropTypes} = require('react');
 const {TAB} = require('../lib/keyCode');
-const {cssColorValue} = require('../lib/color');
+const {cssColorValue, userColorValue} = require('../lib/color');
 const {filterProps, isControlled, genericName} = require('../lib/util');
 const {isUndefined, map, noop} = require('../lib/dash');
 const Overlay = require('../view/Overlay');
@@ -71,6 +71,21 @@ class ColorPicker extends Component {
 
   _onClick = () => {
     this.setState({isOpened: !this.state.isOpened});
+  }
+
+  _onInputBlur = e => {
+    const {value} = this.state;
+    const nextValue = userColorValue(value);
+    if (nextValue === value) return;
+
+    if (!this._controlled) {
+      this.setState({
+        isOpened: false,
+        value: nextValue,
+      });
+    }
+
+    this.props.onChange(e, {value: nextValue});
   }
 
   _onInputFocus = () => {
@@ -175,6 +190,7 @@ class ColorPicker extends Component {
         disabled={disabled}
         id={id}
         name={name}
+        onBlur={this._onInputBlur}
         onChange={this._onChange}
         onFocus={this._onInputFocus}
         placeholder={placeholder}
