@@ -5,6 +5,7 @@ if [ `git status -s|wc -l` -gt '0' ]; then
   exit 1
 fi
 
+npm test
 cli=node_modules/.bin
 
 babel() {
