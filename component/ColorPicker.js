@@ -3,8 +3,8 @@
 const {Component, PropTypes} = require('react');
 const {TAB} = require('../lib/keyCode');
 const {cssColorValue} = require('../lib/color');
-const {isControlled, genericName} = require('../lib/util');
-const {isUndefined, map, noop, omit} = require('../lib/dash');
+const {filterProps, isControlled, genericName} = require('../lib/util');
+const {isUndefined, map, noop} = require('../lib/dash');
 const Overlay = require('../view/Overlay');
 const React = require('react');
 const Tile = require('../view/Tile');
@@ -15,12 +15,6 @@ const cssModules = {
   s: require('../style/colorPicker/colorPicker-s.css'),
   m: require('../style/colorPicker/colorPicker-m.css'),
 };
-
-const omitProps = omit([
-  'onChange',
-  'palette',
-  'styles',
-]);
 
 class ColorPicker extends Component {
   constructor(props) {
@@ -104,11 +98,10 @@ class ColorPicker extends Component {
     return this.refs.parent;
   }
 
-  computeTiles() {
+  computeTiles(palette) {
     if (!this.state.isOpened) return null;
 
     const {css} = this;
-    const {palette} = this.props;
 
     const menuItem = css('menuItem');
     return map(color =>
@@ -121,88 +114,90 @@ class ColorPicker extends Component {
   }
 
   render() {
-    const {
-      autoFocus,
-      className,
-      disabled,
-      id,
-      name,
-      placeholder,
-      ...other,
-    } = this.props;
-
+    const {className} = this.props;
     const {css} = this;
-    const {isOpened, value} = this.state;
-
-    const tiles = this.computeTiles();
 
     return (
       <span
-        {...omitProps(other)}
+        {...filterProps(this.props)}
         className={cc(css('container'), className)}
         ref='parent'>
-        {this.renderButton({
-          className: css('button'),
-          disabled,
-          onClick: this._onClick,
-          style: {
-            backgroundColor: cssColorValue(value),
-          },
-        })}
-        {this.renderClear({
-          className: css('clear'),
-          disabled,
-          onClick: this._onClearClick,
-          value,
-        })}
-        {this.renderInput({
-          autoFocus,
-          className: css('control'),
-          disabled,
-          id,
-          name,
-          onChange: this._onChange,
-          onFocus: this._onInputFocus,
-          placeholder,
-          ref: r => this._input = r,
-          type: 'text',
-          value,
-        })}
-        {this.renderMenu({
-          children: tiles,
-          className: cc(css('menu'), {
-            [css('isClosedMenu')]: !isOpened,
-          }),
-          onOutsideClick: this._onOutsideClick,
-          parentNode: this._parentNode,
-        })}
+        {this.renderButton()}
+        {this.renderClear()}
+        {this.renderInput()}
+        {this.renderMenu()}
       </span>
     );
   }
 
-  renderButton(buttonProps) {
+  renderButton() {
+    const {disabled} = this.props;
+    const {value} = this.state;
+    const {css} = this;
+
     return (
-      <button {...buttonProps}/>
+      <button
+        className={css('button')}
+        disabled={disabled}
+        onClick={this._onClick}
+        style={{
+          backgroundColor: cssColorValue(value),
+        }}/>
     );
   }
 
-  renderClear(clearProps) {
-    if (clearProps.disabled || !clearProps.value) return null;
+  renderClear() {
+    const {disabled} = this.props;
+    const {value} = this.state;
+
+    if (disabled || !value) return null;
+
+    const {css} = this;
 
     return (
-      <span {...clearProps}/>
+      <span
+        className={css('clear')}
+        disabled={disabled}
+        onClick={this._onClearClick}
+        value={value}/>
     );
   }
 
-  renderInput(inputProps) {
+  renderInput() {
+    const {autoFocus, disabled, id, name, placeholder} = this.props;
+    const {value} = this.state;
+    const {css} = this;
+
     return (
-      <input {...inputProps}/>
+      <input
+        autoFocus={autoFocus}
+        className={css('control')}
+        disabled={disabled}
+        id={id}
+        name={name}
+        onChange={this._onChange}
+        onFocus={this._onInputFocus}
+        placeholder={placeholder}
+        ref={r => this._input = r}
+        type='text'
+        value={value}/>
     );
   }
 
-  renderMenu(menuProps) {
+  renderMenu() {
+    const {palette} = this.props;
+    const {isOpened} = this.state;
+    const {css} = this;
+
     return (
-      <Overlay {...menuProps}/>
+      <Overlay
+        className={cc(css('menu'), {
+          [css('isClosedMenu')]: !isOpened,
+        })}
+        onOutsideClick={this._onOutsideClick}
+        parentNode={this._parentNode}>
+        {this.computeTiles(palette)}
+      </Overlay>
     );
   }
 

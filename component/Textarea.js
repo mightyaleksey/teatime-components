@@ -29,8 +29,9 @@ class Textarea extends Component {
     this._textarea.select();
   }
 
-  _onChange = ({target}) => {
-    this.props.onChange(e, {value: target.value});
+  _onChange = e => {
+    const value = e.target.value;
+    this.props.onChange(e, {value});
   }
 
   render() {
