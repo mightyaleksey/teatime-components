@@ -46,6 +46,7 @@ class Textarea extends Component {
       <textarea
         {...omitProps(other)}
         className={cc(css('control'), className)}
+        onChange={this._onChange}
         ref={r => this._textarea = r}/>
     );
   }
