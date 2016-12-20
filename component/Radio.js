@@ -52,9 +52,9 @@ class Radio extends Component {
 
   css = tokenName => genericName(this.props, tokenName)
 
-  _onChange = (e, data) => {
-    if (!this._controlled) this.setState({value: data.value});
-    this.props.onChange(e, data);
+  _onChange = (e, {value}) => {
+    if (!this._controlled) this.setState({value});
+    this.props.onChange(e, {value});
   }
 
   render() {
