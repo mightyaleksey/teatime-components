@@ -18,6 +18,7 @@ const cssModules = {
 
 const omitProps = omit([
   'onChange',
+  'palette',
   'styles',
 ]);
 
@@ -126,7 +127,6 @@ class ColorPicker extends Component {
       disabled,
       id,
       name,
-      palette,
       placeholder,
       ...other,
     } = this.props;

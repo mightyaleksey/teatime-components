@@ -17,10 +17,9 @@ const {
   isUndefined,
   map,
   noop,
-  omit,
 } = require('../lib/dash');
 const {findDOMNode} = require('react-dom');
-const {isControlled, genericName} = require('../lib/util');
+const {filterProps, isControlled, genericName} = require('../lib/util');
 const Option = require('../view/Option');
 const Overlay = require('../view/Overlay');
 const React = require('react');
@@ -33,13 +32,6 @@ const cssModules = {
   s: require('../style/select/select-s.css'),
   xs: require('../style/select/select-xs.css'),
 };
-
-const omitProps = omit([
-  'renderOption',
-  'searchEmptyText',
-  'searchEngine',
-  'styles',
-]);
 
 class Select extends Component {
   constructor(props) {
@@ -327,118 +319,130 @@ class Select extends Component {
   }
 
   render() {
+    const {className} = this.props;
+    const {css} = this;
+
+    return (
+      <div
+        {...filterProps(this.props)}
+        className={cc(css('wrapper'), className)}
+        ref={r => this._parentRef = r}>
+        {this.renderValue()}
+        {this.renderSearch()}
+        {this.renderLabel()}
+        {this.renderArrow()}
+        {this.renderMenu()}
+      </div>
+    );
+  }
+
+  renderValue() {
+    const {disabled, name, options} = this.props;
+    const {selectedPosition} = this.state;
+
+    return (
+      <input
+        disabled={disabled}
+        name={name}
+        type='hidden'
+        value={selectedPosition > -1
+          ? options[selectedPosition].value
+          : ''}/>
+    );
+  }
+
+  renderSearch() {
+    if (!this.props.searchable) return null;
+
+    const {disabled, searchable} = this.props;
+    const {isPseudoFocused, searchValue} = this.state;
+    const {css} = this;
+
+    return (
+      <input
+        className={cc(css('search'), {
+          [css('isPseudoFocusedSearch')]: isPseudoFocused,
+        })}
+        disabled={disabled}
+        onChange={this._onSearchValueChange}
+        onKeyDown={this._onKeyDown}
+        ref={searchable
+          ? r => this._controlRef = r
+          : null}
+        value={searchValue}/>
+    );
+  }
+
+  renderLabel() {
     const {
-      className,
       disabled,
-      hasFixedWidth,
-      name,
       options,
       placeholder,
       searchable,
-      ...other,
     } = this.props;
 
     const {
-      isOpened,
-      isPseudoFocused,
-      searchValue,
       selectedPosition,
+      searchValue,
     } = this.state;
-    const {css} = this;
 
     const label = selectedPosition > -1
       ? options[selectedPosition].label
       : placeholder;
 
-    const menuItems = this.computeMenuItems();
+    const {css} = this;
 
-    return (
-      <div
-        {...omitProps(other)}
-        className={cc(css('wrapper'), className)}
-        ref={r => this._parentRef = r}>
-        {this.renderValue({
-          disabled,
-          name,
-          type: 'hidden',
-          value: '',
-        })}
-        {this.renderSearch({
-          className: cc(css('search'), {
-            [css('isPseudoFocusedSearch')]: isPseudoFocused
-          }),
-          disabled,
-          onChange: this._onSearchValueChange,
-          onKeyDown: this._onKeyDown,
-          ref: searchable
-            ? r => this._controlRef = r
-            : null,
-          value: searchValue,
-        })}
-        {this.renderLabel({
-          children: searchValue ? '' : label,
-          className: css('control'),
-          disabled,
-          onClick: this._onToggleMenu,
-          onKeyDown: this._onKeyDown,
-          ref: searchable
-            ? null
-            : r => this._controlRef = r,
-        })}
-        {this.renderArrow({
-          className: cc(css('arrow'), {
-            [css('isOpenedMenu')]: isOpened,
-          }),
-          onClick: this._onToggleMenu,
-        })}
-        {this.renderMenu({
-          children: menuItems,
-          className: cc(css('menu'), {
-            [css('isClosedMenu')]: !isOpened,
-            [css('isFixedMenu')]: hasFixedWidth
-          }),
-          onOutsideClick: this._onOutsideClick,
-          parentNode: this._parentNode,
-          ref: r => this._menuRef = r,
-        })}
-      </div>
-    );
-  }
+    const labelProps = {
+      children: searchValue ? '' : label,
+      className: css('control'),
+      disabled,
+      onClick: this._onToggleMenu,
+      onKeyDown: this._onKeyDown,
+      ref: searchable
+        ? null
+        : r => this._controlRef = r,
+    };
 
-  renderValue(valueProps) {
-    return (
-      <input {...valueProps}/>
-    );
-  }
-
-  renderSearch(inputProps) {
-    if (!this.props.searchable) return null;
-
-    return (
-      <input {...inputProps}/>
-    );
-  }
-
-  renderLabel(labelProps) {
-    if (this.props.searchable) {
+    if (searchable) {
       return (
         <span {...labelProps}/>
       );
     }
+
     return (
       <button {...labelProps}/>
     );
   }
 
-  renderArrow(arrowProps) {
+  renderArrow() {
+    const {isOpened} = this.state;
+    const {css} = this;
+
     return (
-      <i {...arrowProps}/>
+      <i
+        className={cc(css('arrow'), {
+          [css('isOpenedMenu')]: isOpened,
+        })}
+        onClick={this._onToggleMenu}/>
     );
   }
 
-  renderMenu(menuProps) {
+  renderMenu() {
+    const {hasFixedWidth} = this.props;
+    const {isOpened} = this.state;
+    const {css} = this;
+
     return (
-      <Overlay {...menuProps}/>
+      <Overlay
+        className={cc(css('menu'), {
+          [css('isClosedMenu')]: !isOpened,
+          [css('isFixedMenu')]: hasFixedWidth
+        })}
+        onOutsideClick={this._onOutsideClick}
+        parentNode={this._parentNode}
+        ref={r => this._menuRef = r}>
+        {this.computeMenuItems()}
+      </Overlay>
     );
   }
 
