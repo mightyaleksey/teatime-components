@@ -15,8 +15,9 @@ const {
   isFunction,
   isString,
   isUndefined,
-  map,
+  mapN,
   noop,
+  prop,
 } = require('../lib/dash');
 const {findDOMNode} = require('react-dom');
 const {filterProps, isControlled, genericName} = require('../lib/util');
@@ -33,11 +34,17 @@ const cssModules = {
   xs: require('../style/select/select-xs.css'),
 };
 
+const byLabel = prop('label');
+
 class Select extends Component {
   constructor(props) {
     super(props);
 
     this._controlled = isControlled(props);
+
+    const searchableValue = !isUndefined(props.searchableValue)
+      ? props.searchableValue
+      : byLabel;
 
     const searchEngine = this._searchEngine = getSearchEngine(props.searchEngine);
     const searchValue = '';
@@ -47,6 +54,7 @@ class Select extends Component {
 
     const menuItems = this._menuItems = calculateMenuItems(
       searchEngine,
+      searchableValue,
       props.options,
       searchValue
     );
@@ -115,12 +123,17 @@ class Select extends Component {
       this._searchEngine = getSearchEngine(nextProps.searchEngine);
     }
 
-    const {options} = this.props;
+    const {
+      options,
+      searchableValue = byLabel,
+    } = this.props;
+
     const {searchValue} = this.state;
 
     if (nextProps.options !== options || nextState.searchValue !== searchValue) {
       this._menuItems = calculateMenuItems(
         this._searchEngine,
+        searchableValue,
         nextProps.options,
         nextState.searchValue
       );
@@ -153,6 +166,7 @@ class Select extends Component {
   }
 
   _focusAdjacentItem(offset = 1) {
+    const {optionsLimit} = this.props;
     const {focusedIndex, isOpened, selectedIndex} = this.state;
     const length = this._menuItems.length;
     let nextFocusedIndex = focusedIndex + offset;
@@ -161,12 +175,12 @@ class Select extends Component {
       this._wasKeyPressed = true;
 
       nextFocusedIndex = offset > 0
-        ? Math.min(nextFocusedIndex, length - 1)
+        ? Math.min(nextFocusedIndex, length - 1, optionsLimit - 1)
         : Math.max(nextFocusedIndex, 0);
     } else {
       nextFocusedIndex = selectedIndex > -1
         ? selectedIndex
-        : (offset > 0 ? 0 : length - 1);
+        : (offset > 0 ? 0 : Math.min(length - 1, optionsLimit - 1));
     }
 
     this.setState({
@@ -276,12 +290,12 @@ class Select extends Component {
     return this._parentRef;
   }
 
-  computeMenuItems() {
+  computeMenuItems(menuItems) {
     if (!this.state.isOpened) return null;
 
     const {css} = this;
 
-    if (this._menuItems.length === 0) {
+    if (menuItems.length === 0) {
       return this.renderEmptyItem({
         children: this.props.searchEmptyText,
         className: css('emptyItem'),
@@ -294,6 +308,7 @@ class Select extends Component {
     } = this.state;
 
     const {
+      optionsLimit,
       renderOption = this.renderItemLabel,
     } = this.props;
 
@@ -301,7 +316,7 @@ class Select extends Component {
     const isSelectedMenuItem = css('isSelectedMenuItem');
     const menuItem = css('menuItem');
 
-    return map(option =>
+    return mapN(option =>
       this.renderMenuItem({
         children: renderOption(option),
         className: cc(menuItem, {
@@ -315,7 +330,7 @@ class Select extends Component {
         ref: focusedIndex === option._index
           ? r => this._focusedItemRef = r
           : null,
-      }), this._menuItems);
+      }), menuItems, optionsLimit);
   }
 
   render() {
@@ -441,7 +456,7 @@ class Select extends Component {
         onOutsideClick={this._onOutsideClick}
         parentNode={this._parentNode}
         ref={r => this._menuRef = r}>
-        {this.computeMenuItems()}
+        {this.computeMenuItems(this._menuItems)}
       </Overlay>
     );
   }
@@ -466,6 +481,7 @@ class Select extends Component {
 Select.defaultProps = {
   hasFixedWidth: false,
   onChange: noop,
+  optionsLimit: Infinity,
   placeholder: '—',
   searchable: false,
   searchEmptyText: 'No results found',
@@ -479,8 +495,10 @@ Select.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   options: PropTypes.array.isRequired,
+  optionsLimit: PropTypes.number,
   placeholder: PropTypes.string,
   searchable: PropTypes.bool,
+  searchableValue: PropTypes.func,
   searchEmptyText: PropTypes.string,
   searchEngine: PropTypes.oneOfType([
     PropTypes.func,
@@ -501,8 +519,8 @@ Select.propTypes = {
 module.exports = Select;
 
 // todo use understandable names for index and position
-// calculateMenuItems :: (a -> q -> bool) -> [a] -> q -> [b]
-function calculateMenuItems(searchEngine, items, needle = '') {
+// calculateMenuItems :: (a -> q -> bool) -> ({a} -> a) -> [a] -> q -> [b]
+function calculateMenuItems(searchEngine, searchableValue, items, needle = '') {
   const length = items.length;
   const availableItems = [];
   var nextLength = 0;
@@ -510,8 +528,11 @@ function calculateMenuItems(searchEngine, items, needle = '') {
   for (var i = 0; i < length; ++i) {
     const item = items[i];
 
-    if (!searchEngine(needle, item.label)) continue;
-    availableItems.push(assign(item, {_index: nextLength++, _position: i}));
+    if (!searchEngine(needle, searchableValue(item))) continue;
+    availableItems.push(assign(item, {
+      _index: nextLength++,
+      _position: i,
+    }));
   }
 
   return availableItems;

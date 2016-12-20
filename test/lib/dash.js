@@ -1,6 +1,7 @@
 'use strict';
 
 const {
+  mapN,
   assign,
   castArray,
   compose,
@@ -26,6 +27,13 @@ const test = require('tape');
 
 const add = curry((a, b, c = 0) => a + b + c);
 const inc = add(1);
+
+test('mapN', t => {
+  t.deepEqual(mapN(inc, [1, 2, 3]), [2, 3, 4]);
+  t.deepEqual(mapN(inc, {a: 1, b: 2, c: 3}), [2, 3, 4]);
+  t.deepEqual(mapN(inc, [1, 2, 3, 4, 5], 3), [2, 3, 4]);
+  t.end();
+});
 
 test('assign', t => {
   const a = {a: 4, c: 7};
