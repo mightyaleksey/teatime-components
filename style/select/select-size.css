@@ -2,12 +2,14 @@
 
 .wrapper-xs
 {
-  font: 13px arial,sans-serif;
+  font: 13px/24px arial,sans-serif;
 }
 
 .search-xs
 {
   padding: 0 25px 0 8px;
+
+  line-height: 22px;
 }
 
 .control-xs
@@ -33,8 +35,6 @@
 .menuItem-xs
 {
   padding: 0 15px 0 30px;
-
-  line-height: 24px;
 }
 
 .emptyItem-xs
@@ -55,12 +55,14 @@
 
 .wrapper-s
 {
-  font: 13px arial,sans-serif;
+  font: 13px/28px arial,sans-serif;
 }
 
 .search-s
 {
   padding: 0 25px 0 11px;
+
+  line-height: 26px;
 }
 
 .control-s
@@ -86,8 +88,6 @@
 .menuItem-s
 {
   padding: 0 15px 0 30px;
-
-  line-height: 24px;
 }
 
 .emptyItem-s
@@ -108,12 +108,14 @@
 
 .wrapper-m
 {
-  font: 15px arial,sans-serif;
+  font: 15px/32px arial,sans-serif;
 }
 
 .search-m
 {
   padding: 0 29px 0 13px;
+
+  line-height: 30px;
 }
 
 .control-m
@@ -139,15 +141,11 @@
 .menuItem-m
 {
   padding: 0 20px 0 34px;
-
-  line-height: 28px;
 }
 
 .emptyItem-m
 {
   padding: 0 15px;
-
-  line-height: 28px;
 }
 
 .isSelectedMenuItem-m
