@@ -1,8 +1,8 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {genericName} = require('../lib/util');
-const {omit} = require('../lib/dash');
+const {filterProps, genericName} = require('../lib/util');
+const {noop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
 
@@ -14,25 +14,18 @@ const cssModules = {
   xs: require('../style/spin/spin-xs.css'),
 };
 
-const omitProps = omit([
-  'size',
-  'styles',
-]);
-
 class Spin extends Component {
   css = tokenName => genericName(this.props, tokenName)
 
-  render() {
-    const {
-      className,
-      ...other,
-    } = this.props;
+  focus = noop
 
+  render() {
+    const {className} = this.props;
     const {css} = this;
 
     return (
       <span
-        {...omitProps(other)}
+        {...filterProps(this.props)}
         className={cc(css('control'), className)}/>
     );
   }

@@ -1,8 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {genericName} = require('../lib/util');
-const {omit} = require('../lib/dash');
+const {filterProps, genericName} = require('../lib/util');
 const React = require('react');
 const cc = require('classnames');
 
@@ -21,12 +20,6 @@ const cssModules = {
   'normal-xs': require('../style/button/button-normal-xs.css'),
 };
 
-const omitProps = omit([
-  'size',
-  'styles',
-  'theme',
-]);
-
 class Button extends Component {
   css = tokenName => genericName(this.props, tokenName)
 
@@ -36,18 +29,16 @@ class Button extends Component {
   }
 
   render() {
-    const {
-      className,
-      ...other,
-    } = this.props;
-
+    const {children, className} = this.props;
     const {css} = this;
 
     return (
       <button
-        {...omitProps(other)}
+        {...filterProps(this.props)}
         className={cc(css('control'), className)}
-        ref={r => this._button = r}/>
+        ref={r => this._button = r}>
+        {children}
+      </button>
     );
   }
 }

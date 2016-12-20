@@ -1,9 +1,9 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
+const {filterProps, genericName} = require('../lib/util');
 const {genericId} = require('../lib/identity');
-const {genericName} = require('../lib/util');
-const {isUndefined, noop, omit} = require('../lib/dash');
+const {isUndefined, noop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
 
@@ -12,12 +12,6 @@ const cssModules = {
   s: require('../style/tumbler/tumbler-s.css'),
   xs: require('../style/tumbler/tumbler-xs.css'),
 };
-
-const omitProps = omit([
-  'onChange',
-  'size',
-  'styles',
-]);
 
 class Tumbler extends Component {
   constructor(props) {
@@ -49,41 +43,20 @@ class Tumbler extends Component {
   }
 
   render() {
-    const {
-      checked,
-      className,
-      defaultChecked,
-      disabled,
-      name,
-      offText,
-      onText,
-      value,
-      ...other,
-    } = this.props;
+    const {className, offText, onText, ...props} = this.props;
+    const {id} = this.state;
 
     const {css} = this;
-    const {id} = this.state;
 
     // why this looks like a pie,
     // see: http://stackoverflow.com/questions/9273016/why-is-this-inline-block-element-pushed-downward
     return (
       <span
-        {...omitProps(other)}
+        {...filterProps(props)}
         className={cc(css('wrapper'), className)}>
         <span className={css('baseline')}>
           <div className={css('shape')}>
-            {this.renderInput({
-              checked,
-              className: css('native'),
-              defaultChecked,
-              disabled,
-              id,
-              name,
-              onChange: this._onChange,
-              ref: r => this._input = r,
-              type: 'checkbox',
-              value,
-            })}
+            {this.renderInput()}
             <label
               className={css('control')}
               htmlFor={id}>
@@ -97,9 +70,31 @@ class Tumbler extends Component {
     );
   }
 
-  renderInput(inputProps) {
+  renderInput() {
+    const {
+      checked,
+      defaultChecked,
+      disabled,
+      name,
+      value,
+    } = this.props;
+
+    const {id} = this.state;
+
+    const {css} = this;
+
     return (
-      <input {...inputProps}/>
+      <input
+        checked={checked}
+        className={css('native')}
+        defaultChecked={defaultChecked}
+        disabled={disabled}
+        id={id}
+        name={name}
+        onChange={this._onChange}
+        ref={r => this._input = r}
+        type='checkbox'
+        value={value}/>
     );
   }
 }

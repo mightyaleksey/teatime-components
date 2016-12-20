@@ -1,9 +1,9 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
+const {filterProps, genericName, isControlled} = require('../lib/util');
 const {genericId} = require('../lib/identity');
-const {isControlled, genericName} = require('../lib/util');
-const {isUndefined, map, noop, omit} = require('../lib/dash');
+const {isUndefined, map, noop} = require('../lib/dash');
 const Box = require('../view/Box');
 const React = require('react');
 const cc = require('classnames');
@@ -16,13 +16,6 @@ const cssModules = {
   'common-m': require('../style/radio/radio-common-m.css'),
   'common-s': require('../style/radio/radio-common-s.css'),
 };
-
-const omitProps = omit([
-  'onChange',
-  'size',
-  'styles',
-  'theme',
-]);
 
 class Radio extends Component {
   constructor(props) {
@@ -52,43 +45,44 @@ class Radio extends Component {
 
   css = tokenName => genericName(this.props, tokenName)
 
+  focus = noop
+
   _onChange = (e, {value}) => {
     if (!this._controlled) this.setState({value});
     this.props.onChange(e, {value});
   }
 
-  render() {
-    const {
-      className,
-      disabled,
-      name,
-      options,
-      theme,
-      ...other,
-    } = this.props;
-
-    const {css} = this;
+  computeOptions(options) {
+    const {disabled, name, theme} = this.props;
     const {prefix, value} = this.state;
 
+    const {css} = this;
     const styles = css();
 
-    const elements = map(option =>
+    const hasLabel = theme === 'common';
+
+    return map(option =>
       this.renderOption(option, {
         checked: option.value === value,
         disabled: option.disabled || disabled,
-        hasLabel: theme === 'common',
+        hasLabel,
         key: `${prefix}${option.value}`,
         name,
         onChange: this._onChange,
         styles,
         type: 'radio',
       }), options);
+  }
+
+  render() {
+    const {className, options} = this.props;
+    const {css} = this;
 
     return (
       <div
-        {...omitProps(other)}
+        {...filterProps(this.props)}
         className={cc(css('container'), className)}>
-        {elements}
+        {this.computeOptions(options)}
       </div>
     );
   }

@@ -1,8 +1,8 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {genericName} = require('../lib/util');
-const {omit} = require('../lib/dash');
+const {filterProps, genericName} = require('../lib/util');
+const {noop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
 
@@ -21,27 +21,21 @@ const cssModules = {
   'normal-xs': require('../style/link/link-normal-xs.css'),
 };
 
-const omitProps = omit([
-  'size',
-  'styles',
-  'theme',
-]);
-
 class Link extends Component {
   css = tokenName => genericName(this.props, tokenName)
 
-  render() {
-    const {
-      className,
-      ...other,
-    } = this.props;
+  focus = noop
 
+  render() {
+    const {children, className} = this.props;
     const {css} = this;
 
     return (
       <a
-        {...omitProps(other)}
-        className={cc(css('control'), className)}/>
+        {...filterProps(this.props)}
+        className={cc(css('control'), className)}>
+        {children}
+      </a>
     );
   }
 }
