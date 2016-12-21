@@ -3,8 +3,8 @@
 .gitignore
 .npmignore
 .script
+.story
 .styleguidist
 .travis.yml
 docs
-story
 test
