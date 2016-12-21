@@ -1,8 +1,8 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {assign, map, noop, omit} = require('../lib/dash');
-const {isControlled, genericName} = require('../lib/util');
+const {assign, map, noop} = require('../lib/dash');
+const {filterProps, genericName, isControlled} = require('../lib/util');
 const Box = require('../view/Box');
 const React = require('react');
 const cc = require('classnames');
@@ -12,11 +12,6 @@ const cssModules = {
   m: require('../style/checkGroup/checkGroup-m.css'),
   s: require('../style/checkGroup/checkGroup-s.css'),
 };
-
-const omitProps = omit([
-  'options',
-  'styles',
-]);
 
 class CheckGroup extends Component {
   constructor(props) {
@@ -52,9 +47,7 @@ class CheckGroup extends Component {
     this.setState({values});
   }
 
-  css = tokenName => {
-    return genericName(this.props, tokenName);
-  }
+  css = tokenName => genericName(this.props, tokenName)
 
   focus = noop
 
@@ -70,21 +63,13 @@ class CheckGroup extends Component {
     });
   }
 
-  render() {
-    const {
-      className,
-      cols,
-      disabled,
-      name,
-      ...other,
-    } = this.props;
-
+  computeChecks(checkItems) {
+    const {disabled, name} = this.props;
     const {values} = this.state;
 
-    const {css} = this;
-    const styles = css();
+    const styles = this.css();
 
-    const checks = map(item =>
+    return map(item =>
       this.renderCheck({
         ...item,
         checked: values[item._position],
@@ -94,19 +79,34 @@ class CheckGroup extends Component {
         onChange: this._onChange,
         position: item._position,
         styles,
-      }), this._checkItems);
+      }), checkItems);
+  }
+
+  computeColumns(checks) {
+    const {cols} = this.props;
+    const chunkSize = Math.ceil(this._checkItems.length / cols);
+    const columns = chunk(checks, chunkSize);
+    const className = this.css('column');
 
     var index = 0;
-    const columns = map(children =>
+    return map(children =>
       this.renderColumn({
         children,
-        className: css('column'),
+        className,
         key: ++index,
-      }), chunk(checks, Math.ceil(this._checkItems.length / cols)));
+      }), columns);
+  }
+
+  render() {
+    const {className} = this.props;
+    const {css} = this;
+
+    const checks = this.computeChecks(this._checkItems);
+    const columns = this.computeColumns(checks);
 
     return (
       <div
-        {...omitProps(other)}
+        {...filterProps(this.props)}
         className={cc(css('container'), className)}>
         {columns}
       </div>
