@@ -5,6 +5,11 @@
   composes: wrapper-m from './select-size.css';
 }
 
+.baseline
+{
+  composes: baseline from './select.css';
+}
+
 .search
 {
   composes: search from './select.css';

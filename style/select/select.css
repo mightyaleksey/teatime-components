@@ -12,6 +12,18 @@
   min-width: 7em;
 }
 
+.baseline
+{
+  display: inline-block;
+  overflow: visible;
+
+  width: 100%;
+
+  vertical-align: top;
+
+  font: inherit;
+}
+
 .search
 {
   position: absolute;
@@ -40,6 +52,7 @@
   composes: normal from '../button/button.css';
 
   display: block;
+  overflow: hidden;
 
   width: 100%;
 

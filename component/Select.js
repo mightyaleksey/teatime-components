@@ -338,16 +338,18 @@ class Select extends Component {
     const {css} = this;
 
     return (
-      <div
+      <span
         {...filterProps(this.props)}
         className={cc(css('wrapper'), className)}
         ref={r => this._parentRef = r}>
         {this.renderValue()}
-        {this.renderSearch()}
-        {this.renderLabel()}
+        <span className={css('baseline')}>
+          {this.renderSearch()}
+          {this.renderLabel()}
+        </span>
         {this.renderArrow()}
         {this.renderMenu()}
-      </div>
+      </span>
     );
   }
 
