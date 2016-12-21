@@ -48,7 +48,8 @@ class Check extends Component {
     return (
       <span
         {...filterProps(this.props)}
-        className={cc(css('wrapper'), className)}>
+        className={cc(css('wrapper'), className)}
+        onChange={void 0}>
         {this.renderInput()}
         {this.renderControl()}
         {this.renderLabel()}

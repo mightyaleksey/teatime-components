@@ -136,6 +136,7 @@ class ColorPicker extends Component {
       <span
         {...filterProps(this.props)}
         className={cc(css('container'), className)}
+        onChange={void 0}
         ref='parent'>
         {this.renderButton()}
         {this.renderClear()}

@@ -81,7 +81,8 @@ class Radio extends Component {
     return (
       <div
         {...filterProps(this.props)}
-        className={cc(css('container'), className)}>
+        className={cc(css('container'), className)}
+        onChange={void 0}>
         {this.computeOptions(options)}
       </div>
     );

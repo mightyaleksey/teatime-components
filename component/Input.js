@@ -69,7 +69,8 @@ class Input extends Component {
     return (
       <span
         {...filterProps(this.props)}
-        className={cc(css('wrapper'), className)}>
+        className={cc(css('wrapper'), className)}
+        onChange={void 0}>
         {this.renderClear()}
         {this.renderInput()}
       </span>

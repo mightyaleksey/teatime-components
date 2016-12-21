@@ -53,7 +53,8 @@ class Tumbler extends Component {
     return (
       <span
         {...filterProps(props)}
-        className={cc(css('wrapper'), className)}>
+        className={cc(css('wrapper'), className)}
+        onChange={void 0}>
         <span className={css('baseline')}>
           <div className={css('shape')}>
             {this.renderInput()}

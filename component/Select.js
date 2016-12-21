@@ -349,6 +349,7 @@ class Select extends Component {
       <span
         {...filterProps(this.props)}
         className={cc(css('wrapper'), className)}
+        onChange={void 0}
         ref={r => this._parentRef = r}>
         {this.renderValue()}
         <span className={css('baseline')}>
