@@ -148,6 +148,7 @@ class Select extends Component {
   }
 
   _closeMenu() {
+
     this.setState({
       focusedIndex: -1,
       isOpened: false,
@@ -264,7 +265,7 @@ class Select extends Component {
   }
 
   _onOutsideClick = () => {
-    this._closeMenu();
+    if (this.state.isOpened) this._closeMenu();
   }
 
   _onSearchValueClick = () => {
