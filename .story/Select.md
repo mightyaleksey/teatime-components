@@ -133,6 +133,7 @@
       {label: 'Vespa', value: 'vespa'},
       {label: 'Yamaha', value: 'yamaha'}
     ]}
+    placeholder='disabled :/'
     searchable={true}/>
   {' '}fuzzy engine
   <Select
@@ -147,6 +148,7 @@
       {label: 'Vespa', value: 'vespa'},
       {label: 'Yamaha', value: 'yamaha'}
     ]}
+    placeholder='try aaa'
     searchable={true}
     searchEngine='fuzzy'/>
   {' '}includes engine
@@ -162,6 +164,7 @@
       {label: 'Vespa', value: 'vespa'},
       {label: 'Yamaha', value: 'yamaha'}
     ]}
+    placeholder='try wa'
     searchable={true}
     searchEngine='includes'/>
   {' '}startsWith engine
@@ -177,6 +180,7 @@
       {label: 'Vespa', value: 'vespa'},
       {label: 'Yamaha', value: 'yamaha'}
     ]}
+    placeholder='try ja'
     searchable={true}
     searchEngine='startsWith'/>
 </div>
@@ -511,6 +515,7 @@
       {label: 'Zhukovsky', value: 'zhukovsky'},
       {label: 'Zlatoust', value: 'zlatoust'}
     ]}
+    placeholder='~ 318'
     searchable={true}/>
   {' '}limit 20
   <Select
@@ -837,6 +842,7 @@
       {label: 'Zlatoust', value: 'zlatoust'}
     ]}
     optionsLimit={20}
+    placeholder='~ 318'
     searchable={true}/>
 </div>
 ```

@@ -8,11 +8,16 @@
   some text for the baseline
   <Tumbler
     name='tumbler-xs'
+    offText='Down'
+    onText='Up'
     size='xs'/>
   {' '}
   <Tumbler
+    defaultChecked={true}
     disabled={true}
     name='tumbler-xs-d'
+    offText='Down'
+    onText='Up'
     size='xs'/>
 </div>
 ```
@@ -29,7 +34,7 @@
     size='s'/>
   {' '}
   <Tumbler
-    defaultChecked={true}
+    defaultChecked={false}
     disabled={true}
     name='tumbler-s-d'
     size='s'/>

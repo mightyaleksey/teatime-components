@@ -8,10 +8,12 @@
   some text for the baseline
   <Input
     name='input-xs'
+    placeholder='Input something...'
     size='xs'
     style={{width: '200px'}}/>
   {' '}
   <Input
+    defaultValue='Disabled text'
     disabled={true}
     name='input-xs-d'
     size='xs'
