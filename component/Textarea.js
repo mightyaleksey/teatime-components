@@ -1,8 +1,8 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {genericName} = require('../lib/util');
-const {noop, omit} = require('../lib/dash');
+const {filterProps, genericName} = require('../lib/util');
+const {noop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
 
@@ -10,11 +10,6 @@ const cssModules = {
   m: require('../style/textarea/textarea-m.css'),
   s: require('../style/textarea/textarea-s.css'),
 };
-
-const omitProps = omit([
-  'size',
-  'styles',
-]);
 
 class Textarea extends Component {
   css = tokenName => genericName(this.props, tokenName)
@@ -36,17 +31,34 @@ class Textarea extends Component {
 
   render() {
     const {
+      autoComplete,
+      autoFocus,
       className,
-      ...other,
+      cols,
+      disabled,
+      maxLength,
+      name,
+      placeholder,
+      readOnly,
+      rows,
     } = this.props;
 
     const {css} = this;
 
     return (
       <textarea
-        {...omitProps(other)}
+        {...filterProps(this.props)}
+        autoComplete={autoComplete}
+        autoFocus={autoFocus}
         className={cc(css('control'), className)}
+        cols={cols}
+        disabled={disabled}
+        maxLength={maxLength}
+        name={name}
         onChange={this._onChange}
+        placeholder={placeholder}
+        readOnly={readOnly}
+        rows={rows}
         ref={r => this._textarea = r}/>
     );
   }
