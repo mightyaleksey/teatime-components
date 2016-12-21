@@ -1,9 +1,9 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
+const {filterProps, genericName} = require('../lib/util');
 const {genericId} = require('../lib/identity');
-const {genericName} = require('../lib/util');
-const {isUndefined, noop, omit} = require('../lib/dash');
+const {isUndefined, noop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
 
@@ -11,12 +11,6 @@ const cssModules = {
   s: require('../style/check/check-s.css'),
   m: require('../style/check/check-m.css'),
 };
-
-const omitProps = omit([
-  'id',
-  'onChange',
-  'styles',
-]);
 
 class Check extends Component {
   constructor(props) {
@@ -48,73 +42,80 @@ class Check extends Component {
   }
 
   render() {
+    const {className} = this.props;
+    const {css} = this;
+
+    return (
+      <span
+        {...filterProps(this.props)}
+        className={cc(css('wrapper'), className)}>
+        {this.renderInput()}
+        {this.renderControl()}
+        {this.renderLabel()}
+      </span>
+    );
+  }
+
+  renderInput() {
     const {
       checked,
-      children,
-      className,
       defaultChecked,
       disabled,
-      hasLabel,
-      label,
       name,
       value,
-      ...other,
     } = this.props;
 
-    const {css} = this;
     const {id} = this.state;
+    const {css} = this;
+
+    return (
+      <input
+        checked={checked}
+        className={css('native')}
+        defaultChecked={defaultChecked}
+        disabled={disabled}
+        id={id}
+        name={name}
+        onChange={this._onChange}
+        ref={r => this._check = r}
+        type='checkbox'
+        value={value}/>
+    );
+  }
+
+  renderControl() {
+    const {children, hasLabel, label} = this.props;
+    const {id} = this.state;
+    const {css} = this;
 
     const text = isUndefined(label)
       ? children
       : label;
 
     return (
-      <span
-        {...omitProps(other)}
-        className={cc(css('wrapper'), className)}>
-        {this.renderInput({
-          checked,
-          className: css('native'),
-          defaultChecked,
-          disabled,
-          id,
-          name,
-          onChange: this._onChange,
-          ref: r => this._check = r,
-          type: 'checkbox',
-          value,
-        })}
-        {this.renderControl({
-          children: hasLabel ? void 0 : text,
-          className: css('control'),
-          htmlFor: id,
-        })}
-        {this.renderLabel({
-          children: text,
-          className: css('label'),
-          htmlFor: id,
-        })}
-      </span>
+      <label
+        children={hasLabel ? void 0 : text}
+        className={css('control')}
+        htmlFor={id}/>
     );
   }
 
-  renderInput(inputProps) {
-    return (
-      <input {...inputProps}/>
-    );
-  }
-
-  renderControl(controlProps) {
-    return (
-      <label {...controlProps}/>
-    );
-  }
-
-  renderLabel(labelProps) {
+  renderLabel() {
     if (!this.props.hasLabel) return null;
 
+    const {children, label} = this.props;
+    const {id} = this.state;
+    const {css} = this;
+
+    const text = isUndefined(label)
+      ? children
+      : label;
+
     return (
-      <label {...labelProps}/>
+      <label
+        children={text}
+        className={css('label')}
+        htmlFor={id}/>
     );
   }
 }
