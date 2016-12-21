@@ -34,13 +34,16 @@ class Textarea extends Component {
       autoComplete,
       autoFocus,
       className,
+      children,
       cols,
+      defaultValue,
       disabled,
       maxLength,
       name,
       placeholder,
       readOnly,
       rows,
+      value,
     } = this.props;
 
     const {css} = this;
@@ -52,6 +55,7 @@ class Textarea extends Component {
         autoFocus={autoFocus}
         className={cc(css('control'), className)}
         cols={cols}
+        defaultValue={defaultValue}
         disabled={disabled}
         maxLength={maxLength}
         name={name}
@@ -59,7 +63,10 @@ class Textarea extends Component {
         placeholder={placeholder}
         readOnly={readOnly}
         rows={rows}
-        ref={r => this._textarea = r}/>
+        ref={r => this._textarea = r}
+        value={value}>
+        {children}
+      </textarea>
     );
   }
 }
