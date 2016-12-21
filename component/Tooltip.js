@@ -1,8 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {noop} = require('../lib/dash');
-const Overlay = require('../view/Overlay');
+const Overlay = require('../view/_Overlay');
 const React = require('react');
 const classNames = require('classnames');
 
@@ -60,7 +59,20 @@ class Tooltip extends Component {
     return rect.width * rect.height / maxWidth > height[this.props.size];
   }
 
-  _onOutsideClick = noop
+  onPositionUpdate = rect => {
+    const {maxWidth} = this.props;
+    const {isMultiline} = this.state;
+
+    if (isMultiline !== this.isMultiline(rect, maxWidth)) {
+      this.setState({
+        isMultiline: !this.state.isMultiline,
+      });
+    }
+  }
+
+  shouldComponentUpdatePosition = prevProps => {
+    return prevProps.direction !== this.props.direction;
+  }
 
   render() {
     const {children, className, direction, size, type} = this.props;
@@ -73,7 +85,8 @@ class Tooltip extends Component {
           [styles.isOpened]: children,
           [styles.isLine]: !this.state.isMultiline,
         })}
-        onOutsideClick={this._onOutsideClick}>
+        onPositionUpdate={this.onPositionUpdate}
+        shouldComponentUpdatePosition={this.shouldComponentUpdatePosition}>
         {children}
       </Overlay>
     );

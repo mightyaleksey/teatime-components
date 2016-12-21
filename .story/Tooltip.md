@@ -17,7 +17,7 @@
     <Tooltip
       direction='right'
       size='xs'
-      type='normal'>Right</Tooltip>
+      type='normal'>Right Direction and the long text to see the magic. Not long enough. Srsly.</Tooltip>
     <Tooltip
       direction='top'
       size='xs'
