@@ -267,6 +267,12 @@ class Select extends Component {
     this._closeMenu();
   }
 
+  _onSearchValueClick = () => {
+    this.setState({
+      isPseudoFocused: false,
+    });
+  }
+
   _onSearchValueChange = e => {
     this.setState({
       isPseudoFocused: false,
@@ -381,6 +387,7 @@ class Select extends Component {
           [css('isPseudoFocusedSearch')]: isPseudoFocused,
         })}
         disabled={disabled}
+        onClick={this._onSearchValueClick}
         onChange={this._onSearchValueChange}
         onKeyDown={this._onKeyDown}
         ref={searchable
@@ -399,8 +406,8 @@ class Select extends Component {
     } = this.props;
 
     const {
+      isPseudoFocused,
       selectedPosition,
-      searchValue,
     } = this.state;
 
     const label = selectedPosition > -1
@@ -410,7 +417,7 @@ class Select extends Component {
     const {css} = this;
 
     const labelProps = {
-      children: searchValue ? '' : label,
+      children: isPseudoFocused ? label : '',
       className: css('control'),
       disabled,
       onClick: this._onToggleMenu,
