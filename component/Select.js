@@ -355,8 +355,8 @@ class Select extends Component {
         <span className={css('baseline')}>
           {this.renderSearch()}
           {this.renderLabel()}
+          {this.renderArrow()}
         </span>
-        {this.renderArrow()}
         {this.renderMenu()}
       </span>
     );
