@@ -144,6 +144,11 @@
 
 /* mixin */
 
+.hasPlaceholder
+{
+  color: rgba(0,0,0,.5);
+}
+
 .isClosedMenu
 {
   display: none;

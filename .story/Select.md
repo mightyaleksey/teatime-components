@@ -18,6 +18,7 @@
       {label: 'Vespa', value: 'vespa'},
       {label: 'Yamaha', value: 'yamaha'}
     ]}
+    placeholder='Select...'
     size='xs'/>
   {' '}
   <Select
@@ -33,6 +34,7 @@
       {label: 'Vespa', value: 'vespa'},
       {label: 'Yamaha', value: 'yamaha'}
     ]}
+    placeholder='Select...'
     size='xs'/>
 </div>
 ```

@@ -269,6 +269,7 @@ class Select extends Component {
 
   _onSearchValueClick = () => {
     this.setState({
+      isOpened: true,
       isPseudoFocused: false,
     });
   }
@@ -398,27 +399,22 @@ class Select extends Component {
   }
 
   renderLabel() {
-    const {
-      disabled,
-      options,
-      placeholder,
-      searchable,
-    } = this.props;
+    const {disabled, options, placeholder, searchable} = this.props;
+    const {isPseudoFocused, selectedPosition} = this.state;
+    const {css} = this;
 
-    const {
-      isPseudoFocused,
-      selectedPosition,
-    } = this.state;
-
-    const label = selectedPosition > -1
+    const hasValue = selectedPosition > -1;
+    const label = hasValue
       ? options[selectedPosition].label
       : placeholder;
 
-    const {css} = this;
-
     const labelProps = {
-      children: isPseudoFocused ? label : '',
-      className: css('control'),
+      children: isPseudoFocused
+        ? label
+        : '',
+      className: cc(css('control'), {
+        [css('hasPlaceholder')]: !hasValue,
+      }),
       disabled,
       onClick: this._onToggleMenu,
       onKeyDown: this._onKeyDown,

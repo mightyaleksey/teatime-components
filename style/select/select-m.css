@@ -48,6 +48,11 @@
 
 /* mixin */
 
+.hasPlaceholder
+{
+  composes: hasPlaceholder from './select.css';
+}
+
 .isClosedMenu
 {
   composes: isClosedMenu from './select.css';
