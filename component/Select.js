@@ -24,7 +24,7 @@ const {filterProps, isControlled, genericName} = require('../lib/util');
 const Option = require('../view/Option');
 const Overlay = require('../view/Overlay');
 const React = require('react');
-const findIndex = require('lodash.findIndex');
+const findIndex = require('lodash.findindex');
 const searchEngine = require('../lib/searchEngine');
 const cc = require('classnames');
 
