@@ -29,14 +29,16 @@ class Button extends Component {
   }
 
   render() {
-    const {children, className} = this.props;
+    const {autoFocus, children, className, type} = this.props;
     const {css} = this;
 
     return (
       <button
         {...filterProps(this.props)}
+        autoFocus={autoFocus}
         className={cc(css('control'), className)}
-        ref={r => this._button = r}>
+        ref={r => this._button = r}
+        type={type}>
         {children}
       </button>
     );
