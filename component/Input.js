@@ -5,6 +5,7 @@ const {filterProps, isControlled, genericName} = require('../lib/util');
 const {isUndefined, noop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
+const warn = require('../lib/warn');
 
 const cssModules = {
   m: require('../style/input/input-m.css'),
@@ -17,6 +18,11 @@ class Input extends Component {
     super(props);
 
     this._controlled = isControlled(props);
+
+    if (process.env.NODE_ENV !== 'production') {
+      warn(this._controlled && !isUndefined(props.defaultValue),
+        'defaultValue', 'Input', props.type);
+    }
 
     const value = this._controlled
       ? props.value
