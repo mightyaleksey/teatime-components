@@ -6,6 +6,9 @@
 .control,
 .control:visited
 {
+  margin: 0;
+  padding: 0;
+
   cursor: pointer;
   transition: color .15s ease-out;
   text-decoration: none;
