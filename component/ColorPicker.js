@@ -28,7 +28,7 @@ class ColorPicker extends Component {
 
     this.state = {
       isOpened: false,
-      value: isUndefined(value) ? '' : value,
+      value: isUndefined(value) ? '' : userColorValue(value),
     };
   }
 
