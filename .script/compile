@@ -19,6 +19,7 @@ babel lib
 babel view
 
 if [ "$1" = '--deploy' ]; then
-  npm publish --tag beta
+  # npm publish --tag beta
+  npm publish
   git reset HEAD --hard
 fi
