@@ -514,6 +514,7 @@ Select.propTypes = {
   options: PropTypes.array.isRequired,
   optionsLimit: PropTypes.number,
   placeholder: PropTypes.string,
+  renderOption: PropTypes.func,
   searchable: PropTypes.bool,
   searchableValue: PropTypes.func,
   searchEmptyText: PropTypes.string,

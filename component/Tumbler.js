@@ -110,8 +110,8 @@ Tumbler.defaultProps = {
 
 Tumbler.propTypes = {
   name: PropTypes.string.isRequired,
-  off: PropTypes.string,
-  on: PropTypes.string,
+  offText: PropTypes.string,
+  onText: PropTypes.string,
   onChange: React.PropTypes.func,
   size: PropTypes.oneOf([
     'm',
