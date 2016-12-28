@@ -7,6 +7,7 @@ const {isUndefined, map, noop} = require('../lib/dash');
 const Box = require('../view/Box');
 const React = require('react');
 const cc = require('classnames');
+const warn = require('../lib/warn');
 
 const cssModules = {
   'button-l': require('../style/radio/radio-button-l.css'),
@@ -17,11 +18,20 @@ const cssModules = {
   'common-s': require('../style/radio/radio-common-s.css'),
 };
 
+var didWarnForRadioDefaultValue = false;
+
 class Radio extends Component {
   constructor(props) {
     super(props);
 
     this._controlled = isControlled(props);
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (this._controlled && !isUndefined(props.defaultValue) && !didWarnForRadioDefaultValue) {
+        didWarnForRadioDefaultValue = true;
+        warn(true, 'defaultValue', 'Radio', 'radio');
+      }
+    }
 
     const value = this._controlled
       ? props.value

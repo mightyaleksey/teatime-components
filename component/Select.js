@@ -1,5 +1,5 @@
 'use strict';
-/* eslint-disable max-len */
+
 const {
   ARROR_DOWN,
   ARROR_UP,
@@ -27,6 +27,7 @@ const React = require('react');
 const findIndex = require('lodash.findindex');
 const searchEngine = require('../lib/searchEngine');
 const cc = require('classnames');
+const warn = require('../lib/warn');
 
 const cssModules = {
   m: require('../style/select/select-m.css'),
@@ -36,11 +37,20 @@ const cssModules = {
 
 const byLabel = prop('label');
 
+var didWarnForSelectDefaultValue = false;
+
 class Select extends Component {
   constructor(props) {
     super(props);
 
     this._controlled = isControlled(props);
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (this._controlled && !isUndefined(props.defaultValue) && !didWarnForSelectDefaultValue) {
+        didWarnForSelectDefaultValue = true;
+        warn(true, 'defaultValue', 'Select', 'hidden');
+      }
+    }
 
     const searchableValue = !isUndefined(props.searchableValue)
       ? props.searchableValue
