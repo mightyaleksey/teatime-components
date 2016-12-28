@@ -1,6 +1,12 @@
 # change log
 
 
+## 0.7.1
+
+- ColorPicker prettifies the initial value.
+- Internal mark up fixes.
+
+
 ## 0.7.0
 
 - *API.* There were some changes in the component's public props, see the changes below.
