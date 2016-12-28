@@ -13,6 +13,8 @@ const cssModules = {
   xs: require('../style/input/input-xs.css'),
 };
 
+var didWarnForInputDefaultValue = false;
+
 class Input extends Component {
   constructor(props) {
     super(props);
@@ -20,8 +22,10 @@ class Input extends Component {
     this._controlled = isControlled(props);
 
     if (process.env.NODE_ENV !== 'production') {
-      warn(this._controlled && !isUndefined(props.defaultValue),
-        'defaultValue', 'Input', props.type);
+      if (this._controlled && !isUndefined(props.defaultValue) && !didWarnForInputDefaultValue) {
+        didWarnForInputDefaultValue = true;
+        warn(true, 'defaultValue', 'Input', props.type);
+      }
     }
 
     const value = this._controlled
