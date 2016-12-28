@@ -5,6 +5,8 @@
 
 .wrapper
 {
+  position: relative;
+
   display: inline-block;
 
   color: black;

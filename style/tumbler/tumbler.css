@@ -20,6 +20,8 @@
 
 .shape
 {
+  position: relative;
+
   display: block;
   overflow: hidden;
 
