@@ -1,6 +1,0 @@
-.control
-{
-  composes: selector from './spin.css';
-  composes: control from './spin.css';
-  composes: xl from './spin-size.css';
-}

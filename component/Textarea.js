@@ -7,6 +7,7 @@ const React = require('react');
 const cc = require('classnames');
 
 const cssModules = {
+  l: require('../style/textarea/textarea-l.css'),
   m: require('../style/textarea/textarea-m.css'),
   s: require('../style/textarea/textarea-s.css'),
 };
@@ -73,7 +74,7 @@ class Textarea extends Component {
 
 Textarea.defaultProps = {
   onChange: noop,
-  size: 's',
+  size: 'm',
   styles: cssModules,
   rows: 3,
 };
@@ -84,6 +85,7 @@ Textarea.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   size: PropTypes.oneOf([
+    'l',
     'm',
     's',
   ]),

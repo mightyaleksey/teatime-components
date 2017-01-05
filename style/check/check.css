@@ -65,14 +65,12 @@
 .control:after
 {
   position: absolute;
-  top: -11px;
-  left: 2px;
 
   display: block;
   visibility: hidden;
 
   content: '';
-  transition: top .05s,opacity .05s,visibility 0s .05s;
+  transition: bottom .05s ease-out,opacity .05s ease-out,visibility 0s .05s;
 
   opacity: 0;
 }
@@ -93,9 +91,9 @@
 
 .native:checked + .control:after
 {
-  top: -5px;
-
   visibility: visible;
+
+  transition: bottom .05s ease-out,opacity .05s ease-out;
 
   opacity: 1;
 }

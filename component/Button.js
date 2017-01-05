@@ -9,15 +9,12 @@ const cssModules = {
   'action-l': require('../style/button/button-action-l.css'),
   'action-m': require('../style/button/button-action-m.css'),
   'action-s': require('../style/button/button-action-s.css'),
-  'action-xs': require('../style/button/button-action-xs.css'),
   'link-l': require('../style/button/button-link-l.css'),
   'link-m': require('../style/button/button-link-m.css'),
   'link-s': require('../style/button/button-link-s.css'),
-  'link-xs': require('../style/button/button-link-xs.css'),
   'normal-l': require('../style/button/button-normal-l.css'),
   'normal-m': require('../style/button/button-normal-m.css'),
   'normal-s': require('../style/button/button-normal-s.css'),
-  'normal-xs': require('../style/button/button-normal-xs.css'),
 };
 
 class Button extends Component {
@@ -47,7 +44,7 @@ class Button extends Component {
 }
 
 Button.defaultProps = {
-  size: 's',
+  size: 'm',
   styles: cssModules,
   theme: 'normal',
 };
@@ -57,7 +54,6 @@ Button.propTypes = {
     'l',
     'm',
     's',
-    'xs',
   ]),
   styles: PropTypes.object,
   theme: PropTypes.oneOf([

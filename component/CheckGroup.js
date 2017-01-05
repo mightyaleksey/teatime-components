@@ -9,8 +9,8 @@ const cc = require('classnames');
 const chunk = require('lodash.chunk');
 
 const cssModules = {
+  l: require('../style/checkGroup/checkGroup-l.css'),
   m: require('../style/checkGroup/checkGroup-m.css'),
-  s: require('../style/checkGroup/checkGroup-s.css'),
 };
 
 class CheckGroup extends Component {
@@ -130,7 +130,7 @@ class CheckGroup extends Component {
 CheckGroup.defaultProps = {
   cols: 1,
   onChange: noop,
-  size: 's',
+  size: 'm',
   styles: cssModules,
 };
 
@@ -141,7 +141,7 @@ CheckGroup.propTypes = {
   onChange: PropTypes.func,
   options: PropTypes.array.isRequired,
   size: PropTypes.oneOf([
-    's',
+    'l',
     'm',
   ]),
   styles: PropTypes.object,

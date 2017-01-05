@@ -8,9 +8,9 @@ const React = require('react');
 const cc = require('classnames');
 
 const cssModules = {
+  l: require('../style/tumbler/tumbler-l.css'),
   m: require('../style/tumbler/tumbler-m.css'),
   s: require('../style/tumbler/tumbler-s.css'),
-  xs: require('../style/tumbler/tumbler-xs.css'),
 };
 
 class Tumbler extends Component {
@@ -104,7 +104,7 @@ Tumbler.defaultProps = {
   offText: 'Off',
   onText: 'On',
   onChange: noop,
-  size: 's',
+  size: 'm',
   styles: cssModules,
 };
 
@@ -114,9 +114,9 @@ Tumbler.propTypes = {
   onText: PropTypes.string,
   onChange: React.PropTypes.func,
   size: PropTypes.oneOf([
+    'l',
     'm',
     's',
-    'xs',
   ]),
   styles: PropTypes.object,
 };

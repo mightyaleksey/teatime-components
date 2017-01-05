@@ -8,9 +8,9 @@ const cc = require('classnames');
 const warn = require('../lib/warn');
 
 const cssModules = {
+  l: require('../style/input/input-l.css'),
   m: require('../style/input/input-m.css'),
   s: require('../style/input/input-s.css'),
-  xs: require('../style/input/input-xs.css'),
 };
 
 var didWarnForInputDefaultValue = false;
@@ -139,7 +139,7 @@ class Input extends Component {
 
 Input.defaultProps = {
   onChange: noop,
-  size: 's',
+  size: 'm',
   styles: cssModules,
   type: 'text',
 };
@@ -148,9 +148,9 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   size: PropTypes.oneOf([
+    'l',
     'm',
     's',
-    'xs',
   ]),
   styles: PropTypes.object,
   type: PropTypes.string,

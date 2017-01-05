@@ -1,27 +1,6 @@
 ## Preview
 
 
-### size xs
-
-```
-<div>
-  some text for the baseline
-  <Input
-    name='input-xs'
-    placeholder='Input something...'
-    size='xs'
-    style={{width: '200px'}}/>
-  {' '}
-  <Input
-    defaultValue='Disabled text'
-    disabled={true}
-    name='input-xs-d'
-    size='xs'
-    style={{width: '200px'}}/>
-</div>
-```
-
-
 ### size s
 
 ```
@@ -55,6 +34,27 @@
     disabled={true}
     name='input-m-d'
     size='m'
+    style={{width: '200px'}}/>
+</div>
+```
+
+
+### size l
+
+```
+<div>
+  some text for the baseline
+  <Input
+    name='input-l'
+    placeholder='Input something...'
+    size='l'
+    style={{width: '200px'}}/>
+  {' '}
+  <Input
+    defaultValue='Disabled text'
+    disabled={true}
+    name='input-l-d'
+    size='l'
     style={{width: '200px'}}/>
 </div>
 ```

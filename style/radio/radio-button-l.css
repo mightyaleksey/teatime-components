@@ -3,7 +3,7 @@
   composes: selector from './radio.css';
   composes: container from './radio.css';
 
-  font: 13px arial,sans-serif;
+  font: 15px/1.2 arial,sans-serif;
 }
 
 .wrapper

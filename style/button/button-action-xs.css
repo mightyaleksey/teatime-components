@@ -1,6 +1,0 @@
-.control
-{
-  composes: selector from './button.css';
-  composes: action from './button.css';
-  composes: xs from './button-size.css';
-}

@@ -1,30 +1,3 @@
-/* size xs */
-
-.container-xs
-{
-  font: 13px arial,sans-serif;
-}
-
-.button-xs
-{
-  width: 24px;
-  height: 24px;
-
-  line-height: 22px;
-}
-
-.clear-xs
-{
-  composes: clear from '../input/input-xs.css';
-}
-
-.control-xs
-{
-  composes: control from '../input/input-xs.css';
-
-  width: calc(100% - 23px);
-}
-
 /* size s */
 
 .container-s
@@ -34,10 +7,10 @@
 
 .button-s
 {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
 
-  line-height: 26px;
+  font: 13px/22px arial,sans-serif;
 }
 
 .clear-s
@@ -49,7 +22,7 @@
 {
   composes: control from '../input/input-s.css';
 
-  width: calc(100% - 27px);
+  width: calc(100% - 23px);
 }
 
 /* size m */
@@ -61,10 +34,10 @@
 
 .button-m
 {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 
-  line-height: 30px;
+  font: 13px/26px arial,sans-serif;
 }
 
 .clear-m
@@ -75,6 +48,33 @@
 .control-m
 {
   composes: control from '../input/input-m.css';
+
+  width: calc(100% - 27px);
+}
+
+/* size l */
+
+.container-l
+{
+  font: 15px arial,sans-serif;
+}
+
+.button-l
+{
+  width: 32px;
+  height: 32px;
+
+  font: 15px/30px arial,sans-serif;
+}
+
+.clear-l
+{
+  composes: clear from '../input/input-l.css';
+}
+
+.control-l
+{
+  composes: control from '../input/input-l.css';
 
   width: calc(100% - 31px);
 }

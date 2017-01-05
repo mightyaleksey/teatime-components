@@ -1,28 +1,28 @@
 .bottom
 {
   composes: bottom from './tooltip.css';
-  composes: bottom from './size-xs.css';
+  composes: bottom from './size-l.css';
   composes: bottom from './color-normal.css';
 }
 
 .left
 {
   composes: left from './tooltip.css';
-  composes: left from './size-xs.css';
+  composes: left from './size-l.css';
   composes: left from './color-normal.css';
 }
 
 .right
 {
   composes: right from './tooltip.css';
-  composes: right from './size-xs.css';
+  composes: right from './size-l.css';
   composes: right from './color-normal.css';
 }
 
 .top
 {
   composes: top from './tooltip.css';
-  composes: top from './size-xs.css';
+  composes: top from './size-l.css';
   composes: top from './color-normal.css';
 }
 

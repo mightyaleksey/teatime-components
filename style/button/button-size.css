@@ -1,27 +1,20 @@
 .l
 {
-  padding: 0 16px;
-
-  font: 18px/36px arial,sans-serif;
-}
-
-.m
-{
-  padding: 0 13px;
+  padding: 0 14px;
 
   font: 15px/30px arial,sans-serif;
 }
 
-.s
+.m
 {
-  padding: 0 11px;
+  padding: 0 12px;
 
   font: 13px/26px arial,sans-serif;
 }
 
-.xs
+.s
 {
-  padding: 0 8px;
+  padding: 0 9px;
 
   font: 13px/22px arial,sans-serif;
 }

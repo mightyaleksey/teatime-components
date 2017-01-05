@@ -1,45 +1,6 @@
 ## Preview
 
 
-### size xs
-
-```
-<div>
-  some text for the baseline
-  <Select
-    name='select-xs'
-    options={[
-      {label: 'Ducati', value: 'ducati'},
-      {label: 'Honda', value: 'honda'},
-      {label: 'Jawa', value: 'jawa'},
-      {label: 'Kawasaki', value: 'kawasaki'},
-      {label: 'Suzuki', value: 'suzuki'},
-      {label: 'Ural', value: 'ural'},
-      {label: 'Vespa', value: 'vespa'},
-      {label: 'Yamaha', value: 'yamaha'}
-    ]}
-    placeholder='Select...'
-    size='xs'/>
-  {' '}
-  <Select
-    disabled={true}
-    name='select-xs-d'
-    options={[
-      {label: 'Ducati', value: 'ducati'},
-      {label: 'Honda', value: 'honda'},
-      {label: 'Jawa', value: 'jawa'},
-      {label: 'Kawasaki', value: 'kawasaki'},
-      {label: 'Suzuki', value: 'suzuki'},
-      {label: 'Ural', value: 'ural'},
-      {label: 'Vespa', value: 'vespa'},
-      {label: 'Yamaha', value: 'yamaha'}
-    ]}
-    placeholder='Select...'
-    size='xs'/>
-</div>
-```
-
-
 ### size s
 
 ```
@@ -116,73 +77,120 @@
 ```
 
 
+### size l
+
+```
+<div>
+  some text for the baseline
+  <Select
+    name='select-l'
+    options={[
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
+      {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
+      {label: 'Vespa', value: 'vespa'},
+      {label: 'Yamaha', value: 'yamaha'}
+    ]}
+    placeholder='Select...'
+    size='l'/>
+  {' '}
+  <Select
+    disabled={true}
+    name='select-l-d'
+    options={[
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
+      {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
+      {label: 'Vespa', value: 'vespa'},
+      {label: 'Yamaha', value: 'yamaha'}
+    ]}
+    placeholder='Select...'
+    size='l'/>
+</div>
+```
+
+
 ### searchable
 
 ```
 <div>
-  <Select
-    disabled={true}
-    name='select-sa-d'
-    options={[
-      {label: 'Ducati', value: 'ducati'},
-      {label: 'Honda', value: 'honda'},
-      {label: 'Jawa', value: 'jawa'},
-      {label: 'Kawasaki', value: 'kawasaki'},
-      {label: 'Suzuki', value: 'suzuki'},
-      {label: 'Ural', value: 'ural'},
-      {label: 'Vespa', value: 'vespa'},
-      {label: 'Yamaha', value: 'yamaha'}
-    ]}
-    placeholder='disabled :/'
-    searchable={true}/>
-  {' '}fuzzy engine
-  <Select
-    name='select-sa'
-    options={[
-      {label: 'Ducati', value: 'ducati'},
-      {label: 'Honda', value: 'honda'},
-      {label: 'Jawa', value: 'jawa'},
-      {label: 'Kawasaki', value: 'kawasaki'},
-      {label: 'Suzuki', value: 'suzuki'},
-      {label: 'Ural', value: 'ural'},
-      {label: 'Vespa', value: 'vespa'},
-      {label: 'Yamaha', value: 'yamaha'}
-    ]}
-    placeholder='try aaa'
-    searchable={true}
-    searchEngine='fuzzy'/>
-  {' '}includes engine
-  <Select
-    name='select-sa'
-    options={[
-      {label: 'Ducati', value: 'ducati'},
-      {label: 'Honda', value: 'honda'},
-      {label: 'Jawa', value: 'jawa'},
-      {label: 'Kawasaki', value: 'kawasaki'},
-      {label: 'Suzuki', value: 'suzuki'},
-      {label: 'Ural', value: 'ural'},
-      {label: 'Vespa', value: 'vespa'},
-      {label: 'Yamaha', value: 'yamaha'}
-    ]}
-    placeholder='try wa'
-    searchable={true}
-    searchEngine='includes'/>
-  {' '}startsWith engine
-  <Select
-    name='select-sa'
-    options={[
-      {label: 'Ducati', value: 'ducati'},
-      {label: 'Honda', value: 'honda'},
-      {label: 'Jawa', value: 'jawa'},
-      {label: 'Kawasaki', value: 'kawasaki'},
-      {label: 'Suzuki', value: 'suzuki'},
-      {label: 'Ural', value: 'ural'},
-      {label: 'Vespa', value: 'vespa'},
-      {label: 'Yamaha', value: 'yamaha'}
-    ]}
-    placeholder='try ja'
-    searchable={true}
-    searchEngine='startsWith'/>
+  <p style={{marginTop: '0'}}>
+    <Select
+      disabled={true}
+      name='select-sa-d'
+      options={[
+        {label: 'Ducati', value: 'ducati'},
+        {label: 'Honda', value: 'honda'},
+        {label: 'Jawa', value: 'jawa'},
+        {label: 'Kawasaki', value: 'kawasaki'},
+        {label: 'Suzuki', value: 'suzuki'},
+        {label: 'Ural', value: 'ural'},
+        {label: 'Vespa', value: 'vespa'},
+        {label: 'Yamaha', value: 'yamaha'}
+      ]}
+      placeholder='disabled :/'
+      searchable={true}/>
+  </p>
+  <p>
+    <Select
+      name='select-sa'
+      options={[
+        {label: 'Ducati', value: 'ducati'},
+        {label: 'Honda', value: 'honda'},
+        {label: 'Jawa', value: 'jawa'},
+        {label: 'Kawasaki', value: 'kawasaki'},
+        {label: 'Suzuki', value: 'suzuki'},
+        {label: 'Ural', value: 'ural'},
+        {label: 'Vespa', value: 'vespa'},
+        {label: 'Yamaha', value: 'yamaha'}
+      ]}
+      placeholder='try aaa'
+      searchable={true}
+      searchEngine='fuzzy'/>
+    {' '}with fuzzy engine
+  </p>
+  <p>
+    <Select
+      name='select-sa'
+      options={[
+        {label: 'Ducati', value: 'ducati'},
+        {label: 'Honda', value: 'honda'},
+        {label: 'Jawa', value: 'jawa'},
+        {label: 'Kawasaki', value: 'kawasaki'},
+        {label: 'Suzuki', value: 'suzuki'},
+        {label: 'Ural', value: 'ural'},
+        {label: 'Vespa', value: 'vespa'},
+        {label: 'Yamaha', value: 'yamaha'}
+      ]}
+      placeholder='try wa'
+      searchable={true}
+      searchEngine='includes'/>
+    {' '}with includes engine
+  </p>
+  <p style={{marginBottom: '0'}}>
+    <Select
+      name='select-sa'
+      options={[
+        {label: 'Ducati', value: 'ducati'},
+        {label: 'Honda', value: 'honda'},
+        {label: 'Jawa', value: 'jawa'},
+        {label: 'Kawasaki', value: 'kawasaki'},
+        {label: 'Suzuki', value: 'suzuki'},
+        {label: 'Ural', value: 'ural'},
+        {label: 'Vespa', value: 'vespa'},
+        {label: 'Yamaha', value: 'yamaha'}
+      ]}
+      placeholder='try ja'
+      searchable={true}
+      searchEngine='startsWith'/>
+    {' '}with startsWith engine
+  </p>
 </div>
 ```
 

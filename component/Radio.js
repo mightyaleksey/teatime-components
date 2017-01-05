@@ -13,7 +13,7 @@ const cssModules = {
   'button-l': require('../style/radio/radio-button-l.css'),
   'button-m': require('../style/radio/radio-button-m.css'),
   'button-s': require('../style/radio/radio-button-s.css'),
-  'button-xs': require('../style/radio/radio-button-xs.css'),
+  'common-l': require('../style/radio/radio-common-l.css'),
   'common-m': require('../style/radio/radio-common-m.css'),
   'common-s': require('../style/radio/radio-common-s.css'),
 };
@@ -109,7 +109,7 @@ class Radio extends Component {
 
 Radio.defaultProps = {
   onChange: noop,
-  size: 's',
+  size: 'm',
   styles: cssModules,
   theme: 'common',
 };
@@ -122,7 +122,6 @@ Radio.propTypes = {
     'l',
     'm',
     's',
-    'xs',
   ]),
   styles: PropTypes.object,
   theme: PropTypes.oneOf([

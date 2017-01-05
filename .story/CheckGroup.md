@@ -1,45 +1,6 @@
 ## Preview
 
 
-### size s
-
-```
-<div>
-  some text for the baseline
-  <CheckGroup
-    cols={3}
-    name='checkGroup-s'
-    options={[
-      {label: 'Ducati', value: 'ducati'},
-      {label: 'Honda', value: 'honda'},
-      {label: 'Jawa', value: 'jawa'},
-      {label: 'Kawasaki', value: 'kawasaki'},
-      {label: 'Suzuki', value: 'suzuki'},
-      {label: 'Ural', value: 'ural'},
-      {label: 'Vespa', value: 'vespa'},
-      {label: 'Yamaha', value: 'yamaha'}
-    ]}
-    size='s'/>
-  {' '}
-  <CheckGroup
-    cols={3}
-    disabled={true}
-    name='checkGroup-s-d'
-    options={[
-      {label: 'Ducati', value: 'ducati'},
-      {label: 'Honda', value: 'honda'},
-      {label: 'Jawa', value: 'jawa'},
-      {label: 'Kawasaki', value: 'kawasaki'},
-      {label: 'Suzuki', value: 'suzuki'},
-      {label: 'Ural', value: 'ural'},
-      {label: 'Vespa', value: 'vespa'},
-      {label: 'Yamaha', value: 'yamaha'}
-    ]}
-    size='s'/>
-</div>
-```
-
-
 ### size m
 
 ```
@@ -79,5 +40,44 @@
       {label: 'Yamaha', value: 'yamaha'}
     ]}
     size='m'/>
+</div>
+```
+
+
+### size l
+
+```
+<div>
+  some text for the baseline
+  <CheckGroup
+    cols={3}
+    name='checkGroup-l'
+    options={[
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
+      {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
+      {label: 'Vespa', value: 'vespa'},
+      {label: 'Yamaha', value: 'yamaha'}
+    ]}
+    size='l'/>
+  {' '}
+  <CheckGroup
+    cols={3}
+    disabled={true}
+    name='checkGroup-l-d'
+    options={[
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
+      {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
+      {label: 'Vespa', value: 'vespa'},
+      {label: 'Yamaha', value: 'yamaha'}
+    ]}
+    size='l'/>
 </div>
 ```

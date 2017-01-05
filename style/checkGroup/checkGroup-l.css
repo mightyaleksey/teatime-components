@@ -7,15 +7,15 @@
 {
   composes: column from './checkGroup.css';
 
-  margin: 0 28px 0 0;
+  margin: 0 30px 0 0;
 }
 
 .wrapper
 {
-  composes: wrapper from '../check/check-m.css';
+  composes: wrapper from '../check/check-l.css';
   composes: wrapper from './checkGroup.css';
 
-  margin: 0 0 14px;
+  margin: 0 0 15px;
 }
 
 .wrapper:last-child
@@ -25,15 +25,15 @@
 
 .native
 {
-  composes: native from '../check/check-m.css';
+  composes: native from '../check/check-l.css';
 }
 
 .control
 {
-  composes: control from '../check/check-m.css';
+  composes: control from '../check/check-l.css';
 }
 
 .label
 {
-  composes: label from '../check/check-m.css';
+  composes: label from '../check/check-l.css';
 }

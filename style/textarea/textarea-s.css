@@ -1,10 +1,6 @@
 .control
 {
   composes: selector from './textarea.css';
-  composes: control from '../input/input.css';
   composes: control from './textarea.css';
-
-  padding: 2px 4px;
-
-  font-size: 13px;
+  composes: s from './textarea-size.css';
 }

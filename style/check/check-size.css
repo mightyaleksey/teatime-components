@@ -1,41 +1,57 @@
-/* size s */
+/* size m */
 
-.wrapper-s
+.wrapper-m
 {
-  font: 13px/normal arial,sans-serif;
+  font: 13px/1.2 arial,sans-serif;
 }
 
-.control-s
+.control-m
 {
   width: 14px;
   height: 14px;
 }
 
-.control-s:after
+.control-m:after
 {
-  width: 16px;
+  bottom: 8px;
+  left: 2px;
+
+  width: 15px;
   height: 16px;
 
-  background: url(../asset/tick-s.svg) 0 0 no-repeat;
+  background: url(../asset/tip-m.svg) 0 0 no-repeat;
 }
 
-/* size m */
-
-.wrapper-m
+.native-m:checked + .control-m:after
 {
-  font: 15px/normal arial,sans-serif;
+  bottom: 3px;
 }
 
-.control-m
+/* size l */
+
+.wrapper-l
+{
+  font: 15px/1.2 arial,sans-serif;
+}
+
+.control-l
 {
   width: 17px;
   height: 17px;
 }
 
-.control-m:after
+.control-l:after
 {
-  width: 18px;
-  height: 18px;
+  bottom: 10px;
+  left: 3px;
 
-  background: url(../asset/tick-m.svg) 0 0 no-repeat;
+  width: 16px;
+  height: 17px;
+
+  background: url(../asset/tip-l.svg) 0 0 no-repeat;
+}
+
+.native-l:checked + .control-l:after
+{
+  bottom: 3px;
 }

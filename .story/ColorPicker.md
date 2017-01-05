@@ -1,25 +1,6 @@
 ## Preview
 
 
-### size xs
-
-```
-<div>
-  some text for the baseline
-  <ColorPicker
-    defaultValue='FFCC99'
-    name='palette'
-    size='xs'/>
-  {' '}
-  <ColorPicker
-    defaultValue='FFCC99'
-    disabled={true}
-    name='palette'
-    size='xs'/>
-</div>
-```
-
-
 ### size s
 
 
@@ -53,5 +34,24 @@
     disabled={true}
     name='palette'
     size='m'/>
+</div>
+```
+
+
+### size l
+
+```
+<div>
+  some text for the baseline
+  <ColorPicker
+    defaultValue='FFCC99'
+    name='palette'
+    size='l'/>
+  {' '}
+  <ColorPicker
+    defaultValue='FFCC99'
+    disabled={true}
+    name='palette'
+    size='l'/>
 </div>
 ```

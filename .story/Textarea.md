@@ -40,3 +40,23 @@
     style={{width: '200px'}}/>
 </div>
 ```
+
+
+### size l
+
+```
+<div>
+  some text for the baseline
+  <Textarea
+    name='textarea-l'
+    placeholder='Paste something...'
+    size='l'
+    style={{width: '200px'}}/>
+  {' '}
+  <Textarea
+    disabled={true}
+    name='textarea-l-d'
+    size='l'
+    style={{width: '200px'}}/>
+</div>
+```

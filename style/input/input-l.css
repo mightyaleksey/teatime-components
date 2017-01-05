@@ -7,11 +7,11 @@
 .control
 {
   composes: control from './input.css';
-  composes: control-s from './input-size.css';
+  composes: control-l from './input-size.css';
 }
 
 .clear
 {
   composes: clear from './input.css';
-  composes: clear-s from './input-size.css';
+  composes: clear-l from './input-size.css';
 }
