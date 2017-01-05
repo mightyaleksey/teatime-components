@@ -1,8 +1,9 @@
 'use strict';
 
 const {compose, curry, isArray} = require('../lib/dash');
-const {dirname, resolve} = require('path');
+const {dirname} = require('path');
 const mergeWith = require('lodash.mergewith');
+const resolveTo = require('./resolveTo');
 
 const merge = curry((b, a) => mergeWith(a, b, customizer));
 const replace = curry((reg, sub, s) => s.replace(reg, sub));
@@ -10,13 +11,24 @@ const rootDir = dirname(__dirname);
 
 module.exports = {
   title: 'Teatime Components',
-  components: '../component/*.js',
   getExampleFilename: compose(
     replace(/\.js$/, '.md'),
     replace(/\/component\//, '/\.story/')),
+
+  sections: [
+    {
+      name: 'Components',
+      components: resolveTo('component/*.js'),
+    },
+    {
+      name: 'Dimensions',
+      content: resolveTo('.story/dimensions.md'),
+    },
+  ],
+
   updateWebpackConfig: merge({
     entry: [
-      resolve(__dirname, 'common.css'),
+      resolveTo('.styleguidist/common.css'),
     ],
 
     module: {
@@ -28,12 +40,12 @@ module.exports = {
         },
         {
           test: /\.css$/i,
-          include: resolve('style'),
+          include: resolveTo('style'),
           loader: 'style!css?modules&localIdentName=[name]--[local]&importLoaders=1!postcss',
         },
         {
           test: /\.css$/i,
-          include: __dirname,
+          include: resolveTo('.styleguidist'),
           loader: 'style!css',
         },
       ],
@@ -44,7 +56,8 @@ module.exports = {
       require('autoprefixer'),
     ],
   }),
-  styleguideDir: '../docs',
+
+  styleguideDir: resolveTo('docs'),
 };
 
 function customizer(obj, src) {
