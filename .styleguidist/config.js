@@ -2,15 +2,17 @@
 
 const {compose, curry, isArray} = require('../lib/dash');
 const {dirname} = require('path');
-const mergeWith = require('lodash.mergewith');
+const {version} = require('../package');
+const merge = require('./merge');
 const resolveTo = require('./resolveTo');
 
-const merge = curry((b, a) => mergeWith(a, b, customizer));
 const replace = curry((reg, sub, s) => s.replace(reg, sub));
 const rootDir = dirname(__dirname);
 
+const minorVersion = version.split('.').slice(0, 2).join('.');
+
 module.exports = {
-  title: 'Teatime Components',
+  title: `${version} / Teatime Components`,
   getExampleFilename: compose(
     replace(/\.js$/, '.md'),
     replace(/\/component\//, '/\.story/')),
@@ -57,9 +59,5 @@ module.exports = {
     ],
   }),
 
-  styleguideDir: resolveTo('docs'),
+  styleguideDir: resolveTo(`docs/${minorVersion}`),
 };
-
-function customizer(obj, src) {
-  if (isArray(obj)) return obj.concat(src);
-}
