@@ -1,6 +1,13 @@
 # change log
 
 
+## 0.8.0
+
+Changed dimensions for all components. `s|m|l` sizes are available now. Size `m` is used by default and is equal to the `s` old one.
+
+Also added versioning for documentation. See the available versions at http://sullenor.github.io/teatime-components/version.html
+
+
 ## 0.7.2
 
 Fixed Button's disabled state.
