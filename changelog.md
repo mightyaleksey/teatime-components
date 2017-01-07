@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.7.2
+
+Fixed Button's disabled state.
+
+
 ## 0.7.1
 
 - ColorPicker prettifies the initial value.
