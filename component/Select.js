@@ -30,9 +30,9 @@ const cc = require('classnames');
 const warn = require('../lib/warn');
 
 const cssModules = {
+  l: require('../style/select/select-l.css'),
   m: require('../style/select/select-m.css'),
   s: require('../style/select/select-s.css'),
-  xs: require('../style/select/select-xs.css'),
 };
 
 const byLabel = prop('label');
@@ -503,7 +503,7 @@ Select.defaultProps = {
   searchable: false,
   searchEmptyText: 'No results found',
   searchEngine: 'fuzzy',
-  size: 's',
+  size: 'm',
   styles: cssModules,
 };
 
@@ -527,9 +527,9 @@ Select.propTypes = {
     ]),
   ]),
   size: PropTypes.oneOf([
+    'l',
     'm',
     's',
-    'xs',
   ]),
   styles: PropTypes.object,
 };

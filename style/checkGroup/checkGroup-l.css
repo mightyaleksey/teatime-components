@@ -1,0 +1,39 @@
+.container
+{
+  composes: container from './checkGroup.css';
+}
+
+.column
+{
+  composes: column from './checkGroup.css';
+
+  margin: 0 30px 0 0;
+}
+
+.wrapper
+{
+  composes: wrapper from '../check/check-l.css';
+  composes: wrapper from './checkGroup.css';
+
+  margin: 0 0 15px;
+}
+
+.wrapper:last-child
+{
+  margin: 0;
+}
+
+.native
+{
+  composes: native from '../check/check-l.css';
+}
+
+.control
+{
+  composes: control from '../check/check-l.css';
+}
+
+.label
+{
+  composes: label from '../check/check-l.css';
+}

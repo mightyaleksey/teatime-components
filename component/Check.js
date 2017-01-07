@@ -8,7 +8,7 @@ const React = require('react');
 const cc = require('classnames');
 
 const cssModules = {
-  s: require('../style/check/check-s.css'),
+  l: require('../style/check/check-l.css'),
   m: require('../style/check/check-m.css'),
 };
 
@@ -124,7 +124,7 @@ class Check extends Component {
 Check.defaultProps = {
   hasLabel: true,
   onChange: noop,
-  size: 's',
+  size: 'm',
   styles: cssModules,
 };
 
@@ -134,7 +134,7 @@ Check.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   size: PropTypes.oneOf([
-    's',
+    'l',
     'm',
   ]),
   styles: PropTypes.object,

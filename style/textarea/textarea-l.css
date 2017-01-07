@@ -1,0 +1,6 @@
+.control
+{
+  composes: selector from './textarea.css';
+  composes: control from './textarea.css';
+  composes: l from './textarea-size.css';
+}

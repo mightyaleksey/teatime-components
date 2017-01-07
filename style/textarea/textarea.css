@@ -5,6 +5,5 @@
 
 .control
 {
-  font-family: arial,sans-serif;
-  line-height: 1.2;
+  composes: control from '../input/input.css';
 }

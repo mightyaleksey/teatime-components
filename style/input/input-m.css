@@ -2,31 +2,16 @@
 {
   composes: selector from './input.css';
   composes: wrapper from './input.css';
-
-  font: 15px arial,sans-serif;
 }
 
 .control
 {
   composes: control from './input.css';
-
-  height: 32px;
-  padding: 0 8px;
-
-  line-height: 30px;
+  composes: control-m from './input-size.css';
 }
 
 .clear
 {
   composes: clear from './input.css';
-
-  width: 30px;
-  height: 30px;
-
-  background: url(../asset/times-m.svg) 50% 50% no-repeat;
-}
-
-.clear + .control
-{
-  padding-right: 31px;
+  composes: clear-m from './input-size.css';
 }

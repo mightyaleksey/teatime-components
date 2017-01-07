@@ -7,11 +7,7 @@
 <div>
   <Button
     disabled={true}
-    size='xs'
-    theme='action'>Action Button</Button>
-  {' '}size xs
-  <Button
-    size='xs'
+    size='s'
     theme='action'>Action Button</Button>
   {' '}size s
   <Button
@@ -35,11 +31,7 @@
 <div>
   <Button
     disabled={true}
-    size='xs'
-    theme='link'>Link Button</Button>
-  {' '}size xs
-  <Button
-    size='xs'
+    size='s'
     theme='link'>Link Button</Button>
   {' '}size s
   <Button
@@ -63,11 +55,7 @@
 <div>
   <Button
     disabled={true}
-    size='xs'
-    theme='normal'>Normal Button</Button>
-  {' '}size xs
-  <Button
-    size='xs'
+    size='s'
     theme='normal'>Normal Button</Button>
   {' '}size s
   <Button

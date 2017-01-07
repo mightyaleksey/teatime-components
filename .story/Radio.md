@@ -1,37 +1,6 @@
 ## Preview
 
 
-### size xs
-
-```
-<div>
-  button theme
-  <Radio
-    name='motorrad-xs'
-    options={[
-      {label: 'Yamaha', value: 'yamaha'},
-      {label: 'Vespa', value: 'vespa'},
-      {label: 'MZ', value: 'mz'},
-      {label: 'Kawasaki', value: 'kawasaki'},
-    ]}
-    size='xs'
-    theme='button'/>
-  {' '}
-  <Radio
-    disabled={true}
-    name='motorrad-dxs'
-    options={[
-      {label: 'Yamaha', value: 'yamaha'},
-      {label: 'Vespa', value: 'vespa'},
-      {label: 'MZ', value: 'mz'},
-      {label: 'Kawasaki', value: 'kawasaki'},
-    ]}
-    size='xs'
-    theme='button'/>
-</div>
-```
-
-
 ### size s
 
 ```
@@ -182,5 +151,35 @@
     ]}
     size='l'
     theme='button'/>
+</div>
+```
+
+```
+<div>
+  common theme
+  <Radio
+    name='motorrad-cl'
+    options={[
+      {label: 'Yamaha', value: 'yamaha'},
+      {label: 'Vespa', value: 'vespa'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'MZ', value: 'mz'},
+      {label: 'Kawasaki', value: 'kawasaki'},
+    ]}
+    size='l'
+    theme='common'/>
+  {' '}
+  <Radio
+    disabled={true}
+    name='motorrad-cdl'
+    options={[
+      {label: 'Yamaha', value: 'yamaha'},
+      {label: 'Vespa', value: 'vespa'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'MZ', value: 'mz'},
+      {label: 'Kawasaki', value: 'kawasaki'},
+    ]}
+    size='l'
+    theme='common'/>
 </div>
 ```

@@ -16,18 +16,14 @@
 
 .button
 {
-  composes: control from '../button/button.css';
+  composes: normal from '../button/button.css';
 
   position: relative;
 
   margin: 0 -1px 0 0;
   padding: 0;
 
-  transition: border .1s ease-out,box-shadow .1s ease-out;
-
-  border: 1px solid #ccc;
   border-radius: 0;
-  background: white;
 
   font: inherit;
 }
@@ -37,22 +33,6 @@
   visibility: hidden;
 
   content: '\00A0';
-}
-
-.button:hover
-{
-  border: 1px solid #b3b3b3;
-}
-
-.button:focus
-{
-  border: 1px solid #ffdb4d;
-  box-shadow: inset 0 0 0 1px #ffdb4d;
-}
-
-.button:active
-{
-  background: #f6f5f3;
 }
 
 .button:active,
@@ -66,7 +46,6 @@
 {
   z-index: 1;
 
-  border: 1px solid #ccc;
   background: white;
 }
 

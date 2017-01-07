@@ -2,18 +2,19 @@
 {
   composes: selector from './check.css';
   composes: wrapper from './check.css';
-  composes: wrapper-s from './check-size.css';
+  composes: wrapper-l from './check-size.css';
 }
 
 .native
 {
   composes: native from './check.css';
+  composes: native-l from './check-size.css';
 }
 
 .control
 {
   composes: control from './check.css';
-  composes: control-s from './check-size.css';
+  composes: control-l from './check-size.css';
 }
 
 .label

@@ -11,9 +11,9 @@ const Tile = require('../view/Tile');
 const cc = require('classnames');
 
 const cssModules = {
-  xs: require('../style/colorPicker/colorPicker-xs.css'),
-  s: require('../style/colorPicker/colorPicker-s.css'),
+  l: require('../style/colorPicker/colorPicker-l.css'),
   m: require('../style/colorPicker/colorPicker-m.css'),
+  s: require('../style/colorPicker/colorPicker-s.css'),
 };
 
 class ColorPicker extends Component {
@@ -264,9 +264,9 @@ ColorPicker.propTypes = {
   onChange: PropTypes.func,
   palette: PropTypes.arrayOf(PropTypes.string),
   size: PropTypes.oneOf([
-    'xs',
-    's',
+    'l',
     'm',
+    's',
   ]),
   styles: PropTypes.object,
 };

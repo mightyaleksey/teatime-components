@@ -1,10 +1,10 @@
 {
   "name": "teatime-components",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "description": "React components + CSS Modules",
   "main": "index.js",
   "scripts": {
-    "docs": "styleguidist --config .styleguidist/config.js build",
+    "docs": ".script/docs",
     "lint": "eslint {component,decorator,lib,view}/*.js test/**/*.js",
     "start": "npm run styleguide",
     "styleguide": "styleguidist --config .styleguidist/config.js server",

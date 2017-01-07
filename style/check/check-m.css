@@ -8,6 +8,7 @@
 .native
 {
   composes: native from './check.css';
+  composes: native-m from './check-size.css';
 }
 
 .control

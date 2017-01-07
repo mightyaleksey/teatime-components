@@ -3,16 +3,16 @@
   composes: selector from './tumbler.css';
   composes: wrapper from './tumbler.css';
 
-  width: 66px;
+  width: 82px;
 
-  line-height: 24px;
+  line-height: 32px;
 }
 
 .baseline
 {
   composes: baseline from './tumbler.css';
 
-  line-height: 24px;
+  line-height: 32px;
 }
 
 .shape
@@ -24,35 +24,35 @@
 {
   composes: control from './tumbler.css';
 
-  margin: 0 0 0 -42px;
+  margin: 0 0 0 -50px;
 
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .label
 {
   composes: label from './tumbler.css';
 
-  width: 66px;
-  padding: 0 0 0 24px;
+  width: 82px;
+  padding: 0 0 0 32px;
 
-  line-height: 24px;
+  line-height: 32px;
 }
 
 .label:first-child
 {
-  margin: 0 -24px 0 0;
-  padding: 0 24px 0 0;
+  margin: 0 -32px 0 0;
+  padding: 0 32px 0 0;
 }
 
 .delimiter
 {
   composes: delimiter from './tumbler.css';
 
-  width: 24px;
-  margin: 0 0 0 -66px;
+  width: 32px;
+  margin: 0 0 0 -82px;
 
-  line-height: 24px;
+  line-height: 32px;
 }
 
 .native

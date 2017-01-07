@@ -10,3 +10,8 @@
 {
   margin-right: 0;
 }
+
+.wrapper
+{
+  display: block;
+}

@@ -8,8 +8,6 @@
   position: relative;
 
   display: inline-block;
-
-  min-width: 7em;
 }
 
 .baseline
@@ -27,7 +25,7 @@
 .search
 {
   position: absolute;
-  top: 1px;
+  top: 0;
   left: 0;
 
   display: inline-block;
@@ -91,6 +89,8 @@
   left: 0;
 
   overflow-y: auto;
+
+  min-width: 100%;
 
   background: white;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.1),0 9px 20px -5px rgba(0,0,0,.4);

@@ -1,28 +1,6 @@
 ## Preview
 
 
-### size xs
-
-```
-<div>
-  some text for the baseline
-  <Tumbler
-    name='tumbler-xs'
-    offText='Down'
-    onText='Up'
-    size='xs'/>
-  {' '}
-  <Tumbler
-    defaultChecked={true}
-    disabled={true}
-    name='tumbler-xs-d'
-    offText='Down'
-    onText='Up'
-    size='xs'/>
-</div>
-```
-
-
 ### size s
 
 ```
@@ -55,5 +33,27 @@
     disabled={true}
     name='tumbler-m-d'
     size='m'/>
+</div>
+```
+
+
+### size l
+
+```
+<div>
+  some text for the baseline
+  <Tumbler
+    name='tumbler-l'
+    offText='Down'
+    onText='Up'
+    size='l'/>
+  {' '}
+  <Tumbler
+    defaultChecked={true}
+    disabled={true}
+    name='tumbler-l-d'
+    offText='Down'
+    onText='Up'
+    size='l'/>
 </div>
 ```

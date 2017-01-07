@@ -6,15 +6,15 @@ const React = require('react');
 const classNames = require('classnames');
 
 const baseStyles = {
-  'normal-xs': require('../style/tooltip/tooltip-normal-xs.css'),
-  'normal-s': require('../style/tooltip/tooltip-normal-s.css'),
+  'normal-l': require('../style/tooltip/tooltip-normal-l.css'),
   'normal-m': require('../style/tooltip/tooltip-normal-m.css'),
-  'success-xs': require('../style/tooltip/tooltip-success-xs.css'),
-  'success-s': require('../style/tooltip/tooltip-success-s.css'),
+  'normal-s': require('../style/tooltip/tooltip-normal-s.css'),
+  'success-l': require('../style/tooltip/tooltip-success-l.css'),
   'success-m': require('../style/tooltip/tooltip-success-m.css'),
-  'warning-xs': require('../style/tooltip/tooltip-warning-xs.css'),
-  'warning-s': require('../style/tooltip/tooltip-warning-s.css'),
+  'success-s': require('../style/tooltip/tooltip-success-s.css'),
+  'warning-l': require('../style/tooltip/tooltip-warning-l.css'),
   'warning-m': require('../style/tooltip/tooltip-warning-m.css'),
+  'warning-s': require('../style/tooltip/tooltip-warning-s.css'),
 };
 
 const height = {
@@ -96,7 +96,7 @@ class Tooltip extends Component {
 Tooltip.defaultProps = {
   direction: 'right',
   maxWidth: 300,
-  size: 's',
+  size: 'm',
   type: 'normal',
 };
 
@@ -109,9 +109,9 @@ Tooltip.propTypes = {
   ]),
   maxWidth: PropTypes.number,
   size: PropTypes.oneOf([
-    'xs',
-    's',
+    'l',
     'm',
+    's',
   ]),
   type: PropTypes.oneOf([
     'normal',
