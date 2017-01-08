@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.8.1
+
+Tumbler height and margin issues fix.
+
+
 ## 0.8.0
 
 Changed dimensions for all components. `s|m|l` sizes are available now. Size `m` is used by default and is equal to the `s` old one.
