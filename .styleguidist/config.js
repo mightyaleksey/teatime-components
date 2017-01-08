@@ -24,7 +24,7 @@ module.exports = {
     },
     {
       name: 'Dimensions',
-      content: resolveTo('.story/dimensions.md'),
+      content: resolveTo('.story/docs/dimensions.md'),
     },
   ],
 
