@@ -1,6 +1,15 @@
 # change log
 
 
+## 0.8.2
+
+Possibility to provide the id prop for *Button*, *CheckGroup*, *Radio*, *Select*, *Spin*, *Textarea* components.
+
+Fix. Added possibility to provide the appropriate props for link.
+
+Possibility to disable particular options for the *CheckGroup*.
+
+
 ## 0.8.1
 
 Tumbler height and margin issues fix.
