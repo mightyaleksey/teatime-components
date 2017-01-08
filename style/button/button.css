@@ -8,6 +8,7 @@
   display: inline-block;
 
   box-sizing: border-box;
+  margin: 0;
 
   cursor: pointer;
   user-select: none;

@@ -20,6 +20,8 @@
 {
   display: inline-block;
 
+  margin: 0;
+
   animation: spin 1s infinite linear;
 
   border: 2px solid #fc0;
