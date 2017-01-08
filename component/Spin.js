@@ -19,13 +19,14 @@ class Spin extends Component {
   focus = noop
 
   render() {
-    const {className} = this.props;
+    const {className, id} = this.props;
     const {css} = this;
 
     return (
       <span
         {...filterProps(this.props)}
-        className={cc(css('control'), className)}/>
+        className={cc(css('control'), className)}
+        id={id}/>
     );
   }
 }

@@ -1,0 +1,11 @@
+exports[`test Link renders correctly 1`] = `
+<a
+  className="control outer"
+  download={true}
+  href="#"
+  id="links id"
+  target="_blank"
+  type="video/mp4">
+  Link Content
+</a>
+`;

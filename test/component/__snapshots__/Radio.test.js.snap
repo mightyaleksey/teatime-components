@@ -1,0 +1,203 @@
+exports[`test Radio renders correctly with defaults 1`] = `
+<div
+  className="container"
+  id={undefined}
+  onChange={undefined}>
+  <span
+    className="wrapper">
+    <input
+      checked={false}
+      className="native"
+      defaultValue={undefined}
+      disabled={undefined}
+      id="_teatime2"
+      name="radio control"
+      onChange={[Function]}
+      type="radio"
+      value="ducati" />
+    <label
+      className="control"
+      htmlFor="_teatime2" />
+    <label
+      className="label"
+      htmlFor="_teatime2">
+      Ducati
+    </label>
+  </span>
+  <span
+    className="wrapper">
+    <input
+      checked={false}
+      className="native"
+      defaultValue={undefined}
+      disabled={undefined}
+      id="_teatime3"
+      name="radio control"
+      onChange={[Function]}
+      type="radio"
+      value="honda" />
+    <label
+      className="control"
+      htmlFor="_teatime3" />
+    <label
+      className="label"
+      htmlFor="_teatime3">
+      Honda
+    </label>
+  </span>
+  <span
+    className="wrapper">
+    <input
+      checked={false}
+      className="native"
+      defaultValue={undefined}
+      disabled={undefined}
+      id="_teatime4"
+      name="radio control"
+      onChange={[Function]}
+      type="radio"
+      value="jawa" />
+    <label
+      className="control"
+      htmlFor="_teatime4" />
+    <label
+      className="label"
+      htmlFor="_teatime4">
+      Jawa
+    </label>
+  </span>
+</div>
+`;
+
+exports[`test Radio renders correctly with disabled state 1`] = `
+<div
+  className="container outer"
+  id="radios id"
+  onChange={undefined}>
+  <span
+    className="wrapper">
+    <input
+      checked={true}
+      className="native"
+      defaultValue={undefined}
+      disabled={true}
+      id="_teatime10"
+      name="radio control"
+      onChange={[Function]}
+      type="radio"
+      value="ducati" />
+    <label
+      className="control"
+      htmlFor="_teatime10" />
+    <label
+      className="label"
+      htmlFor="_teatime10">
+      Ducati
+    </label>
+  </span>
+  <span
+    className="wrapper">
+    <input
+      checked={false}
+      className="native"
+      defaultValue={undefined}
+      disabled={true}
+      id="_teatime11"
+      name="radio control"
+      onChange={[Function]}
+      type="radio"
+      value="honda" />
+    <label
+      className="control"
+      htmlFor="_teatime11" />
+    <label
+      className="label"
+      htmlFor="_teatime11">
+      Honda
+    </label>
+  </span>
+  <span
+    className="wrapper">
+    <input
+      checked={false}
+      className="native"
+      defaultValue={undefined}
+      disabled={true}
+      id="_teatime12"
+      name="radio control"
+      onChange={[Function]}
+      type="radio"
+      value="jawa" />
+    <label
+      className="control"
+      htmlFor="_teatime12" />
+    <label
+      className="label"
+      htmlFor="_teatime12">
+      Jawa
+    </label>
+  </span>
+</div>
+`;
+
+exports[`test Radio theme=\`button\` renders correctly 1`] = `
+<div
+  className="container outer"
+  id="radios id"
+  onChange={undefined}>
+  <span
+    className="wrapper">
+    <input
+      checked={true}
+      className="native"
+      defaultValue={undefined}
+      disabled={undefined}
+      id="_teatime6"
+      name="radio control"
+      onChange={[Function]}
+      type="radio"
+      value="ducati" />
+    <label
+      className="control"
+      htmlFor="_teatime6">
+      Ducati
+    </label>
+  </span>
+  <span
+    className="wrapper">
+    <input
+      checked={false}
+      className="native"
+      defaultValue={undefined}
+      disabled={true}
+      id="_teatime7"
+      name="radio control"
+      onChange={[Function]}
+      type="radio"
+      value="honda" />
+    <label
+      className="control"
+      htmlFor="_teatime7">
+      Honda
+    </label>
+  </span>
+  <span
+    className="wrapper">
+    <input
+      checked={false}
+      className="native"
+      defaultValue={undefined}
+      disabled={undefined}
+      id="_teatime8"
+      name="radio control"
+      onChange={[Function]}
+      type="radio"
+      value="jawa" />
+    <label
+      className="control"
+      htmlFor="_teatime8">
+      Jawa
+    </label>
+  </span>
+</div>
+`;

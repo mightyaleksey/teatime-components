@@ -1,0 +1,5 @@
+exports[`test Spin renders correctly 1`] = `
+<span
+  className="control outer"
+  id="spins id" />
+`;

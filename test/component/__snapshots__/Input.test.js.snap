@@ -1,0 +1,39 @@
+exports[`test Input renders correctly with defaults 1`] = `
+<span
+  className="wrapper"
+  onChange={undefined}>
+  <input
+    autoComplete={undefined}
+    autoFocus={undefined}
+    className="control"
+    disabled={undefined}
+    id={undefined}
+    maxLength={undefined}
+    name="input control"
+    onChange={[Function]}
+    placeholder={undefined}
+    readOnly={undefined}
+    type="text"
+    value="" />
+</span>
+`;
+
+exports[`test Input renders correctly with defined props 1`] = `
+<span
+  className="wrapper outer"
+  onChange={undefined}>
+  <input
+    autoComplete={false}
+    autoFocus={true}
+    className="control"
+    disabled={true}
+    id="inputs id"
+    maxLength={10}
+    name="input control"
+    onChange={[Function]}
+    placeholder="it is a placeholder"
+    readOnly={false}
+    type="password"
+    value="custom value" />
+</span>
+`;

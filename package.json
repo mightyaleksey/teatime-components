@@ -8,7 +8,7 @@
     "lint": "eslint {component,decorator,lib,view}/*.js test/**/*.js",
     "start": "npm run styleguide",
     "styleguide": "styleguidist --config .styleguidist/config.js server",
-    "test": "tape test/**/*.js"
+    "test": "tape test/lib/*.js; jest"
   },
   "repository": {
     "type": "git",
@@ -36,12 +36,15 @@
     "css-loader": "^0.26.1",
     "eslint": "^3.10.2",
     "eslint-plugin-react": "^6.6.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^18.1.0",
     "lodash.mergewith": "^4.6.0",
     "postcss-loader": "^0.13.0",
     "postcss-url": "^5.1.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-styleguidist": "^4.4.1",
+    "react-test-renderer": "^15.4.2",
     "style-loader": "^0.13.1",
     "tape": "^4.6.2",
     "webpack": "^1.13.3"
@@ -51,5 +54,10 @@
     "fuzzysearch": "^1.0.3",
     "lodash.chunk": "^4.2.0",
     "lodash.findindex": "^4.6.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.css$": "identity-obj-proxy"
+    }
   }
 }

@@ -39,6 +39,7 @@ class Textarea extends Component {
       cols,
       defaultValue,
       disabled,
+      id,
       maxLength,
       name,
       placeholder,
@@ -58,6 +59,7 @@ class Textarea extends Component {
         cols={cols}
         defaultValue={defaultValue}
         disabled={disabled}
+        id={id}
         maxLength={maxLength}
         name={name}
         onChange={this._onChange}

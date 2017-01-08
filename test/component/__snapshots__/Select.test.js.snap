@@ -1,0 +1,55 @@
+exports[`test Select renders correctly with defaults 1`] = `
+<span
+  className="wrapper"
+  onChange={undefined}>
+  <input
+    disabled={undefined}
+    id={undefined}
+    name="select control"
+    type="hidden"
+    value="" />
+  <span
+    className="baseline">
+    <button
+      className="control hasPlaceholder"
+      disabled={undefined}
+      onClick={[Function]}
+      onKeyDown={[Function]}>
+      —
+    </button>
+    <i
+      className="arrow"
+      onClick={[Function]} />
+  </span>
+  <div
+    className="menu isClosedMenu" />
+</span>
+`;
+
+exports[`test Select renders correctly with defined props 1`] = `
+<span
+  className="wrapper outer"
+  onChange={undefined}>
+  <input
+    disabled={true}
+    id="selects id"
+    name="select control"
+    type="hidden"
+    value="jawa" />
+  <span
+    className="baseline">
+    <button
+      className="control"
+      disabled={true}
+      onClick={[Function]}
+      onKeyDown={[Function]}>
+      Jawa
+    </button>
+    <i
+      className="arrow"
+      onClick={[Function]} />
+  </span>
+  <div
+    className="menu isClosedMenu isFixedMenu" />
+</span>
+`;

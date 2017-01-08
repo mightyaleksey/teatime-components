@@ -373,12 +373,13 @@ class Select extends Component {
   }
 
   renderValue() {
-    const {disabled, name, options} = this.props;
+    const {disabled, id, name, options} = this.props;
     const {selectedPosition} = this.state;
 
     return (
       <input
         disabled={disabled}
+        id={id}
         name={name}
         type='hidden'
         value={selectedPosition > -1

@@ -73,7 +73,7 @@ class CheckGroup extends Component {
       this.renderCheck({
         ...item,
         checked: values[item._position],
-        disabled,
+        disabled: item.disabled || disabled,
         key: `${item._position}${item.value}`,
         name,
         onChange: this._onChange,
@@ -98,7 +98,7 @@ class CheckGroup extends Component {
   }
 
   render() {
-    const {className} = this.props;
+    const {className, id} = this.props;
     const {css} = this;
 
     const checks = this.computeChecks(this._checkItems);
@@ -108,6 +108,7 @@ class CheckGroup extends Component {
       <div
         {...filterProps(this.props)}
         className={cc(css('container'), className)}
+        id={id}
         onChange={void 0}>
         {columns}
       </div>

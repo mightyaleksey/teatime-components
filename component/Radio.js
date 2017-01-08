@@ -85,13 +85,14 @@ class Radio extends Component {
   }
 
   render() {
-    const {className, options} = this.props;
+    const {className, id, options} = this.props;
     const {css} = this;
 
     return (
       <div
         {...filterProps(this.props)}
         className={cc(css('container'), className)}
+        id={id}
         onChange={void 0}>
         {this.computeOptions(options)}
       </div>
