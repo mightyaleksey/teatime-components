@@ -1,0 +1,77 @@
+exports[`test Tumbler renders correctly with defaults 1`] = `
+<span
+  className="wrapper"
+  onChange={undefined}>
+  <span
+    className="baseline">
+    <div
+      className="shape">
+      <input
+        checked={undefined}
+        className="native"
+        defaultChecked={undefined}
+        disabled={undefined}
+        id="_teatime1"
+        name="tumbler control"
+        onChange={[Function]}
+        type="checkbox"
+        value={undefined} />
+      <label
+        className="control"
+        htmlFor="_teatime1">
+        <span
+          className="label">
+          On
+        </span>
+        <span
+          className="label">
+          Off
+        </span>
+        <span
+          className="delimiter">
+           
+        </span>
+      </label>
+    </div>
+  </span>
+</span>
+`;
+
+exports[`test Tumbler renders correctly with defined props 1`] = `
+<span
+  className="wrapper"
+  onChange={undefined}>
+  <span
+    className="baseline">
+    <div
+      className="shape">
+      <input
+        checked={true}
+        className="native"
+        defaultChecked={undefined}
+        disabled={true}
+        id="tumblers id"
+        name="tumbler control"
+        onChange={[Function]}
+        type="checkbox"
+        value={undefined} />
+      <label
+        className="control"
+        htmlFor="tumblers id">
+        <span
+          className="label">
+          ~~ON~~
+        </span>
+        <span
+          className="label">
+          ~~OFF~~
+        </span>
+        <span
+          className="delimiter">
+           
+        </span>
+      </label>
+    </div>
+  </span>
+</span>
+`;

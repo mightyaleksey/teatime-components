@@ -1,0 +1,59 @@
+exports[`test ColorPicker renders correctly with defaults 1`] = `
+<span
+  className="container"
+  onChange={undefined}>
+  <button
+    className="button"
+    disabled={undefined}
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "",
+      }
+    } />
+  <input
+    autoFocus={undefined}
+    className="control"
+    disabled={undefined}
+    id={undefined}
+    name="colorPicker control"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder={undefined}
+    type="text"
+    value="" />
+  <div
+    className="menu isClosedMenu" />
+</span>
+`;
+
+exports[`test ColorPicker renders correctly with defined props 1`] = `
+<span
+  className="container"
+  onChange={undefined}>
+  <button
+    className="button"
+    disabled={true}
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#bebebe",
+      }
+    } />
+  <input
+    autoFocus={true}
+    className="control"
+    disabled={true}
+    id="colorPickers id"
+    name="colorPicker control"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="FFFFFF"
+    type="text"
+    value="BEBEBE" />
+  <div
+    className="menu isClosedMenu" />
+</span>
+`;

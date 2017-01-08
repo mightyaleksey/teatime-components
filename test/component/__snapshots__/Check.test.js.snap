@@ -1,0 +1,24 @@
+exports[`test Check renders correctly 1`] = `
+<span
+  className="wrapper outer"
+  onChange={undefined}>
+  <input
+    checked={true}
+    className="native"
+    defaultChecked={undefined}
+    disabled={true}
+    id="checks id"
+    name="check control"
+    onChange={[Function]}
+    type="checkbox"
+    value={undefined} />
+  <label
+    className="control"
+    htmlFor="checks id" />
+  <label
+    className="label"
+    htmlFor="checks id">
+    checks label
+  </label>
+</span>
+`;

@@ -24,13 +24,27 @@ class Link extends Component {
   focus = noop
 
   render() {
-    const {children, className} = this.props;
+    const {
+      children,
+      className,
+      download,
+      href,
+      id,
+      target,
+      type,
+    } = this.props;
+
     const {css} = this;
 
     return (
       <a
         {...filterProps(this.props)}
-        className={cc(css('control'), className)}>
+        className={cc(css('control'), className)}
+        download={download}
+        href={href}
+        id={id}
+        target={target}
+        type={type}>
         {children}
       </a>
     );

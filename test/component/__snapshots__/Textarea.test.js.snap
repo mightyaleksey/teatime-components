@@ -1,0 +1,35 @@
+exports[`test Textarea renders correctly with defaults 1`] = `
+<textarea
+  autoComplete={undefined}
+  autoFocus={undefined}
+  className="control"
+  cols={undefined}
+  defaultValue={undefined}
+  disabled={undefined}
+  id={undefined}
+  maxLength={undefined}
+  name="textarea control"
+  onChange={[Function]}
+  placeholder={undefined}
+  readOnly={undefined}
+  rows={3}
+  value={undefined} />
+`;
+
+exports[`test Textarea renders correctly with defined props 1`] = `
+<textarea
+  autoComplete={false}
+  autoFocus={true}
+  className="control outer"
+  cols={5}
+  defaultValue={undefined}
+  disabled={true}
+  id="textareas id"
+  maxLength={25}
+  name="textarea control"
+  onChange={[Function]}
+  placeholder="it is a placeholder"
+  readOnly={false}
+  rows={10}
+  value="custom value" />
+`;
