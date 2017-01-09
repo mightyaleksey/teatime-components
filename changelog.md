@@ -1,6 +1,13 @@
 # change log
 
 
+## 0.8.4
+
+Explicit font value for the wrapper elements.
+
+*CheckGroup*'s margins are equal to *Radio*'s for now.
+
+
 ## 0.8.3
 
 Fix for *CheckGroup*'s initial value.
