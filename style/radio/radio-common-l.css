@@ -10,7 +10,7 @@
 {
   composes: common-wrapper from './radio.css';
 
-  margin: 0 0 11px;
+  margin: 0 0 15px;
 }
 
 .wrapper:last-child

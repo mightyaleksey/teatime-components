@@ -87,6 +87,8 @@
 {
   composes: control;
 
+  top: 1px;
+
   box-sizing: border-box;
 
   transition: background .1s ease-out,border .1s ease-out,box-shadow .1s ease-out;
