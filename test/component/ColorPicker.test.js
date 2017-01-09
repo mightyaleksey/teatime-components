@@ -24,3 +24,7 @@ test('ColorPicker renders correctly with defined props', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test('ColorPicker\'s initial size is `m`', () => {
+  expect(ColorPicker.defaultProps.size).toBe('m');
+});

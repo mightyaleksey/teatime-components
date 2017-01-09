@@ -11,3 +11,7 @@ test('Spin renders correctly', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test('Spin\'s initial size is `m`', () => {
+  expect(Spin.defaultProps.size).toBe('m');
+});

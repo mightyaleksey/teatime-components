@@ -24,3 +24,7 @@ test('Tumbler renders correctly with defined props', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test('Tumbler\'s initial size is `m`', () => {
+  expect(Tumbler.defaultProps.size).toBe('m');
+});

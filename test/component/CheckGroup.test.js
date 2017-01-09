@@ -35,3 +35,7 @@ test('CheckGroup renders correctly with defined props', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test('CheckGroup\'s initial size is `m`', () => {
+  expect(CheckGroup.defaultProps.size).toBe('m');
+});

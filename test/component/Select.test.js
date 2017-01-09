@@ -34,3 +34,7 @@ test('Select renders correctly with defined props', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test('Select\'s initial size is `m`', () => {
+  expect(Select.defaultProps.size).toBe('m');
+});

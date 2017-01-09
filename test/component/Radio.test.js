@@ -52,3 +52,7 @@ test('Radio renders correctly with disabled state', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test('Radio\'s initial size is `m`', () => {
+  expect(Radio.defaultProps.size).toBe('m');
+});

@@ -30,3 +30,7 @@ test('Textarea renders correctly with defined props', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test('Textarea\'s initial size is `m`', () => {
+  expect(Textarea.defaultProps.size).toBe('m');
+});

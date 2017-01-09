@@ -17,3 +17,7 @@ test('Link renders correctly', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test('Link\'s initial size is `m`', () => {
+  expect(Link.defaultProps.size).toBe('m');
+});

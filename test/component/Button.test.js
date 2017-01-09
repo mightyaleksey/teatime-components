@@ -16,3 +16,7 @@ test('Button renders correctly', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test('Button\'s initial size is `m`', () => {
+  expect(Button.defaultProps.size).toBe('m');
+});

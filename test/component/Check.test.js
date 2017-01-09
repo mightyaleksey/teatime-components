@@ -15,3 +15,7 @@ test('Check renders correctly', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test('Check\'s initial size is `m`', () => {
+  expect(Check.defaultProps.size).toBe('m');
+});
