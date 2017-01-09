@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.8.5
+
+*CheckGroup* and *Radio* margins update.
+
+
 ## 0.8.4
 
 Explicit font value for the wrapper elements.
