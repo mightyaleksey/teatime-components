@@ -20,7 +20,7 @@ class CheckGroup extends Component {
     this._controlled = isControlled(props);
 
     const checkItems = this._checkItems = calculateCheckItems(props.options);
-    const value = this.controlled
+    const value = this._controlled
       ? props.value
       : props.defaultValue;
 
@@ -54,7 +54,7 @@ class CheckGroup extends Component {
   _onChange = (e, {checked}, position) => {
     const values = updateValue(this.state.values, position, checked);
 
-    if (!this.controlled) {
+    if (!this._controlled) {
       this.setState({values});
     }
 

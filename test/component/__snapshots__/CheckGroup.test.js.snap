@@ -82,7 +82,7 @@ exports[`test CheckGroup renders correctly with defined props 1`] = `
     <span
       className="wrapper">
       <input
-        checked={false}
+        checked={true}
         className="native"
         defaultValue={undefined}
         disabled={undefined}
@@ -103,7 +103,7 @@ exports[`test CheckGroup renders correctly with defined props 1`] = `
     <span
       className="wrapper">
       <input
-        checked={false}
+        checked={true}
         className="native"
         defaultValue={undefined}
         disabled={true}
