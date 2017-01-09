@@ -2,7 +2,7 @@
 
 .container-s
 {
-  font: 13px arial,sans-serif;
+  font: 13px/24px arial,sans-serif;
 }
 
 .button-s
@@ -29,7 +29,7 @@
 
 .container-m
 {
-  font: 15px arial,sans-serif;
+  font: 13px/28px arial,sans-serif;
 }
 
 .button-m
@@ -56,7 +56,7 @@
 
 .container-l
 {
-  font: 15px arial,sans-serif;
+  font: 15px/32px arial,sans-serif;
 }
 
 .button-l

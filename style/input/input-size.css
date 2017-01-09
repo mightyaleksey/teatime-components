@@ -1,11 +1,14 @@
 /* size s */
 
+.wrapper-s
+{
+  font: 13px/24px arial,sans-serif;
+}
+
 .control-s
 {
   height: 24px;
   padding: 0 6px;
-
-  font: 13px/24px arial,sans-serif;
 }
 
 .clear-s
@@ -23,12 +26,15 @@
 
 /* size m */
 
+.wrapper-m
+{
+  font: 13px/28px arial,sans-serif;
+}
+
 .control-m
 {
   height: 28px;
   padding: 0 7px;
-
-  font: 13px/28px arial,sans-serif;
 }
 
 .clear-m
@@ -46,12 +52,15 @@
 
 /* size l */
 
+.wrapper-l
+{
+  font: 15px/32px arial,sans-serif;
+}
+
 .control-l
 {
   height: 32px;
   padding: 0 9px;
-
-  font: 15px/32px arial,sans-serif;
 }
 
 .clear-l

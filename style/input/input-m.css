@@ -2,6 +2,7 @@
 {
   composes: selector from './input.css';
   composes: wrapper from './input.css';
+  composes: wrapper-m from './input-size.css';
 }
 
 .control
