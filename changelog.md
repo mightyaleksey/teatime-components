@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.8.3
+
+Fix for *CheckGroup*'s initial value.
+
+
 ## 0.8.2
 
 Possibility to provide the id prop for *Button*, *CheckGroup*, *Radio*, *Select*, *Spin*, *Textarea* components.
