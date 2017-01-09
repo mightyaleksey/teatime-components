@@ -15,7 +15,7 @@
   composes: wrapper from '../check/check-l.css';
   composes: wrapper from './checkGroup.css';
 
-  margin: 0 0 15px;
+  margin: 0 0 12px;
 }
 
 .wrapper:last-child
