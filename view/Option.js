@@ -25,7 +25,8 @@ class Option extends Component {
         className={className}
         data-value={value}
         onClick={this._onClick}
-        onMouseEnter={this._onFocus}>
+        onMouseEnter={this._onFocus}
+        role='option'>
         {children}
       </span>
     );
