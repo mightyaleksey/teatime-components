@@ -31,6 +31,25 @@ React Components + CSS Modules :heart:
 To use any component you should require it using commonJS syntax (or es6 modules). But before that you should configure the compiler. See the the webpack examples below.
 
 
+### Standalone builds
+
+In case you want avoid the compile step there are single-file distributions in the `dist` folder.
+
+```html
+<script src="https://unpkg.com/react@15/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+<script src="https://raw.githubusercontent.com/sullenor/teatime-components/master/dist/teatime.js"></script>
+```
+
+or
+
+```html
+<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+<script src="https://raw.githubusercontent.com/sullenor/teatime-components/master/dist/teatime.min.js"></script>
+```
+
+
 ### Using with CSS Modules
 
 ```javascript

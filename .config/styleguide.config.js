@@ -1,6 +1,6 @@
 'use strict';
 
-const {compose, curry, isArray} = require('../lib/dash');
+const {compose, curry} = require('../lib/dash');
 const {dirname} = require('path');
 const {version} = require('../package');
 const merge = require('./merge');
@@ -54,8 +54,8 @@ module.exports = {
     },
 
     postcss: [
-      require('postcss-url')({url: 'inline'}),
       require('autoprefixer'),
+      require('postcss-url')({url: 'inline'}),
     ],
   }),
 
