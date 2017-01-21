@@ -1,11 +1,5 @@
-# Logs
-npm-debug.log*
-
-# Dependency directories
-node_modules
-
-# Optional npm cache directory
-.npm
-
-yarn.lock
 .DS_Store
+.npm
+node_modules
+npm-debug.log*
+yarn.lock

@@ -1,11 +1,3 @@
-.babelrc
-.editorconfig
-.eslintrc.json
-.gitignore
-.npmignore
-.script
-.story
-.styleguidist
-.travis.yml
+.*
 docs
 test
