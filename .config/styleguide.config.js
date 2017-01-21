@@ -54,8 +54,8 @@ module.exports = {
     },
 
     postcss: [
-      require('postcss-url')({url: 'inline'}),
       require('autoprefixer'),
+      require('postcss-url')({url: 'inline'}),
     ],
   }),
 
