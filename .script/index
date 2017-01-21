@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo "'use strict';
+" > index.js
+
+for name in `ls component|cut -d. -f1`; do
+  echo "exports.${name} = require('./component/${name}');" >> index.js
+done
+
