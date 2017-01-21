@@ -26,8 +26,12 @@ class Button extends Component {
   }
 
   render() {
-    const {autoFocus, children, className, disabled, id, type} = this.props;
+    const {autoFocus, children, className, disabled, id, theme, type} = this.props;
     const {css} = this;
+
+    const role = theme === 'link'
+      ? 'link'
+      : 'button';
 
     return (
       <button
@@ -37,6 +41,7 @@ class Button extends Component {
         disabled={disabled}
         id={id}
         ref={r => this._button = r}
+        role={role}
         type={type}>
         {children}
       </button>

@@ -22,7 +22,8 @@ exports[`test Select renders correctly with defaults 1`] = `
       onClick={[Function]} />
   </span>
   <div
-    className="menu isClosedMenu" />
+    className="menu isClosedMenu"
+    role="listbox" />
 </span>
 `;
 
@@ -50,6 +51,7 @@ exports[`test Select renders correctly with defined props 1`] = `
       onClick={[Function]} />
   </span>
   <div
-    className="menu isClosedMenu isFixedMenu" />
+    className="menu isClosedMenu isFixedMenu"
+    role="listbox" />
 </span>
 `;

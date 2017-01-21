@@ -407,6 +407,7 @@ class Select extends Component {
         ref={searchable
           ? r => this._controlRef = r
           : null}
+        role='combobox'
         value={searchValue}/>
     );
   }
@@ -473,7 +474,8 @@ class Select extends Component {
         })}
         onOutsideClick={this._onOutsideClick}
         parentNode={this._parentNode}
-        ref={r => this._menuRef = r}>
+        ref={r => this._menuRef = r}
+        role='listbox'>
         {this.computeMenuItems(this._menuItems)}
       </Overlay>
     );

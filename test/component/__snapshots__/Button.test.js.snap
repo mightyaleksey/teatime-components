@@ -4,6 +4,7 @@ exports[`test Button renders correctly 1`] = `
   className="control outer"
   disabled={true}
   id="buttons id"
+  role="button"
   type="submit">
   Normal Button
 </button>
