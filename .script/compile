@@ -5,8 +5,8 @@ if [ `git status -s|wc -l` -gt '0' ]; then
   exit 1
 fi
 
-npm run lint
-npm test
+npm run lint || exit 1
+npm test     || exit 1
 cli=node_modules/.bin
 
 babel() {
