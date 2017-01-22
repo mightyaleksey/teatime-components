@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.8.6
+
+Added the common index of the components and distributives.
+
+
 ## 0.8.5
 
 *CheckGroup* and *Radio* margins update.
