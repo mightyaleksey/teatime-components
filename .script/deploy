@@ -1,0 +1,35 @@
+#!/bin/sh
+
+source .script/status
+
+case "$1" in
+  major|x..)
+    versionType=major;;
+
+  minor|.x.)
+    versionType=minor;;
+
+  patch|..x)
+    versionType=patch;;
+
+  *)
+    echo 'choose the version to deploy'
+    echo 'deploy major|minor|patch|x..|.x.|..x'
+    exit;;
+esac
+
+npm run lint || exit 1
+npm test     || exit 1
+
+npm --no-git-tag-version version "$versionType"
+npm run dist || exit 1
+npm run docs || exit 1
+
+git add dist/.
+git add docs/.
+git add package.json
+
+version=`sed -n '/version/p' package.json|cut -d'"' -f4`
+
+git commit -m "version $version"
+git tag "$version"
