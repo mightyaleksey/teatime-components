@@ -1,7 +1,9 @@
 teatime-components
 ==================
 
-React Components + CSS Modules :heart:
+A set of React Components + CSS Modules :heart:
+
+See the component's examples at http://sullenor.github.io/teatime-components/
 
 
 ## Philosophy
@@ -28,32 +30,85 @@ React Components + CSS Modules :heart:
 
 ## Usage
 
-To use any component you should require it using commonJS syntax (or es6 modules). But before that you should configure the compiler. See the the webpack examples below.
+### Using single-file distributives
 
+#### Installation
 
-### Standalone builds
+Download the distributive via `curl` for example:
 
-In case you want avoid the compile step there are single-file distributions in the `dist` folder.
-
-```html
-<script src="https://unpkg.com/react@15/dist/react.js"></script>
-<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
-<script src="https://raw.githubusercontent.com/sullenor/teatime-components/master/dist/teatime.js"></script>
+```bash
+curl -O https://raw.githubusercontent.com/sullenor/teatime-components/0.8.6/dist/teatime.js
 ```
 
-or
+or the minified version:
 
-```html
-<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
-<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
-<script src="https://raw.githubusercontent.com/sullenor/teatime-components/master/dist/teatime.min.js"></script>
+```bash
+curl -O https://raw.githubusercontent.com/sullenor/teatime-components/0.8.6/dist/teatime.min.js
 ```
 
 
-### Using with CSS Modules
+#### Configutation
+
+Simply add `react` and `react-dom` scripts into your html page and the downloaded version of the `teatime-components` after:
+
+```html
+<script src='https://unpkg.com/react@15/dist/react.js'></script>
+<script src='https://unpkg.com/react-dom@15/dist/react-dom.js'></script>
+<script src='teatime.js'></script>
+```
+
+or the minified version:
+
+```html
+<script src='https://unpkg.com/react@15/dist/react.min.js'></script>
+<script src='https://unpkg.com/react-dom@15/dist/react-dom.min.js'></script>
+<script src='teatime.min.js'></script>
+```
+
+
+#### Example
+
+```html
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8">
+  <title>Awesome Button</title>
+  <script src='https://unpkg.com/react@15/dist/react.min.js'></script>
+  <script src='https://unpkg.com/react-dom@15/dist/react-dom.min.js'></script>
+  <script src='https://raw.githubusercontent.com/sullenor/teatime-components/0.8.6/dist/teatime.min.js'></script>
+</head>
+<body>
+  <div id='entry'></div>
+
+  <script type='text/javascript'>
+    const createElement = React.createElement;
+    const render = ReactDOM.render;
+
+    render(createElement(Teatime.Button, {theme: 'action'}, 'Make Awesome'),
+      document.getElementById('entry'));
+  </script>
+</body>
+</html>
+```
+
+
+### Using with compilation
+
+#### Installation
+
+Using `npm` do:
+
+```bash
+npm install teatime-compoments
+```
+
+
+#### Configutation
+
+Using `webpack` do:
 
 ```javascript
-// webpack.config.js
 const {resolve} = require('path');
 
 module.exports = {
@@ -66,53 +121,120 @@ module.exports = {
     ],
   },
 
-  postcss: [
-    require('postcss-url')({url: 'inline'}),
-    require('autoprefixer')({browsers: ['last 2 versions']}),
-  ],
-
   entry: '...',
   output: {
-    filename: '[name].js',
+    filename: 'index.js',
     path: resolve('dist'),
   },
+
+  postcss: [
+    require('autoprefixer')({browsers: ['last 2 versions']}),
+    require('postcss-url')({url: 'inline'}),
+  ],
 };
 ```
 
 
-### Using without CSS Modules
+#### Example
 
-In case you don't want to use CSS Modules and want to have a possibility to adjust the inner markup with global refers (human friendly class names) you may adjust class name generation with `localIdentName` parameter. See the example below.
+```bash
+.
+├── dist/
+├── index.html
+├── main.js
+├── package.json
+└── webpack.config.js
+```
+
+*package.json*
+
+```json
+{
+  "name": "example",
+  "version": "1.0.0",
+  "dependencies": {
+    "autoprefixer": "^6.6.1",
+    "babel-loader": "^6.2.7",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "postcss-loader": "^1.2.2",
+    "postcss-url": "^5.1.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "style-loader": "^0.13.1",
+    "teatime-components": "^0.8.6",
+    "webpack": "^1.13.3"
+  }
+}
+```
+
+*webpack.config.js*
 
 ```javascript
-// webpack.config.js
 const {resolve} = require('path');
 
 module.exports = {
   module: {
     loaders: [
       {
+        test: /\.js$/i,
+        exclude: /node_modules/,
+        loader: 'babel?presets[]=latest&presets[]=react',
+      },
+      {
         test: /\.css$/i,
-        loader: 'style!css?modules&localIdentName=[name]--[local]&importLoaders=1!postcss',
+        loader: 'style!css?modules&importLoaders=1!postcss',
       },
     ],
   },
 
-  postcss: [
-    require('postcss-url')({url: 'inline'}),
-    require('autoprefixer')({browsers: ['last 2 versions']}),
-  ],
-
-  entry: '...',
+  entry: resolve('main'),
   output: {
-    filename: '[name].js',
+    filename: 'index.js',
     path: resolve('dist'),
   },
+
+  postcss: [
+    require('autoprefixer')({browsers: ['last 2 versions']}),
+    require('postcss-url')({url: 'inline'}),
+  ],
 };
 ```
 
+*main.js*
 
-### Tips
+```javascript
+import {Button} from 'teatime-components';
+import {render} from 'react-dom';
+import React from 'react';
+
+render((
+  <Button theme='action'>
+    Make Awesome
+  </Button>
+), document.getElementById('entry'));
+```
+
+*index.html*
+
+```html
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8">
+  <title>Awesome Button</title>
+</head>
+<body>
+  <div id='entry'></div>
+
+  <script src='dist/index.js'></script>
+</body>
+</html>
+```
+
+
+#### Tips
 
 In order to remove various test helpers, which you don't need in your production environment, you should add the Webpack [DefinePlugin](https://webpack.github.io/docs/list-of-plugins.html#defineplugin) to the plugins section. It will also decrease the bundle size and provide some performance. Configuration example:
 
@@ -121,31 +243,10 @@ plugins: [
   // ...
   new webpack.DefinePlugin({
     'process.env': {
-      'NODE_ENV': JSON.stringify('production')
-    }
-  })
+      'NODE_ENV': JSON.stringify('production'),
+    },
+  }),
 ],
-```
-
-
-## Development
-
-Start development server:
-
-```bash
-$ npm start
-```
-
-Build documentation:
-
-```bash
-$ npm run docs
-```
-
-Run tests:
-
-```bash
-$ npm test
 ```
 
 
