@@ -1,9 +1,6 @@
 #!/bin/sh
 
-if [ `git status -s|wc -l` -gt '0' ]; then
-  echo 'commit changes first'
-  exit 1
-fi
+source .script/status
 
 npm run lint || exit 1
 npm test     || exit 1
