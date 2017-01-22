@@ -15,7 +15,7 @@ const common = {
       {
         test: /\.css$/i,
         include: resolveTo('style'),
-        loader: 'style!css?modules&localIdentName=[name]--[local]&importLoaders=1!postcss',
+        loader: 'style!css?modules&localIdentName=[hash:base64:5]&importLoaders=1!postcss',
       },
       {
         test: /\.css$/i,

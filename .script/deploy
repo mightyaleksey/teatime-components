@@ -18,15 +18,20 @@ case "$1" in
     exit;;
 esac
 
+# check code
 npm run lint || exit 1
 npm test     || exit 1
 
+# update components index
+source .script/index
+# update package version
 npm --no-git-tag-version version "$versionType"
 npm run dist || exit 1
 npm run docs || exit 1
 
 git add dist/.
 git add docs/.
+git add index.js
 git add package.json
 
 version=`sed -n '/version/p' package.json|cut -d'"' -f4`

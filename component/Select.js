@@ -158,7 +158,6 @@ class Select extends Component {
   }
 
   _closeMenu() {
-
     this.setState({
       focusedIndex: -1,
       isOpened: false,
