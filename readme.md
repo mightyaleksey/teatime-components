@@ -100,7 +100,7 @@ or the minified version:
 Using `npm` do:
 
 ```bash
-npm install teatime-compoments
+npm install teatime-components
 ```
 
 
