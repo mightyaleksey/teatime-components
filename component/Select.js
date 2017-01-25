@@ -117,9 +117,28 @@ class Select extends Component {
   componentWillReceiveProps(nextProps) {
     this._controlled = isControlled(nextProps);
 
-    const value = nextProps.value;
+    const {
+      options,
+      searchEngine,
+      searchableValue = byLabel,
+    } = this.props;
+
+    if (nextProps.searchEngine !== searchEngine) {
+      this._searchEngine = getSearchEngine(nextProps.searchEngine);
+    }
+
+    if (nextProps.options !== options) {
+      this._menuItems = calculateMenuItems(
+        this._searchEngine,
+        searchableValue,
+        nextProps.options,
+        this.state.searchValue
+      );
+    }
+
+    const nextValue = nextProps.value;
     const selectedPosition = this._controlled
-      ? findIndex(this._menuItems, item => item.value === value)
+      ? findIndex(this._menuItems, item => item.value === nextValue)
       : this.state.selectedPosition;
 
     this.setState({
@@ -129,18 +148,10 @@ class Select extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    if (nextProps.searchEngine !== this.props.searchEngine) {
-      this._searchEngine = getSearchEngine(nextProps.searchEngine);
-    }
-
-    const {
-      options,
-      searchableValue = byLabel,
-    } = this.props;
-
+    const {searchableValue = byLabel} = this.props;
     const {searchValue} = this.state;
 
-    if (nextProps.options !== options || nextState.searchValue !== searchValue) {
+    if (nextState.searchValue !== searchValue) {
       this._menuItems = calculateMenuItems(
         this._searchEngine,
         searchableValue,
