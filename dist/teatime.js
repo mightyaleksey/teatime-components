@@ -5310,9 +5310,24 @@ var Teatime =
 	    value: function componentWillReceiveProps(nextProps) {
 	      this._controlled = isControlled(nextProps);
 
-	      var value = nextProps.value;
+	      var _props = this.props,
+	          options = _props.options,
+	          searchEngine = _props.searchEngine,
+	          _props$searchableValu = _props.searchableValue,
+	          searchableValue = _props$searchableValu === undefined ? byLabel : _props$searchableValu;
+
+
+	      if (nextProps.searchEngine !== searchEngine) {
+	        this._searchEngine = getSearchEngine(nextProps.searchEngine);
+	      }
+
+	      if (nextProps.options !== options) {
+	        this._menuItems = calculateMenuItems(this._searchEngine, searchableValue, nextProps.options, this.state.searchValue);
+	      }
+
+	      var nextValue = nextProps.value;
 	      var selectedPosition = this._controlled ? findIndex(this._menuItems, function (item) {
-	        return item.value === value;
+	        return item.value === nextValue;
 	      }) : this.state.selectedPosition;
 
 	      this.setState({
@@ -5323,18 +5338,12 @@ var Teatime =
 	  }, {
 	    key: 'componentWillUpdate',
 	    value: function componentWillUpdate(nextProps, nextState) {
-	      if (nextProps.searchEngine !== this.props.searchEngine) {
-	        this._searchEngine = getSearchEngine(nextProps.searchEngine);
-	      }
-
-	      var _props = this.props,
-	          options = _props.options,
-	          _props$searchableValu = _props.searchableValue,
-	          searchableValue = _props$searchableValu === undefined ? byLabel : _props$searchableValu;
+	      var _props$searchableValu2 = this.props.searchableValue,
+	          searchableValue = _props$searchableValu2 === undefined ? byLabel : _props$searchableValu2;
 	      var searchValue = this.state.searchValue;
 
 
-	      if (nextProps.options !== options || nextState.searchValue !== searchValue) {
+	      if (nextState.searchValue !== searchValue) {
 	        this._menuItems = calculateMenuItems(this._searchEngine, searchableValue, nextProps.options, nextState.searchValue);
 	      }
 	    }
