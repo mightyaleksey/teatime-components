@@ -30,7 +30,7 @@ module.exports = {
 
   updateWebpackConfig: merge({
     entry: [
-      resolveTo('.styleguidist/common.css'),
+      resolveTo('.config/common.css'),
     ],
 
     module: {
@@ -47,7 +47,7 @@ module.exports = {
         },
         {
           test: /\.css$/i,
-          include: resolveTo('.styleguidist'),
+          include: resolveTo('.config'),
           loader: 'style!css',
         },
       ],
