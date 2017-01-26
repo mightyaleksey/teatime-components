@@ -5442,7 +5442,8 @@ var Teatime =
 	          position: option._index,
 	          ref: focusedIndex === option._index ? function (r) {
 	            return _this2._focusedItemRef = r;
-	          } : null
+	          } : null,
+	          value: option.value
 	        });
 	      }, menuItems, optionsLimit);
 	    }
