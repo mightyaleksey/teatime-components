@@ -358,6 +358,7 @@ class Select extends Component {
         ref: focusedIndex === option._index
           ? r => this._focusedItemRef = r
           : null,
+        value: option.value,
       }), menuItems, optionsLimit);
   }
 
