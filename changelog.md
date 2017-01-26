@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.8.8
+
+Returned the data attributes for the Select's options.
+
+
 ## 0.8.7
 
 Fix for select value update. See https://github.com/sullenor/teatime-components/commit/7c2d1b24dae14fa141780b4e18306ebf6f2f1cc5
