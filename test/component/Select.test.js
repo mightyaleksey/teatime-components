@@ -40,42 +40,73 @@ test('Select\'s initial size is `m`', () => {
   expect(Select.defaultProps.size).toBe('m');
 });
 
-test('Should update selectedIndex correctly in case value was changed', () => {
+test('Should update selectedPosition correctly in case value was changed', () => {
   const component = shallow(
     <Select
       name='control'
       options={[
-        {label: 'Ducati', value: 'ducati'},
-        {label: 'Honda', value: 'honda'},
-        {label: 'Jawa', value: 'jawa'},
+        {label: 'AA', value: 'aa'},
+        {label: 'BB', value: 'bb'},
+        {label: 'CC', value: 'cc'},
+        {label: 'DD', value: 'dd'},
+        {label: 'EE', value: 'ee'},
+        {label: 'FF', value: 'ff'},
       ]}
-      value='jawa'/>
+      value='cc'/>
   );
 
   component.setProps({
-    value: 'honda',
+    value: 'ee',
   });
 
-  expect(component.state('selectedIndex')).toBe(1);
+  expect(component.state('selectedPosition')).toBe(4);
 });
 
-test('Should update selectedIndex correctly in case value and options were changed', () => {
+test('Should update selectedPosition correctly in case value and options were changed', () => {
   const component = shallow(
     <Select
       name='control'
       options={[
-        {label: 'Ducati', value: 'ducati'},
-        {label: 'Jawa', value: 'jawa'},
+        {label: 'AA', value: 'aa'},
+        {label: 'BB', value: 'bb'},
+        {label: 'CC', value: 'cc'},
+        {label: 'DD', value: 'dd'},
+        {label: 'EE', value: 'ee'},
+        {label: 'FF', value: 'ff'},
       ]}
-      value='jawa'/>
+      value='cc'/>
   );
 
   component.setProps({
     options: [
-      {label: 'Honda', value: 'honda'},
+      {label: 'DD', value: 'dd'},
+      {label: 'FF', value: 'ff'},
+      {label: 'GG', value: 'gg'},
     ],
-    value: 'honda',
+    value: 'gg',
   });
 
-  expect(component.state('selectedIndex')).toBe(0);
+  expect(component.state('selectedPosition')).toBe(2);
+});
+
+test('Should update selectedPosition correctly in case searchValue was changed', () => {
+  const component = shallow(
+    <Select
+      name='control'
+      options={[
+        {label: 'AABB', value: 'aa'},
+        {label: 'BBCC', value: 'bb'},
+        {label: 'CCDD', value: 'cc'},
+        {label: 'DDEE', value: 'dd'},
+        {label: 'EEFF', value: 'ee'},
+        {label: 'FFGG', value: 'ff'},
+      ]}
+      value='cc'/>
+  );
+
+  component.setState({searchValue: 'd'});
+  expect(component.instance()._menuItems).toHaveLength(2);
+
+  component.setProps({value: 'dd'});
+  expect(component.state('selectedPosition')).toBe(3);
 });
