@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.8.9
+
+Fix for select value update. Disappointment from version `0.8.7`: `selectedPosition` was calculated wrong if `searchValue` was not empty.
+
+
 ## 0.8.8
 
 Returned the data attributes for the Select's options.
