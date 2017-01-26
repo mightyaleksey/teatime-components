@@ -5332,7 +5332,7 @@ var Teatime =
 
 	      this.setState({
 	        selectedIndex: selectedPosition,
-	        selectedPosition: selectedPosition
+	        selectedPosition: this._menuItems[selectedPosition]._position
 	      });
 	    }
 	  }, {
