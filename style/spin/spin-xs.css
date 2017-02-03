@@ -1,6 +1,11 @@
-.control
+.wrapper
 {
   composes: selector from './spin.css';
+  composes: wrapper from './spin.css';
+}
+
+.control
+{
   composes: control from './spin.css';
   composes: xs from './spin-size.css';
 }
