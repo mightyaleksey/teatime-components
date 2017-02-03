@@ -16,9 +16,14 @@
   /* the common selector */
 }
 
-.control
+.wrapper
 {
   display: inline-block;
+}
+
+.control
+{
+  display: block;
 
   margin: 0;
 

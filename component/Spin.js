@@ -25,8 +25,10 @@ class Spin extends Component {
     return (
       <span
         {...filterProps(this.props)}
-        className={cc(css('control'), className)}
-        id={id}/>
+        className={cc(css('wrapper'), className)}
+        id={id}>
+        <i className={css('control')}/>
+      </span>
     );
   }
 }
