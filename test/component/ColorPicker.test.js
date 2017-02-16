@@ -1,6 +1,8 @@
-import ColorPicker from '../../component/ColorPicker';
-import React from 'react';
-import renderer from 'react-test-renderer';
+'use strict';
+
+const ColorPicker = require('../../component/ColorPicker');
+const React = require('react');
+const renderer = require('react-test-renderer');
 
 test('ColorPicker renders correctly with defaults', () => {
   const tree = renderer.create(

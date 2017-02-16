@@ -37,8 +37,9 @@ class Tumbler extends Component {
     this._input.focus();
   }
 
-  _onChange = (e) => {
+  _onChange = e => {
     const {checked, value} = e.target;
+
     this.props.onChange(e, {checked, value});
   }
 
@@ -109,16 +110,22 @@ Tumbler.defaultProps = {
 };
 
 Tumbler.propTypes = {
+  checked: PropTypes.bool,
+  className: PropTypes.string,
+  defaultChecked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  id: PropTypes.string,
   name: PropTypes.string.isRequired,
   offText: PropTypes.string,
-  onText: PropTypes.string,
   onChange: React.PropTypes.func,
+  onText: PropTypes.string,
   size: PropTypes.oneOf([
     'l',
     'm',
     's',
   ]),
   styles: PropTypes.object,
+  value: PropTypes.string,
 };
 
 module.exports = Tumbler;

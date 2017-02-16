@@ -56,6 +56,7 @@ class ColorPicker extends Component {
 
   _onChange = e => {
     const value = e.target.value;
+
     if (!this._controlled) this.setState({isOpened: false, value});
     this.props.onChange(e, {value});
   }
@@ -76,14 +77,13 @@ class ColorPicker extends Component {
   _onInputBlur = e => {
     const {value} = this.state;
     const nextValue = userColorValue(value);
+
     if (nextValue === value) return;
 
-    if (!this._controlled) {
-      this.setState({
-        isOpened: false,
-        value: nextValue,
-      });
-    }
+    if (!this._controlled) this.setState({
+      isOpened: false,
+      value: nextValue,
+    });
 
     this.props.onChange(e, {value: nextValue});
   }
@@ -109,9 +109,7 @@ class ColorPicker extends Component {
     this.setState({isOpened: false});
   }
 
-  _parentNode = () => {
-    return this.refs.parent;
-  }
+  _parentNode = () => this.refs.parent
 
   computeTiles(palette) {
     if (!this.state.isOpened) return null;
@@ -119,6 +117,7 @@ class ColorPicker extends Component {
     const {css} = this;
 
     const menuItem = css('menuItem');
+
     return map(color =>
       this.renderTile({
         className: menuItem,
@@ -260,15 +259,22 @@ ColorPicker.defaultProps = {
 };
 
 ColorPicker.propTypes = {
+  autoFocus: PropTypes.bool,
+  className: PropTypes.string,
+  defaultValue: PropTypes.string,
+  disabled: PropTypes.bool,
+  id: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   palette: PropTypes.arrayOf(PropTypes.string),
+  placeholder: PropTypes.string,
   size: PropTypes.oneOf([
     'l',
     'm',
     's',
   ]),
   styles: PropTypes.object,
+  value: PropTypes.string,
 };
 
 module.exports = ColorPicker;

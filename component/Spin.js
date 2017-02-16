@@ -39,6 +39,8 @@ Spin.defaultProps = {
 };
 
 Spin.propTypes = {
+  className: PropTypes.string,
+  id: PropTypes.string,
   size: PropTypes.oneOf([
     'l',
     'm',

@@ -1,6 +1,8 @@
-import CheckGroup from '../../component/CheckGroup';
-import React from 'react';
-import renderer from 'react-test-renderer';
+'use strict';
+
+const CheckGroup = require('../../component/CheckGroup');
+const React = require('react');
+const renderer = require('react-test-renderer');
 
 test('CheckGroup renders correctly with defaults', () => {
   const tree = renderer.create(

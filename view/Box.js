@@ -23,6 +23,7 @@ class Box extends Component {
 
   _onChange = e => {
     const {checked, value} = e.target;
+
     this.props.onChange(e, {checked, value}, this.props.position);
   }
 
@@ -109,15 +110,23 @@ Box.defaultProps = {
 };
 
 Box.propTypes = {
+  checked: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  defaultValue: PropTypes.string,
+  disabled: PropTypes.bool,
   hasLabel: PropTypes.bool,
-  label: PropTypes.string,
+  id: PropTypes.string,
+  label: PropTypes.node,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   position: PropTypes.number,
+  styles: PropTypes.object,
   type: PropTypes.oneOf([
     'checkbox',
     'radio',
   ]),
+  value: PropTypes.string,
 };
 
 module.exports = Box;

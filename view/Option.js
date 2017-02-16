@@ -39,6 +39,8 @@ Option.defaultProps = {
 };
 
 Option.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
   position: PropTypes.number,

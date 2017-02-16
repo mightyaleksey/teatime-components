@@ -12,13 +12,13 @@ exports[`test Textarea renders correctly with defaults 1`] = `
   onChange={[Function]}
   placeholder={undefined}
   readOnly={undefined}
-  rows={3}
+  rows="3"
   value={undefined} />
 `;
 
 exports[`test Textarea renders correctly with defined props 1`] = `
 <textarea
-  autoComplete={false}
+  autoComplete="off"
   autoFocus={true}
   className="control outer"
   cols={5}

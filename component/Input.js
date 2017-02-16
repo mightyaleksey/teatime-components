@@ -13,7 +13,7 @@ const cssModules = {
   s: require('../style/input/input-s.css'),
 };
 
-var didWarnForInputDefaultValue = false;
+let didWarnForInputDefaultValue = false;
 
 class Input extends Component {
   constructor(props) {
@@ -21,12 +21,11 @@ class Input extends Component {
 
     this._controlled = isControlled(props);
 
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production')
       if (this._controlled && !isUndefined(props.defaultValue) && !didWarnForInputDefaultValue) {
         didWarnForInputDefaultValue = true;
         warn(true, 'defaultValue', 'Input', props.type);
       }
-    }
 
     const value = this._controlled
       ? props.value
@@ -61,12 +60,14 @@ class Input extends Component {
 
   _onChange = e => {
     const value = e.target.value;
+
     if (!this._controlled) this.setState({value});
     this.props.onChange(e, {value});
   }
 
   _onClear = e => {
     const value = '';
+
     if (!this._controlled) this.setState({value});
     this.props.onChange(e, {value});
     this.focus();
@@ -145,8 +146,23 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
+  autoComplete: PropTypes.oneOf([
+    'off',
+    'on',
+  ]),
+  autoFocus: PropTypes.bool,
+  className: PropTypes.string,
+  defaultValue: PropTypes.string,
+  disabled: PropTypes.bool,
+  id: PropTypes.string,
+  maxLength: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  readOnly: PropTypes.bool,
   size: PropTypes.oneOf([
     'l',
     'm',
@@ -154,6 +170,7 @@ Input.propTypes = {
   ]),
   styles: PropTypes.object,
   type: PropTypes.string,
+  value: PropTypes.string,
 };
 
 module.exports = Input;

@@ -48,6 +48,7 @@ test('assign', t => {
 
 test('castArray', t => {
   const a = [];
+
   t.equal(castArray(a), a);
   t.notEqual(castArray([5]), [5]);
   t.deepEqual(castArray(void 0), [void 0]);
@@ -84,6 +85,7 @@ test('curry', t => {
 
 test('filter', t => {
   const a = [0, 1, null, 2, 3];
+
   t.notEqual(filter(Boolean, a), a);
   t.deepEqual(filter(Boolean, a), [1, 2, 3]);
   t.end();

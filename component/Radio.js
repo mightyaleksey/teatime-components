@@ -18,7 +18,7 @@ const cssModules = {
   'common-s': require('../style/radio/radio-common-s.css'),
 };
 
-var didWarnForRadioDefaultValue = false;
+let didWarnForRadioDefaultValue = false;
 
 class Radio extends Component {
   constructor(props) {
@@ -26,12 +26,11 @@ class Radio extends Component {
 
     this._controlled = isControlled(props);
 
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production')
       if (this._controlled && !isUndefined(props.defaultValue) && !didWarnForRadioDefaultValue) {
         didWarnForRadioDefaultValue = true;
         warn(true, 'defaultValue', 'Radio', 'radio');
       }
-    }
 
     const value = this._controlled
       ? props.value
@@ -116,6 +115,10 @@ Radio.defaultProps = {
 };
 
 Radio.propTypes = {
+  className: PropTypes.string,
+  defaultValue: PropTypes.any,
+  disabled: PropTypes.bool,
+  id: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -129,6 +132,7 @@ Radio.propTypes = {
     'button',
     'common',
   ]),
+  value: PropTypes.any,
 };
 
 module.exports = Radio;

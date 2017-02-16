@@ -1,6 +1,8 @@
-import Check from '../../component/Check';
-import React from 'react';
-import renderer from 'react-test-renderer';
+'use strict';
+
+const Check = require('../../component/Check');
+const React = require('react');
+const renderer = require('react-test-renderer');
 
 test('Check renders correctly', () => {
   const tree = renderer.create(

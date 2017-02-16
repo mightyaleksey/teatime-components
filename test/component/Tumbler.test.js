@@ -1,6 +1,8 @@
-import React from 'react';
-import Tumbler from '../../component/Tumbler';
-import renderer from 'react-test-renderer';
+'use strict';
+
+const React = require('react');
+const Tumbler = require('../../component/Tumbler');
+const renderer = require('react-test-renderer');
 
 test('Tumbler renders correctly with defaults', () => {
   const tree = renderer.create(

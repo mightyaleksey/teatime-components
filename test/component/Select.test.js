@@ -1,7 +1,9 @@
-import {shallow} from 'enzyme';
-import React from 'react';
-import Select from '../../component/Select';
-import renderer from 'react-test-renderer';
+'use strict';
+
+const {shallow} = require('enzyme');
+const React = require('react');
+const Select = require('../../component/Select');
+const renderer = require('react-test-renderer');
 
 test('Select renders correctly with defaults', () => {
   const tree = renderer.create(

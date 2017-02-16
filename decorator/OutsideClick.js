@@ -1,6 +1,6 @@
 'use strict';
 
-const {Component} = require('react');
+const {Component, PropTypes} = require('react');
 const {findDOMNode} = require('react-dom');
 const {omit} = require('../lib/dash');
 const React = require('react');
@@ -14,15 +14,14 @@ module.exports = OutsideClick;
 
 // OutsideClick :: Component -> Component
 function OutsideClick(Target) {
-  return class Outside extends Component {
+  class Outside extends Component {
     constructor(props) {
       super(props);
 
       if (props.parentNode) this._parentNode = props.parentNode;
 
-      if (!props.onOutsideClick) {
+      if (!props.onOutsideClick)
         throw new Error('Should provide `onOutsideClick` prop');
-      }
     }
 
     componentDidMount() {
@@ -36,22 +35,29 @@ function OutsideClick(Target) {
     _handleEvent = e => {
       const {target} = e;
       const parentNode = this._parentNode();
+
       if (!parentNode) return;
 
       const isInside = parentNode.contains(target) || parentNode === target;
+
       if (isInside) return;
 
       this.props.onOutsideClick(e);
     }
 
-    _parentNode = () => {
-      return findDOMNode(this.refs.parent);
-    }
+    _parentNode = () => findDOMNode(this.refs.parent)
 
     render() {
       return (
         <Target ref='parent' {...omitProps(this.props)}/>
       );
     }
+  }
+
+  Outside.propTypes = {
+    onOutsideClick: PropTypes.func,
+    parentNode: PropTypes.func,
   };
+
+  return Outside;
 }

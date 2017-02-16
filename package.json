@@ -21,11 +21,26 @@
     "url": "https://github.com/sullenor/teatime-components/issues"
   },
   "homepage": "https://github.com/sullenor/teatime-components#readme",
+  "eslintConfig": {
+    "extends": "@sullenor/eslint-config-react",
+    "parserOptions": {
+      "sourceType": "script"
+    },
+    "rules": {
+      "no-case-declarations": 0
+    }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.css$": "identity-obj-proxy"
+    }
+  },
   "peerDependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
   "devDependencies": {
+    "@sullenor/eslint-config-react": "^1.0.8",
     "autoprefixer": "^6.6.1",
     "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
@@ -57,10 +72,5 @@
     "fuzzysearch": "^1.0.3",
     "lodash.chunk": "^4.2.0",
     "lodash.findindex": "^4.6.0"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.css$": "identity-obj-proxy"
-    }
   }
 }

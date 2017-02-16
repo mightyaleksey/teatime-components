@@ -1,6 +1,8 @@
-import Radio from '../../component/Radio';
-import React from 'react';
-import renderer from 'react-test-renderer';
+'use strict';
+
+const Radio = require('../../component/Radio');
+const React = require('react');
+const renderer = require('react-test-renderer');
 
 test('Radio renders correctly with defaults', () => {
   const tree = renderer.create(
