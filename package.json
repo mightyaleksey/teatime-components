@@ -9,7 +9,7 @@
     "lint": "eslint {component,decorator,lib,test,view}/**/*.js *.js",
     "start": "npm run styleguide",
     "styleguide": "styleguidist --config .config/styleguide.config.js server",
-    "test": "tape test/lib/*.js; jest"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -64,7 +64,6 @@
     "react-styleguidist": "^4.6.2",
     "react-test-renderer": "^15.4.2",
     "style-loader": "^0.13.1",
-    "tape": "^4.6.2",
     "webpack": "^1.13.3"
   },
   "dependencies": {
