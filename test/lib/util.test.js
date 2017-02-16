@@ -1,9 +1,8 @@
 'use strict';
 
 const {filterProps, isControlled} = require('../../lib/util');
-const test = require('tape');
 
-test('filterProps', t => {
+test('filterProps', () => {
   const sample = {
     className: 'yo',
     'data-value': 'valid',
@@ -19,13 +18,11 @@ test('filterProps', t => {
     style: {},
   };
 
-  t.deepEqual(filterProps(sample), expected);
-  t.end();
+  expect(filterProps(sample)).toEqual(expected);
 });
 
-test('isControlled', t => {
-  t.equal(isControlled({value: null}), true);
-  t.equal(isControlled({value: void 0}), false);
-  t.equal(isControlled({}), false);
-  t.end();
+test('isControlled', () => {
+  expect(isControlled({value: null})).toBe(true);
+  expect(isControlled({value: void 0})).toBe(false);
+  expect(isControlled({})).toBe(false);
 });
