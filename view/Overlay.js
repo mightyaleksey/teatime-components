@@ -10,7 +10,7 @@ const React = require('react');
 class Overlay extends Component {
   render() {
     return (
-      <div {...this.props}/>
+      <span {...this.props}/>
     );
   }
 }

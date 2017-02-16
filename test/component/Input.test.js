@@ -1,7 +1,9 @@
-import {shallow} from 'enzyme';
-import Input from '../../component/Input';
-import React from 'react';
-import renderer from 'react-test-renderer';
+'use strict';
+
+const {shallow} = require('enzyme');
+const Input = require('../../component/Input');
+const React = require('react');
+const renderer = require('react-test-renderer');
 
 test('Input renders correctly with defaults', () => {
   const tree = renderer.create(
@@ -15,7 +17,7 @@ test('Input renders correctly with defaults', () => {
 test('Input renders correctly with defined props', () => {
   const tree = renderer.create(
     <Input
-      autoComplete={false}
+      autoComplete='off'
       autoFocus={true}
       className='outer'
       disabled={true}
@@ -45,6 +47,7 @@ test('Input\'s uncontrolled change of value', () => {
       name='control'
       onChange={onChange}/>
   );
+
   expect(component.state('value')).toBe('defaultValue');
 
   component.find('input').simulate('change', event);
@@ -63,6 +66,7 @@ test('Input\'s controlled change of value', () => {
       {...props}
       value='initialValue'/>
   );
+
   expect(component.state('value')).toBe('initialValue');
 
   component.find('input').simulate('change', event);

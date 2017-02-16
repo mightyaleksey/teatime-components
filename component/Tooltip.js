@@ -41,11 +41,10 @@ class Tooltip extends Component {
    * @return {number}
    */
   calculatePosition = rect => {
-    if (this.props.direction === 'bottom' || this.props.direction === 'top') {
+    if (this.props.direction === 'bottom' || this.props.direction === 'top')
       return rect.top + (rect.left - rect.width / 2) / 10000;
-    }
 
-    return (rect.top - rect.height / 2) + rect.left / 10000;
+    return rect.top - rect.height / 2 + rect.left / 10000;
   }
 
   /**
@@ -63,16 +62,13 @@ class Tooltip extends Component {
     const {maxWidth} = this.props;
     const {isMultiline} = this.state;
 
-    if (isMultiline !== this.isMultiline(rect, maxWidth)) {
+    if (isMultiline !== this.isMultiline(rect, maxWidth))
       this.setState({
         isMultiline: !this.state.isMultiline,
       });
-    }
   }
 
-  shouldComponentUpdatePosition = prevProps => {
-    return prevProps.direction !== this.props.direction;
-  }
+  shouldComponentUpdatePosition = prevProps => prevProps.direction !== this.props.direction
 
   render() {
     const {children, className, direction, size, type} = this.props;
@@ -101,6 +97,8 @@ Tooltip.defaultProps = {
 };
 
 Tooltip.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
   direction: PropTypes.oneOf([
     'bottom',
     'left',

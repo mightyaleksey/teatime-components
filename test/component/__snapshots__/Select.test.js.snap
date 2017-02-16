@@ -21,7 +21,7 @@ exports[`test Select renders correctly with defaults 1`] = `
       className="arrow"
       onClick={[Function]} />
   </span>
-  <div
+  <span
     className="menu isClosedMenu"
     role="listbox" />
 </span>
@@ -50,7 +50,7 @@ exports[`test Select renders correctly with defined props 1`] = `
       className="arrow"
       onClick={[Function]} />
   </span>
-  <div
+  <span
     className="menu isClosedMenu isFixedMenu"
     role="listbox" />
 </span>

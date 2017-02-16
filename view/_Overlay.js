@@ -7,7 +7,7 @@ const React = require('react');
 
 const MOUNTED_OVERLAYS = {};
 
-var pendingUpdate;
+let pendingUpdate;
 
 class Overlay extends Component {
   constructor(props) {
@@ -24,9 +24,8 @@ class Overlay extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.shouldComponentUpdatePosition(prevProps, prevState)) {
+    if (this.props.shouldComponentUpdatePosition(prevProps, prevState))
       updateOverlays();
-    }
   }
 
   componentWillUnmount() {
@@ -54,6 +53,8 @@ Overlay.defaultProps = {
 
 Overlay.propTypes = {
   calculatePosition: PropTypes.func,
+  children: PropTypes.string,
+  className: PropTypes.string,
   onPositionUpdate: PropTypes.func,
   shouldComponentUpdatePosition: PropTypes.func,
 };
@@ -80,16 +81,15 @@ function updateOverlays() {
 
   const layers = [];
 
-  var component;
-  var rect;
-  var ref;
+  let component;
+  let rect;
+  let ref;
 
-  for (var id in MOUNTED_OVERLAYS) {
+  for (const id in MOUNTED_OVERLAYS) {
     component = MOUNTED_OVERLAYS[id];
 
-    if (!component.refs.overlay) {
+    if (!component.refs.overlay)
       continue;
-    }
 
     ref = component.refs.overlay;
     rect = ref.getBoundingClientRect();
@@ -104,8 +104,8 @@ function updateOverlays() {
 
   layers.sort(byPos);
 
-  var index = layers.length;
-  var target;
+  let index = layers.length;
+  let target;
 
   while (index--) {
     target = layers[index];

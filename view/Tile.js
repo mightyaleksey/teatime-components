@@ -32,6 +32,7 @@ Tile.defaultProps = {
 };
 
 Tile.propTypes = {
+  className: PropTypes.string,
   color: PropTypes.string,
   onClick: PropTypes.func,
 };

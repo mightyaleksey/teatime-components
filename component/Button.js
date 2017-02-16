@@ -56,6 +56,11 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+  autoFocus: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  id: PropTypes.string,
   size: PropTypes.oneOf([
     'l',
     'm',
@@ -67,6 +72,7 @@ Button.propTypes = {
     'link',
     'normal',
   ]),
+  type: PropTypes.string,
 };
 
 module.exports = Button;

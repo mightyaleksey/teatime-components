@@ -23,7 +23,7 @@ exports[`test ColorPicker renders correctly with defaults 1`] = `
     placeholder={undefined}
     type="text"
     value="" />
-  <div
+  <span
     className="menu isClosedMenu" />
 </span>
 `;
@@ -53,7 +53,7 @@ exports[`test ColorPicker renders correctly with defined props 1`] = `
     placeholder="FFFFFF"
     type="text"
     value="BEBEBE" />
-  <div
+  <span
     className="menu isClosedMenu" />
 </span>
 `;

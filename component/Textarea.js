@@ -27,6 +27,7 @@ class Textarea extends Component {
 
   _onChange = e => {
     const value = e.target.value;
+
     this.props.onChange(e, {value});
   }
 
@@ -78,20 +79,43 @@ Textarea.defaultProps = {
   onChange: noop,
   size: 'm',
   styles: cssModules,
-  rows: 3,
+  rows: '3',
 };
 
 Textarea.propTypes = {
-  cols: PropTypes.number,
-  rows: PropTypes.number,
+  autoComplete: PropTypes.oneOf([
+    'off',
+    'on',
+  ]),
+  autoFocus: PropTypes.bool,
+  children: PropTypes.string,
+  className: PropTypes.string,
+  cols: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+  defaultValue: PropTypes.string,
+  disabled: PropTypes.bool,
+  id: PropTypes.string,
+  maxLength: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  readOnly: PropTypes.bool,
+  rows: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   size: PropTypes.oneOf([
     'l',
     'm',
     's',
   ]),
   styles: PropTypes.object,
+  value: PropTypes.string,
 };
 
 module.exports = Textarea;

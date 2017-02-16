@@ -23,7 +23,7 @@ exports[`test Input renders correctly with defined props 1`] = `
   className="wrapper outer"
   onChange={undefined}>
   <input
-    autoComplete={false}
+    autoComplete="off"
     autoFocus={true}
     className="control"
     disabled={true}

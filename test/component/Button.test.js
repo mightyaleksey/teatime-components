@@ -1,6 +1,8 @@
-import Button from '../../component/Button';
-import React from 'react';
-import renderer from 'react-test-renderer';
+'use strict';
+
+const Button = require('../../component/Button');
+const React = require('react');
+const renderer = require('react-test-renderer');
 
 test('Button renders correctly', () => {
   const tree = renderer.create(

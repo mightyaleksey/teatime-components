@@ -37,7 +37,7 @@ const cssModules = {
 
 const byLabel = prop('label');
 
-var didWarnForSelectDefaultValue = false;
+let didWarnForSelectDefaultValue = false;
 
 class Select extends Component {
   constructor(props) {
@@ -45,12 +45,11 @@ class Select extends Component {
 
     this._controlled = isControlled(props);
 
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production')
       if (this._controlled && !isUndefined(props.defaultValue) && !didWarnForSelectDefaultValue) {
         didWarnForSelectDefaultValue = true;
         warn(true, 'defaultValue', 'Select', 'hidden');
       }
-    }
 
     const searchableValue = !isUndefined(props.searchableValue)
       ? props.searchableValue
@@ -108,9 +107,8 @@ class Select extends Component {
       const menuRect = menuElem.getBoundingClientRect();
       const focusedRect = focusedElem.getBoundingClientRect();
 
-      if (focusedRect.bottom > menuRect.bottom || focusedRect.top < menuRect.top) {
+      if (focusedRect.bottom > menuRect.bottom || focusedRect.top < menuRect.top)
         menuElem.scrollTop = focusedElem.offsetTop + menuElem.clientHeight - menuElem.offsetHeight;
-      }
     }
   }
 
@@ -123,18 +121,16 @@ class Select extends Component {
       searchableValue = byLabel,
     } = this.props;
 
-    if (nextProps.searchEngine !== searchEngine) {
+    if (nextProps.searchEngine !== searchEngine)
       this._searchEngine = getSearchEngine(nextProps.searchEngine);
-    }
 
-    if (nextProps.options !== options) {
+    if (nextProps.options !== options)
       this._menuItems = calculateMenuItems(
         this._searchEngine,
         searchableValue,
         nextProps.options,
         this.state.searchValue
       );
-    }
 
     const nextValue = nextProps.value;
     const selectedPosition = this._controlled
@@ -151,14 +147,13 @@ class Select extends Component {
     const {searchableValue = byLabel} = this.props;
     const {searchValue} = this.state;
 
-    if (nextState.searchValue !== searchValue) {
+    if (nextState.searchValue !== searchValue)
       this._menuItems = calculateMenuItems(
         this._searchEngine,
         searchableValue,
         nextProps.options,
         nextState.searchValue
       );
-    }
   }
 
   css = tokenName => genericName(this.props, tokenName)
@@ -201,7 +196,7 @@ class Select extends Component {
     } else {
       nextFocusedIndex = selectedIndex > -1
         ? selectedIndex
-        : (offset > 0 ? 0 : Math.min(length - 1, optionsLimit - 1));
+        : offset > 0 ? 0 : Math.min(length - 1, optionsLimit - 1);
     }
 
     this.setState({
@@ -252,6 +247,7 @@ class Select extends Component {
 
     case TAB:
       if (isOpened) this._closeMenu();
+
       return; // pass event to the native element
 
     case ARROR_DOWN:
@@ -263,11 +259,8 @@ class Select extends Component {
       break; // capture event
 
     case ENTER:
-      if (isOpened) {
-        this._onItemSelect(null, this.state.focusedIndex);
-      } else {
-        this._openMenu();
-      }
+      if (isOpened) this._onItemSelect(null, this.state.focusedIndex);
+      else this._openMenu();
 
       e.stopPropagation();
       break;
@@ -278,6 +271,7 @@ class Select extends Component {
 
     default:
       if (searchable && isOpened) this.setState({focusedIndex: 0, selectedIndex: -1});
+
       return; // pass event to the native element
     }
 
@@ -314,21 +308,18 @@ class Select extends Component {
     this.focus();
   }
 
-  _parentNode = () => {
-    return this._parentRef;
-  }
+  _parentNode = () => this._parentRef
 
   computeMenuItems(menuItems) {
     if (!this.state.isOpened) return null;
 
     const {css} = this;
 
-    if (menuItems.length === 0) {
+    if (menuItems.length === 0)
       return this.renderEmptyItem({
         children: this.props.searchEmptyText,
         className: css('emptyItem'),
       });
-    }
 
     const {
       focusedIndex,
@@ -448,11 +439,7 @@ class Select extends Component {
         : r => this._controlRef = r,
     };
 
-    if (searchable) {
-      return (
-        <span {...labelProps}/>
-      );
-    }
+    if (searchable) return <span {...labelProps}/>;
 
     return (
       <button {...labelProps}/>
@@ -481,7 +468,7 @@ class Select extends Component {
       <Overlay
         className={cc(css('menu'), {
           [css('isClosedMenu')]: !isOpened,
-          [css('isFixedMenu')]: hasFixedWidth
+          [css('isFixedMenu')]: hasFixedWidth,
         })}
         onOutsideClick={this._onOutsideClick}
         parentNode={this._parentNode}
@@ -522,7 +509,11 @@ Select.defaultProps = {
 };
 
 Select.propTypes = {
+  className: PropTypes.string,
+  defaultValue: PropTypes.any,
+  disabled: PropTypes.bool,
   hasFixedWidth: PropTypes.bool,
+  id: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   options: PropTypes.array.isRequired,
@@ -546,6 +537,7 @@ Select.propTypes = {
     's',
   ]),
   styles: PropTypes.object,
+  value: PropTypes.any,
 };
 
 module.exports = Select;
@@ -555,9 +547,9 @@ module.exports = Select;
 function calculateMenuItems(searchEngine, searchableValue, items, needle = '') {
   const length = items.length;
   const availableItems = [];
-  var nextLength = 0;
+  let nextLength = 0;
 
-  for (var i = 0; i < length; ++i) {
+  for (let i = 0; i < length; ++i) {
     const item = items[i];
 
     if (!searchEngine(needle, searchableValue(item))) continue;

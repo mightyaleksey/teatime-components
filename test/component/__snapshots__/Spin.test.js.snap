@@ -1,5 +1,8 @@
 exports[`test Spin renders correctly 1`] = `
 <span
-  className="control outer"
-  id="spins id" />
+  className="wrapper outer"
+  id="spins id">
+  <i
+    className="control" />
+</span>
 `;

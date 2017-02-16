@@ -1,6 +1,8 @@
-import Textarea from '../../component/Textarea';
-import React from 'react';
-import renderer from 'react-test-renderer';
+'use strict';
+
+const Textarea = require('../../component/Textarea');
+const React = require('react');
+const renderer = require('react-test-renderer');
 
 test('Textarea renders correctly with defaults', () => {
   const tree = renderer.create(
@@ -14,7 +16,7 @@ test('Textarea renders correctly with defaults', () => {
 test('Textarea renders correctly with defined props', () => {
   const tree = renderer.create(
     <Textarea
-      autoComplete={false}
+      autoComplete='off'
       autoFocus={true}
       className='outer'
       cols={5}

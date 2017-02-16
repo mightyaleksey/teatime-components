@@ -58,17 +58,27 @@ Link.defaultProps = {
 };
 
 Link.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  download: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
+  href: PropTypes.string,
+  id: PropTypes.string,
   size: PropTypes.oneOf([
     'l',
     'm',
     's',
   ]),
   styles: PropTypes.object,
+  target: PropTypes.string,
   theme: PropTypes.oneOf([
     'action',
     'link',
     'normal',
   ]),
+  type: PropTypes.string,
 };
 
 module.exports = Link;

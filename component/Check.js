@@ -38,6 +38,7 @@ class Check extends Component {
 
   _onChange = e => {
     const {checked, value} = e.target;
+
     this.props.onChange(e, {checked, value});
   }
 
@@ -129,8 +130,14 @@ Check.defaultProps = {
 };
 
 Check.propTypes = {
+  checked: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  defaultChecked: PropTypes.bool,
+  disabled: PropTypes.bool,
   hasLabel: PropTypes.bool,
-  label: PropTypes.string,
+  id: PropTypes.string,
+  label: PropTypes.node,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   size: PropTypes.oneOf([
@@ -138,6 +145,7 @@ Check.propTypes = {
     'm',
   ]),
   styles: PropTypes.object,
+  value: PropTypes.string,
 };
 
 module.exports = Check;

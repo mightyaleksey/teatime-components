@@ -1,6 +1,8 @@
-import Link from '../../component/Link';
-import React from 'react';
-import renderer from 'react-test-renderer';
+'use strict';
+
+const Link = require('../../component/Link');
+const React = require('react');
+const renderer = require('react-test-renderer');
 
 test('Link renders correctly', () => {
   const tree = renderer.create(

@@ -37,7 +37,7 @@ class CheckGroup extends Component {
       ? nextProps.value
       : this.state.value;
 
-    var values = this.state.values;
+    let values = this.state.values;
 
     if (nextProps.options !== options) {
       this._checkItems = calculateCheckItems(nextProps.options);
@@ -54,9 +54,7 @@ class CheckGroup extends Component {
   _onChange = (e, {checked}, position) => {
     const values = updateValue(this.state.values, position, checked);
 
-    if (!this._controlled) {
-      this.setState({values});
-    }
+    if (!this._controlled) this.setState({values});
 
     this.props.onChange(e, {
       value: mapStateToValue(this._checkItems, values),
@@ -88,7 +86,8 @@ class CheckGroup extends Component {
     const columns = chunk(checks, chunkSize);
     const className = this.css('column');
 
-    var index = 0;
+    let index = 0;
+
     return map(children =>
       this.renderColumn({
         children,
@@ -136,8 +135,11 @@ CheckGroup.defaultProps = {
 };
 
 CheckGroup.propTypes = {
+  className: PropTypes.string,
   cols: PropTypes.number,
   defaultValue: PropTypes.arrayOf(PropTypes.string),
+  disabled: PropTypes.bool,
+  id: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   options: PropTypes.array.isRequired,
@@ -156,7 +158,7 @@ function calculateCheckItems(items = []) {
   const length = items.length;
   const nextItems = Array(length);
 
-  for (var i = 0; i < length; ++i)
+  for (let i = 0; i < length; ++i)
     nextItems[i] = assign(items[i], {_position: i});
 
   return nextItems;
@@ -165,11 +167,8 @@ function calculateCheckItems(items = []) {
 function mapStateToValue(options, values) {
   const selected = [];
 
-  for (var i = 0; i < values.length; ++i) {
-    if (!values[i]) {
-      continue;
-    }
-
+  for (let i = 0; i < values.length; ++i) {
+    if (!values[i]) continue;
     selected.push(options[i].value);
   }
 
@@ -178,11 +177,9 @@ function mapStateToValue(options, values) {
 
 function mapValueToState(options, selected) {
   const selectedMap = {};
+  let length = selected.length;
 
-  var length = selected.length;
-  while (length--) {
-    selectedMap[selected[length]] = null;
-  }
+  while (length--) selectedMap[selected[length]] = null;
 
   return map(({value}) => value in selectedMap, options);
 }

@@ -1,6 +1,8 @@
-import React from 'react';
-import Spin from '../../component/Spin';
-import renderer from 'react-test-renderer';
+'use strict';
+
+const React = require('react');
+const Spin = require('../../component/Spin');
+const renderer = require('react-test-renderer');
 
 test('Spin renders correctly', () => {
   const tree = renderer.create(
