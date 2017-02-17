@@ -1,6 +1,12 @@
 # change log
 
 
+## 0.8.10
+
+- Added Spin wrapper in order to avoid CSS transform issues.
+- Added detailed propTypes description.
+
+
 ## 0.8.9
 
 Fix for select value update. Disappointment from version `0.8.7`: `selectedPosition` was calculated wrong if `searchValue` was not empty.
