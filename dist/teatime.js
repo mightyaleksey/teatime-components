@@ -170,9 +170,15 @@ var Teatime =
 	};
 
 	Button.propTypes = {
+	  autoFocus: PropTypes.bool,
+	  children: PropTypes.node,
+	  className: PropTypes.string,
+	  disabled: PropTypes.bool,
+	  id: PropTypes.string,
 	  size: PropTypes.oneOf(['l', 'm', 's']),
 	  styles: PropTypes.object,
-	  theme: PropTypes.oneOf(['action', 'link', 'normal'])
+	  theme: PropTypes.oneOf(['action', 'link', 'normal']),
+	  type: PropTypes.string
 	};
 
 	module.exports = Button;
@@ -210,6 +216,7 @@ var Teatime =
 
 	  for (var j = 0; j < length; ++j) {
 	    var key = keys[j];
+
 	    if (whiteList.test(key)) nextProps[key] = props[key];
 	  }
 
@@ -224,7 +231,9 @@ var Teatime =
 	      theme = _ref.theme;
 
 	  var preset = (theme + '-' + size).replace(/-?undefined-?/, '');
+
 	  if (!name) return styles[preset];
+
 	  return styles[preset][name];
 	}
 
@@ -266,6 +275,7 @@ var Teatime =
 	  if (isArray(c)) {
 	    var _length = Math.min(c.length, n);
 	    var _nC = Array(_length);
+
 	    for (var i = 0; i < _length; ++i) {
 	      _nC[i] = f(c[i]);
 	    }return _nC;
@@ -283,8 +293,10 @@ var Teatime =
 	// assign :: a -> b -> c
 	function assign(a, b) {
 	  var c = {};
+
 	  _copy(c, a);
 	  _copy(c, b);
+
 	  return c;
 	}
 
@@ -298,6 +310,7 @@ var Teatime =
 
 	  for (var j = 0; j < length; ++j) {
 	    var key = keys[j];
+
 	    a[key] = b[key];
 	  }
 
@@ -308,6 +321,7 @@ var Teatime =
 	function castArray(a) {
 	  if (isArray(a)) return a;
 	  if (arguments.length === 0) return [];
+
 	  return [a];
 	}
 
@@ -317,6 +331,7 @@ var Teatime =
 	  }
 
 	  var quantity = fn.length;
+
 	  return _compose;
 
 	  function _compose() {
@@ -341,6 +356,7 @@ var Teatime =
 
 	function curry(f) {
 	  var arity = f.length;
+
 	  return curried;
 
 	  function curried() {
@@ -349,6 +365,7 @@ var Teatime =
 	    }
 
 	    if (args.length >= arity) return f.apply(this, args);
+
 	    return curried.bind.apply(curried, [this].concat(args));
 	  }
 	}
@@ -357,6 +374,7 @@ var Teatime =
 	function filter(f, c) {
 	  return reduce(function (nC, a) {
 	    if (f(a)) nC.push(a);
+
 	    return nC;
 	  }, [], c);
 	}
@@ -371,11 +389,7 @@ var Teatime =
 	  return reduce(function (acc, a) {
 	    var id = identity(a);
 
-	    if (isArray(acc[id])) {
-	      acc[id].push(a);
-	    } else {
-	      acc[id] = [a];
-	    }
+	    if (isArray(acc[id])) acc[id].push(a);else acc[id] = [a];
 
 	    return acc;
 	  }, {}, c);
@@ -393,6 +407,7 @@ var Teatime =
 
 	  for (var j = 0; j < keys.length; ++j) {
 	    var key = keys[j];
+
 	    nC[c[key]] = key;
 	  }
 
@@ -419,6 +434,7 @@ var Teatime =
 	  if (isArray(c)) {
 	    var _length2 = c.length;
 	    var _nC2 = Array(_length2);
+
 	    for (var i = 0; i < _length2; ++i) {
 	      _nC2[i] = f(c[i]);
 	    }return _nC2;
@@ -453,6 +469,7 @@ var Teatime =
 
 	  for (var j = 0; j < keys.length; ++j) {
 	    var key = keys[j];
+
 	    if (!list.hasOwnProperty(key)) nC[key] = c[key];
 	  }
 
@@ -470,6 +487,7 @@ var Teatime =
 
 	  if (isArray(c)) {
 	    var _length3 = c.length;
+
 	    for (var i = 0; i < _length3; ++i) {
 	      nC = f(nC, c[i]);
 	    }return nC;
@@ -486,6 +504,7 @@ var Teatime =
 	// trace :: a -> a
 	function trace(a) {
 	  console.log(a); // eslint-disable-line no-console
+
 	  return a;
 	}
 
@@ -1389,6 +1408,7 @@ var Teatime =
 	          checked = _e$target.checked,
 	          value = _e$target.value;
 
+
 	      _this.props.onChange(e, { checked: checked, value: value });
 	    };
 
@@ -1507,12 +1527,19 @@ var Teatime =
 	};
 
 	Check.propTypes = {
+	  checked: PropTypes.bool,
+	  children: PropTypes.node,
+	  className: PropTypes.string,
+	  defaultChecked: PropTypes.bool,
+	  disabled: PropTypes.bool,
 	  hasLabel: PropTypes.bool,
-	  label: PropTypes.string,
+	  id: PropTypes.string,
+	  label: PropTypes.node,
 	  name: PropTypes.string.isRequired,
 	  onChange: PropTypes.func,
 	  size: PropTypes.oneOf(['l', 'm']),
-	  styles: PropTypes.object
+	  styles: PropTypes.object,
+	  value: PropTypes.string
 	};
 
 	module.exports = Check;
@@ -1724,9 +1751,7 @@ var Teatime =
 
 	      var values = updateValue(_this.state.values, position, checked);
 
-	      if (!_this._controlled) {
-	        _this.setState({ values: values });
-	      }
+	      if (!_this._controlled) _this.setState({ values: values });
 
 	      _this.props.onChange(e, {
 	        value: mapStateToValue(_this._checkItems, values)
@@ -1799,6 +1824,7 @@ var Teatime =
 	      var className = this.css('column');
 
 	      var index = 0;
+
 	      return map(function (children) {
 	        return _this3.renderColumn({
 	          children: children,
@@ -1851,8 +1877,11 @@ var Teatime =
 	};
 
 	CheckGroup.propTypes = {
+	  className: PropTypes.string,
 	  cols: PropTypes.number,
 	  defaultValue: PropTypes.arrayOf(PropTypes.string),
+	  disabled: PropTypes.bool,
+	  id: PropTypes.string,
 	  name: PropTypes.string.isRequired,
 	  onChange: PropTypes.func,
 	  options: PropTypes.array.isRequired,
@@ -1879,10 +1908,7 @@ var Teatime =
 	  var selected = [];
 
 	  for (var i = 0; i < values.length; ++i) {
-	    if (!values[i]) {
-	      continue;
-	    }
-
+	    if (!values[i]) continue;
 	    selected.push(options[i].value);
 	  }
 
@@ -1891,13 +1917,11 @@ var Teatime =
 
 	function mapValueToState(options, selected) {
 	  var selectedMap = {};
-
 	  var length = selected.length;
+
 	  while (length--) {
 	    selectedMap[selected[length]] = null;
-	  }
-
-	  return map(function (_ref2) {
+	  }return map(function (_ref2) {
 	    var value = _ref2.value;
 	    return value in selectedMap;
 	  }, options);
@@ -1949,6 +1973,7 @@ var Teatime =
 	      var _e$target = e.target,
 	          checked = _e$target.checked,
 	          value = _e$target.value;
+
 
 	      _this.props.onChange(e, { checked: checked, value: value }, _this.props.position);
 	    };
@@ -2046,12 +2071,20 @@ var Teatime =
 	};
 
 	Box.propTypes = {
+	  checked: PropTypes.bool,
+	  children: PropTypes.node,
+	  className: PropTypes.string,
+	  defaultValue: PropTypes.string,
+	  disabled: PropTypes.bool,
 	  hasLabel: PropTypes.bool,
-	  label: PropTypes.string,
+	  id: PropTypes.string,
+	  label: PropTypes.node,
 	  name: PropTypes.string.isRequired,
 	  onChange: PropTypes.func,
 	  position: PropTypes.number,
-	  type: PropTypes.oneOf(['checkbox', 'radio'])
+	  styles: PropTypes.object,
+	  type: PropTypes.oneOf(['checkbox', 'radio']),
+	  value: PropTypes.string
 	};
 
 	module.exports = Box;
@@ -2754,6 +2787,7 @@ var Teatime =
 
 
 	      var menuItem = css('menuItem');
+
 	      return map(function (color) {
 	        return _this2.renderTile({
 	          className: menuItem,
@@ -2883,6 +2917,7 @@ var Teatime =
 
 	  this._onChange = function (e) {
 	    var value = e.target.value;
+
 	    if (!_this4._controlled) _this4.setState({ isOpened: false, value: value });
 	    _this4.props.onChange(e, { value: value });
 	  };
@@ -2904,14 +2939,13 @@ var Teatime =
 	    var value = _this4.state.value;
 
 	    var nextValue = userColorValue(value);
+
 	    if (nextValue === value) return;
 
-	    if (!_this4._controlled) {
-	      _this4.setState({
-	        isOpened: false,
-	        value: nextValue
-	      });
-	    }
+	    if (!_this4._controlled) _this4.setState({
+	      isOpened: false,
+	      value: nextValue
+	    });
 
 	    _this4.props.onChange(e, { value: nextValue });
 	  };
@@ -2952,11 +2986,18 @@ var Teatime =
 	};
 
 	ColorPicker.propTypes = {
+	  autoFocus: PropTypes.bool,
+	  className: PropTypes.string,
+	  defaultValue: PropTypes.string,
+	  disabled: PropTypes.bool,
+	  id: PropTypes.string,
 	  name: PropTypes.string.isRequired,
 	  onChange: PropTypes.func,
 	  palette: PropTypes.arrayOf(PropTypes.string),
+	  placeholder: PropTypes.string,
 	  size: PropTypes.oneOf(['l', 'm', 's']),
-	  styles: PropTypes.object
+	  styles: PropTypes.object,
+	  value: PropTypes.string
 	};
 
 	module.exports = ColorPicker;
@@ -2995,13 +3036,12 @@ var Teatime =
 	  if (!isString(color)) return color;
 
 	  var nextColor = color.trim().replace(/^#/, '');
+
 	  if (!hex.test(nextColor)) return color;
 
-	  if (nextColor.length === 3) {
-	    nextColor = nextColor.replace(/./g, function (d) {
-	      return d + d;
-	    });
-	  }
+	  if (nextColor.length === 3) nextColor = nextColor.replace(/./g, function (d) {
+	    return d + d;
+	  });
 
 	  return '#' + nextColor.toLowerCase();
 	}
@@ -3047,7 +3087,7 @@ var Teatime =
 	  _createClass(Overlay, [{
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement('div', this.props);
+	      return React.createElement('span', this.props);
 	    }
 	  }]);
 
@@ -3073,7 +3113,8 @@ var Teatime =
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _require = __webpack_require__(2),
-	    Component = _require.Component;
+	    Component = _require.Component,
+	    PropTypes = _require.PropTypes;
 
 	var _require2 = __webpack_require__(52),
 	    findDOMNode = _require2.findDOMNode;
@@ -3089,7 +3130,7 @@ var Teatime =
 
 	// OutsideClick :: Component -> Component
 	function OutsideClick(Target) {
-	  return function (_Component) {
+	  var Outside = function (_Component) {
 	    _inherits(Outside, _Component);
 
 	    function Outside(props) {
@@ -3101,9 +3142,11 @@ var Teatime =
 	        var target = e.target;
 
 	        var parentNode = _this._parentNode();
+
 	        if (!parentNode) return;
 
 	        var isInside = parentNode.contains(target) || parentNode === target;
+
 	        if (isInside) return;
 
 	        _this.props.onOutsideClick(e);
@@ -3115,9 +3158,7 @@ var Teatime =
 
 	      if (props.parentNode) _this._parentNode = props.parentNode;
 
-	      if (!props.onOutsideClick) {
-	        throw new Error('Should provide `onOutsideClick` prop');
-	      }
+	      if (!props.onOutsideClick) throw new Error('Should provide `onOutsideClick` prop');
 	      return _this;
 	    }
 
@@ -3140,6 +3181,13 @@ var Teatime =
 
 	    return Outside;
 	  }(Component);
+
+	  Outside.propTypes = {
+	    onOutsideClick: PropTypes.func,
+	    parentNode: PropTypes.func
+	  };
+
+	  return Outside;
 	}
 
 /***/ },
@@ -3218,6 +3266,7 @@ var Teatime =
 	};
 
 	Tile.propTypes = {
+	  className: PropTypes.string,
 	  color: PropTypes.string,
 	  onClick: PropTypes.func
 	};
@@ -3595,11 +3644,9 @@ var Teatime =
 
 	    _this._controlled = isControlled(props);
 
-	    if (process.env.NODE_ENV !== 'production') {
-	      if (_this._controlled && !isUndefined(props.defaultValue) && !didWarnForInputDefaultValue) {
-	        didWarnForInputDefaultValue = true;
-	        warn(true, 'defaultValue', 'Input', props.type);
-	      }
+	    if (process.env.NODE_ENV !== 'production') if (_this._controlled && !isUndefined(props.defaultValue) && !didWarnForInputDefaultValue) {
+	      didWarnForInputDefaultValue = true;
+	      warn(true, 'defaultValue', 'Input', props.type);
 	    }
 
 	    var value = _this._controlled ? props.value : props.defaultValue;
@@ -3713,12 +3760,14 @@ var Teatime =
 
 	  this._onChange = function (e) {
 	    var value = e.target.value;
+
 	    if (!_this3._controlled) _this3.setState({ value: value });
 	    _this3.props.onChange(e, { value: value });
 	  };
 
 	  this._onClear = function (e) {
 	    var value = '';
+
 	    if (!_this3._controlled) _this3.setState({ value: value });
 	    _this3.props.onChange(e, { value: value });
 	    _this3.focus();
@@ -3733,11 +3782,21 @@ var Teatime =
 	};
 
 	Input.propTypes = {
+	  autoComplete: PropTypes.oneOf(['off', 'on']),
+	  autoFocus: PropTypes.bool,
+	  className: PropTypes.string,
+	  defaultValue: PropTypes.string,
+	  disabled: PropTypes.bool,
+	  id: PropTypes.string,
+	  maxLength: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	  name: PropTypes.string.isRequired,
 	  onChange: PropTypes.func,
+	  placeholder: PropTypes.string,
+	  readOnly: PropTypes.bool,
 	  size: PropTypes.oneOf(['l', 'm', 's']),
 	  styles: PropTypes.object,
-	  type: PropTypes.string
+	  type: PropTypes.string,
+	  value: PropTypes.string
 	};
 
 	module.exports = Input;
@@ -3934,6 +3993,7 @@ var Teatime =
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+
 	/* eslint-disable max-len, no-inner-declarations */
 
 	var _require = __webpack_require__(4),
@@ -3942,53 +4002,50 @@ var Teatime =
 	var warn = noop;
 
 	if (process.env.NODE_ENV !== 'production') {
-	  (function () {
 
-	    // serializeMsgCodes :: object -> string
-	    var serializeMsgCodes = function serializeMsgCodes(messages) {
-	      return Object.keys(messages).map(function (msgCode) {
-	        return '`' + msgCode + '`';
-	      }).join(', ');
-	    };
+	  // serializeMsgCodes :: object -> string
+	  var serializeMsgCodes = function serializeMsgCodes(messages) {
+	    return Object.keys(messages).map(function (msgCode) {
+	      return '`' + msgCode + '`';
+	    }).join(', ');
+	  };
 
-	    var MESSAGE = {
-	      defaultValue: '%s contains an input of type `%s` with both `value` and `defaultValue` props. Input elements must by either controlled or uncontrolled (specify either the `value` prop, or the `defaultValue` prop, but not both). Decide between using a controlled or uncontrolled input element and remove one of these props. More info: https://facebook.github.io/react/docs/forms.html#controlled-components'
-	    };
+	  var MESSAGE = {
+	    defaultValue: '%s contains an input of type `%s` with both `value` and `defaultValue` props. Input elements must by either controlled or uncontrolled (specify either the `value` prop, or the `defaultValue` prop, but not both). Decide between using a controlled or uncontrolled input element and remove one of these props. More info: https://facebook.github.io/react/docs/forms.html#controlled-components'
+	  };
 
-	    var existingCodes = serializeMsgCodes(MESSAGE);
-	    var shownWarnings = {};
+	  var existingCodes = serializeMsgCodes(MESSAGE);
+	  var shownWarnings = {};
 
-	    // http://staxmanade.com/2016/01/developer-friendly-react-component-errors/
-	    // https://github.com/facebook/react/issues/2461
-	    warn = function printWarning(condition, msgCode) {
-	      for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-	        args[_key - 2] = arguments[_key];
-	      }
+	  // http://staxmanade.com/2016/01/developer-friendly-react-component-errors/
+	  // https://github.com/facebook/react/issues/2461
+	  warn = function printWarning(condition, msgCode) {
+	    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+	      args[_key - 2] = arguments[_key];
+	    }
 
-	      if (typeof msgCode === 'undefined') {
-	        throw new Error('`warn(condition, msgCode, ...args)` requires a warning message code');
-	      }
+	    if (typeof msgCode === 'undefined') throw new Error('`warn(condition, msgCode, ...args)` requires a warning message code');
 
-	      if (!MESSAGE[msgCode]) {
-	        if (shownWarnings[msgCode]) return;
-	        shownWarnings[msgCode] = true;
+	    if (!MESSAGE[msgCode]) {
+	      if (shownWarnings[msgCode]) return;
+	      shownWarnings[msgCode] = true;
 
-	        var errMsg = 'Unknown `msgCode` was provided. Consider adding message text for `' + msgCode + '` or use the existing one: ' + existingCodes + '.';
-	        return void console.error('Error: ' + errMsg); // eslint-disable-line no-console
-	      }
+	      var errMsg = 'Unknown `msgCode` was provided. Consider adding message text for `' + msgCode + '` or use the existing one: ' + existingCodes + '.';
 
-	      if (condition) {
-	        var rawmsg = MESSAGE[msgCode];
+	      return void console.error('Error: ' + errMsg); // eslint-disable-line no-console
+	    }
 
-	        var argIndex = 0;
-	        var message = 'Warning: ' + rawmsg.replace(/%s/g, function () {
-	          return args[argIndex++];
-	        });
+	    if (condition) {
+	      var rawmsg = MESSAGE[msgCode];
 
-	        console.error(message); // eslint-disable-line no-console
-	      }
-	    };
-	  })();
+	      var argIndex = 0;
+	      var message = 'Warning: ' + rawmsg.replace(/%s/g, function () {
+	        return args[argIndex++];
+	      });
+
+	      console.error(message); // eslint-disable-line no-console
+	    }
+	  };
 	}
 
 	module.exports = warn;
@@ -4171,9 +4228,16 @@ var Teatime =
 	};
 
 	Link.propTypes = {
+	  children: PropTypes.node,
+	  className: PropTypes.string,
+	  download: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+	  href: PropTypes.string,
+	  id: PropTypes.string,
 	  size: PropTypes.oneOf(['l', 'm', 's']),
 	  styles: PropTypes.object,
-	  theme: PropTypes.oneOf(['action', 'link', 'normal'])
+	  target: PropTypes.string,
+	  theme: PropTypes.oneOf(['action', 'link', 'normal']),
+	  type: PropTypes.string
 	};
 
 	module.exports = Link;
@@ -4632,11 +4696,9 @@ var Teatime =
 
 	    _this._controlled = isControlled(props);
 
-	    if (process.env.NODE_ENV !== 'production') {
-	      if (_this._controlled && !isUndefined(props.defaultValue) && !didWarnForRadioDefaultValue) {
-	        didWarnForRadioDefaultValue = true;
-	        warn(true, 'defaultValue', 'Radio', 'radio');
-	      }
+	    if (process.env.NODE_ENV !== 'production') if (_this._controlled && !isUndefined(props.defaultValue) && !didWarnForRadioDefaultValue) {
+	      didWarnForRadioDefaultValue = true;
+	      warn(true, 'defaultValue', 'Radio', 'radio');
 	    }
 
 	    var value = _this._controlled ? props.value : props.defaultValue;
@@ -4742,12 +4804,17 @@ var Teatime =
 	};
 
 	Radio.propTypes = {
+	  className: PropTypes.string,
+	  defaultValue: PropTypes.any,
+	  disabled: PropTypes.bool,
+	  id: PropTypes.string,
 	  name: PropTypes.string.isRequired,
 	  onChange: PropTypes.func,
 	  options: PropTypes.arrayOf(PropTypes.object).isRequired,
 	  size: PropTypes.oneOf(['l', 'm', 's']),
 	  styles: PropTypes.object,
-	  theme: PropTypes.oneOf(['button', 'common'])
+	  theme: PropTypes.oneOf(['button', 'common']),
+	  value: PropTypes.any
 	};
 
 	module.exports = Radio;
@@ -5176,6 +5243,7 @@ var Teatime =
 
 	        case TAB:
 	          if (isOpened) _this._closeMenu();
+
 	          return; // pass event to the native element
 
 	        case ARROR_DOWN:
@@ -5187,11 +5255,7 @@ var Teatime =
 	          break; // capture event
 
 	        case ENTER:
-	          if (isOpened) {
-	            _this._onItemSelect(null, _this.state.focusedIndex);
-	          } else {
-	            _this._openMenu();
-	          }
+	          if (isOpened) _this._onItemSelect(null, _this.state.focusedIndex);else _this._openMenu();
 
 	          e.stopPropagation();
 	          break;
@@ -5202,6 +5266,7 @@ var Teatime =
 
 	        default:
 	          if (searchable && isOpened) _this.setState({ focusedIndex: 0, selectedIndex: -1 });
+
 	          return; // pass event to the native element
 	      }
 
@@ -5242,11 +5307,9 @@ var Teatime =
 
 	    _this._controlled = isControlled(props);
 
-	    if (process.env.NODE_ENV !== 'production') {
-	      if (_this._controlled && !isUndefined(props.defaultValue) && !didWarnForSelectDefaultValue) {
-	        didWarnForSelectDefaultValue = true;
-	        warn(true, 'defaultValue', 'Select', 'hidden');
-	      }
+	    if (process.env.NODE_ENV !== 'production') if (_this._controlled && !isUndefined(props.defaultValue) && !didWarnForSelectDefaultValue) {
+	      didWarnForSelectDefaultValue = true;
+	      warn(true, 'defaultValue', 'Select', 'hidden');
 	    }
 
 	    var searchableValue = !isUndefined(props.searchableValue) ? props.searchableValue : byLabel;
@@ -5300,9 +5363,7 @@ var Teatime =
 	        var menuRect = _menuElem.getBoundingClientRect();
 	        var focusedRect = _focusedElem.getBoundingClientRect();
 
-	        if (focusedRect.bottom > menuRect.bottom || focusedRect.top < menuRect.top) {
-	          _menuElem.scrollTop = _focusedElem.offsetTop + _menuElem.clientHeight - _menuElem.offsetHeight;
-	        }
+	        if (focusedRect.bottom > menuRect.bottom || focusedRect.top < menuRect.top) _menuElem.scrollTop = _focusedElem.offsetTop + _menuElem.clientHeight - _menuElem.offsetHeight;
 	      }
 	    }
 	  }, {
@@ -5317,13 +5378,9 @@ var Teatime =
 	          searchableValue = _props$searchableValu === undefined ? byLabel : _props$searchableValu;
 
 
-	      if (nextProps.searchEngine !== searchEngine) {
-	        this._searchEngine = getSearchEngine(nextProps.searchEngine);
-	      }
+	      if (nextProps.searchEngine !== searchEngine) this._searchEngine = getSearchEngine(nextProps.searchEngine);
 
-	      if (nextProps.options !== options) {
-	        this._menuItems = calculateMenuItems(this._searchEngine, searchableValue, nextProps.options, this.state.searchValue);
-	      }
+	      if (nextProps.options !== options) this._menuItems = calculateMenuItems(this._searchEngine, searchableValue, nextProps.options, this.state.searchValue);
 
 	      var nextValue = nextProps.value;
 	      var selectedPosition = this._controlled ? findIndex(this._menuItems, function (item) {
@@ -5343,9 +5400,7 @@ var Teatime =
 	      var searchValue = this.state.searchValue;
 
 
-	      if (nextState.searchValue !== searchValue) {
-	        this._menuItems = calculateMenuItems(this._searchEngine, searchableValue, nextProps.options, nextState.searchValue);
-	      }
+	      if (nextState.searchValue !== searchValue) this._menuItems = calculateMenuItems(this._searchEngine, searchableValue, nextProps.options, nextState.searchValue);
 	    }
 	  }, {
 	    key: 'focus',
@@ -5410,12 +5465,10 @@ var Teatime =
 	      var css = this.css;
 
 
-	      if (menuItems.length === 0) {
-	        return this.renderEmptyItem({
-	          children: this.props.searchEmptyText,
-	          className: css('emptyItem')
-	        });
-	      }
+	      if (menuItems.length === 0) return this.renderEmptyItem({
+	        children: this.props.searchEmptyText,
+	        className: css('emptyItem')
+	      });
 
 	      var _state2 = this.state,
 	          focusedIndex = _state2.focusedIndex,
@@ -5551,9 +5604,7 @@ var Teatime =
 	        }
 	      };
 
-	      if (searchable) {
-	        return React.createElement('span', labelProps);
-	      }
+	      if (searchable) return React.createElement('span', labelProps);
 
 	      return React.createElement('button', labelProps);
 	    }
@@ -5625,7 +5676,11 @@ var Teatime =
 	};
 
 	Select.propTypes = {
+	  className: PropTypes.string,
+	  defaultValue: PropTypes.any,
+	  disabled: PropTypes.bool,
 	  hasFixedWidth: PropTypes.bool,
+	  id: PropTypes.string,
 	  name: PropTypes.string.isRequired,
 	  onChange: PropTypes.func,
 	  options: PropTypes.array.isRequired,
@@ -5637,7 +5692,8 @@ var Teatime =
 	  searchEmptyText: PropTypes.string,
 	  searchEngine: PropTypes.oneOfType([PropTypes.func, PropTypes.oneOf(['fuzzy', 'includes', 'startsWith'])]),
 	  size: PropTypes.oneOf(['l', 'm', 's']),
-	  styles: PropTypes.object
+	  styles: PropTypes.object,
+	  value: PropTypes.any
 	};
 
 	module.exports = Select;
@@ -5748,6 +5804,8 @@ var Teatime =
 	};
 
 	Option.propTypes = {
+	  children: PropTypes.node,
+	  className: PropTypes.string,
 	  onClick: PropTypes.func,
 	  onFocus: PropTypes.func,
 	  position: PropTypes.number,
@@ -8537,9 +8595,13 @@ var Teatime =
 	      var css = this.css;
 
 
-	      return React.createElement('span', _extends({}, filterProps(this.props), {
-	        className: cc(css('control'), className),
-	        id: id }));
+	      return React.createElement(
+	        'span',
+	        _extends({}, filterProps(this.props), {
+	          className: cc(css('wrapper'), className),
+	          id: id }),
+	        React.createElement('i', { className: css('control') })
+	      );
 	    }
 	  }]);
 
@@ -8552,6 +8614,8 @@ var Teatime =
 	};
 
 	Spin.propTypes = {
+	  className: PropTypes.string,
+	  id: PropTypes.string,
 	  size: PropTypes.oneOf(['l', 'm', 's', 'xs']),
 	  styles: PropTypes.object
 	};
@@ -8594,11 +8658,12 @@ var Teatime =
 	exports.i(__webpack_require__(125), undefined);
 
 	// module
-	exports.push([module.id, ".KzqB6\n{\n}\n", ""]);
+	exports.push([module.id, ".goRYB\n{\n}\n\n.KzqB6\n{\n}\n", ""]);
 
 	// exports
 	exports.locals = {
-		"control": "KzqB6 " + __webpack_require__(124).locals["selector"] + " " + __webpack_require__(124).locals["control"] + " " + __webpack_require__(125).locals["l"] + ""
+		"wrapper": "goRYB " + __webpack_require__(124).locals["selector"] + " " + __webpack_require__(124).locals["wrapper"] + "",
+		"control": "KzqB6 " + __webpack_require__(124).locals["control"] + " " + __webpack_require__(125).locals["l"] + ""
 	};
 
 /***/ },
@@ -8610,11 +8675,12 @@ var Teatime =
 
 
 	// module
-	exports.push([module.id, "@-webkit-keyframes _2Zhtd\n{\n  from\n  {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n  }\n\n  to\n  {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n  }\n}\n\n@keyframes _2Zhtd\n{\n  from\n  {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n  }\n\n  to\n  {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n  }\n}\n\n.NNRjc\n{\n  /* the common selector */\n}\n\n._3UxUF\n{\n  display: inline-block;\n\n  margin: 0;\n\n  -webkit-animation: _2Zhtd 1s infinite linear;\n\n          animation: _2Zhtd 1s infinite linear;\n\n  border: 2px solid #fc0;\n  border-top-color: transparent;\n  border-left-color: transparent;\n  border-radius: 50%;\n}\n", ""]);
+	exports.push([module.id, "@-webkit-keyframes _2Zhtd\n{\n  from\n  {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n  }\n\n  to\n  {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n  }\n}\n\n@keyframes _2Zhtd\n{\n  from\n  {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n  }\n\n  to\n  {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n  }\n}\n\n.NNRjc\n{\n  /* the common selector */\n}\n\n.WFmTD\n{\n  display: inline-block;\n}\n\n._3UxUF\n{\n  display: block;\n\n  margin: 0;\n\n  -webkit-animation: _2Zhtd 1s infinite linear;\n\n          animation: _2Zhtd 1s infinite linear;\n\n  border: 2px solid #fc0;\n  border-top-color: transparent;\n  border-left-color: transparent;\n  border-radius: 50%;\n}\n", ""]);
 
 	// exports
 	exports.locals = {
 		"selector": "NNRjc",
+		"wrapper": "WFmTD",
 		"control": "_3UxUF",
 		"spin": "_2Zhtd"
 	};
@@ -8674,11 +8740,12 @@ var Teatime =
 	exports.i(__webpack_require__(125), undefined);
 
 	// module
-	exports.push([module.id, "._3_cDE\n{\n}\n", ""]);
+	exports.push([module.id, "._2bIK4\n{\n}\n\n._3_cDE\n{\n}\n", ""]);
 
 	// exports
 	exports.locals = {
-		"control": "_3_cDE " + __webpack_require__(124).locals["selector"] + " " + __webpack_require__(124).locals["control"] + " " + __webpack_require__(125).locals["m"] + ""
+		"wrapper": "_2bIK4 " + __webpack_require__(124).locals["selector"] + " " + __webpack_require__(124).locals["wrapper"] + "",
+		"control": "_3_cDE " + __webpack_require__(124).locals["control"] + " " + __webpack_require__(125).locals["m"] + ""
 	};
 
 /***/ },
@@ -8717,11 +8784,12 @@ var Teatime =
 	exports.i(__webpack_require__(125), undefined);
 
 	// module
-	exports.push([module.id, "._1pf6I\n{\n}\n", ""]);
+	exports.push([module.id, "._2rBqW\n{\n}\n\n._1pf6I\n{\n}\n", ""]);
 
 	// exports
 	exports.locals = {
-		"control": "_1pf6I " + __webpack_require__(124).locals["selector"] + " " + __webpack_require__(124).locals["control"] + " " + __webpack_require__(125).locals["s"] + ""
+		"wrapper": "_2rBqW " + __webpack_require__(124).locals["selector"] + " " + __webpack_require__(124).locals["wrapper"] + "",
+		"control": "_1pf6I " + __webpack_require__(124).locals["control"] + " " + __webpack_require__(125).locals["s"] + ""
 	};
 
 /***/ },
@@ -8760,11 +8828,12 @@ var Teatime =
 	exports.i(__webpack_require__(125), undefined);
 
 	// module
-	exports.push([module.id, ".J3lJC\n{\n}\n", ""]);
+	exports.push([module.id, "._6UJof\n{\n}\n\n.J3lJC\n{\n}\n", ""]);
 
 	// exports
 	exports.locals = {
-		"control": "J3lJC " + __webpack_require__(124).locals["selector"] + " " + __webpack_require__(124).locals["control"] + " " + __webpack_require__(125).locals["xs"] + ""
+		"wrapper": "_6UJof " + __webpack_require__(124).locals["selector"] + " " + __webpack_require__(124).locals["wrapper"] + "",
+		"control": "J3lJC " + __webpack_require__(124).locals["control"] + " " + __webpack_require__(125).locals["xs"] + ""
 	};
 
 /***/ },
@@ -8821,6 +8890,7 @@ var Teatime =
 	      return genericName(_this.props, tokenName);
 	    }, _this._onChange = function (e) {
 	      var value = e.target.value;
+
 	      _this.props.onChange(e, { value: value });
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
@@ -8892,16 +8962,27 @@ var Teatime =
 	  onChange: noop,
 	  size: 'm',
 	  styles: cssModules,
-	  rows: 3
+	  rows: '3'
 	};
 
 	Textarea.propTypes = {
-	  cols: PropTypes.number,
-	  rows: PropTypes.number,
+	  autoComplete: PropTypes.oneOf(['off', 'on']),
+	  autoFocus: PropTypes.bool,
+	  children: PropTypes.string,
+	  className: PropTypes.string,
+	  cols: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	  defaultValue: PropTypes.string,
+	  disabled: PropTypes.bool,
+	  id: PropTypes.string,
+	  maxLength: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	  name: PropTypes.string.isRequired,
 	  onChange: PropTypes.func,
+	  placeholder: PropTypes.string,
+	  readOnly: PropTypes.bool,
+	  rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	  size: PropTypes.oneOf(['l', 'm', 's']),
-	  styles: PropTypes.object
+	  styles: PropTypes.object,
+	  value: PropTypes.string
 	};
 
 	module.exports = Textarea;
@@ -9121,9 +9202,7 @@ var Teatime =
 	    var _this = _possibleConstructorReturn(this, (Tooltip.__proto__ || Object.getPrototypeOf(Tooltip)).call(this, props));
 
 	    _this.calculatePosition = function (rect) {
-	      if (_this.props.direction === 'bottom' || _this.props.direction === 'top') {
-	        return rect.top + (rect.left - rect.width / 2) / 10000;
-	      }
+	      if (_this.props.direction === 'bottom' || _this.props.direction === 'top') return rect.top + (rect.left - rect.width / 2) / 10000;
 
 	      return rect.top - rect.height / 2 + rect.left / 10000;
 	    };
@@ -9133,11 +9212,9 @@ var Teatime =
 	      var isMultiline = _this.state.isMultiline;
 
 
-	      if (isMultiline !== _this.isMultiline(rect, maxWidth)) {
-	        _this.setState({
-	          isMultiline: !_this.state.isMultiline
-	        });
-	      }
+	      if (isMultiline !== _this.isMultiline(rect, maxWidth)) _this.setState({
+	        isMultiline: !_this.state.isMultiline
+	      });
 	    };
 
 	    _this.shouldComponentUpdatePosition = function (prevProps) {
@@ -9210,6 +9287,8 @@ var Teatime =
 	};
 
 	Tooltip.propTypes = {
+	  children: PropTypes.node,
+	  className: PropTypes.string,
 	  direction: PropTypes.oneOf(['bottom', 'left', 'right', 'top']),
 	  maxWidth: PropTypes.number,
 	  size: PropTypes.oneOf(['l', 'm', 's']),
@@ -9246,7 +9325,7 @@ var Teatime =
 
 	var MOUNTED_OVERLAYS = {};
 
-	var pendingUpdate;
+	var pendingUpdate = void 0;
 
 	var Overlay = function (_Component) {
 	  _inherits(Overlay, _Component);
@@ -9271,9 +9350,7 @@ var Teatime =
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate(prevProps, prevState) {
-	      if (this.props.shouldComponentUpdatePosition(prevProps, prevState)) {
-	        updateOverlays();
-	      }
+	      if (this.props.shouldComponentUpdatePosition(prevProps, prevState)) updateOverlays();
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
@@ -9309,6 +9386,8 @@ var Teatime =
 
 	Overlay.propTypes = {
 	  calculatePosition: PropTypes.func,
+	  children: PropTypes.string,
+	  className: PropTypes.string,
 	  onPositionUpdate: PropTypes.func,
 	  shouldComponentUpdatePosition: PropTypes.func
 	};
@@ -9335,16 +9414,14 @@ var Teatime =
 
 	  var layers = [];
 
-	  var component;
-	  var rect;
-	  var ref;
+	  var component = void 0;
+	  var rect = void 0;
+	  var ref = void 0;
 
 	  for (var id in MOUNTED_OVERLAYS) {
 	    component = MOUNTED_OVERLAYS[id];
 
-	    if (!component.refs.overlay) {
-	      continue;
-	    }
+	    if (!component.refs.overlay) continue;
 
 	    ref = component.refs.overlay;
 	    rect = ref.getBoundingClientRect();
@@ -9360,7 +9437,7 @@ var Teatime =
 	  layers.sort(byPos);
 
 	  var index = layers.length;
-	  var target;
+	  var target = void 0;
 
 	  while (index--) {
 	    target = layers[index];
@@ -10037,6 +10114,7 @@ var Teatime =
 	          checked = _e$target.checked,
 	          value = _e$target.value;
 
+
 	      _this.props.onChange(e, { checked: checked, value: value });
 	    };
 
@@ -10154,12 +10232,18 @@ var Teatime =
 	};
 
 	Tumbler.propTypes = {
+	  checked: PropTypes.bool,
+	  className: PropTypes.string,
+	  defaultChecked: PropTypes.bool,
+	  disabled: PropTypes.bool,
+	  id: PropTypes.string,
 	  name: PropTypes.string.isRequired,
 	  offText: PropTypes.string,
-	  onText: PropTypes.string,
 	  onChange: React.PropTypes.func,
+	  onText: PropTypes.string,
 	  size: PropTypes.oneOf(['l', 'm', 's']),
-	  styles: PropTypes.object
+	  styles: PropTypes.object,
+	  value: PropTypes.string
 	};
 
 	module.exports = Tumbler;
