@@ -6,6 +6,7 @@
   "scripts": {
     "docs": ".script/docs",
     "dist": "webpack --config .config/dist.config.js",
+    "fix": "eslint --fix {component,decorator,lib,test,view}/**/*.js *.js",
     "lint": "eslint {component,decorator,lib,test,view}/**/*.js *.js",
     "start": "npm run styleguide",
     "styleguide": "styleguidist --config .config/styleguide.config.js server",
