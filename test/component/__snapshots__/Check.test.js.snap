@@ -1,7 +1,10 @@
-exports[`test Check renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check renders correctly 1`] = `
 <span
   className="wrapper outer"
-  onChange={undefined}>
+  onChange={undefined}
+>
   <input
     checked={true}
     className="native"
@@ -11,13 +14,16 @@ exports[`test Check renders correctly 1`] = `
     name="check control"
     onChange={[Function]}
     type="checkbox"
-    value={undefined} />
+    value={undefined}
+  />
   <label
     className="control"
-    htmlFor="checks id" />
+    htmlFor="checks id"
+  />
   <label
     className="label"
-    htmlFor="checks id">
+    htmlFor="checks id"
+  >
     checks label
   </label>
 </span>

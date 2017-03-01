@@ -1,7 +1,10 @@
-exports[`test ColorPicker renders correctly with defaults 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorPicker renders correctly with defaults 1`] = `
 <span
   className="container"
-  onChange={undefined}>
+  onChange={undefined}
+>
   <button
     className="button"
     disabled={undefined}
@@ -10,7 +13,8 @@ exports[`test ColorPicker renders correctly with defaults 1`] = `
       Object {
         "backgroundColor": "",
       }
-    } />
+    }
+  />
   <input
     autoFocus={undefined}
     className="control"
@@ -22,16 +26,19 @@ exports[`test ColorPicker renders correctly with defaults 1`] = `
     onFocus={[Function]}
     placeholder={undefined}
     type="text"
-    value="" />
+    value=""
+  />
   <span
-    className="menu isClosedMenu" />
+    className="menu isClosedMenu"
+  />
 </span>
 `;
 
-exports[`test ColorPicker renders correctly with defined props 1`] = `
+exports[`ColorPicker renders correctly with defined props 1`] = `
 <span
   className="container"
-  onChange={undefined}>
+  onChange={undefined}
+>
   <button
     className="button"
     disabled={true}
@@ -40,7 +47,8 @@ exports[`test ColorPicker renders correctly with defined props 1`] = `
       Object {
         "backgroundColor": "#bebebe",
       }
-    } />
+    }
+  />
   <input
     autoFocus={true}
     className="control"
@@ -52,8 +60,10 @@ exports[`test ColorPicker renders correctly with defined props 1`] = `
     onFocus={[Function]}
     placeholder="FFFFFF"
     type="text"
-    value="BEBEBE" />
+    value="BEBEBE"
+  />
   <span
-    className="menu isClosedMenu" />
+    className="menu isClosedMenu"
+  />
 </span>
 `;

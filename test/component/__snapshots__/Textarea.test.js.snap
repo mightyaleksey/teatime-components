@@ -1,4 +1,6 @@
-exports[`test Textarea renders correctly with defaults 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textarea renders correctly with defaults 1`] = `
 <textarea
   autoComplete={undefined}
   autoFocus={undefined}
@@ -13,10 +15,11 @@ exports[`test Textarea renders correctly with defaults 1`] = `
   placeholder={undefined}
   readOnly={undefined}
   rows="3"
-  value={undefined} />
+  value={undefined}
+/>
 `;
 
-exports[`test Textarea renders correctly with defined props 1`] = `
+exports[`Textarea renders correctly with defined props 1`] = `
 <textarea
   autoComplete="off"
   autoFocus={true}
@@ -31,5 +34,6 @@ exports[`test Textarea renders correctly with defined props 1`] = `
   placeholder="it is a placeholder"
   readOnly={false}
   rows={10}
-  value="custom value" />
+  value="custom value"
+/>
 `;
