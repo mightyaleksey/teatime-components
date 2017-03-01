@@ -1,7 +1,10 @@
-exports[`test Input renders correctly with defaults 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders correctly with defaults 1`] = `
 <span
   className="wrapper"
-  onChange={undefined}>
+  onChange={undefined}
+>
   <input
     autoComplete={undefined}
     autoFocus={undefined}
@@ -14,14 +17,16 @@ exports[`test Input renders correctly with defaults 1`] = `
     placeholder={undefined}
     readOnly={undefined}
     type="text"
-    value="" />
+    value=""
+  />
 </span>
 `;
 
-exports[`test Input renders correctly with defined props 1`] = `
+exports[`Input renders correctly with defined props 1`] = `
 <span
   className="wrapper outer"
-  onChange={undefined}>
+  onChange={undefined}
+>
   <input
     autoComplete="off"
     autoFocus={true}
@@ -34,6 +39,7 @@ exports[`test Input renders correctly with defined props 1`] = `
     placeholder="it is a placeholder"
     readOnly={false}
     type="password"
-    value="custom value" />
+    value="custom value"
+  />
 </span>
 `;

@@ -1,12 +1,17 @@
-exports[`test CheckGroup renders correctly with defaults 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckGroup renders correctly with defaults 1`] = `
 <div
   className="container"
   id={undefined}
-  onChange={undefined}>
+  onChange={undefined}
+>
   <div
-    className="column">
+    className="column"
+  >
     <span
-      className="wrapper">
+      className="wrapper"
+    >
       <input
         checked={false}
         className="native"
@@ -16,18 +21,22 @@ exports[`test CheckGroup renders correctly with defaults 1`] = `
         name="checkGroup control"
         onChange={[Function]}
         type="checkbox"
-        value="ducati" />
+        value="ducati"
+      />
       <label
         className="control"
-        htmlFor="_teatime1" />
+        htmlFor="_teatime1"
+      />
       <label
         className="label"
-        htmlFor="_teatime1">
+        htmlFor="_teatime1"
+      >
         Ducati
       </label>
     </span>
     <span
-      className="wrapper">
+      className="wrapper"
+    >
       <input
         checked={false}
         className="native"
@@ -37,18 +46,22 @@ exports[`test CheckGroup renders correctly with defaults 1`] = `
         name="checkGroup control"
         onChange={[Function]}
         type="checkbox"
-        value="honda" />
+        value="honda"
+      />
       <label
         className="control"
-        htmlFor="_teatime2" />
+        htmlFor="_teatime2"
+      />
       <label
         className="label"
-        htmlFor="_teatime2">
+        htmlFor="_teatime2"
+      >
         Honda
       </label>
     </span>
     <span
-      className="wrapper">
+      className="wrapper"
+    >
       <input
         checked={false}
         className="native"
@@ -58,13 +71,16 @@ exports[`test CheckGroup renders correctly with defaults 1`] = `
         name="checkGroup control"
         onChange={[Function]}
         type="checkbox"
-        value="jawa" />
+        value="jawa"
+      />
       <label
         className="control"
-        htmlFor="_teatime3" />
+        htmlFor="_teatime3"
+      />
       <label
         className="label"
-        htmlFor="_teatime3">
+        htmlFor="_teatime3"
+      >
         Jawa
       </label>
     </span>
@@ -72,15 +88,18 @@ exports[`test CheckGroup renders correctly with defaults 1`] = `
 </div>
 `;
 
-exports[`test CheckGroup renders correctly with defined props 1`] = `
+exports[`CheckGroup renders correctly with defined props 1`] = `
 <div
   className="container"
   id="checkGroups id"
-  onChange={undefined}>
+  onChange={undefined}
+>
   <div
-    className="column">
+    className="column"
+  >
     <span
-      className="wrapper">
+      className="wrapper"
+    >
       <input
         checked={true}
         className="native"
@@ -90,18 +109,22 @@ exports[`test CheckGroup renders correctly with defined props 1`] = `
         name="checkGroup control"
         onChange={[Function]}
         type="checkbox"
-        value="ducati" />
+        value="ducati"
+      />
       <label
         className="control"
-        htmlFor="_teatime4" />
+        htmlFor="_teatime4"
+      />
       <label
         className="label"
-        htmlFor="_teatime4">
+        htmlFor="_teatime4"
+      >
         Ducati
       </label>
     </span>
     <span
-      className="wrapper">
+      className="wrapper"
+    >
       <input
         checked={true}
         className="native"
@@ -111,21 +134,26 @@ exports[`test CheckGroup renders correctly with defined props 1`] = `
         name="checkGroup control"
         onChange={[Function]}
         type="checkbox"
-        value="honda" />
+        value="honda"
+      />
       <label
         className="control"
-        htmlFor="_teatime5" />
+        htmlFor="_teatime5"
+      />
       <label
         className="label"
-        htmlFor="_teatime5">
+        htmlFor="_teatime5"
+      >
         Honda
       </label>
     </span>
   </div>
   <div
-    className="column">
+    className="column"
+  >
     <span
-      className="wrapper">
+      className="wrapper"
+    >
       <input
         checked={false}
         className="native"
@@ -135,13 +163,16 @@ exports[`test CheckGroup renders correctly with defined props 1`] = `
         name="checkGroup control"
         onChange={[Function]}
         type="checkbox"
-        value="jawa" />
+        value="jawa"
+      />
       <label
         className="control"
-        htmlFor="_teatime6" />
+        htmlFor="_teatime6"
+      />
       <label
         className="label"
-        htmlFor="_teatime6">
+        htmlFor="_teatime6"
+      >
         Jawa
       </label>
     </span>

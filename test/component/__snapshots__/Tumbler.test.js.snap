@@ -1,11 +1,16 @@
-exports[`test Tumbler renders correctly with defaults 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tumbler renders correctly with defaults 1`] = `
 <span
   className="wrapper"
-  onChange={undefined}>
+  onChange={undefined}
+>
   <span
-    className="baseline">
+    className="baseline"
+  >
     <div
-      className="shape">
+      className="shape"
+    >
       <input
         checked={undefined}
         className="native"
@@ -15,20 +20,25 @@ exports[`test Tumbler renders correctly with defaults 1`] = `
         name="tumbler control"
         onChange={[Function]}
         type="checkbox"
-        value={undefined} />
+        value={undefined}
+      />
       <label
         className="control"
-        htmlFor="_teatime1">
+        htmlFor="_teatime1"
+      >
         <span
-          className="label">
+          className="label"
+        >
           On
         </span>
         <span
-          className="label">
+          className="label"
+        >
           Off
         </span>
         <span
-          className="delimiter">
+          className="delimiter"
+        >
            
         </span>
       </label>
@@ -37,14 +47,17 @@ exports[`test Tumbler renders correctly with defaults 1`] = `
 </span>
 `;
 
-exports[`test Tumbler renders correctly with defined props 1`] = `
+exports[`Tumbler renders correctly with defined props 1`] = `
 <span
   className="wrapper"
-  onChange={undefined}>
+  onChange={undefined}
+>
   <span
-    className="baseline">
+    className="baseline"
+  >
     <div
-      className="shape">
+      className="shape"
+    >
       <input
         checked={true}
         className="native"
@@ -54,20 +67,25 @@ exports[`test Tumbler renders correctly with defined props 1`] = `
         name="tumbler control"
         onChange={[Function]}
         type="checkbox"
-        value={undefined} />
+        value={undefined}
+      />
       <label
         className="control"
-        htmlFor="tumblers id">
+        htmlFor="tumblers id"
+      >
         <span
-          className="label">
+          className="label"
+        >
           ~~ON~~
         </span>
         <span
-          className="label">
+          className="label"
+        >
           ~~OFF~~
         </span>
         <span
-          className="delimiter">
+          className="delimiter"
+        >
            
         </span>
       </label>

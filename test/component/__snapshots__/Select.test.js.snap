@@ -1,57 +1,71 @@
-exports[`test Select renders correctly with defaults 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select renders correctly with defaults 1`] = `
 <span
   className="wrapper"
-  onChange={undefined}>
+  onChange={undefined}
+>
   <input
     disabled={undefined}
     id={undefined}
     name="select control"
     type="hidden"
-    value="" />
+    value=""
+  />
   <span
-    className="baseline">
+    className="baseline"
+  >
     <button
       className="control hasPlaceholder"
       disabled={undefined}
       onClick={[Function]}
-      onKeyDown={[Function]}>
+      onKeyDown={[Function]}
+    >
       —
     </button>
     <i
       className="arrow"
-      onClick={[Function]} />
+      onClick={[Function]}
+    />
   </span>
   <span
     className="menu isClosedMenu"
-    role="listbox" />
+    role="listbox"
+  />
 </span>
 `;
 
-exports[`test Select renders correctly with defined props 1`] = `
+exports[`Select renders correctly with defined props 1`] = `
 <span
   className="wrapper outer"
-  onChange={undefined}>
+  onChange={undefined}
+>
   <input
     disabled={true}
     id="selects id"
     name="select control"
     type="hidden"
-    value="jawa" />
+    value="jawa"
+  />
   <span
-    className="baseline">
+    className="baseline"
+  >
     <button
       className="control"
       disabled={true}
       onClick={[Function]}
-      onKeyDown={[Function]}>
+      onKeyDown={[Function]}
+    >
       Jawa
     </button>
     <i
       className="arrow"
-      onClick={[Function]} />
+      onClick={[Function]}
+    />
   </span>
   <span
     className="menu isClosedMenu isFixedMenu"
-    role="listbox" />
+    role="listbox"
+  />
 </span>
 `;
