@@ -139,7 +139,9 @@ class Select extends Component {
 
     this.setState({
       selectedIndex: selectedPosition,
-      selectedPosition: this._menuItems[selectedPosition]._position,
+      selectedPosition: selectedPosition > -1
+        ? this._menuItems[selectedPosition]._position
+        : -1,
     });
   }
 
