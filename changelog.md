@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.8.11
+
+Select's issue fix in case `nextProps.value = null` resulted in unhandled exception. https://github.com/sullenor/teatime-components/commit/b69833030ea4467ceb5c3c59bba47534f86b982f
+
+
 ## 0.8.10
 
 - Added Spin wrapper in order to avoid CSS transform issues.
