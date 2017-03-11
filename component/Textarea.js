@@ -1,7 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {filterProps, genericName} = require('../lib/util');
+const {filterProps, genericName, nullToString} = require('../lib/util');
 const {noop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
@@ -58,7 +58,7 @@ class Textarea extends Component {
         autoFocus={autoFocus}
         className={cc(css('control'), className)}
         cols={cols}
-        defaultValue={defaultValue}
+        defaultValue={nullToString(defaultValue)}
         disabled={disabled}
         id={id}
         maxLength={maxLength}
@@ -68,7 +68,7 @@ class Textarea extends Component {
         readOnly={readOnly}
         rows={rows}
         ref={r => this._textarea = r}
-        value={value}>
+        value={nullToString(value)}>
         {children}
       </textarea>
     );
