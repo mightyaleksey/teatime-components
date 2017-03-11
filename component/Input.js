@@ -1,7 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {filterProps, isControlled, genericName} = require('../lib/util');
+const {filterProps, isControlled, genericName, nullToString} = require('../lib/util');
 const {isUndefined, noop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
@@ -32,7 +32,7 @@ class Input extends Component {
       : props.defaultValue;
 
     this.state = {
-      value: isUndefined(value) ? '' : value,
+      value: isUndefined(value) ? '' : nullToString(value),
     };
   }
 
@@ -41,7 +41,7 @@ class Input extends Component {
 
     this.setState({
       value: this._controlled
-        ? nextProps.value
+        ? nullToString(nextProps.value)
         : this.state.value,
     });
   }

@@ -3,7 +3,7 @@
 const {Component, PropTypes} = require('react');
 const {TAB} = require('../lib/keyCode');
 const {cssColorValue, userColorValue} = require('../lib/color');
-const {filterProps, isControlled, genericName} = require('../lib/util');
+const {filterProps, isControlled, genericName, nullToString} = require('../lib/util');
 const {isUndefined, map, noop} = require('../lib/dash');
 const Overlay = require('../view/Overlay');
 const React = require('react');
@@ -28,7 +28,7 @@ class ColorPicker extends Component {
 
     this.state = {
       isOpened: false,
-      value: isUndefined(value) ? '' : userColorValue(value),
+      value: isUndefined(value) ? '' : nullToString(userColorValue(value)),
     };
   }
 
@@ -37,7 +37,7 @@ class ColorPicker extends Component {
 
     this.setState({
       value: this._controlled
-        ? nextProps.value
+        ? nullToString(nextProps.value)
         : this.state.value,
     });
   }
