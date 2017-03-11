@@ -1,43 +1,11 @@
 'use strict';
 
-const {DefinePlugin, optimize} = require('webpack');
-const {assign} = require('../lib/dash');
+const {DefinePlugin, LoaderOptionsPlugin, optimize} = require('webpack');
+const Visualizer = require('webpack-visualizer-plugin');
 const resolveTo = require('./resolveTo');
 
-const common = {
-  module: {
-    loaders: [
-      {
-        test: /\.js$/i,
-        include: new RegExp(`${resolveTo()}/(component|decorator|lib|view)/`),
-        loader: 'babel',
-      },
-      {
-        test: /\.css$/i,
-        include: resolveTo('style'),
-        loader: 'style!css?modules&localIdentName=[hash:base64:5]&importLoaders=1!postcss',
-      },
-      {
-        test: /\.css$/i,
-        include: resolveTo('.styleguidist'),
-        loader: 'style!css',
-      },
-    ],
-  },
-
-  externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
-  },
-
-  postcss: [
-    require('autoprefixer'),
-    require('postcss-url')({url: 'inline'}),
-  ],
-};
-
 module.exports = [
-  assign(common, {
+  {
     entry: resolveTo('index'),
 
     output: {
@@ -46,8 +14,57 @@ module.exports = [
       libraryTarget: 'var',
       path: resolveTo('dist'),
     },
-  }),
-  assign(common, {
+
+    devtool: false,
+    target: 'web',
+    node: {
+      Buffer: false,
+    },
+
+    module: {
+      rules: [
+        {
+          test: /\.js$/i,
+          include: new RegExp(`${resolveTo()}/(component|decorator|lib|view)/`),
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['es2015', {modules: false}],
+              'react',
+              'stage-2',
+            ],
+          },
+        },
+        {
+          test: /\.css$/i,
+          include: resolveTo('style'),
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                localIdentName: '[hash:base64:5]',
+                modules: true,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: resolveTo('.config/postcss.config.js'),
+              },
+            },
+          ],
+        },
+      ],
+    },
+
+    externals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM',
+    },
+  },
+  {
     entry: resolveTo('index'),
 
     output: {
@@ -57,17 +74,76 @@ module.exports = [
       path: resolveTo('dist'),
     },
 
+    devtool: false,
+    target: 'web',
+    node: {
+      Buffer: false,
+      process: false,
+    },
+
     plugins: [
       new DefinePlugin({
         'process.env': {
           'NODE_ENV': JSON.stringify('production'),
         },
       }),
+      new LoaderOptionsPlugin({
+        debug: false,
+        minimize: true,
+      }),
       new optimize.UglifyJsPlugin({
-        compress:{
+        comments: false,
+        compress: {
           warnings: false,
         },
       }),
+      new Visualizer({
+        filename: 'stats.min.html',
+      }),
     ],
-  }),
+
+    module: {
+      loaders: [
+        {
+          test: /\.js$/i,
+          include: new RegExp(`${resolveTo()}/(component|decorator|lib|view)/`),
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['es2015', {modules: false}],
+              'react',
+              'react-optimize',
+              'stage-2',
+            ],
+          },
+        },
+        {
+          test: /\.css$/i,
+          include: resolveTo('style'),
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                localIdentName: '[hash:base64:5]',
+                modules: true,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: resolveTo('.config/postcss.config.js'),
+              },
+            },
+          ],
+        },
+      ],
+    },
+
+    externals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM',
+    },
+  },
 ];
