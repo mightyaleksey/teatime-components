@@ -33,30 +33,49 @@ module.exports = {
       resolveTo('.config/common.css'),
     ],
 
+    target: 'web',
+    node: {
+      Buffer: false,
+    },
+
     module: {
       loaders: [
         {
           test: /\.js$/i,
           include: new RegExp(`${rootDir}/(component|decorator|lib|view)/`),
-          loader: 'babel',
+          loader: 'babel-loader',
         },
         {
           test: /\.css$/i,
           include: resolveTo('style'),
-          loader: 'style!css?modules&localIdentName=[name]--[local]&importLoaders=1!postcss',
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                localIdentName: '[name]--[local]',
+                modules: true,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: resolveTo('.config/postcss.config.js'),
+              },
+            },
+          ],
         },
         {
           test: /\.css$/i,
           include: resolveTo('.config'),
-          loader: 'style!css',
+          loader: [
+            'style-loader',
+            'css-loader',
+          ],
         },
       ],
     },
-
-    postcss: [
-      require('autoprefixer'),
-      require('postcss-url')({url: 'inline'}),
-    ],
   }),
 
   styleguideDir: resolveTo(`docs/${minorVersion}`),
