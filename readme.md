@@ -113,10 +113,25 @@ const {resolve} = require('path');
 
 module.exports = {
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.css$/i,
-        loader: 'style!css?modules&importLoaders=1!postcss',
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: resolve('postcss.config.js'),
+            },
+          },
+        ],
       },
     ],
   },
@@ -126,9 +141,15 @@ module.exports = {
     filename: 'index.js',
     path: resolve('dist'),
   },
+};
+```
 
-  postcss: [
-    require('autoprefixer')({browsers: ['last 2 versions']}),
+```javascript
+'use strict';
+// postcss.config.js
+module.exports = {
+  plugins: [
+    require('autoprefixer'),
     require('postcss-url')({url: 'inline'}),
   ],
 };
@@ -143,6 +164,7 @@ module.exports = {
 ├── index.html
 ├── main.js
 ├── package.json
+├── postcss.config.js
 └── webpack.config.js
 ```
 
@@ -153,18 +175,19 @@ module.exports = {
   "name": "example",
   "version": "1.0.0",
   "dependencies": {
-    "autoprefixer": "^6.6.1",
+    "autoprefixer": "^6.7.7",
+    "babel-core": "^6.22.1",
     "babel-loader": "^6.2.7",
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.22.0",
-    "css-loader": "^0.26.1",
-    "postcss-loader": "^1.2.2",
+    "css-loader": "^0.27.1",
+    "postcss-loader": "^1.3.2",
     "postcss-url": "^5.1.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "style-loader": "^0.13.1",
-    "teatime-components": "^0.8.6",
-    "webpack": "^1.13.3"
+    "style-loader": "^0.13.2",
+    "teatime-components": "^0.8.12",
+    "webpack": "^2.2.1"
   }
 }
 ```
@@ -176,15 +199,36 @@ const {resolve} = require('path');
 
 module.exports = {
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/i,
         exclude: /node_modules/,
-        loader: 'babel?presets[]=latest&presets[]=react',
+        loader: 'babel',
+        options: {
+          presets: [
+            'latest',
+            'react',
+          ],
+        },
       },
       {
         test: /\.css$/i,
-        loader: 'style!css?modules&importLoaders=1!postcss',
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: resolve('postcss.config.js'),
+            },
+          },
+        ],
       },
     ],
   },
@@ -194,9 +238,17 @@ module.exports = {
     filename: 'index.js',
     path: resolve('dist'),
   },
+};
+```
 
-  postcss: [
-    require('autoprefixer')({browsers: ['last 2 versions']}),
+*postcss.config.js*
+
+```javascript
+'use strict';
+
+module.exports = {
+  plugins: [
+    require('autoprefixer'),
     require('postcss-url')({url: 'inline'}),
   ],
 };

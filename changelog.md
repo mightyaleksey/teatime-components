@@ -1,6 +1,12 @@
 # change log
 
 
+## 0.8.12
+
+Since `PropTypes.string` check occurs in case `value != null` added transformation of a null value to an empty string for *ColorPicker*, *Input* and *Textarea*. So for now, providing a `null` as value won't cause an error.
+Also migrated from webpack 1 -> 2 and added a small bundle size optimization.
+
+
 ## 0.8.11
 
 Select's issue fix in case `nextProps.value = null` resulted in unhandled exception. https://github.com/sullenor/teatime-components/commit/b69833030ea4467ceb5c3c59bba47534f86b982f
