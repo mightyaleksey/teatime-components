@@ -8,6 +8,7 @@ const {
   constant,
   curry,
   filter,
+  findIndex,
   first,
   groupBy,
   identity,
@@ -81,6 +82,11 @@ test('filter', () => {
 
   expect(filter(Boolean, a)).not.toBe(a);
   expect(filter(Boolean, a)).toEqual([1, 2, 3]);
+});
+
+test('findIndex', () => {
+  expect(findIndex(a => a === null)([0, 1, null, 2, 3]), 2);
+  expect(findIndex(a => a === null)([0, 1, 2, 3]), -1);
 });
 
 test('first', () => {

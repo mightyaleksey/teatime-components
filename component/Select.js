@@ -12,6 +12,7 @@ const {Component, PropTypes} = require('react');
 const {
   assign,
   constant,
+  findIndex,
   isFunction,
   isString,
   isUndefined,
@@ -24,7 +25,6 @@ const {filterProps, isControlled, genericName} = require('../lib/util');
 const Option = require('../view/Option');
 const Overlay = require('../view/Overlay');
 const React = require('react');
-const findIndex = require('lodash.findindex');
 const searchEngine = require('../lib/searchEngine');
 const cc = require('classnames');
 const warn = require('../lib/warn');
@@ -69,7 +69,7 @@ class Select extends Component {
     );
 
     const selectedIndex = !isUndefined(value)
-      ? findIndex(menuItems, item => item.value === value)
+      ? findIndex(item => item.value === value, menuItems)
       : -1;
 
     this.state = {
@@ -134,7 +134,7 @@ class Select extends Component {
 
     const nextValue = nextProps.value;
     const selectedPosition = this._controlled
-      ? findIndex(this._menuItems, item => item.value === nextValue)
+      ? findIndex(item => item.value === nextValue, this._menuItems)
       : this.state.selectedPosition;
 
     this.setState({

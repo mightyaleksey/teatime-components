@@ -72,7 +72,6 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "fuzzysearch": "^1.0.3",
-    "lodash.chunk": "^4.2.0",
-    "lodash.findindex": "^4.6.0"
+    "lodash.chunk": "^4.2.0"
   }
 }
