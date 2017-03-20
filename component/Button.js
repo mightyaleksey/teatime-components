@@ -1,7 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {filterProps, genericName} = require('../lib/util');
+const {genericName, omitNonStandardAttrs} = require('../lib/util');
 const React = require('react');
 const cc = require('classnames');
 
@@ -35,7 +35,7 @@ class Button extends Component {
 
     return (
       <button
-        {...filterProps(this.props)}
+        {...omitNonStandardAttrs(this.props)}
         autoFocus={autoFocus}
         className={cc(css('control'), className)}
         disabled={disabled}

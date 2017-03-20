@@ -1,7 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {filterProps, isControlled, genericName, nullToString} = require('../lib/util');
+const {isControlled, genericName, nullToString, omitNonStandardAttrsAndHandlers} = require('../lib/util');
 const {isUndefined, noop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
@@ -79,7 +79,7 @@ class Input extends Component {
 
     return (
       <span
-        {...filterProps(this.props)}
+        {...omitNonStandardAttrsAndHandlers(this.props)}
         className={cc(css('wrapper'), className)}
         onChange={void 0}>
         {this.renderClear()}
@@ -111,6 +111,8 @@ class Input extends Component {
       id,
       maxLength,
       name,
+      onBlur,
+      onFocus,
       placeholder,
       readOnly,
       type,
@@ -128,7 +130,9 @@ class Input extends Component {
         id={id}
         maxLength={maxLength}
         name={name}
+        onBlur={onBlur}
         onChange={this._onChange}
+        onFocus={onFocus}
         placeholder={placeholder}
         readOnly={readOnly}
         ref={r => this._input = r}
@@ -160,7 +164,9 @@ Input.propTypes = {
     PropTypes.string,
   ]),
   name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  onFocus: PropTypes.func,
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool,
   size: PropTypes.oneOf([

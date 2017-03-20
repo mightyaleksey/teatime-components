@@ -18,7 +18,9 @@ exports[`Select renders correctly with defaults 1`] = `
     <button
       className="control hasPlaceholder"
       disabled={undefined}
+      onBlur={undefined}
       onClick={[Function]}
+      onFocus={undefined}
       onKeyDown={[Function]}
     >
       —
@@ -53,7 +55,9 @@ exports[`Select renders correctly with defined props 1`] = `
     <button
       className="control"
       disabled={true}
+      onBlur={undefined}
       onClick={[Function]}
+      onFocus={undefined}
       onKeyDown={[Function]}
     >
       Jawa

@@ -3,7 +3,7 @@
 const {Component, PropTypes} = require('react');
 const {TAB} = require('../lib/keyCode');
 const {cssColorValue, userColorValue} = require('../lib/color');
-const {filterProps, isControlled, genericName, nullToString} = require('../lib/util');
+const {isControlled, genericName, nullToString, omitNonStandardAttrsAndHandlers} = require('../lib/util');
 const {isUndefined, map, noop} = require('../lib/dash');
 const Overlay = require('../view/Overlay');
 const React = require('react');
@@ -78,6 +78,8 @@ class ColorPicker extends Component {
     const {value} = this.state;
     const nextValue = userColorValue(value);
 
+    this.props.onBlur(e);
+
     if (nextValue === value) return;
 
     if (!this._controlled) this.setState({
@@ -88,7 +90,8 @@ class ColorPicker extends Component {
     this.props.onChange(e, {value: nextValue});
   }
 
-  _onInputFocus = () => {
+  _onInputFocus = e => {
+    this.props.onFocus(e);
     if (!this.state.isOpened) return;
     this.setState({isOpened: false});
   }
@@ -133,7 +136,7 @@ class ColorPicker extends Component {
 
     return (
       <span
-        {...filterProps(this.props)}
+        {...omitNonStandardAttrsAndHandlers(this.props)}
         className={cc(css('container'), className)}
         onChange={void 0}
         ref='parent'>
@@ -225,7 +228,9 @@ class ColorPicker extends Component {
 }
 
 ColorPicker.defaultProps = {
+  onBlur: noop,
   onChange: noop,
+  onFocus: noop,
   palette: [
     '000000', 'CC0000', 'CC6600',
     'CCCC00', '66CC00', '00CC00',
@@ -265,7 +270,9 @@ ColorPicker.propTypes = {
   disabled: PropTypes.bool,
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  onFocus: PropTypes.func,
   palette: PropTypes.arrayOf(PropTypes.string),
   placeholder: PropTypes.string,
   size: PropTypes.oneOf([

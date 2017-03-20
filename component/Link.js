@@ -1,7 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {filterProps, genericName} = require('../lib/util');
+const {omitNonStandardAttrs, genericName} = require('../lib/util');
 const {noop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
@@ -38,7 +38,7 @@ class Link extends Component {
 
     return (
       <a
-        {...filterProps(this.props)}
+        {...omitNonStandardAttrs(this.props)}
         className={cc(css('control'), className)}
         download={download}
         href={href}
