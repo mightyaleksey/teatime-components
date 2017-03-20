@@ -1220,28 +1220,19 @@ var _require = __webpack_require__(13),
     negate = _require.negate,
     prop = _require.prop;
 
+var BUBBLES = {
+  onBlur: false,
+  onFocus: false
+};
+
 var isControlled = compose(negate(isUndefined), prop('value'));
 var whiteList = /^(?:data-|on[A-Z]|style$)/;
 
-exports.filterProps = filterProps;
 exports.isControlled = isControlled;
 exports.genericName = genericName;
 exports.nullToString = nullToString;
-
-// filterProps :: a -> b
-function filterProps(props) {
-  var keys = Object.keys(props);
-  var length = keys.length;
-  var nextProps = {};
-
-  for (var j = 0; j < length; ++j) {
-    var key = keys[j];
-
-    if (whiteList.test(key)) nextProps[key] = props[key];
-  }
-
-  return nextProps;
-}
+exports.omitNonStandardAttrs = omitNonStandardAttrs;
+exports.omitNonStandardAttrsAndHandlers = omitNonStandardAttrsAndHandlers;
 
 // genericName :: object -> string -> string
 function genericName(_ref, name) {
@@ -1260,6 +1251,36 @@ function genericName(_ref, name) {
 // nullToString :: a -> b
 function nullToString(a) {
   return a === null ? '' : a;
+}
+
+// omitNonStandardAttrs :: a -> b
+function omitNonStandardAttrs(props) {
+  var keys = Object.keys(props);
+  var length = keys.length;
+  var nextProps = {};
+
+  for (var j = 0; j < length; ++j) {
+    var key = keys[j];
+
+    if (whiteList.test(key)) nextProps[key] = props[key];
+  }
+
+  return nextProps;
+}
+
+// omitNonStandardAttrsAndHandlers :: a -> b
+function omitNonStandardAttrsAndHandlers(props) {
+  var keys = Object.keys(props);
+  var length = keys.length;
+  var nextProps = {};
+
+  for (var j = 0; j < length; ++j) {
+    var key = keys[j];
+
+    if (whiteList.test(key) && BUBBLES[key] !== false) nextProps[key] = props[key];
+  }
+
+  return nextProps;
 }
 
 /***/ }),
@@ -2033,8 +2054,8 @@ var _require = __webpack_require__(6),
     PropTypes = _require.PropTypes;
 
 var _require2 = __webpack_require__(26),
-    filterProps = _require2.filterProps,
-    genericName = _require2.genericName;
+    genericName = _require2.genericName,
+    omitNonStandardAttrs = _require2.omitNonStandardAttrs;
 
 var React = __webpack_require__(6);
 var cc = __webpack_require__(22);
@@ -2096,7 +2117,7 @@ var Button = function (_Component) {
 
       return React.createElement(
         'button',
-        _extends({}, filterProps(this.props), {
+        _extends({}, omitNonStandardAttrs(this.props), {
           autoFocus: autoFocus,
           className: cc(css('control'), className),
           disabled: disabled,
@@ -2156,8 +2177,8 @@ var _require = __webpack_require__(6),
     PropTypes = _require.PropTypes;
 
 var _require2 = __webpack_require__(26),
-    filterProps = _require2.filterProps,
-    genericName = _require2.genericName;
+    genericName = _require2.genericName,
+    omitNonStandardAttrsAndHandlers = _require2.omitNonStandardAttrsAndHandlers;
 
 var _require3 = __webpack_require__(35),
     genericId = _require3.genericId;
@@ -2223,7 +2244,7 @@ var Check = function (_Component) {
 
       return React.createElement(
         'span',
-        _extends({}, filterProps(this.props), {
+        _extends({}, omitNonStandardAttrsAndHandlers(this.props), {
           className: cc(css('wrapper'), className),
           onChange: void 0 }),
         this.renderInput(),
@@ -2241,6 +2262,8 @@ var Check = function (_Component) {
           defaultChecked = _props.defaultChecked,
           disabled = _props.disabled,
           name = _props.name,
+          onBlur = _props.onBlur,
+          onFocus = _props.onFocus,
           value = _props.value;
       var id = this.state.id;
       var css = this.css;
@@ -2253,7 +2276,9 @@ var Check = function (_Component) {
         disabled: disabled,
         id: id,
         name: name,
+        onBlur: onBlur,
         onChange: this._onChange,
+        onFocus: onFocus,
         ref: function ref(r) {
           return _this2._check = r;
         },
@@ -2319,7 +2344,9 @@ Check.propTypes = {
   id: PropTypes.string,
   label: PropTypes.node,
   name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  onFocus: PropTypes.func,
   size: PropTypes.oneOf(['l', 'm']),
   styles: PropTypes.object,
   value: PropTypes.string
@@ -2354,7 +2381,7 @@ var _require2 = __webpack_require__(13),
     noop = _require2.noop;
 
 var _require3 = __webpack_require__(26),
-    filterProps = _require3.filterProps,
+    omitNonStandardAttrs = _require3.omitNonStandardAttrs,
     genericName = _require3.genericName,
     isControlled = _require3.isControlled;
 
@@ -2483,7 +2510,7 @@ var CheckGroup = function (_Component) {
 
       return React.createElement(
         'div',
-        _extends({}, filterProps(this.props), {
+        _extends({}, omitNonStandardAttrs(this.props), {
           className: cc(css('container'), className),
           id: id,
           onChange: void 0 }),
@@ -2600,10 +2627,10 @@ var _require3 = __webpack_require__(42),
     userColorValue = _require3.userColorValue;
 
 var _require4 = __webpack_require__(26),
-    filterProps = _require4.filterProps,
     isControlled = _require4.isControlled,
     genericName = _require4.genericName,
-    nullToString = _require4.nullToString;
+    nullToString = _require4.nullToString,
+    omitNonStandardAttrsAndHandlers = _require4.omitNonStandardAttrsAndHandlers;
 
 var _require5 = __webpack_require__(13),
     isUndefined = _require5.isUndefined,
@@ -2693,7 +2720,7 @@ var ColorPicker = function (_Component) {
 
       return React.createElement(
         'span',
-        _extends({}, filterProps(this.props), {
+        _extends({}, omitNonStandardAttrsAndHandlers(this.props), {
           className: cc(css('container'), className),
           onChange: void 0,
           ref: 'parent' }),
@@ -2827,6 +2854,8 @@ var _initialiseProps = function _initialiseProps() {
 
     var nextValue = userColorValue(value);
 
+    _this4.props.onBlur(e);
+
     if (nextValue === value) return;
 
     if (!_this4._controlled) _this4.setState({
@@ -2837,7 +2866,8 @@ var _initialiseProps = function _initialiseProps() {
     _this4.props.onChange(e, { value: nextValue });
   };
 
-  this._onInputFocus = function () {
+  this._onInputFocus = function (e) {
+    _this4.props.onFocus(e);
     if (!_this4.state.isOpened) return;
     _this4.setState({ isOpened: false });
   };
@@ -2866,7 +2896,9 @@ var _initialiseProps = function _initialiseProps() {
 };
 
 ColorPicker.defaultProps = {
+  onBlur: noop,
   onChange: noop,
+  onFocus: noop,
   palette: ['000000', 'CC0000', 'CC6600', 'CCCC00', '66CC00', '00CC00', '00CC66', '00CCCC', '0066CC', '0000CC', '6600CC', 'CC00CC', 'CC0066', '333333', 'FF0000', 'FF8000', 'FFFF00', '80FF00', '00FF00', '00FF80', '00FFFF', '007FFF', '0000FF', '7F00FF', 'FF00FF', 'FF0080', '666666', 'FF3333', 'FF9933', 'FFFF33', '99FF33', '33FF33', '33FF99', '33FFFF', '3399FF', '3333FF', '9933FF', 'FF33FF', 'FF3399', '999999', 'FF6666', 'FFB366', 'FFFF66', 'B3FF66', '66FF66', '66FFB3', '66FFFF', '66B2FF', '6666FF', 'B266FF', 'FF66FF', 'FF66B3', 'CCCCCC', 'FF9999', 'FFCC99', 'FFFF99', 'CCFF99', '99FF99', '99FFCC', '99FFFF', '99CCFF', '9999FF', 'CC99FF', 'FF99FF', 'FF99CC', 'FFFFFF', 'FFCCCC', 'FFE6CC', 'FFFFCC', 'E6FFCC', 'CCFFCC', 'CCFFE6', 'CCFFFF', 'CCE5FF', 'CCCCFF', 'E5CCFF', 'FFCCFF', 'FFCCE6'],
   size: 'm',
   styles: cssModules
@@ -2879,7 +2911,9 @@ ColorPicker.propTypes = {
   disabled: PropTypes.bool,
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  onFocus: PropTypes.func,
   palette: PropTypes.arrayOf(PropTypes.string),
   placeholder: PropTypes.string,
   size: PropTypes.oneOf(['l', 'm', 's']),
@@ -2911,10 +2945,10 @@ var _require = __webpack_require__(6),
     PropTypes = _require.PropTypes;
 
 var _require2 = __webpack_require__(26),
-    filterProps = _require2.filterProps,
     isControlled = _require2.isControlled,
     genericName = _require2.genericName,
-    nullToString = _require2.nullToString;
+    nullToString = _require2.nullToString,
+    omitNonStandardAttrsAndHandlers = _require2.omitNonStandardAttrsAndHandlers;
 
 var _require3 = __webpack_require__(13),
     isUndefined = _require3.isUndefined,
@@ -2987,7 +3021,7 @@ var Input = function (_Component) {
 
       return React.createElement(
         'span',
-        _extends({}, filterProps(this.props), {
+        _extends({}, omitNonStandardAttrsAndHandlers(this.props), {
           className: cc(css('wrapper'), className),
           onChange: void 0 }),
         this.renderClear(),
@@ -3022,6 +3056,8 @@ var Input = function (_Component) {
           id = _props.id,
           maxLength = _props.maxLength,
           name = _props.name,
+          onBlur = _props.onBlur,
+          onFocus = _props.onFocus,
           placeholder = _props.placeholder,
           readOnly = _props.readOnly,
           type = _props.type;
@@ -3037,7 +3073,9 @@ var Input = function (_Component) {
         id: id,
         maxLength: maxLength,
         name: name,
+        onBlur: onBlur,
         onChange: this._onChange,
+        onFocus: onFocus,
         placeholder: placeholder,
         readOnly: readOnly,
         ref: function ref(r) {
@@ -3090,7 +3128,9 @@ Input.propTypes = {
   id: PropTypes.string,
   maxLength: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  onFocus: PropTypes.func,
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool,
   size: PropTypes.oneOf(['l', 'm', 's']),
@@ -3124,7 +3164,7 @@ var _require = __webpack_require__(6),
     PropTypes = _require.PropTypes;
 
 var _require2 = __webpack_require__(26),
-    filterProps = _require2.filterProps,
+    omitNonStandardAttrs = _require2.omitNonStandardAttrs,
     genericName = _require2.genericName;
 
 var _require3 = __webpack_require__(13),
@@ -3180,7 +3220,7 @@ var Link = function (_Component) {
 
       return React.createElement(
         'a',
-        _extends({}, filterProps(this.props), {
+        _extends({}, omitNonStandardAttrs(this.props), {
           className: cc(css('control'), className),
           download: download,
           href: href,
@@ -3238,9 +3278,9 @@ var _require = __webpack_require__(6),
     PropTypes = _require.PropTypes;
 
 var _require2 = __webpack_require__(26),
-    filterProps = _require2.filterProps,
     genericName = _require2.genericName,
-    isControlled = _require2.isControlled;
+    isControlled = _require2.isControlled,
+    omitNonStandardAttrs = _require2.omitNonStandardAttrs;
 
 var _require3 = __webpack_require__(35),
     genericId = _require3.genericId;
@@ -3344,7 +3384,7 @@ var Radio = function (_Component) {
 
       return React.createElement(
         'div',
-        _extends({}, filterProps(this.props), {
+        _extends({}, omitNonStandardAttrs(this.props), {
           className: cc(css('container'), className),
           id: id,
           onChange: void 0 }),
@@ -3448,7 +3488,7 @@ var _require4 = __webpack_require__(46),
     findDOMNode = _require4.findDOMNode;
 
 var _require5 = __webpack_require__(26),
-    filterProps = _require5.filterProps,
+    omitNonStandardAttrsAndHandlers = _require5.omitNonStandardAttrsAndHandlers,
     isControlled = _require5.isControlled,
     genericName = _require5.genericName;
 
@@ -3792,7 +3832,7 @@ var Select = function (_Component) {
 
       return React.createElement(
         'span',
-        _extends({}, filterProps(this.props), {
+        _extends({}, omitNonStandardAttrsAndHandlers(this.props), {
           className: cc(css('wrapper'), className),
           onChange: void 0,
           ref: function ref(r) {
@@ -3836,6 +3876,8 @@ var Select = function (_Component) {
 
       var _props4 = this.props,
           disabled = _props4.disabled,
+          onBlur = _props4.onBlur,
+          onFocus = _props4.onFocus,
           searchable = _props4.searchable;
       var _state3 = this.state,
           isPseudoFocused = _state3.isPseudoFocused,
@@ -3846,8 +3888,10 @@ var Select = function (_Component) {
       return React.createElement('input', {
         className: cc(css('search'), _defineProperty({}, css('isPseudoFocusedSearch'), isPseudoFocused)),
         disabled: disabled,
+        onBlur: searchable ? onBlur : null,
         onClick: this._onSearchValueClick,
         onChange: this._onSearchValueChange,
+        onFocus: searchable ? onFocus : null,
         onKeyDown: this._onKeyDown,
         ref: searchable ? function (r) {
           return _this4._controlRef = r;
@@ -3862,6 +3906,8 @@ var Select = function (_Component) {
 
       var _props5 = this.props,
           disabled = _props5.disabled,
+          onBlur = _props5.onBlur,
+          onFocus = _props5.onFocus,
           options = _props5.options,
           placeholder = _props5.placeholder,
           searchable = _props5.searchable;
@@ -3878,7 +3924,9 @@ var Select = function (_Component) {
         children: isPseudoFocused ? label : '',
         className: cc(css('control'), _defineProperty({}, css('hasPlaceholder'), !hasValue)),
         disabled: disabled,
+        onBlur: searchable ? null : onBlur,
         onClick: this._onToggleMenu,
+        onFocus: searchable ? null : onFocus,
         onKeyDown: this._onKeyDown,
         ref: searchable ? null : function (r) {
           return _this5._controlRef = r;
@@ -3963,7 +4011,9 @@ Select.propTypes = {
   hasFixedWidth: PropTypes.bool,
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  onFocus: PropTypes.func,
   options: PropTypes.array.isRequired,
   optionsLimit: PropTypes.number,
   placeholder: PropTypes.string,
@@ -4032,7 +4082,7 @@ var _require = __webpack_require__(6),
     PropTypes = _require.PropTypes;
 
 var _require2 = __webpack_require__(26),
-    filterProps = _require2.filterProps,
+    omitNonStandardAttrs = _require2.omitNonStandardAttrs,
     genericName = _require2.genericName;
 
 var _require3 = __webpack_require__(13),
@@ -4078,7 +4128,7 @@ var Spin = function (_Component) {
 
       return React.createElement(
         'span',
-        _extends({}, filterProps(this.props), {
+        _extends({}, omitNonStandardAttrs(this.props), {
           className: cc(css('wrapper'), className),
           id: id }),
         React.createElement('i', { className: css('control') })
@@ -4125,9 +4175,9 @@ var _require = __webpack_require__(6),
     PropTypes = _require.PropTypes;
 
 var _require2 = __webpack_require__(26),
-    filterProps = _require2.filterProps,
     genericName = _require2.genericName,
-    nullToString = _require2.nullToString;
+    nullToString = _require2.nullToString,
+    omitNonStandardAttrs = _require2.omitNonStandardAttrs;
 
 var _require3 = __webpack_require__(13),
     noop = _require3.noop;
@@ -4201,7 +4251,7 @@ var Textarea = function (_Component) {
 
       return React.createElement(
         'textarea',
-        _extends({}, filterProps(this.props), {
+        _extends({}, omitNonStandardAttrs(this.props), {
           autoComplete: autoComplete,
           autoFocus: autoFocus,
           className: cc(css('control'), className),
@@ -4427,8 +4477,8 @@ var _require = __webpack_require__(6),
     PropTypes = _require.PropTypes;
 
 var _require2 = __webpack_require__(26),
-    filterProps = _require2.filterProps,
-    genericName = _require2.genericName;
+    genericName = _require2.genericName,
+    omitNonStandardAttrs = _require2.omitNonStandardAttrs;
 
 var _require3 = __webpack_require__(35),
     genericId = _require3.genericId;
@@ -4503,7 +4553,7 @@ var Tumbler = function (_Component) {
 
       return React.createElement(
         'span',
-        _extends({}, filterProps(props), {
+        _extends({}, omitNonStandardAttrs(props), {
           className: cc(css('wrapper'), className),
           onChange: void 0 }),
         React.createElement(
@@ -4547,6 +4597,8 @@ var Tumbler = function (_Component) {
           checked = _props2.checked,
           defaultChecked = _props2.defaultChecked,
           disabled = _props2.disabled,
+          onBlur = _props2.onBlur,
+          onFocus = _props2.onFocus,
           name = _props2.name,
           value = _props2.value;
       var id = this.state.id;
@@ -4560,7 +4612,9 @@ var Tumbler = function (_Component) {
         disabled: disabled,
         id: id,
         name: name,
+        onBlur: onBlur,
         onChange: this._onChange,
+        onFocus: onFocus,
         ref: function ref(r) {
           return _this2._input = r;
         },
@@ -4588,7 +4642,9 @@ Tumbler.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
   offText: PropTypes.string,
+  onBlur: React.PropTypes.func,
   onChange: React.PropTypes.func,
+  onFocus: React.PropTypes.func,
   onText: PropTypes.string,
   size: PropTypes.oneOf(['l', 'm', 's']),
   styles: PropTypes.object,
