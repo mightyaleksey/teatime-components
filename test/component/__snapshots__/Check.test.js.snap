@@ -12,7 +12,9 @@ exports[`Check renders correctly 1`] = `
     disabled={true}
     id="checks id"
     name="check control"
+    onBlur={undefined}
     onChange={[Function]}
+    onFocus={undefined}
     type="checkbox"
     value={undefined}
   />

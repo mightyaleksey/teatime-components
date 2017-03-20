@@ -2,7 +2,7 @@
 
 const {Component, PropTypes} = require('react');
 const {assign, map, noop} = require('../lib/dash');
-const {filterProps, genericName, isControlled} = require('../lib/util');
+const {omitNonStandardAttrs, genericName, isControlled} = require('../lib/util');
 const Box = require('../view/Box');
 const React = require('react');
 const cc = require('classnames');
@@ -105,7 +105,7 @@ class CheckGroup extends Component {
 
     return (
       <div
-        {...filterProps(this.props)}
+        {...omitNonStandardAttrs(this.props)}
         className={cc(css('container'), className)}
         id={id}
         onChange={void 0}>

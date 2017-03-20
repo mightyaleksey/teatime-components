@@ -1,7 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {filterProps, genericName} = require('../lib/util');
+const {genericName, omitNonStandardAttrs} = require('../lib/util');
 const {genericId} = require('../lib/identity');
 const {isUndefined, noop} = require('../lib/dash');
 const React = require('react');
@@ -53,7 +53,7 @@ class Tumbler extends Component {
     // see: http://stackoverflow.com/questions/9273016/why-is-this-inline-block-element-pushed-downward
     return (
       <span
-        {...filterProps(props)}
+        {...omitNonStandardAttrs(props)}
         className={cc(css('wrapper'), className)}
         onChange={void 0}>
         <span className={css('baseline')}>
@@ -77,6 +77,8 @@ class Tumbler extends Component {
       checked,
       defaultChecked,
       disabled,
+      onBlur,
+      onFocus,
       name,
       value,
     } = this.props;
@@ -93,7 +95,9 @@ class Tumbler extends Component {
         disabled={disabled}
         id={id}
         name={name}
+        onBlur={onBlur}
         onChange={this._onChange}
+        onFocus={onFocus}
         ref={r => this._input = r}
         type='checkbox'
         value={value}/>
@@ -117,7 +121,9 @@ Tumbler.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
   offText: PropTypes.string,
+  onBlur: React.PropTypes.func,
   onChange: React.PropTypes.func,
+  onFocus: React.PropTypes.func,
   onText: PropTypes.string,
   size: PropTypes.oneOf([
     'l',

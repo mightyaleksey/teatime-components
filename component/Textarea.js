@@ -1,7 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {filterProps, genericName, nullToString} = require('../lib/util');
+const {genericName, nullToString, omitNonStandardAttrs} = require('../lib/util');
 const {noop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
@@ -53,7 +53,7 @@ class Textarea extends Component {
 
     return (
       <textarea
-        {...filterProps(this.props)}
+        {...omitNonStandardAttrs(this.props)}
         autoComplete={autoComplete}
         autoFocus={autoFocus}
         className={cc(css('control'), className)}

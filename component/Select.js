@@ -21,7 +21,7 @@ const {
   prop,
 } = require('../lib/dash');
 const {findDOMNode} = require('react-dom');
-const {filterProps, isControlled, genericName} = require('../lib/util');
+const {omitNonStandardAttrsAndHandlers, isControlled, genericName} = require('../lib/util');
 const Option = require('../view/Option');
 const Overlay = require('../view/Overlay');
 const React = require('react');
@@ -361,7 +361,7 @@ class Select extends Component {
 
     return (
       <span
-        {...filterProps(this.props)}
+        {...omitNonStandardAttrsAndHandlers(this.props)}
         className={cc(css('wrapper'), className)}
         onChange={void 0}
         ref={r => this._parentRef = r}>
@@ -395,7 +395,7 @@ class Select extends Component {
   renderSearch() {
     if (!this.props.searchable) return null;
 
-    const {disabled, searchable} = this.props;
+    const {disabled, onBlur, onFocus, searchable} = this.props;
     const {isPseudoFocused, searchValue} = this.state;
     const {css} = this;
 
@@ -405,8 +405,10 @@ class Select extends Component {
           [css('isPseudoFocusedSearch')]: isPseudoFocused,
         })}
         disabled={disabled}
+        onBlur={searchable ? onBlur : null}
         onClick={this._onSearchValueClick}
         onChange={this._onSearchValueChange}
+        onFocus={searchable ? onFocus : null}
         onKeyDown={this._onKeyDown}
         ref={searchable
           ? r => this._controlRef = r
@@ -417,7 +419,7 @@ class Select extends Component {
   }
 
   renderLabel() {
-    const {disabled, options, placeholder, searchable} = this.props;
+    const {disabled, onBlur, onFocus, options, placeholder, searchable} = this.props;
     const {isPseudoFocused, selectedPosition} = this.state;
     const {css} = this;
 
@@ -434,7 +436,9 @@ class Select extends Component {
         [css('hasPlaceholder')]: !hasValue,
       }),
       disabled,
+      onBlur: searchable ? null : onBlur,
       onClick: this._onToggleMenu,
+      onFocus: searchable ? null : onFocus,
       onKeyDown: this._onKeyDown,
       ref: searchable
         ? null
@@ -517,7 +521,9 @@ Select.propTypes = {
   hasFixedWidth: PropTypes.bool,
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  onFocus: PropTypes.func,
   options: PropTypes.array.isRequired,
   optionsLimit: PropTypes.number,
   placeholder: PropTypes.string,

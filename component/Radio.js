@@ -1,7 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {filterProps, genericName, isControlled} = require('../lib/util');
+const {genericName, isControlled, omitNonStandardAttrs} = require('../lib/util');
 const {genericId} = require('../lib/identity');
 const {isUndefined, map, noop} = require('../lib/dash');
 const Box = require('../view/Box');
@@ -89,7 +89,7 @@ class Radio extends Component {
 
     return (
       <div
-        {...filterProps(this.props)}
+        {...omitNonStandardAttrs(this.props)}
         className={cc(css('container'), className)}
         id={id}
         onChange={void 0}>

@@ -1,7 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {filterProps, genericName} = require('../lib/util');
+const {genericName, omitNonStandardAttrsAndHandlers} = require('../lib/util');
 const {genericId} = require('../lib/identity');
 const {isUndefined, noop} = require('../lib/dash');
 const React = require('react');
@@ -48,7 +48,7 @@ class Check extends Component {
 
     return (
       <span
-        {...filterProps(this.props)}
+        {...omitNonStandardAttrsAndHandlers(this.props)}
         className={cc(css('wrapper'), className)}
         onChange={void 0}>
         {this.renderInput()}
@@ -64,6 +64,8 @@ class Check extends Component {
       defaultChecked,
       disabled,
       name,
+      onBlur,
+      onFocus,
       value,
     } = this.props;
 
@@ -78,7 +80,9 @@ class Check extends Component {
         disabled={disabled}
         id={id}
         name={name}
+        onBlur={onBlur}
         onChange={this._onChange}
+        onFocus={onFocus}
         ref={r => this._check = r}
         type='checkbox'
         value={value}/>
@@ -139,7 +143,9 @@ Check.propTypes = {
   id: PropTypes.string,
   label: PropTypes.node,
   name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  onFocus: PropTypes.func,
   size: PropTypes.oneOf([
     'l',
     'm',

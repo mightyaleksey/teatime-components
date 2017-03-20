@@ -1,7 +1,7 @@
 'use strict';
 
 const {Component, PropTypes} = require('react');
-const {filterProps, genericName} = require('../lib/util');
+const {omitNonStandardAttrs, genericName} = require('../lib/util');
 const {noop} = require('../lib/dash');
 const React = require('react');
 const cc = require('classnames');
@@ -24,7 +24,7 @@ class Spin extends Component {
 
     return (
       <span
-        {...filterProps(this.props)}
+        {...omitNonStandardAttrs(this.props)}
         className={cc(css('wrapper'), className)}
         id={id}>
         <i className={css('control')}/>

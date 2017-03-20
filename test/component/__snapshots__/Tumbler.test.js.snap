@@ -18,7 +18,9 @@ exports[`Tumbler renders correctly with defaults 1`] = `
         disabled={undefined}
         id="_teatime1"
         name="tumbler control"
+        onBlur={undefined}
         onChange={[Function]}
+        onFocus={undefined}
         type="checkbox"
         value={undefined}
       />
@@ -65,7 +67,9 @@ exports[`Tumbler renders correctly with defined props 1`] = `
         disabled={true}
         id="tumblers id"
         name="tumbler control"
+        onBlur={undefined}
         onChange={[Function]}
+        onFocus={undefined}
         type="checkbox"
         value={undefined}
       />
