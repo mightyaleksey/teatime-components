@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.8.13
+
+Passed `onBlur` and `onFocus` handlers directly to the native controls (button, input, textarea).
+
+
 ## 0.8.12
 
 Since `PropTypes.string` check occurs in case `value != null` added transformation of a null value to an empty string for *ColorPicker*, *Input* and *Textarea*. So for now, providing a `null` as value won't cause an error.
