@@ -4768,12 +4768,12 @@ function fuzzy(needle, haystack) {
 
 // includes :: a -> b -> bool
 function includes(needle, haystack) {
-  return haystack.toLowerCase().includes(needle.toLowerCase());
+  return haystack.toLowerCase().indexOf(needle.toLowerCase()) > -1;
 }
 
 // startsWith :: a -> b -> bool
 function startsWith(needle, haystack) {
-  return haystack.toLowerCase().startsWith(needle.toLowerCase());
+  return haystack.toLowerCase().indexOf(needle.toLowerCase()) === 0;
 }
 
 /***/ }),
