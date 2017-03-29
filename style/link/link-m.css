@@ -4,3 +4,8 @@
   composes: control from './link.css';
   composes: m from './link-size.css';
 }
+
+.disabled
+{
+  composes: disabled from '../link/link.css';
+}

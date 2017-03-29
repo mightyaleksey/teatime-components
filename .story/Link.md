@@ -5,6 +5,7 @@
 
 ```
 <div>
+  <Link disabled theme='action'>Link</Link>
   {' '}size s
   <Link size='s' theme='action'>Link</Link>
   {' '}size m
@@ -19,6 +20,7 @@
 
 ```
 <div>
+  <Link disabled theme='link'>Link</Link>
   {' '}size s
   <Link size='s' theme='link'>Link</Link>
   {' '}size m
@@ -33,6 +35,7 @@
 
 ```
 <div>
+  <Link disabled theme='normal'>Link</Link>
   {' '}size s
   <Link size='s' theme='normal'>Link</Link>
   {' '}size m
