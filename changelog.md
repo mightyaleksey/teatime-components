@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.8.14
+
+Polyfills `String.includes` and `String.startsWith`.
+
+
 ## 0.8.13
 
 Passed `onBlur` and `onFocus` handlers directly to the native controls (button, input, textarea).
