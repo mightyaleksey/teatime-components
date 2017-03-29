@@ -37,13 +37,13 @@ See the component's examples at http://sullenor.github.io/teatime-components/
 Download the distributive via `curl` for example:
 
 ```bash
-curl -O https://raw.githubusercontent.com/sullenor/teatime-components/0.8.6/dist/teatime.js
+curl -O https://raw.githubusercontent.com/sullenor/teatime-components/0.8.14/dist/teatime.js
 ```
 
 or the minified version:
 
 ```bash
-curl -O https://raw.githubusercontent.com/sullenor/teatime-components/0.8.6/dist/teatime.min.js
+curl -O https://raw.githubusercontent.com/sullenor/teatime-components/0.8.14/dist/teatime.min.js
 ```
 
 
@@ -68,6 +68,8 @@ or the minified version:
 
 #### Example
 
+https://jsfiddle.net/r0byq6d8/
+
 ```html
 <!doctype html>
 <html lang='en'>
@@ -76,7 +78,7 @@ or the minified version:
   <title>Awesome Button</title>
   <script src='https://unpkg.com/react@15/dist/react.min.js'></script>
   <script src='https://unpkg.com/react-dom@15/dist/react-dom.min.js'></script>
-  <script src='https://raw.githubusercontent.com/sullenor/teatime-components/0.8.6/dist/teatime.min.js'></script>
+  <script src='https://rawgit.com/sullenor/teatime-components/master/dist/teatime.min.js'></script>
 </head>
 <body>
   <div id='entry'></div>
