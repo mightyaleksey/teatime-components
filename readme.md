@@ -95,6 +95,9 @@ or the minified version:
 
 ### Using with compilation
 
+**Warning**: Despite the fact that the published code is compatible with ECMAScript 5, it is highly recommended to include the [babel-polyfill](https://github.com/babel/babel/tree/master/packages/babel-polyfill) for the ECMAScript 6 constructor's basic methods (like `String.startsWith` and etc.).
+
+
 #### Installation
 
 Using `npm` do:
