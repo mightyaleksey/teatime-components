@@ -38,3 +38,19 @@ version=`sed -n '/version/p' package.json|cut -d'"' -f4`
 
 git commit -m "version $version"
 git tag "$version"
+
+# compile
+cli=node_modules/.bin
+
+babel() {
+  ${cli}/babel $1 --out-dir ${2:-$1} || exit 1
+}
+
+babel component
+babel decorator
+babel lib
+babel view
+
+# npm publish --tag beta
+npm publish
+git reset HEAD --hard
