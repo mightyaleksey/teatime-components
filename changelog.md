@@ -1,6 +1,12 @@
 # change log
 
 
+## 0.8.15
+
+Added disabled state for `Link`.
+Passed the value of the prop #name to the `onChange` handler.
+
+
 ## 0.8.14
 
 Polyfills `String.includes` and `String.startsWith`.
