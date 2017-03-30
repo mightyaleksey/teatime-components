@@ -23,10 +23,16 @@ class Link extends Component {
 
   focus = noop
 
+  _onClick = e => {
+    if (!this.props.disabled) this.props.onClick(e);
+    else e.preventDefault();
+  }
+
   render() {
     const {
       children,
       className,
+      disabled,
       download,
       href,
       id,
@@ -39,10 +45,13 @@ class Link extends Component {
     return (
       <a
         {...omitNonStandardAttrs(this.props)}
-        className={cc(css('control'), className)}
+        className={cc(css('control'), {
+          [css('disabled')]: disabled,
+        }, className)}
         download={download}
         href={href}
         id={id}
+        onClick={this._onClick}
         target={target}
         type={type}>
         {children}
@@ -52,6 +61,7 @@ class Link extends Component {
 }
 
 Link.defaultProps = {
+  onClick: noop,
   size: 'm',
   styles: cssModules,
   theme: 'link',
@@ -60,12 +70,14 @@ Link.defaultProps = {
 Link.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   download: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
   ]),
   href: PropTypes.string,
   id: PropTypes.string,
+  onClick: PropTypes.func,
   size: PropTypes.oneOf([
     'l',
     'm',

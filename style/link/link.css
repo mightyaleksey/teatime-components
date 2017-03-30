@@ -22,3 +22,9 @@
 {
   color: #c00;
 }
+
+.control.disabled
+{
+  cursor: default;
+  color: rgba(0,0,0,.5);
+}

@@ -4,3 +4,8 @@
   composes: action from '../button/button.css';
   composes: s from '../button/button-size.css';
 }
+
+.disabled
+{
+  composes: disabled from '../button/button.css';
+}

@@ -103,7 +103,8 @@
   background: #f6f5f3;
 }
 
-.control:disabled
+.control:disabled,
+.control.disabled
 {
   cursor: default;
 
