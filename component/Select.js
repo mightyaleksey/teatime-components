@@ -227,7 +227,10 @@ class Select extends Component {
     }
 
     this.setState(nextState);
-    this.props.onChange(e, {value: menuItem.value});
+    this.props.onChange(e, {
+      name: this.props.name,
+      value: menuItem.value,
+    });
 
     this.focus();
   }

@@ -57,8 +57,10 @@ class Radio extends Component {
   focus = noop
 
   _onChange = (e, {value}) => {
+    const {name} = this.props;
+
     if (!this._controlled) this.setState({value});
-    this.props.onChange(e, {value});
+    this.props.onChange(e, {name, value});
   }
 
   computeOptions(options) {

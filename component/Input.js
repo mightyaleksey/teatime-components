@@ -59,17 +59,19 @@ class Input extends Component {
   }
 
   _onChange = e => {
+    const {name} = this.props;
     const value = e.target.value;
 
     if (!this._controlled) this.setState({value});
-    this.props.onChange(e, {value});
+    this.props.onChange(e, {name, value});
   }
 
   _onClear = e => {
+    const {name} = this.props;
     const value = '';
 
     if (!this._controlled) this.setState({value});
-    this.props.onChange(e, {value});
+    this.props.onChange(e, {name, value});
     this.focus();
   }
 

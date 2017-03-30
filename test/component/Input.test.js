@@ -53,7 +53,7 @@ test('Input\'s uncontrolled change of value', () => {
   component.find('input').simulate('change', event);
   expect(component.state('value')).toBe('nextValue');
   expect(onChange).toBeCalled();
-  expect(onChange).toBeCalledWith(event, {value: 'nextValue'});
+  expect(onChange).toBeCalledWith(event, {name: 'control', value: 'nextValue'});
 });
 
 test('Input\'s controlled change of value', () => {
@@ -72,7 +72,7 @@ test('Input\'s controlled change of value', () => {
   component.find('input').simulate('change', event);
   expect(component.state('value')).toBe('initialValue');
   expect(onChange).toBeCalled();
-  expect(onChange).toBeCalledWith(event, {value: 'nextValue'});
+  expect(onChange).toBeCalledWith(event, {name: 'control', value: 'nextValue'});
 
   component.setProps({...props, value: 'nextValue'});
   expect(component.state('value')).toBe('nextValue');

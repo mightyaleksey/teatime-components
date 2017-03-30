@@ -39,8 +39,9 @@ class Tumbler extends Component {
 
   _onChange = e => {
     const {checked, value} = e.target;
+    const {name} = this.props;
 
-    this.props.onChange(e, {checked, value});
+    this.props.onChange(e, {checked, name, value});
   }
 
   render() {

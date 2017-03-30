@@ -57,6 +57,7 @@ class CheckGroup extends Component {
     if (!this._controlled) this.setState({values});
 
     this.props.onChange(e, {
+      name: this.props.name,
       value: mapStateToValue(this._checkItems, values),
     });
   }

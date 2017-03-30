@@ -55,10 +55,11 @@ class ColorPicker extends Component {
   }
 
   _onChange = e => {
+    const {name} = this.props;
     const value = e.target.value;
 
     if (!this._controlled) this.setState({isOpened: false, value});
-    this.props.onChange(e, {value});
+    this.props.onChange(e, {name, value});
   }
 
   _onClearClick = () => {
@@ -81,13 +82,12 @@ class ColorPicker extends Component {
     this.props.onBlur(e);
 
     if (nextValue === value) return;
-
     if (!this._controlled) this.setState({
       isOpened: false,
       value: nextValue,
     });
 
-    this.props.onChange(e, {value: nextValue});
+    this.props.onChange(e, {name: this.props.name, value: nextValue});
   }
 
   _onInputFocus = e => {
@@ -102,8 +102,11 @@ class ColorPicker extends Component {
   }
 
   _onTileClick = (e, value) => {
+    const {name} = this.props;
+
     if (!this._controlled) this.setState({isOpened: false, value});
-    this.props.onChange(e, {value});
+
+    this.props.onChange(e, {name, value});
     this.focus();
   }
 
