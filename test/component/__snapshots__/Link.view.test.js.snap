@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly with default props 1`] = `
+<a
+  className="control"
+  download={undefined}
+  href={undefined}
+  id={undefined}
+  onClick={[Function]}
+  target={undefined}
+  type={undefined}
+>
+  Link Content
+</a>
+`;
+
+exports[`Renders correctly with defined props 1`] = `
+<a
+  className="control disabled outer"
+  download={true}
+  href="#"
+  id="links id"
+  onClick={[Function]}
+  target="_blank"
+  type="video/mp4"
+>
+  Link Content
+</a>
+`;

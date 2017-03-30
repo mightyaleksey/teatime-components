@@ -24,7 +24,8 @@ class Link extends Component {
   focus = noop
 
   _onClick = e => {
-    if (!this.props.disabled) this.props.onClick(e);
+    if (!this.props.disabled) this.props.onClick(e)
+    else e.preventDefault();
   }
 
   render() {
