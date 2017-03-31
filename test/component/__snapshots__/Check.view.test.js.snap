@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly with default props 1`] = `
+<span
+  className="wrapper"
+  onChange={undefined}
+>
+  <input
+    checked={undefined}
+    className="native"
+    defaultChecked={undefined}
+    disabled={undefined}
+    id="_teatime1"
+    name="control"
+    onBlur={undefined}
+    onChange={[Function]}
+    onFocus={undefined}
+    type="checkbox"
+    value={undefined}
+  />
+  <label
+    className="control"
+    htmlFor="_teatime1"
+  />
+  <label
+    className="label"
+    htmlFor="_teatime1"
+  >
+    I Agree
+  </label>
+</span>
+`;
+
+exports[`Renders correctly with defined props 1`] = `
+<span
+  className="wrapper outer"
+  onChange={undefined}
+>
+  <input
+    checked={true}
+    className="native"
+    defaultChecked={undefined}
+    disabled={true}
+    id="controls-id"
+    name="control"
+    onBlur={undefined}
+    onChange={[Function]}
+    onFocus={undefined}
+    type="checkbox"
+    value="controls value"
+  />
+  <label
+    className="control"
+    htmlFor="controls-id"
+  >
+    Make Awesome!
+  </label>
+</span>
+`;
