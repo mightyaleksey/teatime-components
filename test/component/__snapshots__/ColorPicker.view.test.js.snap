@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ColorPicker renders correctly with defaults 1`] = `
+exports[`Renders correctly with default props 1`] = `
 <span
   className="container"
   onChange={undefined}
@@ -20,7 +20,7 @@ exports[`ColorPicker renders correctly with defaults 1`] = `
     className="control"
     disabled={undefined}
     id={undefined}
-    name="colorPicker control"
+    name="control"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
@@ -34,9 +34,9 @@ exports[`ColorPicker renders correctly with defaults 1`] = `
 </span>
 `;
 
-exports[`ColorPicker renders correctly with defined props 1`] = `
+exports[`Renders correctly with defined props 1`] = `
 <span
-  className="container"
+  className="container outer"
   onChange={undefined}
 >
   <button
@@ -53,12 +53,12 @@ exports[`ColorPicker renders correctly with defined props 1`] = `
     autoFocus={true}
     className="control"
     disabled={true}
-    id="colorPickers id"
-    name="colorPicker control"
+    id="controls-id"
+    name="control"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
-    placeholder="FFFFFF"
+    placeholder="rrggbb"
     type="text"
     value="BEBEBE"
   />
