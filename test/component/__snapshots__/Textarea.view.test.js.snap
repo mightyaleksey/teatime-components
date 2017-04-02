@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Textarea renders correctly with defaults 1`] = `
+exports[`Renders correctly with default props 1`] = `
 <textarea
   autoComplete={undefined}
   autoFocus={undefined}
@@ -10,7 +10,7 @@ exports[`Textarea renders correctly with defaults 1`] = `
   disabled={undefined}
   id={undefined}
   maxLength={undefined}
-  name="textarea control"
+  name="control"
   onChange={[Function]}
   placeholder={undefined}
   readOnly={undefined}
@@ -19,21 +19,21 @@ exports[`Textarea renders correctly with defaults 1`] = `
 />
 `;
 
-exports[`Textarea renders correctly with defined props 1`] = `
+exports[`Renders correctly with defined props 1`] = `
 <textarea
   autoComplete="off"
   autoFocus={true}
   className="control outer"
-  cols={5}
+  cols="5"
   defaultValue={undefined}
   disabled={true}
-  id="textareas id"
-  maxLength={25}
-  name="textarea control"
+  id="controls-id"
+  maxLength="25"
+  name="control"
   onChange={[Function]}
   placeholder="it is a placeholder"
-  readOnly={false}
-  rows={10}
-  value="custom value"
+  readOnly={true}
+  rows="10"
+  value="Any Code..."
 />
 `;

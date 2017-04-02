@@ -10,14 +10,3 @@ exports[`Renders correctly 1`] = `
   />
 </span>
 `;
-
-exports[`Spin renders correctly 1`] = `
-<span
-  className="wrapper outer"
-  id="spins id"
->
-  <i
-    className="control"
-  />
-</span>
-`;
