@@ -8,6 +8,10 @@ test('defaultProp #size should have a value `m`', () => {
   expect(Link.defaultProps.size).toBe('m');
 });
 
+test('defaultProp #theme should have a value `link`', () => {
+  expect(Link.defaultProps.theme).toBe('link');
+});
+
 test('Renders correctly with default props', () => {
   const tree = renderer.create(
     <Link>

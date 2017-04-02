@@ -8,6 +8,10 @@ test('defaultProp #size should have a value `m`', () => {
   expect(Radio.defaultProps.size).toBe('m');
 });
 
+test('defaultProp #theme should have a value `common`', () => {
+  expect(Radio.defaultProps.theme).toBe('common');
+});
+
 test('Renders correctly with default props', () => {
   const tree = renderer.create(
     <Radio
