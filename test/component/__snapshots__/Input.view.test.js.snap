@@ -43,7 +43,7 @@ exports[`Renders correctly with defined props 1`] = `
     placeholder="__"
     readOnly={true}
     type="password"
-    value=""
+    value="initial"
   />
 </span>
 `;

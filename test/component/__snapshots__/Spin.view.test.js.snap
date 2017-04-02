@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly 1`] = `
+<span
+  className="wrapper outer"
+  id="spins id"
+>
+  <i
+    className="control"
+  />
+</span>
+`;
+
+exports[`Spin renders correctly 1`] = `
+<span
+  className="wrapper outer"
+  id="spins id"
+>
+  <i
+    className="control"
+  />
+</span>
+`;
