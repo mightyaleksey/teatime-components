@@ -1,22 +1,22 @@
 'use strict';
 
-const Link = require('../../component/Link');
+const Button = require('../../component/Button');
 const React = require('react');
 const renderer = require('react-test-renderer');
 
 test('defaultProp #size should have a value `m`', () => {
-  expect(Link.defaultProps.size).toBe('m');
+  expect(Button.defaultProps.size).toBe('m');
 });
 
-test('defaultProp #theme should have a value `link`', () => {
-  expect(Link.defaultProps.theme).toBe('link');
+test('defaultProp #theme should have a value `normal`', () => {
+  expect(Button.defaultProps.theme).toBe('normal');
 });
 
 test('Renders correctly with default props', () => {
   const tree = renderer.create(
-    <Link>
-      Link Content
-    </Link>
+    <Button>
+      Make Awesome!
+    </Button>
   );
 
   expect(tree).toMatchSnapshot();
@@ -24,16 +24,14 @@ test('Renders correctly with default props', () => {
 
 test('Renders correctly with defined props', () => {
   const tree = renderer.create(
-    <Link
+    <Button
+      autoFocus
       className='outer'
       disabled
-      download={true}
-      href='#'
-      id='links id'
-      target='_blank'
-      type='video/mp4'>
-      Link Content
-    </Link>
+      id='buttons-id'
+      type='submit'>
+      Make Awesome!
+    </Button>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

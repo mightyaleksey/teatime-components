@@ -1,22 +1,19 @@
 'use strict';
 
-const Link = require('../../component/Link');
+const Check = require('../../component/Check');
 const React = require('react');
 const renderer = require('react-test-renderer');
 
 test('defaultProp #size should have a value `m`', () => {
-  expect(Link.defaultProps.size).toBe('m');
-});
-
-test('defaultProp #theme should have a value `link`', () => {
-  expect(Link.defaultProps.theme).toBe('link');
+  expect(Check.defaultProps.size).toBe('m');
 });
 
 test('Renders correctly with default props', () => {
   const tree = renderer.create(
-    <Link>
-      Link Content
-    </Link>
+    <Check
+      name='control'>
+      I Agree
+    </Check>
   );
 
   expect(tree).toMatchSnapshot();
@@ -24,16 +21,16 @@ test('Renders correctly with default props', () => {
 
 test('Renders correctly with defined props', () => {
   const tree = renderer.create(
-    <Link
+    <Check
+      checked
       className='outer'
       disabled
-      download={true}
-      href='#'
-      id='links id'
-      target='_blank'
-      type='video/mp4'>
-      Link Content
-    </Link>
+      hasLabel={false}
+      id='controls-id'
+      name='control'
+      value='controls value'>
+      Make Awesome!
+    </Check>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

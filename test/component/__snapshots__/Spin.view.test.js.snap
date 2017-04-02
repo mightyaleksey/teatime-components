@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Spin renders correctly 1`] = `
+exports[`Renders correctly 1`] = `
 <span
   className="wrapper outer"
   id="spins id"

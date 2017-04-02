@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Radio renders correctly with defaults 1`] = `
+exports[`Renders correctly with default props 1`] = `
 <div
   className="container"
   id={undefined}
@@ -15,10 +15,10 @@ exports[`Radio renders correctly with defaults 1`] = `
       defaultValue={undefined}
       disabled={undefined}
       id="_teatime2"
-      name="radio control"
+      name="control"
       onChange={[Function]}
       type="radio"
-      value="ducati"
+      value="aa"
     />
     <label
       className="control"
@@ -28,7 +28,7 @@ exports[`Radio renders correctly with defaults 1`] = `
       className="label"
       htmlFor="_teatime2"
     >
-      Ducati
+      AA
     </label>
   </span>
   <span
@@ -40,10 +40,10 @@ exports[`Radio renders correctly with defaults 1`] = `
       defaultValue={undefined}
       disabled={undefined}
       id="_teatime3"
-      name="radio control"
+      name="control"
       onChange={[Function]}
       type="radio"
-      value="honda"
+      value="bb"
     />
     <label
       className="control"
@@ -53,7 +53,7 @@ exports[`Radio renders correctly with defaults 1`] = `
       className="label"
       htmlFor="_teatime3"
     >
-      Honda
+      BB
     </label>
   </span>
   <span
@@ -65,10 +65,10 @@ exports[`Radio renders correctly with defaults 1`] = `
       defaultValue={undefined}
       disabled={undefined}
       id="_teatime4"
-      name="radio control"
+      name="control"
       onChange={[Function]}
       type="radio"
-      value="jawa"
+      value="cc"
     />
     <label
       className="control"
@@ -78,43 +78,18 @@ exports[`Radio renders correctly with defaults 1`] = `
       className="label"
       htmlFor="_teatime4"
     >
-      Jawa
+      CC
     </label>
   </span>
 </div>
 `;
 
-exports[`Radio renders correctly with disabled state 1`] = `
+exports[`Renders correctly with defined props 1`] = `
 <div
   className="container outer"
-  id="radios id"
+  id="controls-id"
   onChange={undefined}
 >
-  <span
-    className="wrapper"
-  >
-    <input
-      checked={true}
-      className="native"
-      defaultValue={undefined}
-      disabled={true}
-      id="_teatime10"
-      name="radio control"
-      onChange={[Function]}
-      type="radio"
-      value="ducati"
-    />
-    <label
-      className="control"
-      htmlFor="_teatime10"
-    />
-    <label
-      className="label"
-      htmlFor="_teatime10"
-    >
-      Ducati
-    </label>
-  </span>
   <span
     className="wrapper"
   >
@@ -123,76 +98,17 @@ exports[`Radio renders correctly with disabled state 1`] = `
       className="native"
       defaultValue={undefined}
       disabled={true}
-      id="_teatime11"
-      name="radio control"
-      onChange={[Function]}
-      type="radio"
-      value="honda"
-    />
-    <label
-      className="control"
-      htmlFor="_teatime11"
-    />
-    <label
-      className="label"
-      htmlFor="_teatime11"
-    >
-      Honda
-    </label>
-  </span>
-  <span
-    className="wrapper"
-  >
-    <input
-      checked={false}
-      className="native"
-      defaultValue={undefined}
-      disabled={true}
-      id="_teatime12"
-      name="radio control"
-      onChange={[Function]}
-      type="radio"
-      value="jawa"
-    />
-    <label
-      className="control"
-      htmlFor="_teatime12"
-    />
-    <label
-      className="label"
-      htmlFor="_teatime12"
-    >
-      Jawa
-    </label>
-  </span>
-</div>
-`;
-
-exports[`Radio theme=\`button\` renders correctly 1`] = `
-<div
-  className="container outer"
-  id="radios id"
-  onChange={undefined}
->
-  <span
-    className="wrapper"
-  >
-    <input
-      checked={true}
-      className="native"
-      defaultValue={undefined}
-      disabled={undefined}
       id="_teatime6"
-      name="radio control"
+      name="control"
       onChange={[Function]}
       type="radio"
-      value="ducati"
+      value="aa"
     />
     <label
       className="control"
       htmlFor="_teatime6"
     >
-      Ducati
+      AA
     </label>
   </span>
   <span
@@ -204,16 +120,16 @@ exports[`Radio theme=\`button\` renders correctly 1`] = `
       defaultValue={undefined}
       disabled={true}
       id="_teatime7"
-      name="radio control"
+      name="control"
       onChange={[Function]}
       type="radio"
-      value="honda"
+      value="bb"
     />
     <label
       className="control"
       htmlFor="_teatime7"
     >
-      Honda
+      BB
     </label>
   </span>
   <span
@@ -223,18 +139,18 @@ exports[`Radio theme=\`button\` renders correctly 1`] = `
       checked={false}
       className="native"
       defaultValue={undefined}
-      disabled={undefined}
+      disabled={true}
       id="_teatime8"
-      name="radio control"
+      name="control"
       onChange={[Function]}
       type="radio"
-      value="jawa"
+      value="cc"
     />
     <label
       className="control"
       htmlFor="_teatime8"
     >
-      Jawa
+      CC
     </label>
   </span>
 </div>

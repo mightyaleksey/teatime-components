@@ -53,6 +53,7 @@ Button.defaultProps = {
   size: 'm',
   styles: cssModules,
   theme: 'normal',
+  type: 'button',
 };
 
 Button.propTypes = {
@@ -72,7 +73,12 @@ Button.propTypes = {
     'link',
     'normal',
   ]),
-  type: PropTypes.string,
+  type: PropTypes.oneOf([
+    'button',
+    'menu',
+    'reset',
+    'submit',
+  ]),
 };
 
 module.exports = Button;

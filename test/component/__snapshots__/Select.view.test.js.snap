@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Select renders correctly with defaults 1`] = `
+exports[`Renders correctly with default props 1`] = `
 <span
   className="wrapper"
   onChange={undefined}
@@ -8,7 +8,7 @@ exports[`Select renders correctly with defaults 1`] = `
   <input
     disabled={undefined}
     id={undefined}
-    name="select control"
+    name="control"
     type="hidden"
     value=""
   />
@@ -37,31 +37,42 @@ exports[`Select renders correctly with defaults 1`] = `
 </span>
 `;
 
-exports[`Select renders correctly with defined props 1`] = `
+exports[`Renders correctly with defined props 1`] = `
 <span
   className="wrapper outer"
   onChange={undefined}
 >
   <input
     disabled={true}
-    id="selects id"
-    name="select control"
+    id="controls-id"
+    name="control"
     type="hidden"
-    value="jawa"
+    value="dd"
   />
   <span
     className="baseline"
   >
-    <button
-      className="control"
+    <input
+      className="search isPseudoFocusedSearch"
       disabled={true}
       onBlur={undefined}
+      onChange={[Function]}
       onClick={[Function]}
       onFocus={undefined}
       onKeyDown={[Function]}
+      role="combobox"
+      value=""
+    />
+    <span
+      className="control"
+      disabled={true}
+      onBlur={null}
+      onClick={[Function]}
+      onFocus={null}
+      onKeyDown={[Function]}
     >
-      Jawa
-    </button>
+      dd
+    </span>
     <i
       className="arrow"
       onClick={[Function]}

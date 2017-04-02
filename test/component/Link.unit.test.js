@@ -11,7 +11,7 @@ describe('onClick', () => {
     const component = shallow(<Link onClick={onClick}/>);
 
     component.find('a').simulate('click', {preventDefault});
-    expect(onClick).toHaveBeenCalled();
+    expect(onClick).toHaveBeenCalledTimes(1);
     expect(preventDefault).not.toHaveBeenCalled();
   });
 
@@ -21,7 +21,7 @@ describe('onClick', () => {
     const component = shallow(<Link disabled onClick={onClick}/>);
 
     component.find('a').simulate('click', {preventDefault});
-    expect(onClick).not.toHaveBeenCalled();
-    expect(preventDefault).toHaveBeenCalled();
+    expect(onClick).not.toHaveBeenCalledTimes(1);
+    expect(preventDefault).toHaveBeenCalledTimes(1);
   });
 });

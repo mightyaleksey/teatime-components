@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly with default props 1`] = `
+<button
+  autoFocus={undefined}
+  className="control"
+  disabled={undefined}
+  id={undefined}
+  role="button"
+  type="button"
+>
+  Make Awesome!
+</button>
+`;
+
+exports[`Renders correctly with defined props 1`] = `
+<button
+  autoFocus={true}
+  className="control outer"
+  disabled={true}
+  id="buttons-id"
+  role="button"
+  type="submit"
+>
+  Make Awesome!
+</button>
+`;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CheckGroup renders correctly with defaults 1`] = `
+exports[`Renders correctly with default props 1`] = `
 <div
   className="container"
   id={undefined}
@@ -18,10 +18,10 @@ exports[`CheckGroup renders correctly with defaults 1`] = `
         defaultValue={undefined}
         disabled={undefined}
         id="_teatime1"
-        name="checkGroup control"
+        name="control"
         onChange={[Function]}
         type="checkbox"
-        value="ducati"
+        value="aa"
       />
       <label
         className="control"
@@ -31,7 +31,7 @@ exports[`CheckGroup renders correctly with defaults 1`] = `
         className="label"
         htmlFor="_teatime1"
       >
-        Ducati
+        AA
       </label>
     </span>
     <span
@@ -43,10 +43,10 @@ exports[`CheckGroup renders correctly with defaults 1`] = `
         defaultValue={undefined}
         disabled={undefined}
         id="_teatime2"
-        name="checkGroup control"
+        name="control"
         onChange={[Function]}
         type="checkbox"
-        value="honda"
+        value="bb"
       />
       <label
         className="control"
@@ -56,7 +56,7 @@ exports[`CheckGroup renders correctly with defaults 1`] = `
         className="label"
         htmlFor="_teatime2"
       >
-        Honda
+        BB
       </label>
     </span>
     <span
@@ -68,10 +68,10 @@ exports[`CheckGroup renders correctly with defaults 1`] = `
         defaultValue={undefined}
         disabled={undefined}
         id="_teatime3"
-        name="checkGroup control"
+        name="control"
         onChange={[Function]}
         type="checkbox"
-        value="jawa"
+        value="cc"
       />
       <label
         className="control"
@@ -81,17 +81,17 @@ exports[`CheckGroup renders correctly with defaults 1`] = `
         className="label"
         htmlFor="_teatime3"
       >
-        Jawa
+        CC
       </label>
     </span>
   </div>
 </div>
 `;
 
-exports[`CheckGroup renders correctly with defined props 1`] = `
+exports[`Renders correctly with defined props 1`] = `
 <div
-  className="container"
-  id="checkGroups id"
+  className="container outer"
+  id="controls-id"
   onChange={undefined}
 >
   <div
@@ -101,15 +101,15 @@ exports[`CheckGroup renders correctly with defined props 1`] = `
       className="wrapper"
     >
       <input
-        checked={true}
+        checked={false}
         className="native"
         defaultValue={undefined}
-        disabled={undefined}
+        disabled={true}
         id="_teatime4"
-        name="checkGroup control"
+        name="control"
         onChange={[Function]}
         type="checkbox"
-        value="ducati"
+        value="aa"
       />
       <label
         className="control"
@@ -119,7 +119,7 @@ exports[`CheckGroup renders correctly with defined props 1`] = `
         className="label"
         htmlFor="_teatime4"
       >
-        Ducati
+        AA
       </label>
     </span>
     <span
@@ -131,10 +131,10 @@ exports[`CheckGroup renders correctly with defined props 1`] = `
         defaultValue={undefined}
         disabled={true}
         id="_teatime5"
-        name="checkGroup control"
+        name="control"
         onChange={[Function]}
         type="checkbox"
-        value="honda"
+        value="bb"
       />
       <label
         className="control"
@@ -144,7 +144,7 @@ exports[`CheckGroup renders correctly with defined props 1`] = `
         className="label"
         htmlFor="_teatime5"
       >
-        Honda
+        BB
       </label>
     </span>
   </div>
@@ -155,15 +155,15 @@ exports[`CheckGroup renders correctly with defined props 1`] = `
       className="wrapper"
     >
       <input
-        checked={false}
+        checked={true}
         className="native"
         defaultValue={undefined}
-        disabled={undefined}
+        disabled={true}
         id="_teatime6"
-        name="checkGroup control"
+        name="control"
         onChange={[Function]}
         type="checkbox"
-        value="jawa"
+        value="cc"
       />
       <label
         className="control"
@@ -173,7 +173,7 @@ exports[`CheckGroup renders correctly with defined props 1`] = `
         className="label"
         htmlFor="_teatime6"
       >
-        Jawa
+        CC
       </label>
     </span>
   </div>

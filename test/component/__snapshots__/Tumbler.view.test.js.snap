@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tumbler renders correctly with defaults 1`] = `
+exports[`Renders correctly with default props 1`] = `
 <span
   className="wrapper"
   onChange={undefined}
@@ -17,7 +17,7 @@ exports[`Tumbler renders correctly with defaults 1`] = `
         defaultChecked={undefined}
         disabled={undefined}
         id="_teatime1"
-        name="tumbler control"
+        name="control"
         onBlur={undefined}
         onChange={[Function]}
         onFocus={undefined}
@@ -49,9 +49,9 @@ exports[`Tumbler renders correctly with defaults 1`] = `
 </span>
 `;
 
-exports[`Tumbler renders correctly with defined props 1`] = `
+exports[`Renders correctly with defined props 1`] = `
 <span
-  className="wrapper"
+  className="wrapper outer"
   onChange={undefined}
 >
   <span
@@ -65,8 +65,8 @@ exports[`Tumbler renders correctly with defined props 1`] = `
         className="native"
         defaultChecked={undefined}
         disabled={true}
-        id="tumblers id"
-        name="tumbler control"
+        id="controls-id"
+        name="control"
         onBlur={undefined}
         onChange={[Function]}
         onFocus={undefined}
@@ -75,7 +75,7 @@ exports[`Tumbler renders correctly with defined props 1`] = `
       />
       <label
         className="control"
-        htmlFor="tumblers id"
+        htmlFor="controls-id"
       >
         <span
           className="label"

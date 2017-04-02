@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input renders correctly with defaults 1`] = `
+exports[`Renders correctly with default props 1`] = `
 <span
   className="wrapper"
   onChange={undefined}
@@ -12,7 +12,7 @@ exports[`Input renders correctly with defaults 1`] = `
     disabled={undefined}
     id={undefined}
     maxLength={undefined}
-    name="input control"
+    name="control"
     onBlur={undefined}
     onChange={[Function]}
     onFocus={undefined}
@@ -24,7 +24,7 @@ exports[`Input renders correctly with defaults 1`] = `
 </span>
 `;
 
-exports[`Input renders correctly with defined props 1`] = `
+exports[`Renders correctly with defined props 1`] = `
 <span
   className="wrapper outer"
   onChange={undefined}
@@ -34,16 +34,16 @@ exports[`Input renders correctly with defined props 1`] = `
     autoFocus={true}
     className="control"
     disabled={true}
-    id="inputs id"
-    maxLength={10}
-    name="input control"
+    id="controls-id"
+    maxLength="255"
+    name="control"
     onBlur={undefined}
     onChange={[Function]}
     onFocus={undefined}
-    placeholder="it is a placeholder"
-    readOnly={false}
+    placeholder="__"
+    readOnly={true}
     type="password"
-    value="custom value"
+    value="initial"
   />
 </span>
 `;

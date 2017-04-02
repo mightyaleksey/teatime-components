@@ -1,22 +1,17 @@
 'use strict';
 
-const Link = require('../../component/Link');
 const React = require('react');
+const Textarea = require('../../component/Textarea');
 const renderer = require('react-test-renderer');
 
 test('defaultProp #size should have a value `m`', () => {
-  expect(Link.defaultProps.size).toBe('m');
-});
-
-test('defaultProp #theme should have a value `link`', () => {
-  expect(Link.defaultProps.theme).toBe('link');
+  expect(Textarea.defaultProps.size).toBe('m');
 });
 
 test('Renders correctly with default props', () => {
   const tree = renderer.create(
-    <Link>
-      Link Content
-    </Link>
+    <Textarea
+      name='control'/>
   );
 
   expect(tree).toMatchSnapshot();
@@ -24,16 +19,19 @@ test('Renders correctly with default props', () => {
 
 test('Renders correctly with defined props', () => {
   const tree = renderer.create(
-    <Link
+    <Textarea
+      autoComplete='off'
+      autoFocus
       className='outer'
+      cols='5'
       disabled
-      download={true}
-      href='#'
-      id='links id'
-      target='_blank'
-      type='video/mp4'>
-      Link Content
-    </Link>
+      id='controls-id'
+      maxLength='25'
+      name='control'
+      placeholder='it is a placeholder'
+      readOnly
+      rows='10'
+      value='Any Code...'/>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();
