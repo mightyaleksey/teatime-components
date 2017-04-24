@@ -1,10 +1,11 @@
 'use strict';
 
-const {Component, PropTypes} = require('react');
+const {Component} = require('react');
 const {genericName, isControlled, omitNonStandardAttrs} = require('../lib/util');
 const {genericId} = require('../lib/identity');
 const {isUndefined, map, noop} = require('../lib/dash');
 const Box = require('../view/Box');
+const PropTypes = require('prop-types');
 const React = require('react');
 const cc = require('classnames');
 const warn = require('../lib/warn');

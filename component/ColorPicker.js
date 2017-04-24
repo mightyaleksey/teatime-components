@@ -1,11 +1,12 @@
 'use strict';
 
-const {Component, PropTypes} = require('react');
+const {Component} = require('react');
 const {TAB} = require('../lib/keyCode');
 const {cssColorValue, userColorValue} = require('../lib/color');
 const {isControlled, genericName, nullToString, omitNonStandardAttrsAndHandlers} = require('../lib/util');
 const {isUndefined, map, noop} = require('../lib/dash');
 const Overlay = require('../view/Overlay');
+const PropTypes = require('prop-types');
 const React = require('react');
 const Tile = require('../view/Tile');
 const cc = require('classnames');

@@ -8,7 +8,7 @@ const {
   SPACE,
   TAB,
 } = require('../lib/keyCode');
-const {Component, PropTypes} = require('react');
+const {Component} = require('react');
 const {
   assign,
   constant,
@@ -24,6 +24,7 @@ const {findDOMNode} = require('react-dom');
 const {omitNonStandardAttrsAndHandlers, isControlled, genericName} = require('../lib/util');
 const Option = require('../view/Option');
 const Overlay = require('../view/Overlay');
+const PropTypes = require('prop-types');
 const React = require('react');
 const searchEngine = require('../lib/searchEngine');
 const cc = require('classnames');

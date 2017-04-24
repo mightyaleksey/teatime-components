@@ -1,9 +1,10 @@
 'use strict';
 
-const {Component, PropTypes} = require('react');
+const {Component} = require('react');
 const {genericName, omitNonStandardAttrs} = require('../lib/util');
 const {genericId} = require('../lib/identity');
 const {isUndefined, noop} = require('../lib/dash');
+const PropTypes = require('prop-types');
 const React = require('react');
 const cc = require('classnames');
 
@@ -122,9 +123,9 @@ Tumbler.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
   offText: PropTypes.string,
-  onBlur: React.PropTypes.func,
-  onChange: React.PropTypes.func,
-  onFocus: React.PropTypes.func,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
   onText: PropTypes.string,
   size: PropTypes.oneOf([
     'l',
