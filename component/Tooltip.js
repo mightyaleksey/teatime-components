@@ -1,7 +1,8 @@
 'use strict';
 
-const {Component, PropTypes} = require('react');
+const {Component} = require('react');
 const Overlay = require('../view/_Overlay');
+const PropTypes = require('prop-types');
 const React = require('react');
 const classNames = require('classnames');
 

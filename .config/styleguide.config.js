@@ -3,7 +3,6 @@
 const {compose, curry} = require('../lib/dash');
 const {dirname} = require('path');
 const {version} = require('../package');
-const merge = require('./merge');
 const resolveTo = require('./resolveTo');
 
 const replace = curry((reg, sub, s) => s.replace(reg, sub));
@@ -28,18 +27,18 @@ module.exports = {
     },
   ],
 
-  updateWebpackConfig: merge({
-    entry: [
-      resolveTo('.config/common.css'),
-    ],
+  require: [
+    resolveTo('.config/common.css'),
+  ],
 
+  webpackConfig: {
     target: 'web',
     node: {
       Buffer: false,
     },
 
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.js$/i,
           include: new RegExp(`${rootDir}/(component|decorator|lib|view)/`),
@@ -76,7 +75,8 @@ module.exports = {
         },
       ],
     },
-  }),
+  },
 
+  serverPort: 3000,
   styleguideDir: resolveTo(`docs/${minorVersion}`),
 };

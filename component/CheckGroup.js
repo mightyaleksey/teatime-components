@@ -1,9 +1,10 @@
 'use strict';
 
-const {Component, PropTypes} = require('react');
+const {Component} = require('react');
 const {assign, map, noop} = require('../lib/dash');
 const {omitNonStandardAttrs, genericName, isControlled} = require('../lib/util');
 const Box = require('../view/Box');
+const PropTypes = require('prop-types');
 const React = require('react');
 const cc = require('classnames');
 const chunk = require('lodash.chunk');

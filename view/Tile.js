@@ -1,8 +1,9 @@
 'use strict';
 
-const {Component, PropTypes} = require('react');
+const {Component} = require('react');
 const {cssColorValue} = require('../lib/color');
 const {noop} = require('../lib/dash');
+const PropTypes = require('prop-types');
 const React = require('react');
 
 class Tile extends Component {

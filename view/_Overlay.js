@@ -1,8 +1,9 @@
 'use strict';
 
-const {Component, PropTypes} = require('react');
+const {Component} = require('react');
 const {genericId} = require('../lib/identity');
 const {noop} = require('../lib/dash');
+const PropTypes = require('prop-types');
 const React = require('react');
 
 const MOUNTED_OVERLAYS = {};

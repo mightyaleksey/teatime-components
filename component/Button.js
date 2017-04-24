@@ -1,7 +1,8 @@
 'use strict';
 
-const {Component, PropTypes} = require('react');
+const {Component} = require('react');
 const {genericName, omitNonStandardAttrs} = require('../lib/util');
+const PropTypes = require('prop-types');
 const React = require('react');
 const cc = require('classnames');
 
