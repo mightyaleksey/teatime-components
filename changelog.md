@@ -1,6 +1,12 @@
 # change log
 
 
+## 0.9.0
+
+- Added possibility to specify popup direction for *ColorPicker* and *Select* components (prop `direction`).
+- Migrated to React 15.5.x.
+
+
 ## 0.8.15
 
 Added disabled state for `Link`.
