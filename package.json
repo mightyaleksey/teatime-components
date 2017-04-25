@@ -58,7 +58,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^19.0.2",
     "postcss-loader": "^1.3.2",
-    "postcss-url": "^6.0.4",
+    "postcss-url": "5",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.5.4",

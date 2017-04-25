@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly with default props 1`] = `
+<span
+  className="menu bottom"
+  role="listbox"
+>
+  Menu Content
+</span>
+`;
+
+exports[`Renders correctly with defined props 1`] = `
+<span
+  className="menu top outer"
+  role="listbox"
+>
+  Menu Content
+</span>
+`;

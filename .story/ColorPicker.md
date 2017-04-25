@@ -9,6 +9,7 @@
   some text for the baseline
   <ColorPicker
     defaultValue='CCCCFF'
+    direction='top'
     name='palette'
     size='s'/>
   {' '}

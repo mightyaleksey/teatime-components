@@ -139,6 +139,7 @@
   </p>
   <p>
     <Select
+      direction='top'
       name='select-sa'
       options={[
         {label: 'Ducati', value: 'ducati'},
@@ -157,6 +158,7 @@
   </p>
   <p>
     <Select
+      direction='top'
       name='select-sa'
       options={[
         {label: 'Ducati', value: 'ducati'},
@@ -175,6 +177,7 @@
   </p>
   <p style={{marginBottom: '0'}}>
     <Select
+      direction='top'
       name='select-sa'
       options={[
         {label: 'Ducati', value: 'ducati'},

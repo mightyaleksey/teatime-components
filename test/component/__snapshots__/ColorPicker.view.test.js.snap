@@ -29,7 +29,8 @@ exports[`Renders correctly with default props 1`] = `
     value=""
   />
   <span
-    className="menu isClosedMenu"
+    className="menu bottom menu isClosedMenu"
+    role="listbox"
   />
 </span>
 `;
@@ -63,7 +64,8 @@ exports[`Renders correctly with defined props 1`] = `
     value="BEBEBE"
   />
   <span
-    className="menu isClosedMenu"
+    className="menu bottom menu isClosedMenu"
+    role="listbox"
   />
 </span>
 `;

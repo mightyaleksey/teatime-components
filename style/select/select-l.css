@@ -30,7 +30,6 @@
 
 .menu
 {
-  composes: menu from './select.css';
   composes: menu-l from './select-size.css';
 }
 

@@ -5,7 +5,7 @@ const {TAB} = require('../lib/keyCode');
 const {cssColorValue, userColorValue} = require('../lib/color');
 const {isControlled, genericName, nullToString, omitNonStandardAttrsAndHandlers} = require('../lib/util');
 const {isUndefined, map, noop} = require('../lib/dash');
-const Overlay = require('../view/Overlay');
+const Menu = require('./Menu');
 const PropTypes = require('prop-types');
 const React = require('react');
 const Tile = require('../view/Tile');
@@ -208,19 +208,21 @@ class ColorPicker extends Component {
   }
 
   renderMenu() {
-    const {palette} = this.props;
+    const {direction, palette, size} = this.props;
     const {isOpened} = this.state;
     const {css} = this;
 
     return (
-      <Overlay
+      <Menu
         className={cc(css('menu'), {
           [css('isClosedMenu')]: !isOpened,
         })}
+        direction={direction}
         onOutsideClick={this._onOutsideClick}
-        parentNode={this._parentNode}>
+        parentNode={this._parentNode}
+        size={size}>
         {this.computeTiles(palette)}
-      </Overlay>
+      </Menu>
     );
   }
 
@@ -271,6 +273,10 @@ ColorPicker.propTypes = {
   autoFocus: PropTypes.bool,
   className: PropTypes.string,
   defaultValue: PropTypes.string,
+  direction: PropTypes.oneOf([
+    'bottom',
+    'top',
+  ]),
   disabled: PropTypes.bool,
   id: PropTypes.string,
   name: PropTypes.string.isRequired,

@@ -22,8 +22,8 @@ const {
 } = require('../lib/dash');
 const {findDOMNode} = require('react-dom');
 const {omitNonStandardAttrsAndHandlers, isControlled, genericName} = require('../lib/util');
+const Menu = require('./Menu');
 const Option = require('../view/Option');
-const Overlay = require('../view/Overlay');
 const PropTypes = require('prop-types');
 const React = require('react');
 const searchEngine = require('../lib/searchEngine');
@@ -470,22 +470,23 @@ class Select extends Component {
   }
 
   renderMenu() {
-    const {hasFixedWidth} = this.props;
+    const {direction, hasFixedWidth, size} = this.props;
     const {isOpened} = this.state;
     const {css} = this;
 
     return (
-      <Overlay
+      <Menu
         className={cc(css('menu'), {
           [css('isClosedMenu')]: !isOpened,
           [css('isFixedMenu')]: hasFixedWidth,
         })}
+        direction={direction}
         onOutsideClick={this._onOutsideClick}
         parentNode={this._parentNode}
         ref={r => this._menuRef = r}
-        role='listbox'>
+        size={size}>
         {this.computeMenuItems(this._menuItems)}
-      </Overlay>
+      </Menu>
     );
   }
 
@@ -521,6 +522,10 @@ Select.defaultProps = {
 Select.propTypes = {
   className: PropTypes.string,
   defaultValue: PropTypes.any,
+  direction: PropTypes.oneOf([
+    'bottom',
+    'top',
+  ]),
   disabled: PropTypes.bool,
   hasFixedWidth: PropTypes.bool,
   id: PropTypes.string,
