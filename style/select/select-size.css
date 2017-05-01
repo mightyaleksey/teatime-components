@@ -28,6 +28,7 @@
 
 .menu-s
 {
+  max-height: 200px;
   padding: 3px 0;
 }
 
@@ -78,6 +79,7 @@
 
 .menu-m
 {
+  max-height: 198px;
   padding: 4px 0;
 }
 
@@ -128,6 +130,7 @@
 
 .menu-l
 {
+  max-height: 236px;
   padding: 5px 0;
 }
 

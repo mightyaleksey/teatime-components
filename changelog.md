@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.9.1
+
+- Returned scroll back to **Select**'s popup.
+
+
 ## 0.9.0
 
 - Added possibility to specify popup direction for *ColorPicker* and *Select* components (prop `direction`).
