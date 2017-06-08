@@ -59,9 +59,11 @@ class Radio extends Component {
 
   _onChange = (e, {value}) => {
     const {name} = this.props;
+    const isSameValue = this.state.value === value;
 
-    if (!this._controlled) this.setState({value});
-    this.props.onChange(e, {name, value});
+    // workaround for https://github.com/facebook/react/issues/9893
+    if (!isSameValue && !this._controlled) this.setState({value});
+    if (!isSameValue) this.props.onChange(e, {name, value});
   }
 
   computeOptions(options) {
