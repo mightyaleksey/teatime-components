@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.9.2
+
+- Added value check for `input[type=radio]`. For now it will filter repetitive **change** events for the same value.
+
+
 ## 0.9.1
 
 - Returned scroll back to **Select**'s popup.
