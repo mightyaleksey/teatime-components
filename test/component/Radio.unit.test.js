@@ -168,6 +168,24 @@ describe('onChange', () => {
       value: 'bb',
     });
   });
+
+  it('should not call the handler for the same value twice', () => {
+    const onChange = jest.fn();
+    const component = shallow(
+      <Radio
+        name='control'
+        onChange={onChange}
+        options={[
+          {label: 'AA', value: 'aa'},
+          {label: 'BB', value: 'bb'},
+          {label: 'CC', value: 'cc'},
+        ]}/>
+    );
+
+    component.instance()._onChange(null, {value: 'bb'});
+    component.instance()._onChange(null, {value: 'bb'});
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
 });
 
 describe('onFocus', () => {
