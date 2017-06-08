@@ -3772,9 +3772,11 @@ var _initialiseProps = function _initialiseProps() {
     var value = _ref.value;
     var name = _this3.props.name;
 
+    var isSameValue = _this3.state.value === value;
 
-    if (!_this3._controlled) _this3.setState({ value: value });
-    _this3.props.onChange(e, { name: name, value: value });
+    // workaround for https://github.com/facebook/react/issues/9893
+    if (!isSameValue && !_this3._controlled) _this3.setState({ value: value });
+    if (!isSameValue) _this3.props.onChange(e, { name: name, value: value });
   };
 };
 
