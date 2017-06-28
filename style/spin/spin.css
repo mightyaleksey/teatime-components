@@ -25,6 +25,7 @@
 {
   display: block;
 
+  box-sizing: border-box;
   margin: 0;
 
   animation: spin 1s infinite linear;

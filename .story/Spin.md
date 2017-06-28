@@ -11,5 +11,7 @@
   <Spin size='m'/>
   {' '}size l
   <Spin size='l'/>
+  {' '}size xl
+  <Spin size='xl'/>
 </div>
 ```

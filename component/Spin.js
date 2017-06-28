@@ -11,6 +11,7 @@ const cssModules = {
   l: require('../style/spin/spin-l.css'),
   m: require('../style/spin/spin-m.css'),
   s: require('../style/spin/spin-s.css'),
+  xl: require('../style/spin/spin-xl.css'),
   xs: require('../style/spin/spin-xs.css'),
 };
 
@@ -46,6 +47,7 @@ Spin.propTypes = {
     'l',
     'm',
     's',
+    'xl',
     'xs',
   ]),
   styles: PropTypes.object,
