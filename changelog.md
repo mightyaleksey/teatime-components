@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.1
+
+- Fixed `Spin`s line-height.
+
+
 ## 0.10.0
 
 - Unified `Spin` size. Now it should be equal to the Inputs height. Also added `xl` prop #size value.

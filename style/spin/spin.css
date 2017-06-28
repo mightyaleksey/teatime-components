@@ -23,7 +23,7 @@
 
 .control
 {
-  display: block;
+  display: inline-block;
 
   box-sizing: border-box;
   margin: 0;
@@ -34,4 +34,13 @@
   border-top-color: transparent;
   border-left-color: transparent;
   border-radius: 50%;
+
+  font: inherit;
+}
+
+.control:before
+{
+  visibility: hidden;
+
+  content: '\A0';
 }

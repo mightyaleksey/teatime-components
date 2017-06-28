@@ -2,10 +2,16 @@
 {
   composes: selector from './spin.css';
   composes: wrapper from './spin.css';
+
+  font: 13px/28px arial,sans-serif;
 }
 
 .control
 {
   composes: control from './spin.css';
-  composes: m from './spin-size.css';
+
+  width: 28px;
+  height: 28px;
+
+  line-height: 24px;
 }
