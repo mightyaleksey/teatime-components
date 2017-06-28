@@ -10,10 +10,19 @@ babel() {
   ${cli}/babel $1 --out-dir ${2:-$1} || exit 1
 }
 
+prefixer() {
+  for css in `find $1 -name '*.css'`
+  do
+    ${cli}/autoprefixer-cli  "$css" || exit 1
+  done
+}
+
 babel component
 babel decorator
 babel lib
 babel view
+
+prefixer style
 
 if [ "$1" = '--deploy' ]; then
   # npm publish --tag beta

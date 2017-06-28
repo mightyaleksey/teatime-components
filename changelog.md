@@ -4,6 +4,7 @@
 ## 0.10.0
 
 - Unified `Spin` size. Now it should be equal to the Inputs height. Also added `xl` prop #size value.
+- Prefixed styles. Now may omit autoprefixer from the build step.
 
 
 ## 0.9.2
