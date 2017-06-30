@@ -1,0 +1,14 @@
+{
+  "name": "webpack-setup",
+  "scripts": {
+    "compile": "webpack"
+  },
+  "dependencies": {
+    "css-loader": "^0.28.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "style-loader": "^0.18.2",
+    "teatime-components": "latest",
+    "webpack": "^3.0.0"
+  }
+}

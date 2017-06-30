@@ -127,13 +127,6 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
-              importLoaders: 1,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              config: resolve('postcss.config.js'),
             },
           },
         ],
@@ -149,146 +142,10 @@ module.exports = {
 };
 ```
 
-```javascript
-'use strict';
-// postcss.config.js
-module.exports = {
-  plugins: [
-    require('autoprefixer'),
-    require('postcss-url')({url: 'inline'}),
-  ],
-};
-```
-
 
 #### Example
 
-```bash
-.
-├── dist/
-├── index.html
-├── main.js
-├── package.json
-├── postcss.config.js
-└── webpack.config.js
-```
-
-*package.json*
-
-```json
-{
-  "name": "example",
-  "version": "1.0.0",
-  "dependencies": {
-    "autoprefixer": "^6.7.7",
-    "babel-core": "^6.22.1",
-    "babel-loader": "^6.2.7",
-    "babel-preset-latest": "^6.22.0",
-    "babel-preset-react": "^6.22.0",
-    "css-loader": "^0.27.1",
-    "postcss-loader": "^1.3.2",
-    "postcss-url": "^5.1.2",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "style-loader": "^0.13.2",
-    "teatime-components": "^0.8.12",
-    "webpack": "^2.2.1"
-  }
-}
-```
-
-*webpack.config.js*
-
-```javascript
-const {resolve} = require('path');
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.js$/i,
-        exclude: /node_modules/,
-        loader: 'babel',
-        options: {
-          presets: [
-            'latest',
-            'react',
-          ],
-        },
-      },
-      {
-        test: /\.css$/i,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              config: resolve('postcss.config.js'),
-            },
-          },
-        ],
-      },
-    ],
-  },
-
-  entry: resolve('main'),
-  output: {
-    filename: 'index.js',
-    path: resolve('dist'),
-  },
-};
-```
-
-*postcss.config.js*
-
-```javascript
-'use strict';
-
-module.exports = {
-  plugins: [
-    require('autoprefixer'),
-    require('postcss-url')({url: 'inline'}),
-  ],
-};
-```
-
-*main.js*
-
-```javascript
-import {Button} from 'teatime-components';
-import {render} from 'react-dom';
-import React from 'react';
-
-render((
-  <Button theme='action'>
-    Make Awesome
-  </Button>
-), document.getElementById('entry'));
-```
-
-*index.html*
-
-```html
-<!doctype html>
-<html lang='en'>
-<head>
-  <meta charset="utf-8">
-  <title>Awesome Button</title>
-</head>
-<body>
-  <div id='entry'></div>
-
-  <script src='dist/index.js'></script>
-</body>
-</html>
-```
+See [examples/webpack-setup](examples/webpack-setup).
 
 
 #### Tips

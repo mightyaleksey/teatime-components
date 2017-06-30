@@ -4,6 +4,7 @@
 ## 0.10.2
 
 - Easier bundler setup due to styles precompilation.
+- Real examples.
 
 
 ## 0.10.1
