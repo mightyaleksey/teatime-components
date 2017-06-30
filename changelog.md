@@ -1,9 +1,13 @@
 # change log
 
 
-## 0.10.2
+## 0.10.3
 
 - Easier bundler setup due to styles precompilation.
+
+
+## 0.10.2
+
 - Real examples.
 
 
