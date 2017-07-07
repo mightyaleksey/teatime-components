@@ -158,11 +158,12 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, ".DZ65P\n{\n  position: absolute;\n\n  width: 300px;\n\n  cursor: pointer;\n\n  color: #fff;\n\n  font-family: arial,sans-serif;\n}\n\n.DZ65P:after\n{\n  position: absolute;\n\n  content: '';\n\n  border: 7px solid transparent;\n}\n\n._2lElU\n{\n  left: 50%;\n\n  -webkit-transform: translateX(-50%);\n\n          transform: translateX(-50%);\n}\n\n.RXt91\n{\n  top: 50%;\n\n  -webkit-transform: translateY(-50%);\n\n          transform: translateY(-50%);\n}\n\n._3k2Vc\n{\n}\n\n.fPmJh\n{\n}\n\n._27Y7y\n{\n}\n\n._1zPkH\n{\n}\n\n/* mixins */\n\n._2ZVAQ\n{\n  display: none;\n}\n\n._1xk7I\n{\n  display: block;\n}\n\n._3kMWp\n{\n  width: auto;\n\n  white-space: nowrap;\n}\n", ""]);
+exports.push([module.i, ".DZ65P\n{\n  position: absolute;\n\n  visibility: hidden;\n\n  box-sizing: border-box;\n  max-width: 300px;\n\n  cursor: pointer;\n\n  color: #fff;\n\n  font-family: arial,sans-serif;\n}\n\n.DZ65P._2Fb3r\n{\n  visibility: visible;\n}\n\n.DZ65P:after\n{\n  position: absolute;\n\n  content: '';\n\n  border: 7px solid transparent;\n}\n\n._2lElU\n{\n  left: 50%;\n\n  -webkit-transform: translateX(-50%);\n\n          transform: translateX(-50%);\n}\n\n.RXt91\n{\n  top: 50%;\n\n  -webkit-transform: translateY(-50%);\n\n          transform: translateY(-50%);\n}\n\n._3k2Vc\n{\n}\n\n.fPmJh\n{\n}\n\n._27Y7y\n{\n}\n\n._1zPkH\n{\n}\n\n/* mixins */\n\n._2ZVAQ\n{\n  display: none;\n}\n\n._1xk7I\n{\n  display: block;\n}\n\n._3kMWp\n{\n  width: auto;\n}\n", ""]);
 
 // exports
 exports.locals = {
 	"control": "DZ65P",
+	"isVisible": "_2Fb3r",
 	"center": "_2lElU",
 	"middle": "RXt91",
 	"bottom": "_3k2Vc DZ65P _2lElU",
@@ -4699,9 +4700,9 @@ var baseStyles = {
 };
 
 var height = {
-  xs: 24,
-  s: 28,
-  m: 32
+  l: 32,
+  m: 28,
+  s: 24
 };
 
 var Tooltip = function (_Component) {
@@ -4718,14 +4719,25 @@ var Tooltip = function (_Component) {
       return rect.top - rect.height / 2 + rect.left / 10000;
     };
 
-    _this.onPositionUpdate = function (rect) {
-      var maxWidth = _this.props.maxWidth;
-      var isMultiline = _this.state.isMultiline;
+    _this.onPositionUpdate = function (ref) {
+      var isVisible = _this.state.isVisible;
 
 
-      if (isMultiline !== _this.isMultiline(rect, maxWidth)) _this.setState({
-        isMultiline: !_this.state.isMultiline
-      });
+      if (!isVisible) {
+        var styles = window.getComputedStyle(ref);
+        var maxWidth = parseInt(styles.getPropertyValue('max-width'), 10);
+
+        ref.style.width = maxWidth + 'px';
+
+        var rect = ref.getBoundingClientRect();
+        var isMultiline = !isNaN(maxWidth) ? _this.isMultiline(rect, maxWidth) : false;
+
+        if (!isMultiline) ref.style.width = 'auto';
+
+        _this.setState({
+          isVisible: true
+        });
+      }
     };
 
     _this.shouldComponentUpdatePosition = function (prevProps) {
@@ -4733,7 +4745,7 @@ var Tooltip = function (_Component) {
     };
 
     _this.state = {
-      isMultiline: false
+      isVisible: false
     };
     return _this;
   }
@@ -4749,8 +4761,18 @@ var Tooltip = function (_Component) {
 
 
   _createClass(Tooltip, [{
-    key: 'isMultiline',
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      var _props = this.props,
+          children = _props.children,
+          direction = _props.direction,
+          size = _props.size;
 
+
+      if (nextProps.children !== children || nextProps.direction !== direction || nextProps.size !== size) this.setState({
+        isVisible: false
+      });
+    }
 
     /**
      * @param  {object}  rect
@@ -4759,27 +4781,33 @@ var Tooltip = function (_Component) {
      * @param  {number}  maxWidth
      * @return {boolean}
      */
-    value: function isMultiline(rect, maxWidth) {
-      return rect.width * rect.height / maxWidth > height[this.props.size];
+
+  }, {
+    key: 'isMultiline',
+    value: function isMultiline(rect) {
+      return rect.height > height[this.props.size];
     }
   }, {
     key: 'render',
     value: function render() {
       var _classNames;
 
-      var _props = this.props,
-          children = _props.children,
-          className = _props.className,
-          direction = _props.direction,
-          size = _props.size,
-          type = _props.type;
+      var _props2 = this.props,
+          children = _props2.children,
+          className = _props2.className,
+          direction = _props2.direction,
+          size = _props2.size,
+          type = _props2.type;
+      var _state = this.state,
+          isMultiline = _state.isMultiline,
+          isVisible = _state.isVisible;
 
       var styles = baseStyles[type + '-' + size];
 
       return React.createElement(
         Overlay,
         {
-          className: classNames(className, styles[direction], (_classNames = {}, _defineProperty(_classNames, styles.isClosed, !children), _defineProperty(_classNames, styles.isOpened, children), _defineProperty(_classNames, styles.isLine, !this.state.isMultiline), _classNames)),
+          className: classNames(className, styles[direction], (_classNames = {}, _defineProperty(_classNames, styles.isClosed, !children), _defineProperty(_classNames, styles.isOpened, children), _defineProperty(_classNames, styles.isLine, !isMultiline), _defineProperty(_classNames, styles.isVisible, isVisible), _classNames)),
           onPositionUpdate: this.onPositionUpdate,
           shouldComponentUpdatePosition: this.shouldComponentUpdatePosition },
         children
@@ -4792,7 +4820,6 @@ var Tooltip = function (_Component) {
 
 Tooltip.defaultProps = {
   direction: 'right',
-  maxWidth: 300,
   size: 'm',
   type: 'normal'
 };
@@ -4801,7 +4828,6 @@ Tooltip.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   direction: PropTypes.oneOf(['bottom', 'left', 'right', 'top']),
-  maxWidth: PropTypes.number,
   size: PropTypes.oneOf(['l', 'm', 's']),
   type: PropTypes.oneOf(['normal', 'success', 'warning'])
 };
@@ -5492,6 +5518,9 @@ function updateOverlays() {
     if (!component.refs.overlay) continue;
 
     ref = component.refs.overlay;
+
+    component.props.onPositionUpdate(ref);
+
     rect = ref.getBoundingClientRect();
 
     layers.push({
@@ -5510,7 +5539,6 @@ function updateOverlays() {
   while (index--) {
     target = layers[index];
     target.ref.style.zIndex = 100 + index;
-    target.component.props.onPositionUpdate(target.rect, target.ref);
   }
 }
 
@@ -6346,7 +6374,7 @@ exports.i(__webpack_require__(20), undefined);
 exports.i(__webpack_require__(17), undefined);
 
 // module
-exports.push([module.i, "._35nm5\n{\n}\n\n.MTbVm\n{\n}\n\n._2ILMX\n{\n}\n\n._3Xhsb\n{\n}\n\n/* mixins */\n\n._1_9IZ\n{\n}\n\n.YoncH\n{\n}\n\n._1An5v\n{\n}\n", ""]);
+exports.push([module.i, "._35nm5\n{\n}\n\n.MTbVm\n{\n}\n\n._2ILMX\n{\n}\n\n._3Xhsb\n{\n}\n\n/* mixins */\n\n._1_9IZ\n{\n}\n\n.YoncH\n{\n}\n\n._1An5v\n{\n}\n\n._3FF58\n{\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -6356,7 +6384,8 @@ exports.locals = {
 	"top": "_3Xhsb " + __webpack_require__(1).locals["top"] + " " + __webpack_require__(20).locals["top"] + " " + __webpack_require__(17).locals["top"] + "",
 	"isClosed": "_1_9IZ " + __webpack_require__(1).locals["isClosed"] + "",
 	"isOpened": "YoncH " + __webpack_require__(1).locals["isOpened"] + "",
-	"isLine": "_1An5v " + __webpack_require__(1).locals["isLine"] + ""
+	"isLine": "_1An5v " + __webpack_require__(1).locals["isLine"] + "",
+	"isVisible": "_3FF58 " + __webpack_require__(1).locals["isVisible"] + ""
 };
 
 /***/ }),
@@ -6370,7 +6399,7 @@ exports.i(__webpack_require__(21), undefined);
 exports.i(__webpack_require__(17), undefined);
 
 // module
-exports.push([module.i, "._2e4pR\n{\n}\n\n._3IzgH\n{\n}\n\n._2Yu-R\n{\n}\n\n.VkbWZ\n{\n}\n\n/* mixins */\n\n._2rEnU\n{\n}\n\n._3oRj7\n{\n}\n\n.YCfUA\n{\n}\n", ""]);
+exports.push([module.i, "._2e4pR\n{\n}\n\n._3IzgH\n{\n}\n\n._2Yu-R\n{\n}\n\n.VkbWZ\n{\n}\n\n/* mixins */\n\n._2rEnU\n{\n}\n\n._3oRj7\n{\n}\n\n.YCfUA\n{\n}\n\n._4_wXs\n{\n}\n\n", ""]);
 
 // exports
 exports.locals = {
@@ -6380,7 +6409,8 @@ exports.locals = {
 	"top": "VkbWZ " + __webpack_require__(1).locals["top"] + " " + __webpack_require__(21).locals["top"] + " " + __webpack_require__(17).locals["top"] + "",
 	"isClosed": "_2rEnU " + __webpack_require__(1).locals["isClosed"] + "",
 	"isOpened": "_3oRj7 " + __webpack_require__(1).locals["isOpened"] + "",
-	"isLine": "YCfUA " + __webpack_require__(1).locals["isLine"] + ""
+	"isLine": "YCfUA " + __webpack_require__(1).locals["isLine"] + "",
+	"isVisible": "_4_wXs " + __webpack_require__(1).locals["isVisible"] + ""
 };
 
 /***/ }),
@@ -6394,7 +6424,7 @@ exports.i(__webpack_require__(22), undefined);
 exports.i(__webpack_require__(17), undefined);
 
 // module
-exports.push([module.i, "._2WrP8\n{\n}\n\n._3d7zX\n{\n}\n\n._3gQJQ\n{\n}\n\n._1VCl8\n{\n}\n\n/* mixins */\n\n._2wy69\n{\n}\n\n._12QWl\n{\n}\n\n._3eN_G\n{\n}\n", ""]);
+exports.push([module.i, "._2WrP8\n{\n}\n\n._3d7zX\n{\n}\n\n._3gQJQ\n{\n}\n\n._1VCl8\n{\n}\n\n/* mixins */\n\n._2wy69\n{\n}\n\n._12QWl\n{\n}\n\n._3eN_G\n{\n}\n\n._2-nR7\n{\n}\n\n", ""]);
 
 // exports
 exports.locals = {
@@ -6404,7 +6434,8 @@ exports.locals = {
 	"top": "_1VCl8 " + __webpack_require__(1).locals["top"] + " " + __webpack_require__(22).locals["top"] + " " + __webpack_require__(17).locals["top"] + "",
 	"isClosed": "_2wy69 " + __webpack_require__(1).locals["isClosed"] + "",
 	"isOpened": "_12QWl " + __webpack_require__(1).locals["isOpened"] + "",
-	"isLine": "_3eN_G " + __webpack_require__(1).locals["isLine"] + ""
+	"isLine": "_3eN_G " + __webpack_require__(1).locals["isLine"] + "",
+	"isVisible": "_2-nR7 " + __webpack_require__(1).locals["isVisible"] + ""
 };
 
 /***/ }),
@@ -6418,7 +6449,7 @@ exports.i(__webpack_require__(20), undefined);
 exports.i(__webpack_require__(18), undefined);
 
 // module
-exports.push([module.i, "._2XM7b\n{\n}\n\n._3HJua\n{\n}\n\n._2lcPG\n{\n}\n\n._1UY60\n{\n}\n\n/* mixins */\n\n.Bznwa\n{\n}\n\n._1IxpN\n{\n}\n\n._18HsM\n{\n}\n", ""]);
+exports.push([module.i, "._2XM7b\n{\n}\n\n._3HJua\n{\n}\n\n._2lcPG\n{\n}\n\n._1UY60\n{\n}\n\n/* mixins */\n\n.Bznwa\n{\n}\n\n._1IxpN\n{\n}\n\n._18HsM\n{\n}\n\n._2y_T9\n{\n}\n\n", ""]);
 
 // exports
 exports.locals = {
@@ -6428,7 +6459,8 @@ exports.locals = {
 	"top": "_1UY60 " + __webpack_require__(1).locals["top"] + " " + __webpack_require__(20).locals["top"] + " " + __webpack_require__(18).locals["top"] + "",
 	"isClosed": "Bznwa " + __webpack_require__(1).locals["isClosed"] + "",
 	"isOpened": "_1IxpN " + __webpack_require__(1).locals["isOpened"] + "",
-	"isLine": "_18HsM " + __webpack_require__(1).locals["isLine"] + ""
+	"isLine": "_18HsM " + __webpack_require__(1).locals["isLine"] + "",
+	"isVisible": "_2y_T9 " + __webpack_require__(1).locals["isVisible"] + ""
 };
 
 /***/ }),
@@ -6442,7 +6474,7 @@ exports.i(__webpack_require__(21), undefined);
 exports.i(__webpack_require__(18), undefined);
 
 // module
-exports.push([module.i, "._3mQd5\n{\n}\n\n._22jZy\n{\n}\n\n._3yFgz\n{\n}\n\n._1KkS_\n{\n}\n\n/* mixins */\n\n._2MzhD\n{\n}\n\n._3V0lH\n{\n}\n\n._3NtGQ\n{\n}\n", ""]);
+exports.push([module.i, "._3mQd5\n{\n}\n\n._22jZy\n{\n}\n\n._3yFgz\n{\n}\n\n._1KkS_\n{\n}\n\n/* mixins */\n\n._2MzhD\n{\n}\n\n._3V0lH\n{\n}\n\n._3NtGQ\n{\n}\n\n._6jG0H\n{\n}\n\n", ""]);
 
 // exports
 exports.locals = {
@@ -6452,7 +6484,8 @@ exports.locals = {
 	"top": "_1KkS_ " + __webpack_require__(1).locals["top"] + " " + __webpack_require__(21).locals["top"] + " " + __webpack_require__(18).locals["top"] + "",
 	"isClosed": "_2MzhD " + __webpack_require__(1).locals["isClosed"] + "",
 	"isOpened": "_3V0lH " + __webpack_require__(1).locals["isOpened"] + "",
-	"isLine": "_3NtGQ " + __webpack_require__(1).locals["isLine"] + ""
+	"isLine": "_3NtGQ " + __webpack_require__(1).locals["isLine"] + "",
+	"isVisible": "_6jG0H " + __webpack_require__(1).locals["isVisible"] + ""
 };
 
 /***/ }),
@@ -6466,7 +6499,7 @@ exports.i(__webpack_require__(22), undefined);
 exports.i(__webpack_require__(18), undefined);
 
 // module
-exports.push([module.i, "._1nl4h\n{\n}\n\n.qv0G7\n{\n}\n\n.NtNKD\n{\n}\n\n._3usgD\n{\n}\n\n/* mixins */\n\n._33nm3\n{\n}\n\n._5HNjl\n{\n}\n\n._3Lil2\n{\n}\n", ""]);
+exports.push([module.i, "._1nl4h\n{\n}\n\n.qv0G7\n{\n}\n\n.NtNKD\n{\n}\n\n._3usgD\n{\n}\n\n/* mixins */\n\n._33nm3\n{\n}\n\n._5HNjl\n{\n}\n\n._3Lil2\n{\n}\n\n._2QwC5\n{\n}\n\n", ""]);
 
 // exports
 exports.locals = {
@@ -6476,7 +6509,8 @@ exports.locals = {
 	"top": "_3usgD " + __webpack_require__(1).locals["top"] + " " + __webpack_require__(22).locals["top"] + " " + __webpack_require__(18).locals["top"] + "",
 	"isClosed": "_33nm3 " + __webpack_require__(1).locals["isClosed"] + "",
 	"isOpened": "_5HNjl " + __webpack_require__(1).locals["isOpened"] + "",
-	"isLine": "_3Lil2 " + __webpack_require__(1).locals["isLine"] + ""
+	"isLine": "_3Lil2 " + __webpack_require__(1).locals["isLine"] + "",
+	"isVisible": "_2QwC5 " + __webpack_require__(1).locals["isVisible"] + ""
 };
 
 /***/ }),
@@ -6490,7 +6524,7 @@ exports.i(__webpack_require__(20), undefined);
 exports.i(__webpack_require__(19), undefined);
 
 // module
-exports.push([module.i, "._2L8ar\n{\n}\n\n._2HBu4\n{\n}\n\n._3dy2C\n{\n}\n\n._20W7_\n{\n}\n\n/* mixins */\n\n._3IAo5\n{\n}\n\n._1m311\n{\n}\n\n.YFtN1\n{\n}\n", ""]);
+exports.push([module.i, "._2L8ar\n{\n}\n\n._2HBu4\n{\n}\n\n._3dy2C\n{\n}\n\n._20W7_\n{\n}\n\n/* mixins */\n\n._3IAo5\n{\n}\n\n._1m311\n{\n}\n\n.YFtN1\n{\n}\n\n._2bcmO\n{\n}\n\n", ""]);
 
 // exports
 exports.locals = {
@@ -6500,7 +6534,8 @@ exports.locals = {
 	"top": "_20W7_ " + __webpack_require__(1).locals["top"] + " " + __webpack_require__(20).locals["top"] + " " + __webpack_require__(19).locals["top"] + "",
 	"isClosed": "_3IAo5 " + __webpack_require__(1).locals["isClosed"] + "",
 	"isOpened": "_1m311 " + __webpack_require__(1).locals["isOpened"] + "",
-	"isLine": "YFtN1 " + __webpack_require__(1).locals["isLine"] + ""
+	"isLine": "YFtN1 " + __webpack_require__(1).locals["isLine"] + "",
+	"isVisible": "_2bcmO " + __webpack_require__(1).locals["isVisible"] + ""
 };
 
 /***/ }),
@@ -6514,7 +6549,7 @@ exports.i(__webpack_require__(21), undefined);
 exports.i(__webpack_require__(19), undefined);
 
 // module
-exports.push([module.i, "._1WjAD\n{\n}\n\n._3puNE\n{\n}\n\n._2fh9V\n{\n}\n\n.oHVcI\n{\n}\n\n/* mixins */\n\n._1lQG7\n{\n}\n\n._1N8aJ\n{\n}\n\n._3teh_\n{\n}\n", ""]);
+exports.push([module.i, "._1WjAD\n{\n}\n\n._3puNE\n{\n}\n\n._2fh9V\n{\n}\n\n.oHVcI\n{\n}\n\n/* mixins */\n\n._1lQG7\n{\n}\n\n._1N8aJ\n{\n}\n\n._3teh_\n{\n}\n\n._3scMV\n{\n}\n\n", ""]);
 
 // exports
 exports.locals = {
@@ -6524,7 +6559,8 @@ exports.locals = {
 	"top": "oHVcI " + __webpack_require__(1).locals["top"] + " " + __webpack_require__(21).locals["top"] + " " + __webpack_require__(19).locals["top"] + "",
 	"isClosed": "_1lQG7 " + __webpack_require__(1).locals["isClosed"] + "",
 	"isOpened": "_1N8aJ " + __webpack_require__(1).locals["isOpened"] + "",
-	"isLine": "_3teh_ " + __webpack_require__(1).locals["isLine"] + ""
+	"isLine": "_3teh_ " + __webpack_require__(1).locals["isLine"] + "",
+	"isVisible": "_3scMV " + __webpack_require__(1).locals["isVisible"] + ""
 };
 
 /***/ }),
@@ -6538,7 +6574,7 @@ exports.i(__webpack_require__(22), undefined);
 exports.i(__webpack_require__(19), undefined);
 
 // module
-exports.push([module.i, "._3PfXP\n{\n}\n\n.q8y9n\n{\n}\n\n._2I_PG\n{\n}\n\n._3tnMC\n{\n}\n\n/* mixins */\n\n._3ADKL\n{\n}\n\n._31VfV\n{\n}\n\n._22j7p\n{\n}\n", ""]);
+exports.push([module.i, "._3PfXP\n{\n}\n\n.q8y9n\n{\n}\n\n._2I_PG\n{\n}\n\n._3tnMC\n{\n}\n\n/* mixins */\n\n._3ADKL\n{\n}\n\n._31VfV\n{\n}\n\n._22j7p\n{\n}\n\n._3NC2X\n{\n}\n\n", ""]);
 
 // exports
 exports.locals = {
@@ -6548,7 +6584,8 @@ exports.locals = {
 	"top": "_3tnMC " + __webpack_require__(1).locals["top"] + " " + __webpack_require__(22).locals["top"] + " " + __webpack_require__(19).locals["top"] + "",
 	"isClosed": "_3ADKL " + __webpack_require__(1).locals["isClosed"] + "",
 	"isOpened": "_31VfV " + __webpack_require__(1).locals["isOpened"] + "",
-	"isLine": "_22j7p " + __webpack_require__(1).locals["isLine"] + ""
+	"isLine": "_22j7p " + __webpack_require__(1).locals["isLine"] + "",
+	"isVisible": "_3NC2X " + __webpack_require__(1).locals["isVisible"] + ""
 };
 
 /***/ }),
