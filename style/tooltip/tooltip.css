@@ -2,13 +2,21 @@
 {
   position: absolute;
 
-  width: 300px;
+  visibility: hidden;
+
+  box-sizing: border-box;
+  max-width: 300px;
 
   cursor: pointer;
 
   color: #fff;
 
   font-family: arial,sans-serif;
+}
+
+.control.isVisible
+{
+  visibility: visible;
 }
 
 .control:after
@@ -73,6 +81,4 @@
 .isLine
 {
   width: auto;
-
-  white-space: nowrap;
 }

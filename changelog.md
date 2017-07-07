@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.4
+
+- Improved `Tooltip` position recalculation. Also removed prop #maxWidth in favor of css `max-width` rule: mix it to the root element and it will work.
+
+
 ## 0.10.3
 
 - Easier bundler setup due to styles precompilation.

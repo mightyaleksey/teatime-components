@@ -42,3 +42,8 @@
 {
   composes: isLine from './tooltip.css';
 }
+
+.isVisible
+{
+  composes: isVisible from './tooltip.css';
+}

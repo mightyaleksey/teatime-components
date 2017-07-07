@@ -93,6 +93,9 @@ function updateOverlays() {
       continue;
 
     ref = component.refs.overlay;
+
+    component.props.onPositionUpdate(ref);
+
     rect = ref.getBoundingClientRect();
 
     layers.push({
@@ -111,7 +114,6 @@ function updateOverlays() {
   while (index--) {
     target = layers[index];
     target.ref.style.zIndex = 100 + index;
-    target.component.props.onPositionUpdate(target.rect, target.ref);
   }
 }
 

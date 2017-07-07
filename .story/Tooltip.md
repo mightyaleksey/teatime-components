@@ -1,3 +1,6 @@
+In case you want to change the default tooltip's size — you should specify the `max-width` rule via css.
+
+
 ## Preview
 
 

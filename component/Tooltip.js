@@ -19,9 +19,9 @@ const baseStyles = {
 };
 
 const height = {
-  xs: 24,
-  s: 28,
-  m: 32,
+  l: 32,
+  m: 28,
+  s: 24,
 };
 
 class Tooltip extends Component {
@@ -29,7 +29,7 @@ class Tooltip extends Component {
     super(props);
 
     this.state = {
-      isMultiline: false,
+      isVisible: false,
     };
   }
 
@@ -48,6 +48,19 @@ class Tooltip extends Component {
     return rect.top - rect.height / 2 + rect.left / 10000;
   }
 
+  componentWillReceiveProps(nextProps) {
+    const {children, direction, size} = this.props;
+
+    if (
+      nextProps.children !== children ||
+      nextProps.direction !== direction ||
+      nextProps.size !== size
+    )
+      this.setState({
+        isVisible: false,
+      });
+  }
+
   /**
    * @param  {object}  rect
    * @param  {number}  rect.height
@@ -55,24 +68,37 @@ class Tooltip extends Component {
    * @param  {number}  maxWidth
    * @return {boolean}
    */
-  isMultiline(rect, maxWidth) {
-    return rect.width * rect.height / maxWidth > height[this.props.size];
+  isMultiline(rect) {
+    return rect.height > height[this.props.size];
   }
 
-  onPositionUpdate = rect => {
-    const {maxWidth} = this.props;
-    const {isMultiline} = this.state;
+  onPositionUpdate = ref => {
+    const {isVisible} = this.state;
 
-    if (isMultiline !== this.isMultiline(rect, maxWidth))
+    if (!isVisible) {
+      const styles = window.getComputedStyle(ref);
+      const maxWidth = parseInt(styles.getPropertyValue('max-width'), 10);
+
+      ref.style.width = maxWidth + 'px';
+
+      const rect = ref.getBoundingClientRect();
+      const isMultiline = !isNaN(maxWidth)
+        ? this.isMultiline(rect, maxWidth)
+        : false;
+
+      if (!isMultiline) ref.style.width = 'auto';
+
       this.setState({
-        isMultiline: !this.state.isMultiline,
+        isVisible: true,
       });
+    }
   }
 
   shouldComponentUpdatePosition = prevProps => prevProps.direction !== this.props.direction
 
   render() {
     const {children, className, direction, size, type} = this.props;
+    const {isMultiline, isVisible} = this.state;
     const styles = baseStyles[`${type}-${size}`];
 
     return (
@@ -80,7 +106,8 @@ class Tooltip extends Component {
         className={classNames(className, styles[direction], {
           [styles.isClosed]: !children,
           [styles.isOpened]: children,
-          [styles.isLine]: !this.state.isMultiline,
+          [styles.isLine]: !isMultiline,
+          [styles.isVisible]: isVisible,
         })}
         onPositionUpdate={this.onPositionUpdate}
         shouldComponentUpdatePosition={this.shouldComponentUpdatePosition}>
@@ -92,7 +119,6 @@ class Tooltip extends Component {
 
 Tooltip.defaultProps = {
   direction: 'right',
-  maxWidth: 300,
   size: 'm',
   type: 'normal',
 };
@@ -106,7 +132,6 @@ Tooltip.propTypes = {
     'right',
     'top',
   ]),
-  maxWidth: PropTypes.number,
   size: PropTypes.oneOf([
     'l',
     'm',
