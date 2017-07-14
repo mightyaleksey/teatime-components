@@ -4727,12 +4727,16 @@ var Tooltip = function (_Component) {
         var styles = window.getComputedStyle(ref);
         var maxWidth = parseInt(styles.getPropertyValue('max-width'), 10);
 
+        ref.style.whiteSpace = 'normal';
         ref.style.width = maxWidth + 'px';
 
         var rect = ref.getBoundingClientRect();
         var isMultiline = !isNaN(maxWidth) ? _this.isMultiline(rect, maxWidth) : false;
 
-        if (!isMultiline) ref.style.width = 'auto';
+        if (!isMultiline) {
+          ref.style.whiteSpace = 'nowrap';
+          ref.style.width = 'auto';
+        }
 
         _this.setState({
           isVisible: true
