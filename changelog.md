@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.5
+
+- Fixed appearance of single line `Tooltip`.
+
+
 ## 0.10.4
 
 - Improved `Tooltip` position recalculation. Also removed prop #maxWidth in favor of css `max-width` rule: mix it to the root element and it will work.

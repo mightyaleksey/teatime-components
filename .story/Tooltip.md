@@ -20,7 +20,7 @@ In case you want to change the default tooltip's size — you should specify the
     <Tooltip
       direction='right'
       size='s'
-      type='normal'>Right</Tooltip>
+      type='normal'>Right direction</Tooltip>
     <Tooltip
       direction='top'
       size='s'

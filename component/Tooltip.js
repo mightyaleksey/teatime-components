@@ -79,6 +79,7 @@ class Tooltip extends Component {
       const styles = window.getComputedStyle(ref);
       const maxWidth = parseInt(styles.getPropertyValue('max-width'), 10);
 
+      ref.style.whiteSpace = 'normal';
       ref.style.width = maxWidth + 'px';
 
       const rect = ref.getBoundingClientRect();
@@ -86,7 +87,10 @@ class Tooltip extends Component {
         ? this.isMultiline(rect, maxWidth)
         : false;
 
-      if (!isMultiline) ref.style.width = 'auto';
+      if (!isMultiline) {
+        ref.style.whiteSpace = 'nowrap';
+        ref.style.width = 'auto';
+      }
 
       this.setState({
         isVisible: true,
