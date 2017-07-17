@@ -2,22 +2,22 @@
 
 exports[`Renders correctly with default props 1`] = `
 <span
-  className="wrapper"
-  onChange={undefined}
+  className="input"
+  style={undefined}
 >
   <input
     autoComplete={undefined}
-    autoFocus={undefined}
+    autoFocus={false}
     className="control"
-    disabled={undefined}
+    disabled={false}
     id={undefined}
     maxLength={undefined}
     name="control"
-    onBlur={undefined}
+    onBlur={[Function]}
     onChange={[Function]}
-    onFocus={undefined}
+    onFocus={[Function]}
     placeholder={undefined}
-    readOnly={undefined}
+    readOnly={false}
     type="text"
     value=""
   />
@@ -26,8 +26,8 @@ exports[`Renders correctly with default props 1`] = `
 
 exports[`Renders correctly with defined props 1`] = `
 <span
-  className="wrapper outer"
-  onChange={undefined}
+  className="input outer"
+  style={undefined}
 >
   <input
     autoComplete="off"
@@ -37,9 +37,9 @@ exports[`Renders correctly with defined props 1`] = `
     id="controls-id"
     maxLength="255"
     name="control"
-    onBlur={undefined}
+    onBlur={[Function]}
     onChange={[Function]}
-    onFocus={undefined}
+    onFocus={[Function]}
     placeholder="__"
     readOnly={true}
     type="password"

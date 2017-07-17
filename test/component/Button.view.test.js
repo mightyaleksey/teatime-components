@@ -1,8 +1,8 @@
 'use strict';
 
-const Button = require('../../component/Button');
-const React = require('react');
-const renderer = require('react-test-renderer');
+import Button from '../../component/Button';
+import React from 'react';
+import renderer from 'react-test-renderer';
 
 test('defaultProp #size should have a value `m`', () => {
   expect(Button.defaultProps.size).toBe('m');

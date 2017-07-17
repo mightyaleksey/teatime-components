@@ -1,0 +1,60 @@
+.button
+{
+  display: inline-block;
+
+  box-sizing: border-box;
+  margin: 0;
+
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+
+  border-radius: 3px;
+  outline: none;
+
+  -webkit-tap-highlight-color: transparent;
+
+  /* normal */
+
+  transition: border .1s ease-out,box-shadow .1s ease-out;
+
+  color: black;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+.button::-moz-focus-inner
+{
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+}
+
+.button:hover
+{
+  border: 1px solid #b3b3b3;
+}
+
+.button.focused
+{
+  border: 1px solid #ffdb4d;
+  box-shadow: inset 0 0 0 1px #ffdb4d;
+}
+
+.button:active
+{
+  background: #f6f5f3;
+}
+
+.button.disabled,
+.button:disabled
+{
+  cursor: default;
+
+  color: rgba(0,0,0,.5);
+  border: 1px solid #ebebeb;
+  background: #ebebeb;
+}

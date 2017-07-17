@@ -1,6 +1,0 @@
-.control
-{
-  composes: selector from './button.css';
-  composes: normal from './button.css';
-  composes: l from './button-size.css';
-}

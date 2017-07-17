@@ -1,8 +1,8 @@
 'use strict';
 
-const {shallow} = require('enzyme');
-const Tumbler = require('../../component/Tumbler');
-const React = require('react');
+import {shallow} from 'enzyme';
+import Tumbler from '../../component/Tumbler';
+import React from 'react';
 
 describe('prop #checked', () => {
   it('should correctly initialize with `null` value', () => {

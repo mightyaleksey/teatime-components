@@ -2,12 +2,12 @@
 
 exports[`Renders correctly with default props 1`] = `
 <span
-  className="container"
-  onChange={undefined}
+  className="colorPicker"
+  style={undefined}
 >
   <button
-    className="button"
-    disabled={undefined}
+    className="swatch"
+    disabled={false}
     onClick={[Function]}
     style={
       Object {
@@ -16,56 +16,44 @@ exports[`Renders correctly with default props 1`] = `
     }
   />
   <input
-    autoFocus={undefined}
     className="control"
-    disabled={undefined}
-    id={undefined}
-    name="control"
+    disabled={false}
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
-    placeholder={undefined}
-    type="text"
     value=""
   />
-  <span
-    className="menu bottom menu isClosedMenu"
-    role="listbox"
+  <div
+    className="menu bottom"
   />
 </span>
 `;
 
 exports[`Renders correctly with defined props 1`] = `
 <span
-  className="container outer"
-  onChange={undefined}
+  className="colorPicker outer"
+  style={undefined}
 >
   <button
-    className="button"
+    className="swatch"
     disabled={true}
     onClick={[Function]}
     style={
       Object {
-        "backgroundColor": "#bebebe",
+        "backgroundColor": "",
       }
     }
   />
   <input
-    autoFocus={true}
     className="control"
     disabled={true}
-    id="controls-id"
-    name="control"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
-    placeholder="rrggbb"
-    type="text"
-    value="BEBEBE"
+    value="#bebebe"
   />
-  <span
-    className="menu bottom menu isClosedMenu"
-    role="listbox"
+  <div
+    className="menu bottom"
   />
 </span>
 `;

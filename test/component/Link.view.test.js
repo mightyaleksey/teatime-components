@@ -1,20 +1,20 @@
 'use strict';
 
-const Link = require('../../component/Link');
-const React = require('react');
-const renderer = require('react-test-renderer');
+import Link from '../../component/Link';
+import React from 'react';
+import renderer from 'react-test-renderer';
 
 test('defaultProp #size should have a value `m`', () => {
   expect(Link.defaultProps.size).toBe('m');
 });
 
-test('defaultProp #theme should have a value `link`', () => {
-  expect(Link.defaultProps.theme).toBe('link');
+test('defaultProp #theme should have a value `common`', () => {
+  expect(Link.defaultProps.theme).toBe('common');
 });
 
 test('Renders correctly with default props', () => {
   const tree = renderer.create(
-    <Link>
+    <Link href='#'>
       Link Content
     </Link>
   );

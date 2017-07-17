@@ -1,0 +1,13 @@
+@value font-large, padding-large from '../const.css';
+
+.button
+{
+  composes: button from './button-action.css';
+  padding: padding-large;
+  font: font-large;
+}
+
+.focused
+{
+  composes: focused from './button-action.css';
+}

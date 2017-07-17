@@ -2,21 +2,21 @@
 
 exports[`Renders correctly with default props 1`] = `
 <span
-  className="wrapper"
-  onChange={undefined}
+  className="check"
+  style={undefined}
 >
   <input
     checked={undefined}
     className="native"
     defaultChecked={undefined}
-    disabled={undefined}
+    disabled={false}
     id="_teatime1"
     name="control"
-    onBlur={undefined}
+    onBlur={[Function]}
     onChange={[Function]}
-    onFocus={undefined}
+    onFocus={[Function]}
     type="checkbox"
-    value={undefined}
+    value="on"
   />
   <label
     className="control"
@@ -33,8 +33,8 @@ exports[`Renders correctly with default props 1`] = `
 
 exports[`Renders correctly with defined props 1`] = `
 <span
-  className="wrapper outer"
-  onChange={undefined}
+  className="check outer"
+  style={undefined}
 >
   <input
     checked={true}
@@ -43,14 +43,18 @@ exports[`Renders correctly with defined props 1`] = `
     disabled={true}
     id="controls-id"
     name="control"
-    onBlur={undefined}
+    onBlur={[Function]}
     onChange={[Function]}
-    onFocus={undefined}
+    onFocus={[Function]}
     type="checkbox"
     value="controls value"
   />
   <label
     className="control"
+    htmlFor="controls-id"
+  />
+  <label
+    className="label"
     htmlFor="controls-id"
   >
     Make Awesome!

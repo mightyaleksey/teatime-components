@@ -1,8 +1,8 @@
 'use strict';
 
-const {shallow} = require('enzyme');
-const Check = require('../../component/Check');
-const React = require('react');
+import {shallow} from 'enzyme';
+import Check from '../../component/Check';
+import React from 'react';
 
 describe('prop #checked', () => {
   it('should correctly initialize with `null` value', () => {
@@ -10,7 +10,7 @@ describe('prop #checked', () => {
       <Check
         checked={null}
         name='control'/>
-    );
+    ).dive();
 
     expect(component.find('input').props()).toEqual(expect.objectContaining({
       defaultChecked: void 0,
@@ -23,7 +23,7 @@ describe('prop #checked', () => {
       <Check
         checked
         name='control'/>
-    );
+    ).dive();
 
     component.setProps({checked: null});
 
@@ -41,7 +41,7 @@ describe('onBlur', () => {
       <Check
         name='control'
         onBlur={onBlur}/>
-    );
+    ).dive();
 
     component.find('input').simulate('blur');
     expect(onBlur).toHaveBeenCalledTimes(1);
@@ -50,20 +50,20 @@ describe('onBlur', () => {
 
 describe('onChange', () => {
   it('should call the handler', () => {
-    const event = {target: {checked: true, value: 'controls value'}};
+    const event = {target: {checked: true}};
     const onChange = jest.fn();
     const component = shallow(
       <Check
         name='control'
         onChange={onChange}/>
-    );
+    ).dive();
 
     component.find('input').simulate('change', event);
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(event, {
       checked: true,
       name: 'control',
-      value: 'controls value',
+      value: expect.any(String),
     });
   });
 });
@@ -75,7 +75,7 @@ describe('onFocus', () => {
       <Check
         name='control'
         onFocus={onFocus}/>
-    );
+    ).dive();
 
     component.find('input').simulate('focus');
     expect(onFocus).toHaveBeenCalledTimes(1);

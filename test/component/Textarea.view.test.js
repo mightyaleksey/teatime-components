@@ -1,8 +1,8 @@
 'use strict';
 
-const React = require('react');
-const Textarea = require('../../component/Textarea');
-const renderer = require('react-test-renderer');
+import React from 'react';
+import Textarea from '../../component/Textarea';
+import renderer from 'react-test-renderer';
 
 test('defaultProp #size should have a value `m`', () => {
   expect(Textarea.defaultProps.size).toBe('m');

@@ -2,27 +2,27 @@
 
 exports[`Renders correctly with default props 1`] = `
 <span
-  className="wrapper"
-  onChange={undefined}
+  className="tumbler"
+  style={undefined}
 >
   <span
     className="baseline"
   >
-    <div
+    <span
       className="shape"
     >
       <input
         checked={undefined}
         className="native"
         defaultChecked={undefined}
-        disabled={undefined}
+        disabled={false}
         id="_teatime1"
         name="control"
-        onBlur={undefined}
+        onBlur={[Function]}
         onChange={[Function]}
-        onFocus={undefined}
+        onFocus={[Function]}
         type="checkbox"
-        value={undefined}
+        value="on"
       />
       <label
         className="control"
@@ -44,20 +44,20 @@ exports[`Renders correctly with default props 1`] = `
            
         </span>
       </label>
-    </div>
+    </span>
   </span>
 </span>
 `;
 
 exports[`Renders correctly with defined props 1`] = `
 <span
-  className="wrapper outer"
-  onChange={undefined}
+  className="tumbler outer"
+  style={undefined}
 >
   <span
     className="baseline"
   >
-    <div
+    <span
       className="shape"
     >
       <input
@@ -67,11 +67,11 @@ exports[`Renders correctly with defined props 1`] = `
         disabled={true}
         id="controls-id"
         name="control"
-        onBlur={undefined}
+        onBlur={[Function]}
         onChange={[Function]}
-        onFocus={undefined}
+        onFocus={[Function]}
         type="checkbox"
-        value={undefined}
+        value="on"
       />
       <label
         className="control"
@@ -93,7 +93,7 @@ exports[`Renders correctly with defined props 1`] = `
            
         </span>
       </label>
-    </div>
+    </span>
   </span>
 </span>
 `;

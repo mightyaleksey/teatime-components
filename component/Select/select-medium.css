@@ -1,0 +1,91 @@
+@value font-medium from '../const.css';
+
+.select
+{
+  composes: select from './select.css';
+
+  width: 183px;
+
+  font: 13px/28px arial,sans-serif;
+}
+
+.baseline
+{
+  composes: baseline from './select.css';
+}
+
+.search
+{
+  composes: search from './select.css';
+
+  padding: 0 29px 0 13px;
+}
+
+.focused
+{
+  composes: focused from './select.css';
+}
+
+.control
+{
+  composes: control from './select.css';
+
+  padding: 0 30px 0 12px;
+
+  font: font-medium;
+}
+
+.arrow
+{
+  composes: arrow from './select.css';
+
+  width: 31px;
+
+  background: url(../../asset/arrow-m.svg) center center no-repeat;
+}
+
+.menu
+{
+  composes: menu from './select.css';
+
+  max-height: 198px;
+  padding: 4px 0;
+}
+
+.bottom
+{
+  composes: bottom from './select.css';
+}
+
+.top
+{
+  composes: top from './select.css';
+}
+
+.opened
+{
+  composes: opened from './select.css';
+}
+
+.menuItem
+{
+  composes: menuItem from './select.css';
+
+  padding: 0 13px 0 30px;
+}
+
+.selected
+{
+  composes: selected from './select.css';
+
+  background-image: url(../../asset/tick-m.svg);
+  background-position: 13px center;
+  background-size: auto;
+}
+
+.emptyItem
+{
+  composes: emptyItem from './select.css';
+
+  padding: 0 13px;
+}

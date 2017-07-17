@@ -1,9 +1,0 @@
-.selector
-{
-  /* the common selector */
-}
-
-.control
-{
-  composes: control from '../input/input.css';
-}

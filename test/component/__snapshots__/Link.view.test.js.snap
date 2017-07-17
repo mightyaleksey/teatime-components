@@ -2,12 +2,14 @@
 
 exports[`Renders correctly with default props 1`] = `
 <a
-  className="control"
-  download={undefined}
-  href={undefined}
+  className="link"
+  disabled={false}
+  download={false}
+  href="#"
   id={undefined}
   onClick={[Function]}
-  target={undefined}
+  rel={undefined}
+  target="_self"
   type={undefined}
 >
   Link Content
@@ -16,11 +18,13 @@ exports[`Renders correctly with default props 1`] = `
 
 exports[`Renders correctly with defined props 1`] = `
 <a
-  className="control disabled outer"
+  className="link disabled outer"
+  disabled={true}
   download={true}
   href="#"
   id="links id"
   onClick={[Function]}
+  rel="noopener noreferrer"
   target="_blank"
   type="video/mp4"
 >

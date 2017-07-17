@@ -1,8 +1,8 @@
 'use strict';
 
-const Select = require('../../component/Select');
-const React = require('react');
-const renderer = require('react-test-renderer');
+import Select from '../../component/Select';
+import React from 'react';
+import renderer from 'react-test-renderer';
 
 test('defaultProp #size should have a value `m`', () => {
   expect(Select.defaultProps.size).toBe('m');

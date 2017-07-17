@@ -1,0 +1,26 @@
+.link,
+.link:visited
+{
+  margin: 0;
+  padding: 0;
+
+  cursor: pointer;
+  transition: color .15s ease-out;
+  text-decoration: none;
+
+  color: #04b;
+
+  line-height: 1.2;
+}
+
+.link:hover
+{
+  color: #c00;
+}
+
+.link.disabled
+{
+  cursor: default;
+
+  color: rgba(0,0,0,.5);
+}

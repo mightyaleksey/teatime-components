@@ -1,8 +1,8 @@
 'use strict';
 
-const CheckGroup = require('../../component/CheckGroup');
-const React = require('react');
-const renderer = require('react-test-renderer');
+import CheckGroup from '../../component/CheckGroup';
+import React from 'react';
+import renderer from 'react-test-renderer';
 
 test('defaultProp #size should have a value `m`', () => {
   expect(CheckGroup.defaultProps.size).toBe('m');

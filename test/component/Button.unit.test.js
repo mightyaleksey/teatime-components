@@ -1,8 +1,8 @@
 'use strict';
 
-const {shallow} = require('enzyme');
-const Button = require('../../component/Button');
-const React = require('react');
+import {shallow} from 'enzyme';
+import Button from '../../component/Button';
+import React from 'react';
 
 describe('onBlur', () => {
   it('should call the handler', () => {

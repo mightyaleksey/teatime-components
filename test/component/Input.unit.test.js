@@ -1,8 +1,8 @@
 'use strict';
 
-const {shallow} = require('enzyme');
-const Input = require('../../component/Input');
-const React = require('react');
+import {shallow} from 'enzyme';
+import Input from '../../component/Input';
+import React from 'react';
 
 describe('(un)controllable behavior', () => {
   it('should initialize uncontrollable if `value` is not presented', () => {

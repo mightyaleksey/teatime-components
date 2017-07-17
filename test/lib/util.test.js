@@ -1,50 +1,12 @@
-'use strict';
+import {chunk, identity, mapN} from '../../lib/util';
 
-const {isControlled, omitNonStandardAttrs, omitNonStandardAttrsAndHandlers} = require('../../lib/util');
-
-test('isControlled', () => {
-  expect(isControlled({value: null})).toBe(true);
-  expect(isControlled({value: void 0})).toBe(false);
-  expect(isControlled({})).toBe(false);
+test('chunk', () => {
+  expect(chunk([])).toEqual([]);
+  expect(chunk([1, 2])).toEqual([[1], [2]]);
+  expect(chunk([1, 2, 3], 2)).toEqual([[1, 2], [3]]);
 });
 
-test('omitNonStandardAttrs', () => {
-  const sample = {
-    className: 'yo',
-    'data-value': 'valid',
-    dataValue: 'invalid',
-    onClick: 'noop',
-    onFocus: 'noop',
-    style: {},
-    whatever: 'nope',
-  };
-
-  const expected = {
-    'data-value': 'valid',
-    onClick: 'noop',
-    onFocus: 'noop',
-    style: {},
-  };
-
-  expect(omitNonStandardAttrs(sample)).toEqual(expected);
-});
-
-test('omitNonStandardAttrsAndHandlers', () => {
-  const sample = {
-    className: 'yo',
-    'data-value': 'valid',
-    dataValue: 'invalid',
-    onClick: 'noop',
-    onFocus: 'noop',
-    style: {},
-    whatever: 'nope',
-  };
-
-  const expected = {
-    'data-value': 'valid',
-    onClick: 'noop',
-    style: {},
-  };
-
-  expect(omitNonStandardAttrsAndHandlers(sample)).toEqual(expected);
+test('mapN', () => {
+  expect(mapN(identity, [1, 2, 3, 4], 2)).toEqual([1, 2]);
+  expect(mapN(identity, [1, 2, 3, 4], 2, 1)).toEqual([2, 3]);
 });

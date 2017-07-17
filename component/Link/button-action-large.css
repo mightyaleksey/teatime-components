@@ -1,0 +1,15 @@
+@value font-large, padding-large from '../const.css';
+
+.link
+{
+  composes: button from '../Button/button-action.css';
+
+  padding: padding-large;
+
+  font: font-large;
+}
+
+.disabled
+{
+  composes: disabled from '../Button/button-action.css';
+}

@@ -1,14 +1,18 @@
 'use strict';
 
-const {shallow} = require('enzyme');
-const Link = require('../../component/Link');
-const React = require('react');
+import {shallow} from 'enzyme';
+import Link from '../../component/Link';
+import React from 'react';
 
 describe('onClick', () => {
   it('should call the handler', () => {
     const onClick = jest.fn();
     const preventDefault = jest.fn();
-    const component = shallow(<Link onClick={onClick}/>);
+    const component = shallow(
+      <Link
+        href='#'
+        onClick={onClick}/>
+    );
 
     component.find('a').simulate('click', {preventDefault});
     expect(onClick).toHaveBeenCalledTimes(1);
@@ -18,7 +22,12 @@ describe('onClick', () => {
   it('should not call the handler if #disabled', () => {
     const onClick = jest.fn();
     const preventDefault = jest.fn();
-    const component = shallow(<Link disabled onClick={onClick}/>);
+    const component = shallow(
+      <Link
+        disabled
+        href='#'
+        onClick={onClick}/>
+    );
 
     component.find('a').simulate('click', {preventDefault});
     expect(onClick).not.toHaveBeenCalledTimes(1);

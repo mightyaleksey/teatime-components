@@ -1,0 +1,116 @@
+.radio
+{
+  display: inline-block;
+}
+
+.box
+{
+  position: relative;
+
+  display: inline;
+
+  color: black;
+
+  font: inherit;
+}
+
+.box:first-child .control
+{
+  border-radius: 3px 0 0 3px;
+}
+
+.box:last-child .control
+{
+  margin-right: 0;
+
+  border-radius: 0 3px 3px 0;
+}
+
+.native
+{
+  position: absolute;
+
+  margin: 0;
+
+  opacity: 0;
+  border: 0;
+  outline: 0;
+}
+
+.native:checked + .control
+{
+  position: relative;
+
+  background: #ffeca6;
+}
+
+.native:checked + .control:active
+{
+  background: #fee481;
+}
+
+.native + .control:active
+{
+  background: #f6f5f3;
+}
+
+/*.native:focus + .control
+{
+  z-index: 1;
+
+  border: 1px solid #ffdb4d;
+  box-shadow: inset 0 0 0 1px #ffdb4d;
+}*/
+
+.native:disabled + .control
+{
+  z-index: 0;
+
+  cursor: default;
+
+  border: 1px solid transparent;
+  background: #ebebeb;
+}
+
+.native:disabled:checked + .control
+{
+  background: #d9d9d9;
+}
+
+.control
+{
+  position: relative;
+  z-index: 0;
+
+  display: inline-block;
+
+  box-sizing: border-box;
+  margin-right: -1px;
+
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  text-decoration: none;
+
+  color: black;
+  border: 1px solid #ccc;
+  outline: none;
+  background: white;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.control:hover
+{
+  z-index: 1;
+
+  border: 1px solid #b3b3b3;
+}
+
+.control::-moz-focus-inner
+{
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+}

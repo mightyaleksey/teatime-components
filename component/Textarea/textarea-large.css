@@ -1,0 +1,8 @@
+.textarea
+{
+  composes: control from '../Input/input.css';
+
+  padding: 6px 9px;
+
+  font: 15px/1.2 arial,sans-serif;
+}

@@ -1,0 +1,15 @@
+@value font-medium, padding-medium from '../const.css';
+
+.link
+{
+  composes: button from '../Button/button-normal.css';
+
+  padding: padding-medium;
+
+  font: font-medium;
+}
+
+.disabled
+{
+  composes: disabled from '../Button/button-normal.css';
+}

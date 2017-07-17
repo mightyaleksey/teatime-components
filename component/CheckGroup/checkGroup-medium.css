@@ -1,0 +1,16 @@
+.checkGroup
+{
+  composes: checkGroup from './checkGroup.css';
+}
+
+.column
+{
+  composes: column from './checkGroup.css';
+}
+
+.check
+{
+  composes: check from './checkGroup.css';
+
+  margin: 0 0 15px;
+}

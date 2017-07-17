@@ -1,0 +1,125 @@
+.tumbler
+{
+  display: inline-block;
+}
+
+.baseline
+{
+  display: inline-block;
+  overflow: visible;
+
+  width: 100%;
+
+  vertical-align: top;
+
+  font: inherit;
+}
+
+.shape
+{
+  position: relative;
+
+  display: block;
+  overflow: hidden;
+
+  width: 100%;
+
+  border-radius: 3px;
+
+  font: inherit;
+}
+
+.native
+{
+  position: absolute;
+
+  opacity: 0;
+}
+
+.native:checked + .control
+{
+  margin-left: 0;
+}
+
+/*.native:focus + .control .delimiter
+{
+  box-shadow: inset 0 0 0 2px #fc0;
+}*/
+
+.native:disabled + .control .label
+{
+  cursor: default;
+
+  color: rgba(0,0,0,.5);
+  border: 1px solid #ebebeb;
+  background: #ebebeb;
+}
+
+.native:disabled + .control .label:first-child
+{
+  border: 1px solid #d9d9d9;
+  background: #d9d9d9;
+}
+
+.native:disabled + .control .delimiter
+{
+  cursor: default;
+
+  border: 1px solid #d8d8d8;
+  background: #d8d8d8;
+}
+
+.native:disabled:checked + .control .delimiter
+{
+  border: 1px solid #c8c8c8;
+  background: #c8c8c8;
+}
+
+.control
+{
+  user-select: none;
+  transition: margin .1s ease-out;
+  white-space: nowrap;
+
+  font: inherit;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.label
+{
+  display: inline-block;
+
+  box-sizing: border-box;
+
+  cursor: pointer;
+  text-align: center;
+
+  border: 1px solid #c2c2c2;
+  border-radius: 3px;
+  background: #f2f2f2;
+
+  font: inherit;
+}
+
+.label:first-child
+{
+  border: 1px solid #ccbd80;
+  background: #ffeba0;
+}
+
+.delimiter
+{
+  display: inline-block;
+
+  box-sizing: border-box;
+
+  cursor: pointer;
+  transition: border .1s ease-out;
+
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: white;
+
+  font: inherit;
+}

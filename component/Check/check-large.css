@@ -1,0 +1,45 @@
+/*@value font-large from '../const.css';*/
+
+.check
+{
+  composes: check from './check.css';
+  font: 15px/1.2 arial,sans-serif;
+}
+
+.native
+{
+  composes: native from './check.css';
+}
+
+.control
+{
+  composes: control from './check.css';
+  width: 17px;
+  height: 17px;
+}
+
+.control:after
+{
+  bottom: 10px;
+  left: 3px;
+
+  width: 16px;
+  height: 17px;
+
+  background: url(../../asset/tip-l.svg) 0 0 no-repeat;
+}
+
+.label
+{
+  composes: label from './check.css';
+}
+
+.focused
+{
+  composes: focused from './check.css';
+}
+
+.native:checked + .control:after
+{
+  bottom: 3px;
+}

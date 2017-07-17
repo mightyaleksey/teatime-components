@@ -1,8 +1,8 @@
 'use strict';
 
-const Tumbler = require('../../component/Tumbler');
-const React = require('react');
-const renderer = require('react-test-renderer');
+import Tumbler from '../../component/Tumbler';
+import React from 'react';
+import renderer from 'react-test-renderer';
 
 test('defaultProp #size should have a value `m`', () => {
   expect(Tumbler.defaultProps.size).toBe('m');

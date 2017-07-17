@@ -1,0 +1,45 @@
+/*@value font-medium from '../const.css';*/
+
+.check
+{
+  composes: check from './check.css';
+  font: 13px/1.2 arial,sans-serif;
+}
+
+.native
+{
+  composes: native from './check.css';
+}
+
+.control
+{
+  composes: control from './check.css';
+  width: 14px;
+  height: 14px;
+}
+
+.control:after
+{
+  bottom: 8px;
+  left: 2px;
+
+  width: 15px;
+  height: 16px;
+
+  background: url(../../asset/tip-m.svg) 0 0 no-repeat;
+}
+
+.label
+{
+  composes: label from './check.css';
+}
+
+.focused
+{
+  composes: focused from './check.css';
+}
+
+.native:checked + .control:after
+{
+  bottom: 3px;
+}

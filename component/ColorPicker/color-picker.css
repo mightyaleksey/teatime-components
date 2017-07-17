@@ -1,0 +1,103 @@
+.colorPicker
+{
+  position: relative;
+
+  display: inline-block;
+
+  width: 11em; /* todo make equal width for input and colorPicker */
+
+  white-space: nowrap;
+}
+
+.swatch
+{
+  composes: button from '../Button/button-normal.css';
+
+  position: relative;
+
+  margin: 0 -1px 0 0;
+  padding: 0;
+
+  border-radius: 0;
+
+  font: inherit;
+}
+
+.swatch:before
+{
+  visibility: hidden;
+
+  content: '\00A0';
+}
+
+.swatch:active,
+.swatch:hover,
+.swatch:focus
+{
+  z-index: 1;
+}
+
+.swatch:disabled
+{
+  z-index: 1;
+
+  background: white;
+}
+
+.swatch:disabled:after
+{
+  position: absolute;
+  top: 49.5%;
+  left: -19.5%;
+
+  width: 141%;
+  height: 0;
+
+  content: '';
+  transform: rotate(-45deg);
+
+  border-bottom: 1px solid #ccc;
+}
+
+.menu
+{
+  position: absolute;
+  z-index: 1;
+  left: 0;
+
+  display: none;
+  overflow-y: auto;
+
+  min-width: 100%;
+
+  background: white;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.1),0 9px 20px -5px rgba(0,0,0,.4);
+
+  font: inherit;
+}
+
+.menu.bottom
+{
+  top: calc(100% + 8px);
+}
+
+.menu.top
+{
+  bottom: calc(100% + 8px);
+}
+
+.menu.opened
+{
+  display: block;
+}
+
+.menuItem
+{
+  float: left;
+
+  width: 7.69%;
+  height: 0;
+  padding-bottom: 7.69%;
+
+  cursor: pointer;
+}

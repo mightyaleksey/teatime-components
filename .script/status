@@ -1,6 +1,0 @@
-#!/bin/sh
-
-if [ `git status -s|wc -l` -gt '0' ]; then
-  echo 'commit changes first'
-  exit 1
-fi

@@ -1,0 +1,11 @@
+.link
+{
+  composes: link from './link-common.css';
+
+  font: 13px/1.2 arial,sans-serif;
+}
+
+.disabled
+{
+  composes: disabled from './link-common.css';
+}

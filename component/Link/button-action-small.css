@@ -1,0 +1,15 @@
+@value font-small, padding-small from '../const.css';
+
+.link
+{
+  composes: button from '../Button/button-action.css';
+
+  padding: padding-small;
+
+  font: font-small;
+}
+
+.disabled
+{
+  composes: disabled from '../Button/button-action.css';
+}

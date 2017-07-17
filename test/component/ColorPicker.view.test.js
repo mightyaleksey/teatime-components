@@ -1,8 +1,8 @@
 'use strict';
 
-const ColorPicker = require('../../component/ColorPicker');
-const React = require('react');
-const renderer = require('react-test-renderer');
+import ColorPicker from '../../component/ColorPicker';
+import React from 'react';
+import renderer from 'react-test-renderer';
 
 test('defaultProp #size should have a value `m`', () => {
   expect(ColorPicker.defaultProps.size).toBe('m');

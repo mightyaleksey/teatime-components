@@ -2,12 +2,12 @@
 
 exports[`Renders correctly with default props 1`] = `
 <span
-  className="wrapper"
-  onChange={undefined}
+  className="select"
+  id={undefined}
+  style={undefined}
 >
   <input
-    disabled={undefined}
-    id={undefined}
+    disabled={false}
     name="control"
     type="hidden"
     value=""
@@ -16,35 +16,32 @@ exports[`Renders correctly with default props 1`] = `
     className="baseline"
   >
     <button
-      className="control hasPlaceholder"
-      disabled={undefined}
-      onBlur={undefined}
+      className="control"
+      disabled={false}
       onClick={[Function]}
-      onFocus={undefined}
       onKeyDown={[Function]}
     >
       —
     </button>
-    <i
+    <span
       className="arrow"
       onClick={[Function]}
     />
   </span>
-  <span
-    className="menu bottom menu isClosedMenu"
-    role="listbox"
+  <div
+    className="menu bottom"
   />
 </span>
 `;
 
 exports[`Renders correctly with defined props 1`] = `
 <span
-  className="wrapper outer"
-  onChange={undefined}
+  className="select outer"
+  id="controls-id"
+  style={undefined}
 >
   <input
     disabled={true}
-    id="controls-id"
     name="control"
     type="hidden"
     value="dd"
@@ -53,34 +50,30 @@ exports[`Renders correctly with defined props 1`] = `
     className="baseline"
   >
     <input
-      className="search isPseudoFocusedSearch"
+      className="search focused"
       disabled={true}
-      onBlur={undefined}
       onChange={[Function]}
       onClick={[Function]}
-      onFocus={undefined}
       onKeyDown={[Function]}
       role="combobox"
       value=""
     />
-    <span
+    <button
       className="control"
       disabled={true}
-      onBlur={null}
       onClick={[Function]}
-      onFocus={null}
       onKeyDown={[Function]}
+      tabIndex="-1"
     >
       dd
-    </span>
-    <i
+    </button>
+    <span
       className="arrow"
       onClick={[Function]}
     />
   </span>
-  <span
-    className="menu bottom menu isClosedMenu isFixedMenu"
-    role="listbox"
+  <div
+    className="menu bottom fixed"
   />
 </span>
 `;

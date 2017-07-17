@@ -1,0 +1,11 @@
+.link
+{
+  composes: link from './link-cornflower-blue.css';
+
+  font: 15px/1.2 arial,sans-serif;
+}
+
+.disabled
+{
+  composes: disabled from './link-cornflower-blue.css';
+}

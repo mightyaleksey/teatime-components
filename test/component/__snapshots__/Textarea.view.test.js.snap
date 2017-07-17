@@ -3,18 +3,21 @@
 exports[`Renders correctly with default props 1`] = `
 <textarea
   autoComplete={undefined}
-  autoFocus={undefined}
-  className="control"
+  autoFocus={false}
+  className="textarea"
   cols={undefined}
   defaultValue={undefined}
-  disabled={undefined}
+  disabled={false}
   id={undefined}
   maxLength={undefined}
   name="control"
+  onBlur={[Function]}
   onChange={[Function]}
+  onFocus={[Function]}
   placeholder={undefined}
-  readOnly={undefined}
-  rows="3"
+  readOnly={false}
+  rows={undefined}
+  style={undefined}
   value={undefined}
 />
 `;
@@ -23,17 +26,20 @@ exports[`Renders correctly with defined props 1`] = `
 <textarea
   autoComplete="off"
   autoFocus={true}
-  className="control outer"
+  className="textarea outer"
   cols="5"
   defaultValue={undefined}
   disabled={true}
   id="controls-id"
   maxLength="25"
   name="control"
+  onBlur={[Function]}
   onChange={[Function]}
+  onFocus={[Function]}
   placeholder="it is a placeholder"
   readOnly={true}
   rows="10"
+  style={undefined}
   value="Any Code..."
 />
 `;

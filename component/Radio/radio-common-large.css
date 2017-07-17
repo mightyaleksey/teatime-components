@@ -1,0 +1,47 @@
+.radio
+{
+  composes: radio from './radio-common.css';
+
+  font: 15px/1.2 arial,sans-serif;
+}
+
+.box
+{
+  composes: box from './radio-common.css';
+
+  margin: 0 0 15px;
+}
+
+.box:last-child
+{
+  margin: 0;
+}
+
+.native
+{
+  composes: native from './radio-common.css';
+}
+
+.control
+{
+  composes: control from './radio-common.css';
+
+  width: 17px;
+  height: 17px;
+}
+
+.control:after
+{
+  top: 4px;
+  left: 4px;
+
+  width: 7px;
+  height: 7px;
+}
+
+.label
+{
+  composes: label from './radio-common.css';
+
+  margin: 0 0 0 7px;
+}

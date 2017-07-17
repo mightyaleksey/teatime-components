@@ -1,0 +1,16 @@
+.spin
+{
+  composes: spin from './spin.css';
+
+  font: 13px/24px arial,sans-serif;
+}
+
+.control
+{
+  composes: control from './spin.css';
+
+  width: 24px;
+  height: 24px;
+
+  line-height: 20px;
+}

@@ -1,8 +1,8 @@
 'use strict';
 
-const {shallow} = require('enzyme');
-const React = require('react');
-const Textarea = require('../../component/Textarea');
+import {shallow} from 'enzyme';
+import React from 'react';
+import Textarea from '../../component/Textarea';
 
 describe('prop #value', () => {
   it('should correctly initialize with `null` value', () => {

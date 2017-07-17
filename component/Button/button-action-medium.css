@@ -1,0 +1,15 @@
+@value font-medium, padding-medium from '../const.css';
+
+.button
+{
+  composes: button from './button-action.css';
+
+  padding: padding-medium;
+
+  font: font-medium;
+}
+
+.focused
+{
+  composes: focused from './button-action.css';
+}

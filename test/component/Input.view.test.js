@@ -1,8 +1,8 @@
 'use strict';
 
-const Input = require('../../component/Input');
-const React = require('react');
-const renderer = require('react-test-renderer');
+import Input from '../../component/Input';
+import React from 'react';
+import renderer from 'react-test-renderer';
 
 test('defaultProp #size should have a value `m`', () => {
   expect(Input.defaultProps.size).toBe('m');

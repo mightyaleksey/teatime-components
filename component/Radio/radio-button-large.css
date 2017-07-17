@@ -1,0 +1,32 @@
+@value font-large, padding-large from '../const.css';
+
+.radio
+{
+  composes: radio from './radio-button.css';
+
+  font: 15px/1.2 arial,sans-serif;
+}
+
+.box
+{
+  composes: box from './radio-button.css';
+}
+
+.native
+{
+  composes: native from './radio-button.css';
+}
+
+.control
+{
+  composes: control from './radio-button.css';
+
+  padding: padding-large;
+
+  font: font-large;
+}
+
+.label
+{
+  composes: label from './radio-button.css';
+}

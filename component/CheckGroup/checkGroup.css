@@ -1,0 +1,24 @@
+.checkGroup
+{
+  display: flex;
+
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.column
+{
+  display: block;
+
+  flex: 1 1 0;
+}
+
+.check
+{
+  display: block;
+}
+
+.check:last-child
+{
+  margin: 0;
+}

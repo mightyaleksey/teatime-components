@@ -2,24 +2,26 @@
 
 exports[`Renders correctly with default props 1`] = `
 <div
-  className="container"
-  id={undefined}
-  onChange={undefined}
+  className="checkGroup"
+  style={undefined}
 >
   <div
     className="column"
   >
     <span
-      className="wrapper"
+      className="check check"
+      style={undefined}
     >
       <input
         checked={false}
         className="native"
-        defaultValue={undefined}
-        disabled={undefined}
+        defaultChecked={undefined}
+        disabled={false}
         id="_teatime1"
         name="control"
+        onBlur={[Function]}
         onChange={[Function]}
+        onFocus={[Function]}
         type="checkbox"
         value="aa"
       />
@@ -35,16 +37,19 @@ exports[`Renders correctly with default props 1`] = `
       </label>
     </span>
     <span
-      className="wrapper"
+      className="check check"
+      style={undefined}
     >
       <input
         checked={false}
         className="native"
-        defaultValue={undefined}
-        disabled={undefined}
+        defaultChecked={undefined}
+        disabled={false}
         id="_teatime2"
         name="control"
+        onBlur={[Function]}
         onChange={[Function]}
+        onFocus={[Function]}
         type="checkbox"
         value="bb"
       />
@@ -60,16 +65,19 @@ exports[`Renders correctly with default props 1`] = `
       </label>
     </span>
     <span
-      className="wrapper"
+      className="check check"
+      style={undefined}
     >
       <input
         checked={false}
         className="native"
-        defaultValue={undefined}
-        disabled={undefined}
+        defaultChecked={undefined}
+        disabled={false}
         id="_teatime3"
         name="control"
+        onBlur={[Function]}
         onChange={[Function]}
+        onFocus={[Function]}
         type="checkbox"
         value="cc"
       />
@@ -90,24 +98,26 @@ exports[`Renders correctly with default props 1`] = `
 
 exports[`Renders correctly with defined props 1`] = `
 <div
-  className="container outer"
-  id="controls-id"
-  onChange={undefined}
+  className="checkGroup outer"
+  style={undefined}
 >
   <div
     className="column"
   >
     <span
-      className="wrapper"
+      className="check check"
+      style={undefined}
     >
       <input
         checked={false}
         className="native"
-        defaultValue={undefined}
+        defaultChecked={undefined}
         disabled={true}
         id="_teatime4"
         name="control"
+        onBlur={[Function]}
         onChange={[Function]}
+        onFocus={[Function]}
         type="checkbox"
         value="aa"
       />
@@ -123,16 +133,19 @@ exports[`Renders correctly with defined props 1`] = `
       </label>
     </span>
     <span
-      className="wrapper"
+      className="check check"
+      style={undefined}
     >
       <input
         checked={true}
         className="native"
-        defaultValue={undefined}
+        defaultChecked={undefined}
         disabled={true}
         id="_teatime5"
         name="control"
+        onBlur={[Function]}
         onChange={[Function]}
+        onFocus={[Function]}
         type="checkbox"
         value="bb"
       />
@@ -152,16 +165,19 @@ exports[`Renders correctly with defined props 1`] = `
     className="column"
   >
     <span
-      className="wrapper"
+      className="check check"
+      style={undefined}
     >
       <input
         checked={true}
         className="native"
-        defaultValue={undefined}
+        defaultChecked={undefined}
         disabled={true}
         id="_teatime6"
         name="control"
+        onBlur={[Function]}
         onChange={[Function]}
+        onFocus={[Function]}
         type="checkbox"
         value="cc"
       />

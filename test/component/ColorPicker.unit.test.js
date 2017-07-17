@@ -1,8 +1,8 @@
 'use strict';
 
-const {shallow} = require('enzyme');
-const ColorPicker = require('../../component/ColorPicker');
-const React = require('react');
+import {shallow} from 'enzyme';
+import ColorPicker from '../../component/ColorPicker';
+import React from 'react';
 
 describe('(un)controllable behavior', () => {
   it('should initialize uncontrollable if `value` is not presented', () => {

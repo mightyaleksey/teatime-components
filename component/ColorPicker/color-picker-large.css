@@ -1,0 +1,53 @@
+.colorPicker
+{
+  composes: colorPicker from './color-picker.css';
+
+  font: 15px/32px arial,sans-serif;
+}
+
+.swatch
+{
+  composes: swatch from './color-picker.css';
+
+  width: 32px;
+  height: 32px;
+
+  line-height: 30px;
+}
+
+.clear
+{
+  composes: clear from '../Input/input-large.css';
+}
+
+.control
+{
+  composes: control from '../Input/input-large.css';
+
+  width: calc(100% - 31px);
+}
+
+.menu
+{
+  composes: menu from './color-picker.css';
+}
+
+.bottom
+{
+  composes: bottom from './color-picker.css';
+}
+
+.top
+{
+  composes: top from './color-picker.css';
+}
+
+.opened
+{
+  composes: opened from './color-picker.css';
+}
+
+.menuItem
+{
+  composes: menuItem from './color-picker.css';
+}
