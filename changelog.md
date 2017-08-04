@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.6
+
+- Fixed `Radio` disabled state.
+
+
 ## 0.10.5
 
 - Fixed appearance of single line `Tooltip`.

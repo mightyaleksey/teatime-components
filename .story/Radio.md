@@ -19,6 +19,7 @@
     theme='button'/>
   {' '}
   <Radio
+    defaultValue='mz'
     disabled={true}
     name='motorrad-ds'
     options={[
@@ -49,6 +50,7 @@
     theme='common'/>
   {' '}
   <Radio
+    defaultValue='mz'
     disabled={true}
     name='motorrad-cds'
     options={[
