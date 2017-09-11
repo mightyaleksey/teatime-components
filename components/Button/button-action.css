@@ -1,0 +1,76 @@
+@keyframes flicker
+{
+  from,
+  to
+  {
+    border-color: #fc0;
+    background-color: #fc0;
+  }
+
+  40%,
+  60%
+  {
+    border-color: #ffe066;
+    background-color: #ffe066;
+  }
+}
+
+.button
+{
+  display: inline-block;
+
+  box-sizing: border-box;
+  margin: 0;
+
+  cursor: pointer;
+  user-select: none;
+  transition: background .1s ease-out;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+
+  color: black;
+  border: 1px solid #ffdb4d;
+  border-radius: 3px;
+  outline: none;
+  background: #ffdb4d;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button::-moz-focus-inner
+{
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+}
+
+.button:hover
+{
+  border: 1px solid #ffd633;
+  background: #ffd633;
+}
+
+.button.focused
+{
+  animation: flicker 1s infinite linear;
+}
+
+.button:active
+{
+  animation: none;
+
+  border: 1px solid #fc0;
+  background: #fc0;
+}
+
+.button.disabled,
+.button:disabled
+{
+  cursor: default;
+
+  color: rgba(0,0,0,.5);
+  border: 1px solid #ebebeb;
+  background: #ebebeb;
+}

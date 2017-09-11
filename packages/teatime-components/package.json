@@ -1,0 +1,11 @@
+{
+  "name": "teatime-components",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5"
+  }
+}

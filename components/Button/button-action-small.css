@@ -1,0 +1,13 @@
+.button
+{
+  composes: button from './button-action.css';
+
+  padding: 0 9px;
+
+  font: 13px/22px arial,sans-serif;
+}
+
+.focused
+{
+  composes: focused from './button-action.css';
+}
