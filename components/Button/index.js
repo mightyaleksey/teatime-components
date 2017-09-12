@@ -55,9 +55,9 @@ class Button extends React.Component<Props> {
 
   _buttonElement: ?HTMLButtonElement;
 
-  _saveRef(ref: ?HTMLButtonElement) {
+  _saveRef = (ref: ?HTMLButtonElement) => {
     this._buttonElement = ref;
-  }
+  };
 
   focus() {
     if (this._buttonElement) this._buttonElement.focus();
