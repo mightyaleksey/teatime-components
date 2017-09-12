@@ -1,6 +1,7 @@
 {
   "name": "teatime-components",
   "version": "1.0.0-beta",
+  "private": true,
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -11,10 +12,12 @@
     "classnames": "^2.2.5",
     "cssnano": "^3.10.0",
     "flow-bin": "^0.54.1",
+    "gulp": "^3.9.1",
+    "gulp-better-rollup": "^1.1.1",
+    "gulp-rename": "^1.2.2",
     "postcss-modules": "^0.8.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "rollup": "^0.49.3",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-postcss": "^0.5.5"
   },
@@ -22,6 +25,6 @@
     "lerna": "^2.1.2"
   },
   "scripts": {
-    "transpile": "rollup -c scripts/rollup.config.js"
+    "transpile": "gulp --cwd . --gulpfile scripts/gulpfile.js"
   }
 }

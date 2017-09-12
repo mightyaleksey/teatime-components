@@ -1,11 +1,13 @@
-import babel from 'rollup-plugin-babel';
-import cssnano from 'cssnano';
-import postcss from 'rollup-plugin-postcss';
-import postcssModules from 'postcss-modules';
+'use strict';
+
+const babel = require('rollup-plugin-babel');
+const cssnano = require('cssnano');
+const postcss = require('rollup-plugin-postcss');
+const postcssModules = require('postcss-modules');
 
 const cssExportMap = {};
 
-export default {
+module.exports = {
   plugins: [
     postcss({
       plugins: [
@@ -21,6 +23,7 @@ export default {
         return cssExportMap[id];
       },
     }),
+
     babel({
       exclude: [
         'node_modules/**',
@@ -41,10 +44,4 @@ export default {
       ],
     }),
   ],
-
-  input: 'components/Button/index.js',
-  output: {
-    file: 'packages/teatime-components/components/Button.js',
-    format: 'cjs',
-  },
 };
