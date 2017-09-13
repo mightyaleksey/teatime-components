@@ -1,0 +1,77 @@
+.input
+{
+  position: relative;
+
+  display: inline-block;
+
+  width: 100%;
+}
+
+.control
+{
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+
+  transition: border .1s ease-out,box-shadow .1s ease-out;
+
+  border: 1px solid #ccc;
+  border-radius: 0;
+  outline: none;
+  background: white;
+
+  font: inherit;
+
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.control:-moz-placeholder,
+.control:-ms-input-placeholder,
+.control::-moz-placeholder,
+.control::-webkit-input-placeholder
+{
+  text-indent: 0;
+
+  color: #999;
+}
+
+/* http://stackoverflow.com/questions/14007655/remove-ie10s-clear-field-x-button-on-certain-inputs */
+.control::-ms-clear
+{
+  display: none;
+}
+
+.control:focus
+{
+  border: 1px solid #ffdb4d;
+  box-shadow: inset 0 0 0 1px #ffdb4d;
+}
+
+.control:disabled
+{
+  cursor: default;
+
+  color: rgba(0,0,0,.5);
+  border: 1px solid #ebebeb;
+  background: #ebebeb;
+}
+
+.clear
+{
+  position: absolute;
+  top: 1px;
+  right: 1px;
+
+  display: block;
+
+  cursor: pointer;
+  transition: opacity .1s ease-out;
+
+  opacity: .3;
+}
+
+.clear:hover
+{
+  opacity: 1;
+}

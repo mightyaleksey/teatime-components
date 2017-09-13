@@ -1,0 +1,29 @@
+.input
+{
+  composes: input from './input.css';
+
+  font: 15px/32px arial,sans-serif;
+}
+
+.control
+{
+  composes: control from './input.css';
+
+  height: 32px;
+  padding: 0 9px;
+}
+
+.clear
+{
+  composes: clear from './input.css';
+
+  width: 30px;
+  height: 30px;
+
+  background: url(../../asset/times-m.svg) center center no-repeat;
+}
+
+.clear + .control
+{
+  padding-right: 32px;
+}
