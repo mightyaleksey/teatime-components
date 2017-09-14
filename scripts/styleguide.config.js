@@ -9,6 +9,10 @@ module.exports = {
   serverPort: 3000,
   // styleguideDir
 
+  require: [
+    resolveTo('scripts/styleguide.css'),
+  ],
+
   webpackConfig: {
     module: {
       rules: [
@@ -44,6 +48,14 @@ module.exports = {
                 module: true,
               },
             },
+          ],
+        },
+        {
+          test: /\.css$/,
+          include: resolveTo('scripts'),
+          use: [
+            'style-loader',
+            'css-loader',
           ],
         },
         {

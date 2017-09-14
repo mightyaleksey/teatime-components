@@ -1,0 +1,25 @@
+table
+{
+  border-collapse: collapse;
+}
+
+td
+{
+  max-width: 200px;
+  padding: 2px 5px;
+}
+
+td + td
+{
+  padding-left: 0;
+}
+
+td:first-child
+{
+  text-align: right;
+}
+
+td:last-child
+{
+  font-family: monospace;
+}
