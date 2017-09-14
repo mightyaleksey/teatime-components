@@ -24,6 +24,10 @@ type Props = {
   value?: string | null,
 };
 
+type State = {
+  value: string,
+};
+
 type ClearProps = {
   className: string,
   onClick: Function,
@@ -44,7 +48,7 @@ type InputProps = {
   type: string,
 };
 
-class Input extends React.Component<Props> {
+class Input extends React.Component<Props, State> {
   static cssModules = {
     l: inputLarge,
     m: inputMedium,
@@ -71,14 +75,29 @@ class Input extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
 
+    // @todo warn the incorrect props usage
     this.css = Input.cssModules[props.size];
+
+    this.state = {
+      value: pickValue(props.defaultValue, props.value, ''),
+    };
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    // @todo warn the incorrect props usage
+    this.css = Input.cssModules[nextProps.size];
+  }
+
+  focus() {
+    if (this._inputElement) this._inputElement.focus();
   }
 
   _computeClearProps(): ClearProps | null {
     const {disabled} = this.props;
+    const {value} = this.state;
     const {css} = this;
 
-    if (disabled) return null;
+    if (disabled || value === '') return null;
 
     return {
       className: css.clear,
@@ -98,6 +117,7 @@ class Input extends React.Component<Props> {
       placeholder,
       type,
     } = this.props;
+    const {value} = this.state;
     const {css} = this;
 
     return {
@@ -113,13 +133,18 @@ class Input extends React.Component<Props> {
       readOnly,
       ref: this._saveRef,
       type,
+      value,
     };
   }
 
-  _handleClear = () => {};
+  _handleClear = () => {
+    this.setState({value: ''});
+    this.focus();
+  };
 
   _handleChange = (e: SyntheticInputEvent<*>) => {
     const {name, value} = e.target;
+    this.setState({value});
     this.props.onChange(e, {name, value});
   };
 
@@ -158,3 +183,9 @@ class Input extends React.Component<Props> {
 }
 
 export default Input;
+
+function pickValue<V, D>(defaultValue: ?V, controlledValue: ?V, defaults: D): V | D {
+  if (typeof defaultValue !== 'undefined' || defaultValue !== null) return defaultValue;
+  if (typeof defaultValue !== 'undefined' || controlledValue !== null) return controlledValue;
+  return defaults;
+}

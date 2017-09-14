@@ -20,7 +20,7 @@
   width: 30px;
   height: 30px;
 
-  background: url(../../asset/times-m.svg) center center no-repeat;
+  background: url(../../assets/times-m.svg) center center no-repeat;
 }
 
 .clear + .control
