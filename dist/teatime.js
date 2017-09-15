@@ -3991,7 +3991,7 @@ var Select = function (_Component) {
 
     var menuItems = _this._menuItems = calculateMenuItems(searchEngine, searchableValue, props.options, searchValue);
 
-    var selectedIndex = !isUndefined(value) ? findIndex(function (item) {
+    var selectedIndex = !isUndefined(value) && value !== null ? findIndex(function (item) {
       return item.value === value;
     }, menuItems) : -1;
 
@@ -4054,7 +4054,7 @@ var Select = function (_Component) {
       if (nextProps.options !== options) this._menuItems = calculateMenuItems(this._searchEngine, searchableValue, nextProps.options, this.state.searchValue);
 
       var nextValue = nextProps.value;
-      var selectedPosition = this._controlled ? findIndex(function (item) {
+      var selectedPosition = nextValue === null ? -1 : this._controlled ? findIndex(function (item) {
         return item.value === nextValue;
       }, this._menuItems) : this.state.selectedPosition;
 
