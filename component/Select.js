@@ -69,7 +69,7 @@ class Select extends Component {
       searchValue
     );
 
-    const selectedIndex = !isUndefined(value)
+    const selectedIndex = !isUndefined(value) && value !== null
       ? findIndex(item => item.value === value, menuItems)
       : -1;
 
@@ -134,7 +134,7 @@ class Select extends Component {
       );
 
     const nextValue = nextProps.value;
-    const selectedPosition = this._controlled
+    const selectedPosition = nextValue === null ? -1 : this._controlled
       ? findIndex(item => item.value === nextValue, this._menuItems)
       : this.state.selectedPosition;
 

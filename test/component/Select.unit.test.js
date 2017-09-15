@@ -171,6 +171,52 @@ describe('prop #value', () => {
       value: '',
     }));
   });
+
+  it('should not pick option with a `null` value in case value is `null` during initialization', () => {
+    const component = shallow(
+      <Select
+        name='control'
+        options={[
+          {label: 'aa', value: 'aa'},
+          {label: 'bb', value: 'bb'},
+          {label: 'cc', value: null},
+        ]}
+        value={null}/>
+    );
+
+    expect(component.state()).toEqual(expect.objectContaining({
+      selectedIndex: -1,
+      selectedPosition: -1,
+    }));
+
+    expect(component.find('input').props()).toEqual(expect.objectContaining({
+      value: '',
+    }));
+  });
+
+  it('should drop option in case nextValue is `null` and there is a option with `null` value', () => {
+    const component = shallow(
+      <Select
+        name='control'
+        options={[
+          {label: 'aa', value: 'aa'},
+          {label: 'bb', value: 'bb'},
+          {label: 'cc', value: null},
+        ]}
+        value='aa'/>
+    );
+
+    component.setProps({value: null});
+
+    expect(component.state()).toEqual(expect.objectContaining({
+      selectedIndex: -1,
+      selectedPosition: -1,
+    }));
+
+    expect(component.find('input').props()).toEqual(expect.objectContaining({
+      value: '',
+    }));
+  });
 });
 
 describe('onBlur', () => {

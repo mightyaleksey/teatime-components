@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.7
+
+- Removed selection of option with a `null` value in case the components value is `null`.
+
+
 ## 0.10.6
 
 - Fixed `Radio` disabled state.
