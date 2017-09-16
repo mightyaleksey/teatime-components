@@ -4,12 +4,22 @@ const {basename, resolve} = require('path');
 const resolveTo = (...args) => resolve(__dirname, '..', ...args);
 
 module.exports = {
+  title: 'Teatime Components',
   components: '../components/*/*.js',
   getComponentPathLine: componentPath =>
     `import {${basename(componentPath, '.js')}} from 'teatime-components';`,
   // serverHost: 'localhost',
   serverPort: 3000,
   // styleguideDir
+
+  theme: {
+    color: {
+      sidebarBackground: '#f5f4f3',
+    },
+    fontFamily: {
+      base: '"Lato", sans-serif',
+    },
+  },
 
   require: [
     resolveTo('scripts/styleguide.css'),
