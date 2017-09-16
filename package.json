@@ -36,6 +36,7 @@
     "flow-bin": "^0.54.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^21.1.0",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-styleguidist": "^6.0.24",

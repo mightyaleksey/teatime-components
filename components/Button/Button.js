@@ -2,6 +2,8 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
+import {noop} from '../../lib/util';
+
 import actionLargeStyles from './button-action-large.css';
 import actionMediumStyles from './button-action-medium.css';
 import actionSmallStyles from './button-action-small.css';
@@ -15,11 +17,11 @@ type Props = {
   className?: string,
   disabled: boolean,
   id?: string,
-  onClick: Function,
+  onClick: () => void,
   size: 'l' | 'm' | 's',
   style?: Object,
   theme: 'action' | 'normal',
-  type: 'button' | 'menu' | 'reset' | 'submit',
+  type: 'button' | 'menu' | 'reset' | 'submit'
 };
 
 type ButtonProps = {
@@ -28,11 +30,11 @@ type ButtonProps = {
   className: string,
   disabled: boolean,
   id?: string,
-  onClick: Function,
+  onClick: () => void,
   ref: (ref: ?HTMLButtonElement) => void,
   role: 'button',
   style?: Object,
-  type: 'button' | 'menu' | 'reset' | 'submit',
+  type: 'button' | 'menu' | 'reset' | 'submit'
 };
 
 class Button extends React.Component<Props> {
@@ -42,15 +44,16 @@ class Button extends React.Component<Props> {
     'action-s': actionSmallStyles,
     'normal-l': normalLargeStyles,
     'normal-m': normalMediumStyles,
-    'normal-s': normalSmallStyles,
+    'normal-s': normalSmallStyles
   };
 
   static defaultProps = {
     autoFocus: false,
     disabled: false,
+    onClick: noop,
     size: 'm',
     theme: 'normal',
-    type: 'button',
+    type: 'button'
   };
 
   _buttonElement: ?HTMLButtonElement;
@@ -74,7 +77,7 @@ class Button extends React.Component<Props> {
       size,
       style,
       theme,
-      type,
+      type
     } = this.props;
 
     const css = Button.cssModules[theme + '-' + size];
@@ -89,16 +92,14 @@ class Button extends React.Component<Props> {
       ref: this._saveRef,
       role: 'button',
       style,
-      type,
+      type
     };
 
     return this.renderButton(buttonProps);
   }
 
   renderButton(buttonProps: ButtonProps) {
-    return (
-      <button {...buttonProps} />
-    );
+    return <button {...buttonProps} />;
   }
 }
 

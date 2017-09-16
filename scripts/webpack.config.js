@@ -82,11 +82,11 @@ module.exports = {
       filename: '_[name].js',
       minChunks: Infinity,
     }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new webpack.optimize.ModuleConcatenationPlugin(),
   ],
 
   target: 'node',
-  externals: Object.keys(pkg.dependencies).concat('prop-types'),
+  externals: Object.keys(pkg.dependencies),
 
   entry: Object.assign(components, {
     injectStyles: [

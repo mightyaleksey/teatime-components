@@ -12,7 +12,9 @@ exports[`Renders correctly with default props 1`] = `
     id={undefined}
     maxLength={undefined}
     name="control"
+    onBlur={[Function]}
     onChange={[Function]}
+    onFocus={[Function]}
     placeholder={undefined}
     readOnly={false}
     type="text"
@@ -33,11 +35,13 @@ exports[`Renders correctly with defined props 1`] = `
     id="controls-id"
     maxLength="255"
     name="control"
+    onBlur={[Function]}
     onChange={[Function]}
+    onFocus={[Function]}
     placeholder="__"
     readOnly={true}
     type="password"
-    value=""
+    value="initial"
   />
 </span>
 `;
