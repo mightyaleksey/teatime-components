@@ -4,4 +4,5 @@ node_modules
 npm-debug.log*
 yarn.lock
 
+packages/teatime-components/assets
 packages/teatime-components/components

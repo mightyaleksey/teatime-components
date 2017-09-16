@@ -1,16 +1,19 @@
 'use strict';
 
-const {resolve} = require('path');
+const {basename, resolve} = require('path');
 const resolveTo = (...args) => resolve(__dirname, '..', ...args);
 
 module.exports = {
   components: '../components/*/*.js',
+  getComponentPathLine: componentPath =>
+    `import {${basename(componentPath, '.js')}} from 'teatime-components';`,
   // serverHost: 'localhost',
   serverPort: 3000,
   // styleguideDir
 
   require: [
     resolveTo('scripts/styleguide.css'),
+    resolveTo('scripts/styleguide.js'),
   ],
 
   webpackConfig: {
@@ -18,7 +21,10 @@ module.exports = {
       rules: [
         {
           test: /\.js$/,
-          include: resolveTo('components'),
+          include: [
+            resolveTo('components'),
+            resolveTo('lib'),
+          ],
           loader: 'babel-loader',
           options: {
             plugins: [
