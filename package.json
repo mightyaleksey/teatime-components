@@ -2,6 +2,26 @@
   "name": "teatime-components",
   "version": "1.0.0-beta",
   "private": true,
+  "babel": {
+    "plugins": [
+      "flow-react-proptypes",
+      "transform-class-properties"
+    ],
+    "presets": [
+      [
+        "es2015",
+        {
+          "loose": true
+        }
+      ],
+      "react"
+    ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.css$": "identity-obj-proxy"
+    }
+  },
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -11,11 +31,15 @@
     "babel-preset-react": "^6.24.1",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.7",
+    "enzyme": "^2.9.1",
     "file-loader": "^0.11.2",
     "flow-bin": "^0.54.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^21.1.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-styleguidist": "^6.0.24",
+    "react-test-renderer": "^15.6.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.6",
     "webpack-bundle-analyzer": "^2.9.0"
@@ -25,6 +49,7 @@
   },
   "scripts": {
     "start": "styleguidist server --config scripts/styleguide.config.js",
+    "test": "jest",
     "transpile": "webpack --config scripts/webpack.config.js"
   }
 }

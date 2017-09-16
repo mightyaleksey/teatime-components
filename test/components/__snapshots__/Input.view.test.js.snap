@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly with default props 1`] = `
+<span
+  className="input"
+>
+  <input
+    autoComplete="off"
+    autoFocus={false}
+    className="control"
+    disabled={false}
+    id={undefined}
+    maxLength={undefined}
+    name="control"
+    onChange={[Function]}
+    placeholder={undefined}
+    readOnly={false}
+    type="text"
+    value=""
+  />
+</span>
+`;
+
+exports[`Renders correctly with defined props 1`] = `
+<span
+  className="input outer"
+>
+  <input
+    autoComplete="off"
+    autoFocus={true}
+    className="control"
+    disabled={true}
+    id="controls-id"
+    maxLength="255"
+    name="control"
+    onChange={[Function]}
+    placeholder="__"
+    readOnly={true}
+    type="password"
+    value=""
+  />
+</span>
+`;
