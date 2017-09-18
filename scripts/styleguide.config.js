@@ -61,7 +61,16 @@ module.exports = {
             {
               loader: 'css-loader',
               options: {
+                importLoaders: 1,
                 module: true,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: {
+                  path: resolveTo('scripts/postcss.config'),
+                },
               },
             },
           ],
@@ -73,10 +82,6 @@ module.exports = {
             'style-loader',
             'css-loader',
           ],
-        },
-        {
-          test: /\.svg$/,
-          loader: 'file-loader',
         },
       ],
     },

@@ -23,6 +23,7 @@
     }
   },
   "dependencies": {
+    "autoprefixer": "^7.1.4",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-flow-react-proptypes": "^5.1.2",
@@ -32,10 +33,11 @@
     "classnames": "^2.2.5",
     "css-loader": "^0.28.7",
     "enzyme": "^2.9.1",
-    "file-loader": "^0.11.2",
     "flow-bin": "^0.54.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^21.1.0",
+    "postcss-loader": "^2.0.6",
+    "postcss-url": "^7.1.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
