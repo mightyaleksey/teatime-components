@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.8
+
+- Possibility to provide `onClick` handler to `Tooltip`.
+
+
 ## 0.10.7
 
 - Removed selection of option with a `null` value in case the components value is `null`.

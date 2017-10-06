@@ -34,11 +34,12 @@ class Overlay extends Component {
   }
 
   render() {
-    const {children, className} = this.props;
+    const {children, className, onClick} = this.props;
 
     return (
       <div
         className={className}
+        onClick={onClick}
         ref='overlay'>
         {children}
       </div>
@@ -56,6 +57,7 @@ Overlay.propTypes = {
   calculatePosition: PropTypes.func,
   children: PropTypes.string,
   className: PropTypes.string,
+  onClick: PropTypes.func,
   onPositionUpdate: PropTypes.func,
   shouldComponentUpdatePosition: PropTypes.func,
 };

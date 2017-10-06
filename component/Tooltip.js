@@ -101,7 +101,7 @@ class Tooltip extends Component {
   shouldComponentUpdatePosition = prevProps => prevProps.direction !== this.props.direction
 
   render() {
-    const {children, className, direction, size, type} = this.props;
+    const {children, className, direction, onClick, size, type} = this.props;
     const {isMultiline, isVisible} = this.state;
     const styles = baseStyles[`${type}-${size}`];
 
@@ -113,6 +113,7 @@ class Tooltip extends Component {
           [styles.isLine]: !isMultiline,
           [styles.isVisible]: isVisible,
         })}
+        onClick={onClick}
         onPositionUpdate={this.onPositionUpdate}
         shouldComponentUpdatePosition={this.shouldComponentUpdatePosition}>
         {children}
@@ -136,6 +137,7 @@ Tooltip.propTypes = {
     'right',
     'top',
   ]),
+  onClick: PropTypes.func,
   size: PropTypes.oneOf([
     'l',
     'm',
