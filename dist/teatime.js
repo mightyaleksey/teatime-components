@@ -4802,6 +4802,7 @@ var Tooltip = function (_Component) {
           children = _props2.children,
           className = _props2.className,
           direction = _props2.direction,
+          onClick = _props2.onClick,
           size = _props2.size,
           type = _props2.type;
       var _state = this.state,
@@ -4814,6 +4815,7 @@ var Tooltip = function (_Component) {
         Overlay,
         {
           className: classNames(className, styles[direction], (_classNames = {}, _defineProperty(_classNames, styles.isClosed, !children), _defineProperty(_classNames, styles.isOpened, children), _defineProperty(_classNames, styles.isLine, !isMultiline), _defineProperty(_classNames, styles.isVisible, isVisible), _classNames)),
+          onClick: onClick,
           onPositionUpdate: this.onPositionUpdate,
           shouldComponentUpdatePosition: this.shouldComponentUpdatePosition },
         children
@@ -4834,6 +4836,7 @@ Tooltip.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   direction: PropTypes.oneOf(['bottom', 'left', 'right', 'top']),
+  onClick: PropTypes.func,
   size: PropTypes.oneOf(['l', 'm', 's']),
   type: PropTypes.oneOf(['normal', 'success', 'warning'])
 };
@@ -5462,13 +5465,15 @@ var Overlay = function (_Component) {
     value: function render() {
       var _props = this.props,
           children = _props.children,
-          className = _props.className;
+          className = _props.className,
+          onClick = _props.onClick;
 
 
       return React.createElement(
         'div',
         {
           className: className,
+          onClick: onClick,
           ref: 'overlay' },
         children
       );
@@ -5488,6 +5493,7 @@ Overlay.propTypes = {
   calculatePosition: PropTypes.func,
   children: PropTypes.string,
   className: PropTypes.string,
+  onClick: PropTypes.func,
   onPositionUpdate: PropTypes.func,
   shouldComponentUpdatePosition: PropTypes.func
 };
