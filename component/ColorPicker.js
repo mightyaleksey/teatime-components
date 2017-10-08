@@ -164,7 +164,8 @@ class ColorPicker extends Component {
         onClick={this._onClick}
         style={{
           backgroundColor: cssColorValue(value),
-        }}/>
+        }}
+        type='button' />
     );
   }
 

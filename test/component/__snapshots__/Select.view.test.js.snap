@@ -22,6 +22,7 @@ exports[`Renders correctly with default props 1`] = `
       onClick={[Function]}
       onFocus={undefined}
       onKeyDown={[Function]}
+      type="button"
     >
       —
     </button>
@@ -70,6 +71,7 @@ exports[`Renders correctly with defined props 1`] = `
       onClick={[Function]}
       onFocus={null}
       onKeyDown={[Function]}
+      type="button"
     >
       dd
     </span>

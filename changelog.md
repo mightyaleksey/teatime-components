@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.9
+
+- Added props `type='button'` for ColorPicker's and Select's buttons to prevent unexpected submit event in case of using `<Button type='submit' />`.
+
+
 ## 0.10.8
 
 - Possibility to provide `onClick` handler to `Tooltip`.

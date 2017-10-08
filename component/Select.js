@@ -447,6 +447,7 @@ class Select extends Component {
       ref: searchable
         ? null
         : r => this._controlRef = r,
+      type: 'button',
     };
 
     if (searchable) return <span {...labelProps}/>;

@@ -14,6 +14,7 @@ exports[`Renders correctly with default props 1`] = `
         "backgroundColor": "",
       }
     }
+    type="button"
   />
   <input
     autoFocus={undefined}
@@ -49,6 +50,7 @@ exports[`Renders correctly with defined props 1`] = `
         "backgroundColor": "#bebebe",
       }
     }
+    type="button"
   />
   <input
     autoFocus={true}
