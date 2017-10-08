@@ -3063,7 +3063,8 @@ var ColorPicker = function (_Component) {
         onClick: this._onClick,
         style: {
           backgroundColor: cssColorValue(value)
-        } });
+        },
+        type: 'button' });
     }
   }, {
     key: 'renderClear',
@@ -4280,7 +4281,8 @@ var Select = function (_Component) {
         onKeyDown: this._onKeyDown,
         ref: searchable ? null : function (r) {
           return _this5._controlRef = r;
-        }
+        },
+        type: 'button'
       };
 
       if (searchable) return React.createElement('span', labelProps);
