@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.10
+
+- Dev dependencies update for the compatibility check with React@16. Also updated version of prop-types package.
+
+
 ## 0.10.9
 
 - Added props `type='button'` for ColorPicker's and Select's buttons to prevent unexpected submit event in case of using `<Button type='submit' />`.

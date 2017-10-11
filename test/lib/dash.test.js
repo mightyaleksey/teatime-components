@@ -85,8 +85,8 @@ test('filter', () => {
 });
 
 test('findIndex', () => {
-  expect(findIndex(a => a === null)([0, 1, null, 2, 3]), 2);
-  expect(findIndex(a => a === null)([0, 1, 2, 3]), -1);
+  expect(findIndex(a => a === null)([0, 1, null, 2, 3])).toBe(2);
+  expect(findIndex(a => a === null)([0, 1, 2, 3])).toBe(-1);
 });
 
 test('first', () => {
