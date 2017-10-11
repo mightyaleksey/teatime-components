@@ -5,6 +5,8 @@ A set of React Components + CSS Modules :heart:
 
 See the component's examples at http://sullenor.github.io/teatime-components/
 
+👋 In case you are going to update to React@16 — check the necessity of adding polyfills: https://reactjs.org/docs/javascript-environment-requirements.html
+
 
 ## Philosophy
 
