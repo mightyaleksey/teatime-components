@@ -89,23 +89,24 @@ function updateOverlays() {
   let ref;
 
   for (const id in MOUNTED_OVERLAYS) {
+    if (!MOUNTED_OVERLAYS.hasOwnProperty(id)) continue; // eslint-disable-line no-continue
+
     component = MOUNTED_OVERLAYS[id];
 
-    if (!component.refs.overlay)
-      continue;
+    if (component.refs.overlay) {
+      ref = component.refs.overlay;
 
-    ref = component.refs.overlay;
+      component.props.onPositionUpdate(ref);
 
-    component.props.onPositionUpdate(ref);
+      rect = ref.getBoundingClientRect();
 
-    rect = ref.getBoundingClientRect();
-
-    layers.push({
-      component,
-      pos: component.props.calculatePosition(rect),
-      rect,
-      ref,
-    });
+      layers.push({
+        component,
+        pos: component.props.calculatePosition(rect),
+        rect,
+        ref,
+      });
+    }
   }
 
   layers.sort(byPos);

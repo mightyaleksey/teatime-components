@@ -134,7 +134,7 @@ class Select extends Component {
       );
 
     const nextValue = nextProps.value;
-    const selectedPosition = nextValue === null ? -1 : this._controlled
+    const selectedPosition = nextValue === null ? -1 : this._controlled // eslint-disable-line no-nested-ternary
       ? findIndex(item => item.value === nextValue, this._menuItems)
       : this.state.selectedPosition;
 
@@ -197,7 +197,7 @@ class Select extends Component {
         ? Math.min(nextFocusedIndex, length - 1, optionsLimit - 1)
         : Math.max(nextFocusedIndex, 0);
     } else {
-      nextFocusedIndex = selectedIndex > -1
+      nextFocusedIndex = selectedIndex > -1 // eslint-disable-line no-nested-ternary
         ? selectedIndex
         : offset > 0 ? 0 : Math.min(length - 1, optionsLimit - 1);
     }
@@ -307,9 +307,8 @@ class Select extends Component {
   _onToggleMenu = () => {
     if (this.props.disabled) return;
 
-    this.state.isOpened
-      ? this._closeMenu()
-      : this._openMenu();
+    if (this.state.isOpened) this._closeMenu();
+    else this._openMenu();
 
     this.focus();
   }
@@ -570,11 +569,11 @@ function calculateMenuItems(searchEngine, searchableValue, items, needle = '') {
   for (let i = 0; i < length; ++i) {
     const item = items[i];
 
-    if (!searchEngine(needle, searchableValue(item))) continue;
-    availableItems.push(assign(item, {
-      _index: nextLength++,
-      _position: i,
-    }));
+    if (searchEngine(needle, searchableValue(item)))
+      availableItems.push(assign(item, {
+        _index: nextLength++,
+        _position: i,
+      }));
   }
 
   return availableItems;

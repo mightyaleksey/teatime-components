@@ -169,10 +169,8 @@ function calculateCheckItems(items = []) {
 function mapStateToValue(options, values) {
   const selected = [];
 
-  for (let i = 0; i < values.length; ++i) {
-    if (!values[i]) continue;
-    selected.push(options[i].value);
-  }
+  for (let i = 0; i < values.length; ++i)
+    if (values[i]) selected.push(options[i].value);
 
   return selected;
 }
