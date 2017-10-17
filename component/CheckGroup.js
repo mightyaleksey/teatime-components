@@ -33,19 +33,16 @@ class CheckGroup extends Component {
   componentWillReceiveProps(nextProps) {
     this._controlled = isControlled(nextProps);
 
-    const {options} = this.props;
-    const value = this._controlled
-      ? nextProps.value
-      : this.state.value;
+    const {options, value} = this.props;
 
-    let values = this.state.values;
-
-    if (nextProps.options !== options) {
+    if (
+      this._controlled && nextProps.value !== value ||
+      nextProps.options !== options
+    ) {
       this._checkItems = calculateCheckItems(nextProps.options);
-      values = mapValueToState(this._checkItems, value || []);
+      const values = mapValueToState(this._checkItems, nextProps.value || []);
+      this.setState({values});
     }
-
-    this.setState({values});
   }
 
   css = tokenName => genericName(this.props, tokenName)

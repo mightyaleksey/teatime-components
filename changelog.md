@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.11
+
+- Fixed CheckGroup updates in case value changed, but options haven't.
+
+
 ## 0.10.10
 
 - Dev dependencies update for the compatibility check with React@16. Also updated version of prop-types package.
