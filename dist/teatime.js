@@ -2746,27 +2746,25 @@ var CheckGroup = function (_Component) {
     value: function componentWillReceiveProps(nextProps) {
       this._controlled = isControlled(nextProps);
 
-      var options = this.props.options;
+      var _props = this.props,
+          options = _props.options,
+          value = _props.value;
 
-      var value = this._controlled ? nextProps.value : this.state.value;
 
-      var values = this.state.values;
-
-      if (nextProps.options !== options) {
+      if (this._controlled && nextProps.value !== value || nextProps.options !== options) {
         this._checkItems = calculateCheckItems(nextProps.options);
-        values = mapValueToState(this._checkItems, value || []);
+        var values = mapValueToState(this._checkItems, nextProps.value || []);
+        this.setState({ values: values });
       }
-
-      this.setState({ values: values });
     }
   }, {
     key: 'computeChecks',
     value: function computeChecks(checkItems) {
       var _this2 = this;
 
-      var _props = this.props,
-          disabled = _props.disabled,
-          name = _props.name;
+      var _props2 = this.props,
+          disabled = _props2.disabled,
+          name = _props2.name;
       var values = this.state.values;
 
 
@@ -2808,9 +2806,9 @@ var CheckGroup = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _props2 = this.props,
-          className = _props2.className,
-          id = _props2.id;
+      var _props3 = this.props,
+          className = _props3.className,
+          id = _props3.id;
       var css = this.css;
 
 
