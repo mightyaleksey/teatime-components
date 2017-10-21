@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.12
+
+- Added borders for the select's menu, see: https://github.com/sullenor/teatime-components/pull/57. Thanks to [@fiberthrone](https://github.com/fiberthrone).
+
+
 ## 0.10.11
 
 - Fixed CheckGroup updates in case value changed, but options haven't.
