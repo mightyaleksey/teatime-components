@@ -82,3 +82,14 @@
   composes: isSelectedMenuItem from './select.css';
   composes: isSelectedMenuItem-l from './select-size.css';
 }
+
+.isGroupLabelMenuItem
+{
+  composes: isGroupLabelMenuItem from './select.css';
+  composes: isGroupLabelMenuItem-l from './select-size.css';
+}
+
+.isFirstMenuItem
+{
+  composes: isFirstMenuItem from './select.css';
+}

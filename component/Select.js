@@ -38,6 +38,7 @@ const cssModules = {
 
 const byLabel = prop('label');
 
+const GROUP_TYPE = 'option-group';
 let didWarnForSelectDefaultValue = false;
 
 class Select extends Component {
@@ -94,7 +95,7 @@ class Select extends Component {
       const menuElem = findDOMNode(menuRef);
       const focusedElem = findDOMNode(focusedItemRef);
 
-      menuElem.scrollTop = focusedElem.offsetTop;
+      menuElem.scrollTop = focusedElem.offsetTop - menuElem.offsetHeight / 2 + focusedElem.offsetHeight / 2;
     } else if (!isOpened) {
       this._wasMenuShown = false;
     }
@@ -108,8 +109,11 @@ class Select extends Component {
       const menuRect = menuElem.getBoundingClientRect();
       const focusedRect = focusedElem.getBoundingClientRect();
 
-      if (focusedRect.bottom > menuRect.bottom || focusedRect.top < menuRect.top)
-        menuElem.scrollTop = focusedElem.offsetTop + menuElem.clientHeight - menuElem.offsetHeight;
+      const preferedTop = menuRect.height / 2 - focusedRect.height / 2;
+      const preferedBottom = menuRect.height / 2 + focusedRect.height / 2;
+
+      if (focusedRect.top > preferedTop || focusedRect.bottom < preferedBottom)
+        menuElem.scrollTop = focusedElem.offsetTop - menuElem.offsetHeight / 2 + focusedElem.offsetHeight / 2;
     }
   }
 
@@ -150,13 +154,15 @@ class Select extends Component {
     const {searchableValue = byLabel} = this.props;
     const {searchValue} = this.state;
 
-    if (nextState.searchValue !== searchValue)
+    if (nextState.searchValue !== searchValue) {
       this._menuItems = calculateMenuItems(
         this._searchEngine,
         searchableValue,
         nextProps.options,
         nextState.searchValue
       );
+      this.setState({focusedIndex: _getNextEnabledItemIndex(this._menuItems), selectedIndex: -1});
+    }
   }
 
   css = tokenName => genericName(this.props, tokenName)
@@ -177,9 +183,13 @@ class Select extends Component {
 
   _openMenu() {
     const {selectedIndex} = this.state;
+    let focusedIndex = selectedIndex;
+
+    if (selectedIndex < 0)
+      focusedIndex = _getNextEnabledItemIndex(this._menuItems);
 
     this.setState({
-      focusedIndex: Math.max(selectedIndex, 0),
+      focusedIndex,
       isOpened: true,
     });
   }
@@ -188,18 +198,21 @@ class Select extends Component {
     const {optionsLimit} = this.props;
     const {focusedIndex, isOpened, selectedIndex} = this.state;
     const length = this._menuItems.length;
-    let nextFocusedIndex = focusedIndex + offset;
+
+    const firstEnabledItemIndex = _getNextEnabledItemIndex(this._menuItems);
+    const lastEnabledItemIndex = _getNextEnabledItemIndex(this._menuItems, Math.min(length - 1, optionsLimit - 1) + 1, -1);
+    let nextFocusedIndex = _getNextEnabledItemIndex(this._menuItems, focusedIndex, offset);
 
     if (isOpened) {
       this._wasKeyPressed = true;
 
       nextFocusedIndex = offset > 0
-        ? Math.min(nextFocusedIndex, length - 1, optionsLimit - 1)
-        : Math.max(nextFocusedIndex, 0);
+        ? Math.min(nextFocusedIndex, lastEnabledItemIndex)
+        : Math.max(nextFocusedIndex, firstEnabledItemIndex);
     } else {
       nextFocusedIndex = selectedIndex > -1 // eslint-disable-line no-nested-ternary
         ? selectedIndex
-        : offset > 0 ? 0 : Math.min(length - 1, optionsLimit - 1);
+        : offset > 0 ? nextFocusedIndex : lastEnabledItemIndex;
     }
 
     this.setState({
@@ -276,8 +289,6 @@ class Select extends Component {
       break;
 
     default:
-      if (searchable && isOpened) this.setState({focusedIndex: 0, selectedIndex: -1});
-
       return; // pass event to the native element
     }
 
@@ -336,7 +347,9 @@ class Select extends Component {
       renderOption = this.renderItemLabel,
     } = this.props;
 
+    const isFirstMenuItem = css('isFirstMenuItem');
     const isFocusedMenuItem = css('isFocusedMenuItem');
+    const isGroupLabelMenuItem = css('isGroupLabelMenuItem');
     const isSelectedMenuItem = css('isSelectedMenuItem');
     const menuItem = css('menuItem');
 
@@ -344,12 +357,15 @@ class Select extends Component {
       this.renderMenuItem({
         children: renderOption(option),
         className: cc(menuItem, {
+          [isFirstMenuItem]: option._index === 0,
+          [isGroupLabelMenuItem]: option.type === GROUP_TYPE,
           [isFocusedMenuItem]: focusedIndex === option._index,
           [isSelectedMenuItem]: selectedPosition === option._position,
         }),
-        key: option.value,
-        onClick: this._onItemSelect,
-        onFocus: this._onFocusItem,
+        disabled: option.disabled,
+        key: option.value || option.label,
+        onClick: option.disabled ? void 0 : this._onItemSelect,
+        onFocus: option.disabled ? void 0 : this._onFocusItem,
         position: option._index,
         ref: focusedIndex === option._index
           ? r => this._focusedItemRef = r
@@ -568,11 +584,14 @@ function calculateMenuItems(searchEngine, searchableValue, items, needle = '') {
 
   for (let i = 0; i < length; ++i) {
     const item = items[i];
+    const isFiltered = needle.length > 0;
+    const isGroup = item.type === GROUP_TYPE;
 
-    if (searchEngine(needle, searchableValue(item)))
+    if (!isFiltered || searchEngine(needle, searchableValue(item)) && !isGroup)
       availableItems.push(assign(item, {
         _index: nextLength++,
         _position: i,
+        disabled: item.disabled || item.type === GROUP_TYPE,
       }));
   }
 
@@ -583,4 +602,13 @@ function calculateMenuItems(searchEngine, searchableValue, items, needle = '') {
 function getSearchEngine(engine = constant(true)) {
   if (isFunction(engine)) return engine;
   if (isString(engine)) return searchEngine[engine]; // check existance
+}
+
+function _getNextEnabledItemIndex(items, focusedIndex = -1, offset = 1) {
+  const nextIndex = focusedIndex + offset;
+
+  if (!items[nextIndex])
+    return focusedIndex;
+
+  return items[nextIndex].disabled ? _getNextEnabledItemIndex(items, nextIndex, offset) : nextIndex;
 }

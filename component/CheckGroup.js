@@ -41,6 +41,7 @@ class CheckGroup extends Component {
     ) {
       this._checkItems = calculateCheckItems(nextProps.options);
       const values = mapValueToState(this._checkItems, nextProps.value || []);
+
       this.setState({values});
     }
   }
