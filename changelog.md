@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.13
+
+- Added possibility to use an option-group.
+
+
 ## 0.10.12
 
 - Added borders for the select's menu, see: https://github.com/sullenor/teatime-components/pull/57. Thanks to [@fiberthrone](https://github.com/fiberthrone).
