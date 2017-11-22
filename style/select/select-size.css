@@ -2,9 +2,9 @@
 
 .wrapper-s
 {
-  width: 180px;
-
   font: 13px/24px arial,sans-serif;
+
+  width: 180px;
 }
 
 .search-s
@@ -49,13 +49,18 @@
   background-size: auto;
 }
 
+.isGroupLabelMenuItem-s
+{
+  padding-left: 13px;
+}
+
 /* size m */
 
 .wrapper-m
 {
-  width: 183px;
-
   font: 13px/28px arial,sans-serif;
+
+  width: 183px;
 }
 
 .search-m
@@ -100,13 +105,18 @@
   background-size: auto;
 }
 
+.isGroupLabelMenuItem-m
+{
+  padding-left: 14px;
+}
+
 /* size l */
 
 .wrapper-l
 {
-  width: 210px;
-
   font: 15px/32px arial,sans-serif;
+
+  width: 210px;
 }
 
 .search-l
@@ -149,4 +159,9 @@
   background-image: url(../asset/tick-l.svg);
   background-position: 16px center;
   background-size: auto;
+}
+
+.isGroupLabelMenuItem-l
+{
+  padding-left: 14px;
 }

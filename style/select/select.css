@@ -12,18 +12,20 @@
 
 .baseline
 {
+  font: inherit;
+
   display: inline-block;
   overflow: visible;
 
   width: 100%;
 
   vertical-align: top;
-
-  font: inherit;
 }
 
 .search
 {
+  font: inherit;
+
   position: absolute;
   top: 0;
   left: 0;
@@ -38,8 +40,6 @@
   outline: 0;
   background: transparent;
   box-shadow: none;
-
-  font: inherit;
 
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
@@ -61,9 +61,9 @@
 
 .control:after
 {
-  content: '\A0';
-
   font: inherit;
+
+  content: '\A0';
 }
 
 .arrow
@@ -83,16 +83,16 @@
 
 .menuItem
 {
+  font: inherit;
+
   display: block;
   overflow-x: hidden;
 
-  margin: 0px 1px;
+  margin: 0 1px;
 
   cursor: pointer;
   white-space: nowrap;
   text-overflow: ellipsis;
-
-  font: inherit;
 }
 
 .emptyItem
@@ -162,4 +162,22 @@
 .isSelectedMenuItem
 {
   background-repeat: no-repeat;
+}
+
+.isGroupLabelMenuItem
+{
+  margin-top: 4px;
+  padding-left: 10px;
+
+  cursor: default;
+
+  color: #999;
+  border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.isFirstMenuItem
+{
+  margin-top: 0;
+
+  border-top: none;
 }

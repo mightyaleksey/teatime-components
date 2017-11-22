@@ -857,3 +857,60 @@
     searchable={true}/>
 </div>
 ```
+
+### option groups
+
+```
+<div>
+  <Select
+    hasFixedWidth={true}
+    name='select-og'
+    options={[
+      {label: 'Motorcycle', type: 'option-group'},
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
+      {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
+      {label: 'Vespa', value: 'vespa'},
+      {label: 'Yamaha', value: 'yamaha'},
+      {label: 'Towns', type: 'option-group'},
+      {label: 'Abakan', value: 'abakan'},
+      {label: 'Achinsk', value: 'achinsk'},
+      {label: 'Aleksin', value: 'aleksin'},
+      {label: 'Alexandrov', value: 'alexandrov'},
+      {label: 'Almetyevsk', value: 'almetyevsk'},
+    ]}
+    placeholder='Select...' />
+</div>
+```
+
+### option groups searchable
+
+```
+<div>
+  <Select
+    hasFixedWidth={true}
+    name='select-og'
+    options={[
+      {label: 'Motorcycle', type: 'option-group'},
+      {label: 'Ducati', value: 'ducati'},
+      {label: 'Honda', value: 'honda'},
+      {label: 'Jawa', value: 'jawa'},
+      {label: 'Kawasaki', value: 'kawasaki'},
+      {label: 'Suzuki', value: 'suzuki'},
+      {label: 'Ural', value: 'ural'},
+      {label: 'Vespa', value: 'vespa'},
+      {label: 'Yamaha', value: 'yamaha'},
+      {label: 'Towns', type: 'option-group'},
+      {label: 'Abakan', value: 'abakan'},
+      {label: 'Achinsk', value: 'achinsk'},
+      {label: 'Aleksin', value: 'aleksin'},
+      {label: 'Alexandrov', value: 'alexandrov'},
+      {label: 'Almetyevsk', value: 'almetyevsk'},
+    ]}
+    placeholder='Select...'
+    searchable={true}/>
+</div>
+```
