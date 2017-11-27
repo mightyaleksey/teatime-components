@@ -9,6 +9,7 @@ exports.Link = require('./component/Link');
 exports.Menu = require('./component/Menu');
 exports.Radio = require('./component/Radio');
 exports.Select = require('./component/Select');
+exports.SelectMultiple = require('./component/SelectMultiple');
 exports.Spin = require('./component/Spin');
 exports.Textarea = require('./component/Textarea');
 exports.Tooltip = require('./component/Tooltip');
