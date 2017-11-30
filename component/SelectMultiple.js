@@ -198,9 +198,9 @@ class SelectMultiple extends Component {
 
   _openMenu() {
     const {selectedIndexes} = this.state;
-    let focusedIndex = selectedIndexes;
+    let focusedIndex = selectedIndexes[0];
 
-    if (selectedIndexes < 0)
+    if (selectedIndexes.length < 0)
       focusedIndex = _getNextEnabledItemIndex(this._menuItems);
 
     this.setState({
@@ -309,7 +309,10 @@ class SelectMultiple extends Component {
       break;
 
     case SPACE:
-      if (!searchable && isOpened) this._onItemSelect(null, this.state.focusedIndex);
+      if (!searchable && isOpened) {
+        this._onItemSelect(null, this.state.focusedIndex);
+        break;
+      }
 
     default:
       return; // pass event to the native element
