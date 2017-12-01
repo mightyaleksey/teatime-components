@@ -8,7 +8,7 @@ describe('(un)controllable behavior', () => {
   it('should initialize uncontrollable if `value` is not presented', () => {
     const component = shallow(
       <SelectMultiple
-        defaultValue='AABBCC'
+        defaultValue={['AABBCC']}
         name='control'
         options={[]}/>
     );
@@ -21,7 +21,7 @@ describe('(un)controllable behavior', () => {
       <SelectMultiple
         name='control'
         options={[]}
-        value='AABBCC'/>
+        value={['AABBCC']}/>
     );
 
     expect(component.instance()._controlled).toBe(true);
@@ -38,7 +38,7 @@ describe('(un)controllable behavior', () => {
           {label: 'bb', value: 'bb'},
           {label: 'cc', value: 'cc'},
         ]}
-        value='aa'/>
+        value={['aa']}/>
     );
 
     expect(component.state()).toEqual(expect.objectContaining({
@@ -59,7 +59,7 @@ describe('(un)controllable behavior', () => {
     const onChange = jest.fn();
     const component = shallow(
       <SelectMultiple
-        defaultValue='aa'
+        defaultValue={['aa']}
         name='control'
         onChange={onChange}
         options={[
@@ -97,7 +97,7 @@ describe('prop #options', () => {
           {label: 'EE', value: 'ee'},
           {label: 'FF', value: 'ff'},
         ]}
-        value='cc'/>
+        value={['cc']}/>
     );
 
     component.setProps({
@@ -106,7 +106,7 @@ describe('prop #options', () => {
         {label: 'FF', value: 'ff'},
         {label: 'GG', value: 'gg'},
       ],
-      value: 'gg',
+      value: ['gg'],
     });
 
     expect(component.state('selectedPositions')).toEqual([2]);
@@ -124,7 +124,7 @@ describe('prop #options', () => {
           {label: 'EEFF', value: 'ee'},
           {label: 'FFGG', value: 'ff'},
         ]}
-        value='cc'/>
+        value={['cc']}/>
     );
 
     component.setState({searchValue: 'd'});
@@ -162,7 +162,7 @@ describe('prop #value', () => {
           {label: 'bb', value: 'bb'},
           {label: 'cc', value: 'cc'},
         ]}
-        value='aa'/>
+        value={['aa']}/>
     );
 
     component.setProps({value: null});
@@ -203,7 +203,7 @@ describe('prop #value', () => {
           {label: 'bb', value: 'bb'},
           {label: 'cc', value: null},
         ]}
-        value='aa'/>
+        value={['aa']}/>
     );
 
     component.setProps({value: null});

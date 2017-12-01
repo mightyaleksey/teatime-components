@@ -64,7 +64,7 @@ class SelectMultiple extends Component {
       : props.defaultValue;
 
     if (!Array.isArray(values))
-      values = typeof values === 'string' ? [values] : [];
+      values = [];
 
     const menuItems = this._allMenuItems = this._menuItems = calculateMenuItems(
       searchEngine,
@@ -74,9 +74,9 @@ class SelectMultiple extends Component {
     );
 
     const selectedIndexes = values.map(value => !isUndefined(value) && value !== null
-        ? findIndex(item => item.value === value, menuItems)
-        : []
-      )
+      ? findIndex(item => item.value === value, menuItems)
+      : []
+    )
       .filter(index => index > -1)
       .sort();
 
@@ -135,7 +135,7 @@ class SelectMultiple extends Component {
     if (nextProps.searchEngine !== searchEngine)
       this._searchEngine = getSearchEngine(nextProps.searchEngine);
 
-    if (nextProps.options !== options)
+    if (nextProps.options !== options) {
       this._allMenuItems = calculateMenuItems(
         this._searchEngine,
         searchableValue,
@@ -147,11 +147,12 @@ class SelectMultiple extends Component {
         nextProps.options,
         this.state.searchValue
       );
+    }
 
     let nextValues = nextProps.value;
 
     if (!Array.isArray(nextValues))
-      nextValues = typeof nextValues === 'string' ? [nextValues] : [];
+      nextValues = [];
 
     const selectedPositions = nextProps.value === null ? [] : this._controlled // eslint-disable-line no-nested-ternary
       ? nextValues.map(nextValue => findIndex(item => item.value === nextValue, this._allMenuItems)).sort()
@@ -176,7 +177,7 @@ class SelectMultiple extends Component {
         nextProps.options,
         nextState.searchValue
       );
-      this.setState({focusedIndex: _getNextEnabledItemIndex(this._menuItems)}); //, selectedIndexes: []});
+      this.setState({focusedIndex: _getNextEnabledItemIndex(this._menuItems)});
     }
   }
 
@@ -211,7 +212,7 @@ class SelectMultiple extends Component {
 
   _focusAdjacentItem(offset = 1) {
     const {optionsLimit} = this.props;
-    const {focusedIndex, isOpened, selectedIndexes} = this.state;
+    const {focusedIndex, isOpened} = this.state;
     const length = this._menuItems.length;
 
     const firstEnabledItemIndex = _getNextEnabledItemIndex(this._menuItems);
@@ -260,8 +261,8 @@ class SelectMultiple extends Component {
     const values = nextSelectedPositions.map(position => this._allMenuItems[position].value);
 
     if (!this._controlled) {
-        nextState.selectedIndexes = nextSelectedIndexes;
-        nextState.selectedPositions = nextSelectedPositions;
+      nextState.selectedIndexes = nextSelectedIndexes;
+      nextState.selectedPositions = nextSelectedPositions;
     }
 
     this.setState(nextState);
@@ -312,6 +313,8 @@ class SelectMultiple extends Component {
       if (!searchable && isOpened) {
         this._onItemSelect(null, this.state.focusedIndex);
         break;
+      } else {
+        return; // pass event to the native element
       }
 
     default:

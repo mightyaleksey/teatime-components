@@ -38,7 +38,7 @@ test('Renders correctly with defined props', () => {
       searchable
       searchEmptyText='Nothing :('
       searchEngine='startsWith'
-      value='dd'/>
+      value={['dd']}/>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();
