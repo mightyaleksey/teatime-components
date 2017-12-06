@@ -285,7 +285,12 @@ class Select extends Component {
       break;
 
     case SPACE:
-      if (!searchable && isOpened) this._onItemSelect(null, this.state.focusedIndex);
+      if (!searchable && isOpened) {
+        this._onItemSelect(null, this.state.focusedIndex);
+        break;
+      }
+
+      return;
 
     default:
       return; // pass event to the native element
