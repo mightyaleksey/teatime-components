@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly with default props 1`] = `
+<span
+  className="wrapper"
+  onChange={undefined}
+>
+  <input
+    disabled={undefined}
+    id={undefined}
+    name="control"
+    type="hidden"
+    value=""
+  />
+  <span
+    className="baseline"
+  >
+    <button
+      className="control hasPlaceholder"
+      disabled={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={[Function]}
+      type="button"
+    >
+      —
+    </button>
+    <i
+      className="arrow"
+      onClick={[Function]}
+    />
+  </span>
+  <span
+    className="menu bottom menu isClosedMenu"
+    role="listbox"
+  />
+</span>
+`;
+
+exports[`Renders correctly with defined props 1`] = `
+<span
+  className="wrapper outer"
+  onChange={undefined}
+>
+  <input
+    disabled={true}
+    id="controls-id"
+    name="control"
+    type="hidden"
+    value="dd"
+  />
+  <span
+    className="baseline"
+  >
+    <input
+      className="search isPseudoFocusedSearch"
+      disabled={true}
+      onBlur={undefined}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={[Function]}
+      role="combobox"
+      value=""
+    />
+    <span
+      className="control"
+      disabled={true}
+      onBlur={null}
+      onClick={[Function]}
+      onFocus={null}
+      onKeyDown={[Function]}
+      type="button"
+    >
+      dd
+    </span>
+    <i
+      className="arrow"
+      onClick={[Function]}
+    />
+  </span>
+  <span
+    className="menu bottom menu isClosedMenu isFixedMenu"
+    role="listbox"
+  />
+</span>
+`;
