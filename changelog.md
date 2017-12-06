@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.14
+
+- Added `SelectMultiple`.
+
+
 ## 0.10.13
 
 - Added possibility to use an option-group.

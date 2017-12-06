@@ -69,7 +69,7 @@
     "raf": "^3.4.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-styleguidist": "^5.5.0",
+    "react-styleguidist": "^6.0.33",
     "react-test-renderer": "^16.0.0",
     "style-loader": "^0.16.1",
     "webpack": "^2.6.1",
