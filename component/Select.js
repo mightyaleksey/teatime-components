@@ -351,6 +351,7 @@ class Select extends Component {
       renderOption = this.renderItemLabel,
     } = this.props;
 
+    const isDisabledMenuItem = css('isDisabledMenuItem');
     const isFirstMenuItem = css('isFirstMenuItem');
     const isFocusedMenuItem = css('isFocusedMenuItem');
     const isGroupLabelMenuItem = css('isGroupLabelMenuItem');
@@ -361,6 +362,7 @@ class Select extends Component {
       this.renderMenuItem({
         children: renderOption(option),
         className: cc(menuItem, {
+          [isDisabledMenuItem]: option.disabled,
           [isFirstMenuItem]: option._index === 0,
           [isGroupLabelMenuItem]: option.type === GROUP_TYPE,
           [isFocusedMenuItem]: focusedIndex === option._index,

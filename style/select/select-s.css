@@ -89,6 +89,11 @@
   composes: isGroupLabelMenuItem-s from './select-size.css';
 }
 
+.isDisabledMenuItem
+{
+  composes: isDisabledMenuItem from './select.css';
+}
+
 .isFirstMenuItem
 {
   composes: isFirstMenuItem from './select.css';

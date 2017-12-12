@@ -169,10 +169,14 @@
   margin-top: 4px;
   padding-left: 10px;
 
+  border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.isDisabledMenuItem
+{
   cursor: default;
 
   color: #999;
-  border-top: 1px solid rgba(0,0,0,.1);
 }
 
 .isFirstMenuItem
