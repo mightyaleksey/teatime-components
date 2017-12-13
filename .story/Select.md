@@ -879,7 +879,7 @@
       {label: 'Abakan', value: 'abakan'},
       {label: 'Achinsk', value: 'achinsk'},
       {label: 'Aleksin', value: 'aleksin'},
-      {label: 'Alexandrov', value: 'alexandrov'},
+      {disabled: true, label: 'Alexandrov', value: 'alexandrov'},
       {label: 'Almetyevsk', value: 'almetyevsk'},
     ]}
     placeholder='Select...' />
