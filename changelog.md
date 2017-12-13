@@ -1,6 +1,11 @@
 # change log
 
 
+## 0.10.15
+
+- Styled disabled option for `Select`.
+
+
 ## 0.10.14
 
 - Added `SelectMultiple`.
